@@ -21,9 +21,9 @@
 		<?php the_category( ' | ' ); ?>
 
 	</header><!-- .entry-header -->
-
+	<div class="single-post-image">
 	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
-
+	</div>
 	<div class="entry-content">
 		<?php the_content(); ?>
 
