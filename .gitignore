@@ -101,7 +101,5 @@ Thumbs.db
 
 # track these mu-plugins, plugins, and themes
 # add your own entries here
-!wp-content/mu-plugins/example-mu-plugin/
-!wp-content/plugins/example-plugin/
-!wp-content/themes/example-theme/
 !wp-content/plugins/caimportplugin/
+!wp-content/themes/understrap/
