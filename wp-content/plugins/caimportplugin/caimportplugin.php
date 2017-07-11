@@ -5,7 +5,7 @@ Plugin Name: City Arts Drupal Import
 Plugin URI:
 Description:
 Author: Aaron Starkey
-Version: 1.0
+Version: 1.3
 Author URI: http://factorybeltproductions.org
 */
 
