@@ -32,20 +32,31 @@ function cityarts_import_admin_page() {
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
   //set_contributors(); //do 1
-  //set_articles(); //do 2
+  //set_articles(); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
-  //sync_posts_to_writers();//do 3
+  //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
   //set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
   // import pages by calling set_articles and update to be "pages" //do 7
-  set_excerpts(); //do 8
-  // set_image_attachments();
+  //set_excerpts(); //do 8
+
+   sync_wp_post_id_to_image_inline_images();
     /*
+    HOW TO IMPORT AND ATTACH IMAGES
       temp way to show some images:
       update wpsa_posts
       SET post_content = REPLACE ( post_content, '/sites/default/files/inline_images/', 'http://cityartsmagazine.com/sites/default/files/inline_images/')
       WHERE  post_content LIKE '%/sites/default/files/inline_images/%'
+
+      overall image processing:
+      - take update from master production database
+      - run querey to export slideshow
+      - run query to export inline
+      - then, import those two tables into the production enviroment
+      - then run synce_wp_post_id_to_image() which wil update the tables we imported with the related wp_id
+      - then do the import and attachment of those imagesavealpha(image, saveflag)
+
     */
 
   }
@@ -60,7 +71,169 @@ function cityarts_import_admin_page() {
 
   echo '</div>';
 
+
 }
+
+
+function get_all_images() {
+  global $wpdb;
+  $table = "tmp_inline_image_list";
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 500, 1500');
+  return $myrows;
+}
+
+
+function sync_wp_post_id_to_image_inline_images(){
+  /*  run this first:
+
+      update tmp_inline_image_list til, tmp_article_export_7_9_2017 tae
+      set til.new_wp_post_id = tae.new_wp_id
+      where til.nid = tae.nid
+
+  */
+
+  global $wpdb;
+  $table = "tmp_inline_image_list";
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' limit 0, 20 ');
+
+  require_once(ABSPATH . '/wp-admin/includes/file.php');
+  require_once(ABSPATH . '/wp-admin/includes/media.php');
+  require_once(ABSPATH . '/wp-admin/includes/image.php');
+  $upload_dir = MEDIAFROMFTP_PLUGIN_UPLOAD_DIR;
+  echo 'the path: ' . $upload_dir . "<br>";
+
+
+
+
+  $count = 0;
+
+  if ($myrows) {
+    foreach ( $myrows as $myrow ) {
+      $count++;
+      echo "# " . $count . " - ";
+      $new_wp_post_id = $myrow->new_wp_post_id;
+      $inline_image_title = $myrow->field_inline_images_title;
+      $filename = $myrow->filename;
+      $file_path_and_name = $upload_dir . '/inline_images/' . $filename;
+      $delta = $myrow->delta;
+      $image_caption = $myrow->field_inline_images_title;
+      $image_caption2 = $myrow->field_inline_images_alt;
+      if($image_caption == '') { $image_caption = $image_caption2; }
+
+      echo "exists? " . is_file($file_path_and_name) . " filename: " . $file_path_and_name  . "<br>";
+      if(!is_file($file_path_and_name)) {
+        echo "FILE NOT FOUND: " . $file_path_and_name . "<br>";
+      } else {
+          echo "FILE FOUND: " . $file_path_and_name . "<br>";
+
+        //echo '<pre> ' . var_dump($myrow ). '</pre>';
+
+        $array = array( //array to mimic $_FILES
+          'name' => basename($file_path_and_name), //isolates and outputs the file name from its absolute path
+          'type' => wp_check_filetype($file_path_and_name), // get mime type of image file
+          'tmp_name' => $file_path_and_name, //this field passes the actual path to the image
+          'error' => 0, //normally, this is used to store an error, should the upload fail. but since this isnt actually an instance of $_FILES we can default it to zero here
+          'size' => filesize($file_path_and_name) //returns image filesize in bytes
+        );
+
+        echo '<pre>' . var_dump($array) . '</pre>';
+
+        $attachment_id = media_handle_sideload($array, $new_wp_post_id); //the actual image processing, that is, move to upload directory, generate thumbnails and image sizes and writing into the database happens here
+
+        if (is_wp_error($attachment_id)) {
+            $errors = $attachment_id->get_error_messages();
+            foreach ($errors as $error) {
+              echo $error . "<br>";
+            }
+            echo "<p>";
+          } else {
+            echo' Aattachment id: ' . $attachment_id . '<br>';
+            echo 'all good - ';
+
+            if($delta == 0) { set_post_thumbnail( $new_wp_post_id, $attachment_id ); }
+
+            if($image_caption != '') {
+              $attachment = array( 'ID' => $attachment_id, 'post_excerpt' => $image_caption );
+
+              wp_update_post(array('ID' => $attachment_id, 'post_excerpt' => $image_caption));
+              echo "wp_insert_attachment for: " . $attachment_id . " and post_parent: " . $new_wp_post_id . " with caption: ".  $image_caption ."<br>";
+            }
+
+
+
+
+            $wpdb->query('UPDATE tmp_inline_image_list SET new_wp_attachment_id = ' . $attachment_id .  ' WHERE new_wp_post_id= ' . $new_wp_post_id);
+          }
+      }
+    }
+  }
+}
+
+function sync_single_image_wp_post_id_to_image_inline_images($myrow){
+  $output = "start: ";
+  global $wpdb;
+
+/*
+  $table = "tmp_inline_image_list";
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' limit 0, 20 ');
+*/
+  require_once(ABSPATH . '/wp-admin/includes/file.php');
+  require_once(ABSPATH . '/wp-admin/includes/media.php');
+  require_once(ABSPATH . '/wp-admin/includes/image.php');
+  $upload_dir = MEDIAFROMFTP_PLUGIN_UPLOAD_DIR;
+
+
+  if ($myrow) {
+      $new_wp_post_id = $myrow->new_wp_post_id;
+      $inline_image_title = $myrow->field_inline_images_title;
+      $filename = $myrow->filename;
+      $file_path_and_name = $upload_dir . '/inline_images/' . $filename;
+      $delta = $myrow->delta;
+      $image_caption = $myrow->field_inline_images_title;
+      $image_caption2 = $myrow->field_inline_images_alt;
+      if($image_caption == '') { $image_caption = $image_caption2; }
+
+      if(!is_file($file_path_and_name)) {
+        $output .=  "FILE NOT FOUND: " . $file_path_and_name . "<br>";
+      } else {
+        $output .=  "FILE FOUND: " . $file_path_and_name . "<br>";
+
+        //echo '<pre> ' . var_dump($myrow ). '</pre>';
+
+        $array = array( //array to mimic $_FILES
+          'name' => basename($file_path_and_name), //isolates and outputs the file name from its absolute path
+          'type' => wp_check_filetype($file_path_and_name), // get mime type of image file
+          'tmp_name' => $file_path_and_name, //this field passes the actual path to the image
+          'error' => 0, //normally, this is used to store an error, should the upload fail. but since this isnt actually an instance of $_FILES we can default it to zero here
+          'size' => filesize($file_path_and_name) //returns image filesize in bytes
+        );
+
+     //   $output .=   '<pre>' . var_dump($array) . '</pre>';
+
+        $attachment_id = media_handle_sideload($array, $new_wp_post_id); //the actual image processing, that is, move to upload directory, generate thumbnails and image sizes and writing into the database happens here
+
+        if (is_wp_error($attachment_id)) {
+            $errors = $attachment_id->get_error_messages();
+            foreach ($errors as $error) {
+            $output .=  $error . "<br>";
+            }
+            $output .=  "<p>";
+          } else {
+            $output .= ' Aattachment id: ' . $attachment_id . '<br>';
+
+            if($delta == 0) { set_post_thumbnail( $new_wp_post_id, $attachment_id ); }
+
+            if($image_caption != '') {
+              wp_update_post(array('ID' => $attachment_id, 'post_excerpt' => $image_caption));
+       //       $output .= "wp_insert_attachment for: " . $attachment_id . " and post_parent: " . $new_wp_post_id . " with caption: ".  $image_caption ."<br>";
+            }
+            $wpdb->query('UPDATE tmp_inline_image_list SET new_wp_attachment_id = ' . $attachment_id .  ' WHERE new_wp_post_id= ' . $new_wp_post_id);
+          }
+      }
+  }
+  return $output;
+}
+
 function update_post_relationship($new_wp_id, $new_wp_contributor_id) {
   //this really only needs to be run once.
   $article_relationship = get_field( 'relationship', $new_wp_id );
