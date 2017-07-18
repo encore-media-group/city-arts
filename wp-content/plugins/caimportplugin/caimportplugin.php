@@ -78,7 +78,7 @@ function cityarts_import_admin_page() {
 function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 1500');
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit  1500, 5000');
   return $myrows;
 }
 
@@ -208,7 +208,7 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
           'size' => filesize($file_path_and_name) //returns image filesize in bytes
         );
 
-     //   $output .=   '<pre>' . var_dump($array) . '</pre>';
+     //   $output .=   '<pre>' .  var_dump($array) . '</pre>';
 
         $attachment_id = media_handle_sideload($array, $new_wp_post_id); //the actual image processing, that is, move to upload directory, generate thumbnails and image sizes and writing into the database happens here
 
