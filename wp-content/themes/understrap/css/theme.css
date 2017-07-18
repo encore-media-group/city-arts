@@ -7,7 +7,7 @@
  */
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: Georgia, "Times New Roman", times, serif;
+  font-family: sans-serif;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
@@ -269,11 +269,11 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
- font-family: Georgia, "Times New Roman", times, serif;
+  font-family: Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: #000000;
+  color: #292b2c;
   background-color: #fff; }
 
 [tabindex="-1"]:focus {
@@ -319,7 +319,7 @@ blockquote {
   margin: 0 0 1rem; }
 
 a {
-  color: #D3391C;
+  color: #7852B2;
   text-decoration: none; }
   a:focus, a:hover {
     color: #54397f;
