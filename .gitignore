@@ -103,3 +103,7 @@ Thumbs.db
 # add your own entries here
 !wp-content/plugins/caimportplugin/
 !wp-content/themes/understrap/
+!wp-content/plugins/codepress-admin-columns/
+!wp-content/plugins/wp-background-processing-example-master/
+!wp-content/plugins/wp-background-processing-master/
+!wp-content/plugins/wp-log-viewer/
