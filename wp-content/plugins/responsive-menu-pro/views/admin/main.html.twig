@@ -1,0 +1,20 @@
+<div class='container-fluid'>
+    <form class='form-horizontal form-inline' id='responsive-menu-pro-form' action='' method='post' enctype='multipart/form-data'>
+        {{ csrf() }}
+        {% include 'admin/alerts.html.twig' %}
+        {% include 'admin/tabs.html.twig' %}
+        <div id='options-area'>
+            <div id="filter-options-container">
+                <label for="filter-options">Filter Options</label>
+                <input type="search" class="form-control" name="filter-options" id="filter-options" placeholder="Start typing to filter options" />
+            </div>
+            {% include 'admin/options.html.twig' %}
+            <input type='hidden' id='responsive-menu-pro-current-page' name='responsive-menu-pro-current-page' value="{{ current_page() }}" />
+            <button type='button' id='responsive-menu-pro-preview' name='responsive-menu-pro-preview' class='btn btn-default'>Preview Changes</button>
+            <button type='submit' name='responsive-menu-pro-submit' class='btn btn-primary'>Update Options</button>
+        </div><!--
+        --><div id='banner-area'>
+            {% include 'admin/banners.html.twig' %}
+        </div>
+    </form>
+</div>

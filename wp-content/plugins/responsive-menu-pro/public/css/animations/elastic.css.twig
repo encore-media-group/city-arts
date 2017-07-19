@@ -1,0 +1,30 @@
+.responsive-menu-pro-elastic .responsive-menu-pro-inner {
+    top: {{ options.button_line_height / 2 }}{{ options.button_line_height_unit }};
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.responsive-menu-pro-elastic .responsive-menu-pro-inner::before {
+    top: {{ options.button_line_height + options.button_line_margin }}{{ options.button_line_height_unit }};
+    transition: opacity 0.15s 0.4s ease;
+}
+
+.responsive-menu-pro-elastic .responsive-menu-pro-inner::after {
+    top: {{ (options.button_line_height * 2) + (options.button_line_margin * 2) }}{{ options.button_line_height_unit }};
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.responsive-menu-pro-elastic.is-active .responsive-menu-pro-inner {
+    transform: translate3d(0, {{ options.button_line_margin + options.button_line_height }}{{ options.button_line_margin_unit }}, 0) rotate(135deg);
+    transition-delay: 0.1s;
+}
+
+.responsive-menu-pro-elastic.is-active .responsive-menu-pro-inner::before {
+    transition-delay: 0s;
+    opacity: 0;
+}
+
+.responsive-menu-pro-elastic.is-active .responsive-menu-pro-inner::after {
+    transform: translate3d(0, {{ (options.button_line_margin + options.button_line_height) * -2 }}{{ options.button_line_margin_unit }}, 0) rotate(-270deg);
+    transition-delay: 0.1s;
+}

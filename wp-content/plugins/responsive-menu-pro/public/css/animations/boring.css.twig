@@ -1,0 +1,19 @@
+.responsive-menu-pro-boring .responsive-menu-pro-inner,
+.responsive-menu-pro-boring .responsive-menu-pro-inner::before,
+.responsive-menu-pro-boring .responsive-menu-pro-inner::after {
+    transition-property: none;
+}
+
+.responsive-menu-pro-boring.is-active .responsive-menu-pro-inner {
+    transform: rotate(45deg);
+}
+
+.responsive-menu-pro-boring.is-active .responsive-menu-pro-inner::before {
+    top: 0;
+    opacity: 0;
+}
+
+.responsive-menu-pro-boring.is-active .responsive-menu-pro-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+}

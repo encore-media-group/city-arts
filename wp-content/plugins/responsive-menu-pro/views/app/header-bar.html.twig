@@ -1,0 +1,7 @@
+<div id="responsive-menu-pro-header">
+    {% for key, selected in header_bar_items(options.header_bar_items_order|json_decode) %}
+        {% if selected == 'on' %}
+            {% include 'app/header-bar/%s.html.twig'|format(key|replace({' ': '-'})) %}
+        {% endif %}
+    {% endfor %}
+</div>

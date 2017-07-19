@@ -1,0 +1,47 @@
+.responsive-menu-pro-emphatic-r {
+    overflow: hidden;
+}
+
+.responsive-menu-pro-emphatic-r .responsive-menu-pro-inner {
+    transition: background-color 0.2s 0.25s ease-in;
+}
+
+.responsive-menu-pro-emphatic-r .responsive-menu-pro-inner::before {
+    left: 0;
+    transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+                top 0.05s 0.2s linear,
+                left 0.2s 0.25s ease-in;
+}
+
+.responsive-menu-pro-emphatic-r .responsive-menu-pro-inner::after {
+    top: {{ options.button_line_height + options.button_line_margin }}{{ options.button_line_height_unit }};
+    right: 0;
+    transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+                top 0.05s 0.2s linear,
+                right 0.2s 0.25s ease-in;
+}
+
+button#responsive-menu-pro-button.responsive-menu-pro-emphatic-r.is-active:hover .responsive-menu-pro-inner,
+.responsive-menu-pro-emphatic-r.is-active .responsive-menu-pro-inner {
+    transition-delay: 0s;
+    transition-timing-function: ease-out;
+    background-color: transparent;
+}
+
+.responsive-menu-pro-emphatic-r.is-active .responsive-menu-pro-inner::before {
+    left: {{ options.button_line_width * -2 }}{{ options.button_line_width_unit }};
+    top: {{ options.button_line_width * 2 }}{{ options.button_line_width_unit }};
+    transform: translate3d({{ options.button_line_width * 2 }}{{ options.button_line_width_unit }}, {{ options.button_line_width * -2 }}{{ options.button_line_width_unit }}, 0) rotate(-45deg);
+    transition: left 0.2s ease-out,
+                top 0.05s 0.2s linear,
+                transform 0.2s 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.responsive-menu-pro-emphatic-r.is-active .responsive-menu-pro-inner::after {
+    right: {{ options.button_line_width * -2 }}{{ options.button_line_width_unit }};
+    top: {{ options.button_line_width * 2 }}{{ options.button_line_width_unit }};
+    transform: translate3d({{ options.button_line_width * -2 }}{{ options.button_line_width_unit }}, {{ options.button_line_width * -2 }}{{ options.button_line_width_unit }}, 0) rotate(45deg);
+    transition: right 0.2s ease-out,
+                top 0.05s 0.2s linear,
+                transform 0.2s 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}

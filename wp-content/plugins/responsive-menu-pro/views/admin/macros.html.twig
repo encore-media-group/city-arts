@@ -1,0 +1,194 @@
+{% macro select(name, value, choices, class='') %}
+    <select id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' class='selectpicker show-tick {{ class }}' name='menu[{{ name }}]'>
+        {% for key, display in choices %}
+            <option value='{{ key }}' {% if key == value %}selected='selected'{% endif %}>{{ display }}</option>
+        {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro selectize(name, value, class='') %}
+    <input type="text" value="{{ value }}" id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' class='selectize {{ class }}' name='menu[{{ name }}]' />
+{% endmacro %}
+
+{% macro input(name, value, class='') %}
+    <input type='text' id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' name='menu[{{ name }}]' value='{{ value|escape }}' class='form-control {{ class }}'>
+{% endmacro %}
+
+{% macro font_icon(name, value, type) %}
+    <input type='text' id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' name='menu[{{ name }}]' value='{{ value|escape }}' class='form-control font-icon-input {{ class }}'>
+    <select class='selectpicker show-tick font-icon-select' name='menu[{{ name }}_type]'>
+        <option value='font-awesome' {% if type == 'font-awesome' %}selected='selected'{% endif %}>FontAwesome</option>
+        <option value='glyphicon' {% if type == 'glyphicon' %}selected='selected'{% endif %}>GlyphIcon</option>
+        <option value='custom' {% if type == 'custom' %}selected='selected'{% endif %}>Custom</option>
+    </select>
+{% endmacro %}
+
+{% macro colour(name, value) %}
+    <input type='text' id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' class='form-control mini-colours' name='menu[{{ name }}]' value='{{ value }}' />
+{% endmacro %}
+
+{% macro label(for, title) %}
+    <label for='responsive-menu-pro-{{ for|replace({'_': '-'}) }}' class='control-label'>
+        {{ title }}
+    </label>
+{% endmacro %}
+
+{% macro checkbox(name, value) %}
+    <input {% if value == 'on' %}checked='checked' {% endif %} id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}'
+           name='menu[{{ name }}]' data-toggle='toggle' data-onstyle='success' data-offstyle='danger' type='checkbox' value='on' />
+{% endmacro %}
+
+{% macro image(name, value) %}
+    <div class='input-group'>
+        <input type='text' class='form-control' id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' name='menu[{{ name }}]' value='{{ value }}' />
+        <span class='input-group-btn'>
+            <button type='button' class='image_button btn btn-primary' for='responsive-menu-pro-{{ name|replace({'_': '-'}) }}'>Upload Image</button>
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro textarea(name, value) %}
+    <textarea class='form-control' id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' name='menu[{{ name }}]'>{{ value }}</textarea>
+{% endmacro %}
+
+{% macro row(name, title, type, options, errors, class='', pro='', select_type='', unit_type='', sub_title='', unit='', choices=[], example='') %}
+    {% import _self as macros %}
+    <tr{% if errors[name] %} class='danger'{% endif %}>
+        <td class='well col-md-3'>
+            {{ macros.label(name, title) }}
+            {% if sub_title %}
+                <div class='sub-text'>{{ sub_title|raw }}</div>
+            {% endif %}
+            {% if example %}
+                <div class='example'>{{ example|raw }}</div>
+            {% endif %}
+        </td>
+        <td{% if pro %} class='{{ pro }}'{% endif %}>
+            {% if type == 'checkbox' %}
+                {{ macros.checkbox(name, options[name]) }}
+            {% elseif type == 'colour' %}
+                {{ macros.colour(name, options[name]) }}
+            {% elseif type == 'input' %}
+                {{ macros.input(name, options[name], class) }}
+                {% if class == 'has-unit' %}
+                    {% if unit_type == 'pixel' %}
+                        {% set choices = {
+                            'px': 'px',
+                            '%': '%',
+                            'em': 'em',
+                            'rem': 'rem'
+                        } %}
+                        {{ macros.select(name ~ '_unit', options[name ~ '_unit'], choices, 'is-unit') }}
+                    {% elseif unit_type == 'percentage' %}
+                        {% set choices = {
+                            '%': '%',
+                            'px': 'px',
+                            'em': 'em',
+                            'rem': 'rem'
+                        } %}
+                        {{ macros.select(name ~ '_unit', options[name ~ '_unit'], choices, 'is-unit') }}
+                    {% endif %}
+                {% endif %}
+            {% elseif type == 'textarea' %}
+                {{ macros.textarea(name, options[name], class) }}
+            {% elseif type == 'selectize' %}
+                {{ macros.selectize(name, options[name]) }}
+            {% elseif type == 'select' %}
+                {% if select_type == 'side' %}
+                    {% set choices = {
+                        'top': 'Top',
+                        'left': 'Left',
+                        'right': 'Right',
+                        'bottom': 'Bottom'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'left_right' %}
+                    {% set choices = {
+                        'left': 'Left',
+                        'right': 'Right'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'position' %}
+                    {% set choices = {
+                        'fixed': 'Fixed',
+                        'absolute': 'Absolute',
+                        'relative': 'Relative'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'animation' %}
+                    {% set choices = {
+                        'slide': 'Slide',
+                        'push': 'Push',
+                        'fade': 'Fade'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'depth' %}
+                    {% set choices = {
+                        '1': '1',
+                        '2': '2',
+                        '3': '3',
+                        '4': '4',
+                        '5': '5'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'alignment' %}
+                    {% set choices = {
+                        'left': 'Left',
+                        'right': 'Right',
+                        'center': 'Centered',
+                        'justify': 'Justified'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'link_locations' %}
+                    {% set choices = {
+                        '_blank': 'New Tab',
+                        '_self': 'Same Page',
+                        '_parent': 'Parent Page',
+                        '_top': 'Full Window Body'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'custom' %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% elseif select_type == 'button_animation' %}
+                    {% set choices = {
+                        'off': 'Off',
+                        'boring': 'Boring',
+                        '3dx': '3DX',
+                        '3dx-r': '3DX Reverse',
+                        '3dy': '3DY',
+                        '3dy-r': '3DY Reverse',
+                        'arrow': 'Arrow',
+                        'arrow-r': 'Arrow Reverse',
+                        'arrowalt': 'Arrow Alt',
+                        'arrowalt-r': 'Arrow Alt Reverse',
+                        'collapse': 'Collapse',
+                        'collapse-r': 'Collapse Reverse',
+                        'elastic': 'Elastic',
+                        'elastic-r': 'Elastic Reverse',
+                        'emphatic': 'Emphatic',
+                        'emphatic-r': 'Emphatic Reverse',
+                        'slider': 'Slider',
+                        'slider-r': 'Slider Reverse',
+                        'spin': 'Spin',
+                        'spin-r': 'Spin Reverse',
+                        'spring': 'Spring',
+                        'spring-r': 'Spring Reverse',
+                        'stand': 'Stand',
+                        'stand-r': 'Stand Reverse',
+                        'squeeze': 'Squeeze',
+                        'vortex': 'Vortex',
+                        'vortex-r': 'Vortex Reverse'
+                    } %}
+                    {{ macros.select(name, options[name], choices) }}
+                {% endif %}
+            {% elseif type == 'image' %}
+                {{ macros.image(name, options[name]) }}
+            {% elseif type == 'font-icon' %}
+                {{ macros.font_icon(name, options[name], options[name ~ '_type']) }}
+            {% endif %}
+            {% if unit %}
+                <span class='unit'>{{ unit }}</span>
+            {% endif %}
+        </td>
+    </tr>
+{% endmacro %}

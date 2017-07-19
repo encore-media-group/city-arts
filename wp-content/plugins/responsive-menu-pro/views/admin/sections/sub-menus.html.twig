@@ -1,0 +1,82 @@
+{% import 'admin/macros.html.twig' as macros %}
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Sub-Menu Trigger Icon<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('active_arrow_font_icon', 'Active Font Icon', 'font-icon', options, errors, '', 'pro') }}
+        {{ macros.row('inactive_arrow_font_icon', 'Inactive Font Icon', 'font-icon', options, errors, '', 'pro') }}
+        {{ macros.row('active_arrow_shape', 'Active Shape', 'input', options, errors) }}
+        {{ macros.row('inactive_arrow_shape', 'Inactive Shape', 'input', options, errors) }}
+        {{ macros.row('active_arrow_image', 'Active Image', 'image', options, errors) }}
+        {{ macros.row('active_arrow_image_alt', 'Alt Text', 'input', options, errors) }}
+        {{ macros.row('inactive_arrow_image', 'Inactive Image', 'image', options, errors) }}
+        {{ macros.row('inactive_arrow_image_alt', 'Alt Text', 'input', options, errors) }}
+        {{ macros.row('arrow_position', 'Position', 'select', options, errors, '', '', 'left_right') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Sub-Menu Trigger Colours<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('menu_sub_arrow_shape_colour', 'Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_shape_hover_colour', 'Hover Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_shape_colour_active', 'Active Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_shape_hover_colour_active', 'Active Hover Colour', 'colour', options, errors, '', 'semi-pro') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Sub-Menu Trigger Background<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('menu_sub_arrow_background_colour', 'Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_background_hover_colour', 'Hover Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_background_colour_active', 'Active Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_background_hover_colour_active', 'Active Hover Colour', 'colour', options, errors, '', 'semi-pro') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Sub-Menu Trigger Border<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('menu_sub_arrow_border_colour', 'Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_border_hover_colour', 'Hover Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_border_colour_active', 'Active Colour', 'colour', options, errors, '', 'semi-pro') }}
+        {{ macros.row('menu_sub_arrow_border_hover_colour_active', 'Active Hover Colour', 'colour', options, errors, '', 'semi-pro') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Sub-Menu Trigger Sizing<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('submenu_arrow_height', 'Height', 'input', options, errors, 'has-unit', 'semi-pro', '', 'pixel') }}
+        {{ macros.row('submenu_arrow_width', 'Width', 'input', options, errors, 'has-unit', 'semi-pro', '', 'pixel') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Animations</div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('accordion_animation', 'Use Accordion', 'checkbox', options, errors) }}
+        {{ macros.row('auto_expand_all_submenus', 'Auto Expand all Sub-Menus', 'checkbox', options, errors) }}
+        {{ macros.row('auto_expand_current_submenus', 'Auto Expand Current Page Sub-Menus', 'checkbox', options, errors) }}
+        {{ macros.row('menu_item_click_to_trigger_submenu', 'Make Whole Sub-Menu bar Clickable', 'checkbox', options, errors) }}
+        {{ macros.row('use_slide_effect', 'Use Slide Effect', 'checkbox', options, errors, '', 'pro', '', '', '<span class="label label-warning">beta</span>') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Slide Effect Options<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('slide_effect_back_to_text', 'Back Text', 'input', options, errors, '', 'pro') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-body'>Fade in links<small>Sub Menus</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('fade_submenus', 'Enabled', 'checkbox', options, errors, '', 'pro') }}
+        {{ macros.row('fade_submenus_side', 'Side to Fade From', 'select', options, errors, '', 'pro', 'left_right') }}
+        {{ macros.row('fade_submenus_delay', 'Delay', 'input', options, errors, '', 'pro', '', '', '', 'ms') }}
+        {{ macros.row('fade_submenus_speed', 'Speed', 'input', options, errors, '', 'pro', '', '', '', 'ms') }}
+    </table>
+</div>

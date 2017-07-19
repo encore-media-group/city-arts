@@ -1,0 +1,27 @@
+.responsive-menu-pro-3dx-r .responsive-menu-pro-box {
+    perspective: {{ options.button_line_width * 2 }}{{ options.button_line_width_unit }};
+}
+
+.responsive-menu-pro-3dx-r .responsive-menu-pro-inner {
+    transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+                background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.responsive-menu-pro-3dx-r .responsive-menu-pro-inner::before,
+.responsive-menu-pro-3dx-r .responsive-menu-pro-inner:after {
+ transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+button#responsive-menu-pro-button.responsive-menu-pro-3dx-r.is-active:hover .responsive-menu-pro-inner,
+.responsive-menu-pro-3dx-r.is-active .responsive-menu-pro-inner {
+    background-color: transparent;
+    transform: rotateY(-180deg);
+}
+
+.responsive-menu-pro-3dx-r.is-active .responsive-menu-pro-inner::before {
+    transform: translate3d(0, {{ options.button_line_height + options.button_line_margin }}{{ options.button_line_height_unit }}, 0) rotate(45deg);
+}
+
+.responsive-menu-pro-3dx-r.is-active .responsive-menu-pro-inner::after {
+     transform: translate3d(0, {{ (options.button_line_height + options.button_line_margin) * -1 }}{{ options.button_line_height_unit }}, 0) rotate(-45deg);
+}

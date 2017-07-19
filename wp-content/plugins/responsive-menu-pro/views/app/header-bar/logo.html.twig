@@ -1,0 +1,17 @@
+{% if options.header_bar_logo %}
+
+    <div id="responsive-menu-pro-header-bar-logo" class="responsive-menu-pro-header-bar-item responsive-menu-pro-header-box">
+
+        {% if options.header_bar_logo_link|translate('header_bar_logo_link') %}
+            <a href="{{ options.header_bar_logo_link|translate('header_bar_logo_link') }}">
+        {% endif %}
+
+        <img alt="{{ options.header_bar_logo_alt }}" src="{{ options.header_bar_logo }}" />
+
+        {% if options.header_bar_logo_link|translate('header_bar_logo_link') %}
+            </a>
+        {% endif %}
+
+    </div>
+
+{% endif %}
