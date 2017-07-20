@@ -6,10 +6,14 @@
  */
 
 ?>
+<?php
+$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "full" );
+$thumbnail_url = $thumbnail[0];
+?>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-	<div class="single-post-image">
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+	<div class="single-post-image-hero" style="background-image: url('<?php echo $thumbnail_url; ?>');">
+	<?php //echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 	</div>
 		<header class="entry-header">
 

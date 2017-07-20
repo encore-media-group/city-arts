@@ -9244,6 +9244,19 @@ h1.navbar-brand a:hover {
   width: 100%; }
   #single-wrapper #content .row {
     margin: 0; }
+  #single-wrapper #content article .single-post-image-hero {
+    height: 500px;
+    width: 100%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
+  #single-wrapper #content article header.entry-header,
+  #single-wrapper #content article footer.entry-footer,
+  #single-wrapper #content article .entry-content {
+    padding: 40px; }
 
 .mceItem {
   display: none; }
