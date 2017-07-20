@@ -78,8 +78,14 @@ function cityarts_import_admin_page() {
 function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 3000');
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 16000');
   return $myrows;
+}
+
+function delete_all_images_in_the_database() {
+  //saving this for when needed. don't actually run from wordpress...run via mysql
+  //DELETE FROM wp_postmeta WHERE post_id IN( SELECT id FROM wp_posts WHERE post_type = 'attachment')
+  //DELETE FROM wp_posts WHERE post_type = 'attachment'
 }
 
 
@@ -187,7 +193,10 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
       $new_wp_post_id = $myrow->new_wp_post_id;
       $inline_image_title = $myrow->field_inline_images_title;
       $filename = $myrow->filename;
-      $file_path_and_name = $upload_dir . '/inline_images/' . $filename;
+      $uri = $myrow->uri;
+//      $file_path_and_name = $upload_dir . '/inline_images/' . $filename;
+        $file_path_and_name = $upload_dir . '/inline_images/' . str_replace("public://inline_images/","",$uri);
+
       $delta = $myrow->delta;
       $image_caption = $myrow->field_inline_images_title;
       $image_caption2 = $myrow->field_inline_images_alt;
