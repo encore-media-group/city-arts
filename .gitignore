@@ -39,11 +39,14 @@ wp-content/mu-plugins/*
 wp-content/plugins/*
 wp-content/themes/*
 wp-config.php
-package-lock.json
+wp-content/themes/understrap/package-lock.json
+wp-content/themes/understrap-child-master/package-lock.json
+wp-content/themes/understrap/package.json
 
 # ignore all files starting with . or ~
 .*
 ~*
+!.gitignore
 
 # ignore node dependency directories (used by grunt)
 node_modules/
