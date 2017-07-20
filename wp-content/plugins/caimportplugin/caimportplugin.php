@@ -86,6 +86,8 @@ function delete_all_images_in_the_database() {
   //saving this for when needed. don't actually run from wordpress...run via mysql
   //DELETE FROM wp_postmeta WHERE post_id IN( SELECT id FROM wp_posts WHERE post_type = 'attachment')
   //DELETE FROM wp_posts WHERE post_type = 'attachment'
+  //be very careful!
+
 }
 
 
