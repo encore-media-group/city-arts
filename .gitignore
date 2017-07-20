@@ -39,6 +39,7 @@ wp-content/mu-plugins/*
 wp-content/plugins/*
 wp-content/themes/*
 wp-config.php
+package-lock.json
 
 # ignore all files starting with . or ~
 .*

@@ -9233,3 +9233,6 @@ h1.navbar-brand a:hover {
 
 .gallery-caption {
   display: block; }
+
+.mceItem {
+  display: none; }
