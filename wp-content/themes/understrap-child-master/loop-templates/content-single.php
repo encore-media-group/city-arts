@@ -31,6 +31,16 @@ $thumbnail_url = $thumbnail[0];
 	<div class="entry-content">
 		<?php the_content(); ?>
 
+		<div class="attached-images">
+			<ul>
+			<?php
+			$images = get_attached_media('image', $post->ID);
+
+			foreach($images as $image) { ?>
+			    <li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
+			<?php } ?>
+			</ul>
+		</div>
 		<?php
 		wp_link_pages( array(
 			'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
