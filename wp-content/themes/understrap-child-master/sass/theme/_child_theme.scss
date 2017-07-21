@@ -11,6 +11,12 @@
 
     .row {
       margin: 0;
+
+      #main {
+        margin: 0 auto;
+        max-width: 100%;
+        width: 100%;
+      }
     }
 
   article {
@@ -29,6 +35,15 @@
     footer.entry-footer ,
     .entry-content {
       padding: 40px;
+    }
+
+    header.entry-header ,
+    .entry-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .entry-content {
+      padding-top: 0;
     }
   }
 
