@@ -9264,15 +9264,10 @@ h1.navbar-brand a:hover {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover; }
-  #single-wrapper #content article header.entry-header,
-  #single-wrapper #content article footer.entry-footer,
+  #single-wrapper #content article .entry-header {
+    display: inline-block; }
   #single-wrapper #content article .entry-content {
-    padding: 40px; }
-  #single-wrapper #content article header.entry-header,
-  #single-wrapper #content article .entry-content {
-    max-width: 600px;
-    margin: 0 auto; }
-  #single-wrapper #content article .entry-content {
+    margin: 0 auto;
     padding-top: 0; }
 
 .mceItem {

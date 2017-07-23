@@ -37,19 +37,11 @@
       -o-background-size: cover;
       background-size: cover;
     }
-
-    header.entry-header,
-    footer.entry-footer ,
-    .entry-content {
-      padding: 40px;
+    .entry-header {
+      display: inline-block;
     }
-
-    header.entry-header ,
     .entry-content {
-      max-width: 600px;
       margin: 0 auto;
-    }
-    .entry-content {
       padding-top: 0;
     }
   }

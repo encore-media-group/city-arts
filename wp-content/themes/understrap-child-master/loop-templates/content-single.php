@@ -7,14 +7,22 @@
 
 ?>
 <?php
-$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "full" );
+$thumbnail_id = get_post_thumbnail_id( $post->ID );
+$thumbnail = wp_get_attachment_image_src( $thumbnail_id, "full" );
 $thumbnail_url = $thumbnail[0];
+
+$thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
+
 ?>
 <article <?php post_class('row'); ?> id="post-<?php the_ID(); ?>">
 
-	<div class="single-post-image-hero col-lg-6" style="background-image: url('<?php echo $thumbnail_url; ?>');">
-
+	<div class="col-lg-6">
+		<div class="single-post-image-hero " style="background-image: url('<?php echo $thumbnail_url; ?>');"></div>
+		<div><?php echo $thumbnail_caption ?></div>
 	</div>
+
+
+
 	<div class="col-lg-6">
 			<header class="entry-header row">
 				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
@@ -23,12 +31,40 @@ $thumbnail_url = $thumbnail[0];
 				</header><!-- .entry-header -->
 	<div class="entry-content row">
 		<?php the_content(); ?>
+
+		<?php
+		$postbody = get_the_content();
+		get_images_from_post($postbody);
+
+    function get_images_from_post($tmpPost) {
+      /* parse the contents of the post and extract image urls */
+      $post_images = array();
+      libxml_use_internal_errors(true);
+      $doc = new DOMDocument();
+
+        $doc->loadHTML($tmpPost);
+        $xml=simplexml_import_dom($doc);
+        $images=$xml->xpath('//img');
+
+        foreach ($images as $img) {
+          if(strpos($img['src'], 'http') !== true ){
+            $post_images[] = $img['src'];
+            echo basename($img['src']) . "<br>";
+          }
+        }
+
+      return $post_images;
+    }
+
+		?>
 		<div class="attached-images">
 			<ul>
 			<?php
 			$images = get_attached_media('image', $post->ID);
 
-			foreach($images as $image) { ?>
+			foreach($images as $image) {
+					echo var_dump($image);
+					?>
 			    <li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
 			<?php } ?>
 			</ul>

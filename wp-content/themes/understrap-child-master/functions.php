@@ -134,9 +134,11 @@ if ( ! function_exists( 'understrap_posted_on' ) ) :
  */
 function understrap_posted_on() {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+  /* let's only show the published date.
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
   }
+  */
   $time_string = sprintf( $time_string,
     esc_attr( get_the_date( 'c' ) ),
     esc_html( get_the_date('l, F jS, Y') ),
@@ -144,7 +146,7 @@ function understrap_posted_on() {
     esc_html( get_the_modified_date('l, F jS, Y') )
   );
   $posted_on = sprintf(
-    esc_html_x( 'Posted on %s', 'post date', 'understrap' ),
+    esc_html_x( '%s', 'post date', 'understrap' ),
     '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   );
   $byline = get_contributors();
