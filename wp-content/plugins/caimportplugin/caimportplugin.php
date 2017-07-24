@@ -31,7 +31,7 @@ function cityarts_import_admin_page() {
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
-  //set_contributors(); //do 1
+  set_contributors(); //do 1
   //set_articles(); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -236,7 +236,6 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
 
             if($image_caption != '') {
               wp_update_post(array('ID' => $attachment_id, 'post_excerpt' => $image_caption));
-       //       $output .= "wp_insert_attachment for: " . $attachment_id . " and post_parent: " . $new_wp_post_id . " with caption: ".  $image_caption ."<br>";
             }
             $wpdb->query('UPDATE tmp_inline_image_list SET new_wp_attachment_id = ' . $attachment_id .  ' WHERE new_wp_post_id= ' . $new_wp_post_id);
           }
