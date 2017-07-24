@@ -9247,8 +9247,7 @@ h1.navbar-brand a:hover {
 
 #single-wrapper #content {
   padding: 0;
-  margin: 0;
-  width: 100%; }
+  margin: 0 auto; }
   #single-wrapper #content .row {
     margin: 0; }
     #single-wrapper #content .row #main {
@@ -9263,7 +9262,8 @@ h1.navbar-brand a:hover {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; }
+    background-size: cover;
+    background-position: center center; }
   #single-wrapper #content article .entry-header {
     display: inline-block; }
   #single-wrapper #content article .entry-content {
