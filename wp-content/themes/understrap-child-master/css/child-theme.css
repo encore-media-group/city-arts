@@ -9234,41 +9234,39 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
-.wrapper {
-  padding: 0;
-  margin: 0; }
-
 #archive-wrapper,
 #wrapper-index {
-  padding-top: 50px;
+  padding-top: 7em;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0; }
 
-#single-wrapper #content {
-  padding: 0;
-  margin: 0 auto; }
-  #single-wrapper #content .row {
-    margin: 0; }
-    #single-wrapper #content .row #main {
-      margin: 0 auto;
+#single-wrapper {
+  padding-top: 5.8rem; }
+  #single-wrapper #content {
+    padding: 0;
+    margin: 0 auto; }
+    #single-wrapper #content .row {
+      margin: 0; }
+      #single-wrapper #content .row #main {
+        margin: 0 auto;
+        max-width: 100%;
+        width: 100%; }
+    #single-wrapper #content article .single-post-image-hero {
+      height: auto;
       max-width: 100%;
-      width: 100%; }
-  #single-wrapper #content article .single-post-image-hero {
-    height: 500px;
-    width: 100%;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center center; }
-  #single-wrapper #content article .entry-header {
-    display: inline-block; }
-  #single-wrapper #content article .entry-content {
-    margin: 0 auto;
-    padding-top: 0; }
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: contain;
+      background-position: top center; }
+    #single-wrapper #content article .entry-header {
+      display: inline-block; }
+    #single-wrapper #content article .entry-content {
+      margin: 0 auto;
+      padding-top: 0; }
 
 .mceItem {
   display: none; }

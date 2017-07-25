@@ -1,16 +1,14 @@
-.wrapper {
-  padding: 0;
-  margin: 0;
-}
+
 #archive-wrapper,
 #wrapper-index {
-  padding-top: 50px;
+  padding-top: 7em;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
 }
 
 #single-wrapper {
+  padding-top: 5.8rem;
   #content {
     padding: 0;
     margin: 0 auto;
@@ -27,15 +25,16 @@
 
   article {
     .single-post-image-hero {
-      height: 500px;
-      width: 100%;
+      height: auto;
+      max-width: 100%;
+
       background-size: 100% auto;
       background-repeat: no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
-      background-size: cover;
-      background-position: center center;
+      background-size: contain;
+      background-position: top center;
     }
     .entry-header {
       display: inline-block;

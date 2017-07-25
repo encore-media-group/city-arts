@@ -9,15 +9,17 @@
 <?php
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $thumbnail = wp_get_attachment_image_src( $thumbnail_id, "full" );
+
 $thumbnail_url = $thumbnail[0];
+$thumbnail_width = $thumbnail[1];
+$thumbnail_height = $thumbnail[2];
 
 $thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
 
-?>
 <article <?php post_class('row'); ?> id="post-<?php the_ID(); ?>">
 
-	<div class="col-lg-6">
-		<div class="single-post-image-hero " style="background-image: url('<?php echo $thumbnail_url; ?>');"></div>
+	<div class="col-sm-6 col-lg-6">
+		<div class="single-post-image-hero " style="padding-bottom: <?php echo $thumbnail_height; ?>px;background-image: url('<?php echo $thumbnail_url; ?>');"></div>
 		<div><?php echo $thumbnail_caption ?></div>
 		<div>
 		<?php dynamic_sidebar( 'article-left-1' ); ?>
@@ -31,7 +33,7 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
 
 
 
-	<div class="col-lg-6">
+	<div class="col-sm-6 col-lg-6">
 			<header class="entry-header row">
 				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 					<div class="entry-meta"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
