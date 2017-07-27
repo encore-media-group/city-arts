@@ -5,5 +5,33 @@
 // Thats the ugly Bootstrap blue used for all the links, primary buttons etc.
 // Just add your color code here, compile the theme.scss file to change this color everywhere
 
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
 
-$brand-primary:         #000000; //#ff6d5a
+// Start with assigning color names to specific hex values.
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #ed302f !default; // city arts red
+$orange: #a18967 !default; // city arts bronze
+$yellow: #ffee33 !default; // city arts yellow
+$green:  #5cb85c !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #2b294c !default; // city arts navy
+
+// Create grayscale
+$gray-dark:                 #d9d0c2 !default; // city arts bronze 40%
+$gray:                      #e7e1d9 !default; // city arts bronze 25%
+$gray-light:                #ece7e1 !default; // city arts bronze 20%
+$gray-lighter:              #f1ede8 !default; // city arts bronze 15%
+$gray-lightest:             #f6f3f0 !default; // city arts bronze 10%
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             $black !default;
+$brand-success:             $green !default;
+$brand-info:                $teal !default;
+$brand-warning:             $orange !default;
+$brand-danger:              $red !default;
+$brand-inverse:             $gray-dark !default;
