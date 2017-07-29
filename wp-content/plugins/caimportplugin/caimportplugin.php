@@ -133,8 +133,8 @@ function swap_images_from_post($post) {
 
     foreach ($images as $img) {
       echo "postid: " . $post->ID . " - ";
-      echo "found: " . $img['src'] . " ";
-      echo "found (slug): " . slug($img['src']) . " ";
+      echo "found:        " . $img['src'] . " <br>";
+      echo "found (slug): " . slug($img['src']) . " <br>";
 
       if(strpos($img['src'], '/wp-content/uploads/') !== true ){
         $match_index = array_search( basename( slug($img['src']) ), $attached_images  );
