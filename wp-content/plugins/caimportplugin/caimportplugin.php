@@ -99,7 +99,7 @@ function update_image_urls_in_posts() {
         }
       }
     } else {
-      echo 'content is not udpated <br>.';
+      echo 'content is not udpated. <br>';
     }
 
 
@@ -134,8 +134,10 @@ function swap_images_from_post($post) {
     foreach ($images as $img) {
       echo "postid: " . $post->ID . " - ";
       echo "found: " . $img['src'] . " ";
+      echo "found (slug): " . slug($img['src']) . " ";
+
       if(strpos($img['src'], '/wp-content/uploads/') !== true ){
-        $match_index = array_search( basename( $img['src'] ), $attached_images  );
+        $match_index = array_search( basename( slug($img['src']) ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
             $img['class'] = "";
