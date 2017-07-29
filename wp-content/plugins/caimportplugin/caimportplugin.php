@@ -85,27 +85,30 @@ function update_image_urls_in_posts() {
         'post_content' => $$updated_post
         );
       echo "<pre>updating post: " . ($post->ID) . "</pre>";
+
+      //update post excerpt
+      $post_id_out = wp_update_post($array_to_update, true);
+
+      if (is_wp_error($post_id_out)) {
+        $errors = $post_id_out->get_error_messages();
+        foreach ($errors as $error) {
+          echo $error;
+        }
+      }
     } else {
       echo 'content is not udpated <br>.';
     }
-  /*
-    //update post excerpt
-    $post_id_out = wp_update_post($array_to_update, true);
 
-    if (is_wp_error($post_id_out)) {
-      $errors = $post_id_out->get_error_messages();
-      foreach ($errors as $error) {
-        echo $error;
-      }
-    }
-    */
+
+
   }
 }
 
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' limit 0, 5000");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' ");
+  // limit 0, 5000000");
   return $myrows;
 }
 function swap_images_from_post($post) {
