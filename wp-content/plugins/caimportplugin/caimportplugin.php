@@ -134,10 +134,10 @@ function swap_images_from_post($post) {
     foreach ($images as $img) {
       echo "postid: " . $post->ID . " - ";
       echo "found:        " . $img['src'] . " <br>";
-      echo "found (slug): " . slug( basename( $img['src'] ) ). " <br>";
+      echo "found (slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
 
       if(strpos($img['src'], '/wp-content/uploads/') !== true ){
-        $match_index = array_search( slug( basename( $img['src'] ) ), $attached_images  );
+        $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
             $img['class'] = "";
