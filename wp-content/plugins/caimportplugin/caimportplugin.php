@@ -31,7 +31,7 @@ function cityarts_import_admin_page() {
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
-  set_contributors(); //do 1
+  //set_contributors(); //do 1
   //set_articles(); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -40,8 +40,9 @@ function cityarts_import_admin_page() {
   //set_parent_child_category_relationship(); //do 6
   // import pages by calling set_articles and update to be "pages" //do 7
   //set_excerpts(); //do 8
+  //sync_wp_post_id_to_image_inline_images();
+  update_image_urls_in_posts(); // do 9
 
-   sync_wp_post_id_to_image_inline_images();
     /*
     HOW TO IMPORT AND ATTACH IMAGES
       temp way to show some images:
@@ -74,7 +75,68 @@ function cityarts_import_admin_page() {
 
 }
 
+function update_image_urls_in_posts() {
+  $posts = get_all_wp_posts();
+  foreach( $posts as $post ) {
+    swap_images_from_post( $post );
+  }
+}
 
+function get_all_wp_posts() {
+  global $wpdb;
+  $table = "wpsa_posts";
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' limit 0, 5000");
+  return $myrows;
+}
+function swap_images_from_post($post) {
+   $ID = $post->ID;
+  /* parse the contents of the post and extract image urls */
+  $attached_images = array();
+  $attached_images = get_images_attached_to_this_post($ID);
+
+  $post_thumbnail_id = get_post_thumbnail_id( $ID ); //we want to know what the featured image is.
+
+  $post_images = array();
+  libxml_use_internal_errors(true);
+  $doc = new DOMDocument();
+
+  $doc->loadHTML($post->post_content);//, LIBXML_HTML_NOIMPLIED);
+  $xml=simplexml_import_dom($doc);
+  $images=$xml->xpath('//img');
+
+  echo "postid: " . $post->ID . " <BR>";
+
+    foreach ($images as $img) {
+      echo "found in file: " . $img['src'] . "<br>";
+      //if(strpos($img['src'], 'http') !== true ){
+        $match_index = array_search( basename( $img['src'] ), $attached_images  );
+        if($match_index !== false) {
+          if( $match_index >= 0) {
+            $img['class'] = "";
+            $img['height'] = "";
+            $img['width'] = "";
+            $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
+
+            echo "match for: " . $img['src'] . "<br>";
+          } else {
+            echo "no match for ". $img['src'] . "<br>";
+          }
+        }
+      //}
+    }
+    $content_out = $doc->saveHTML();
+  return $content_out;
+  }
+
+  function get_images_attached_to_this_post($post_id) {
+    $images = get_attached_media('image', $post_id);
+
+    $image_array = array();
+    foreach($images as $image) {
+        $image_array[] = basename(wp_get_attachment_image_src($image->ID,'full')[0]);
+     }
+     return $image_array;
+  }
 function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
