@@ -79,12 +79,15 @@ function update_image_urls_in_posts() {
   $posts = get_all_wp_posts();
   foreach( $posts as $post ) {
     $updated_post = swap_images_from_post( $post );
+
     if($updated_post['content_is_updated'] == true ) {
       $array_to_update = array(
         'ID' => ($post->ID),
-        'post_content' => $$updated_post
+        'post_content' => $updated_post['post_content']
         );
       echo "<pre>updating post: " . ($post->ID) . "</pre>";
+      //echo "<pre>updating post: " . var_dump($array_to_update) . "</pre>";
+
 
       //update post excerpt
       $post_id_out = wp_update_post($array_to_update, true);
@@ -153,7 +156,7 @@ function swap_images_from_post($post) {
     $content_out = $doc->saveHTML();
     return array(
       'content_is_updated' => $content_is_updated,
-      'content' => $content_out);
+      'post_content' => $content_out);
   }
 
   function get_images_attached_to_this_post($post_id) {
