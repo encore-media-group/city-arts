@@ -797,21 +797,22 @@ function import_meta_content($wp_post_id, $meta_name, $meta_value) {
 
 function slug($string, $length = -1, $separator = '-') {
   // transliterate
-  $string = transliterate($string);
+  //not for ca $string = transliterate($string);
 
   // lowercase
-  $string = strtolower($string);
+  //not for ca $string = strtolower($string);
 
   // replace non alphanumeric and non underscore charachters by separator
-  $string = preg_replace('/[^a-z0-9]/i', $separator, $string);
+  $string = preg_replace('/[^a-z0-9_]/i', $separator, $string);
 
   // replace multiple occurences of separator by one instance
   $string = preg_replace('/'. preg_quote($separator) .'['. preg_quote($separator) .']*/', $separator, $string);
 
   // cut off to maximum length
+  /*//not for ca
   if ($length > -1 && strlen($string) > $length) {
     $string = substr($string, 0, $length);
-  }
+  }*/
 
   // remove separator from start and end of string
   $string = preg_replace('/'. preg_quote($separator) .'$/', '', $string);
