@@ -85,7 +85,7 @@ function update_image_urls_in_posts() {
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' limit 0, 5000");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' limit 0, 100000");
   return $myrows;
 }
 function swap_images_from_post($post) {
@@ -104,10 +104,11 @@ function swap_images_from_post($post) {
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
-  echo "postid: " . $post->ID . " <BR>";
+
 
     foreach ($images as $img) {
-      echo "found in file: " . $img['src'] . "<br>";
+      echo "postid: " . $post->ID . " - ";
+      echo "found: " . $img['src'] . " ";
       //if(strpos($img['src'], 'http') !== true ){
         $match_index = array_search( basename( $img['src'] ), $attached_images  );
         if($match_index !== false) {
@@ -117,10 +118,12 @@ function swap_images_from_post($post) {
             $img['width'] = "";
             $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
 
-            echo "match for: " . $img['src'] . "<br>";
+            echo " and a match found for: " . $img['src'] . ".<br>";
           } else {
             echo "no match for ". $img['src'] . "<br>";
           }
+        } else {
+          echo " but not attached.<br>";
         }
       //}
     }
