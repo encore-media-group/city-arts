@@ -86,10 +86,7 @@ function update_image_urls_in_posts() {
         'post_content' => $updated_post['post_content']
         );
       echo "<pre>updating post: " . ($post->ID) . "</pre>";
-      //echo "<pre>updating post: " . var_dump($array_to_update) . "</pre>";
 
-
-      //update post excerpt
       $post_id_out = wp_update_post($array_to_update, true);
 
       if (is_wp_error($post_id_out)) {
@@ -136,7 +133,7 @@ function swap_images_from_post($post) {
       echo "found:        " . $img['src'] . " <br>";
       echo "found (slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
 
-      if(strpos($img['src'], '/wp-content/uploads/') !== true ){
+      if(strpos($img['src'], 'wp-content') === false ){
         $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
@@ -153,6 +150,8 @@ function swap_images_from_post($post) {
         } else {
           echo " but not attached.<br>";
         }
+      } else {
+        echo "already updated. <br>";
       }
     }
     $content_out = $doc->saveHTML();
