@@ -78,18 +78,39 @@ function cityarts_import_admin_page() {
 function update_image_urls_in_posts() {
   $posts = get_all_wp_posts();
   foreach( $posts as $post ) {
-    swap_images_from_post( $post );
+    $updated_post = swap_images_from_post( $post );
+    if($updated_post['content_is_updated'] == true ) {
+      $array_to_update = array(
+        'ID' => ($post->ID),
+        'post_content' => $$updated_post
+        );
+      echo "<pre>updating post: " . ($post->ID) . "</pre>";
+    } else {
+      echo 'content is not udpated <br>.';
+    }
+  /*
+    //update post excerpt
+    $post_id_out = wp_update_post($array_to_update, true);
+
+    if (is_wp_error($post_id_out)) {
+      $errors = $post_id_out->get_error_messages();
+      foreach ($errors as $error) {
+        echo $error;
+      }
+    }
+    */
   }
 }
 
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' limit 0, 100000");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' limit 0, 5000");
   return $myrows;
 }
 function swap_images_from_post($post) {
-   $ID = $post->ID;
+  $ID = $post->ID;
+  $content_is_updated = false;
   /* parse the contents of the post and extract image urls */
   $attached_images = array();
   $attached_images = get_images_attached_to_this_post($ID);
@@ -104,12 +125,10 @@ function swap_images_from_post($post) {
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
-
-
     foreach ($images as $img) {
       echo "postid: " . $post->ID . " - ";
       echo "found: " . $img['src'] . " ";
-      //if(strpos($img['src'], 'http') !== true ){
+      if(strpos($img['src'], '/wp-content/uploads/') !== true ){
         $match_index = array_search( basename( $img['src'] ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
@@ -119,16 +138,19 @@ function swap_images_from_post($post) {
             $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
 
             echo " and a match found for: " . $img['src'] . ".<br>";
+            $content_is_updated = true;
           } else {
             echo "no match for ". $img['src'] . "<br>";
           }
         } else {
           echo " but not attached.<br>";
         }
-      //}
+      }
     }
     $content_out = $doc->saveHTML();
-  return $content_out;
+    return array(
+      'content_is_updated' => $content_is_updated,
+      'content' => $content_out);
   }
 
   function get_images_attached_to_this_post($post_id) {
