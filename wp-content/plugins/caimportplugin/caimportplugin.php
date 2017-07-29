@@ -802,6 +802,8 @@ function slug($string, $length = -1, $separator = '-') {
   //not for ca $string = strtolower($string);
 
   // replace non alphanumeric and non underscore charachters by separator
+  $string = preg_replace('/[(|)]/i', '', $string);
+
   $string = preg_replace('/[^a-z0-9\._]/i', $separator, $string);
 
   // replace multiple occurences of separator by one instance
