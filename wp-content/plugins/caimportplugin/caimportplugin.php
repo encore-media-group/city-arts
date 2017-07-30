@@ -129,11 +129,13 @@ function swap_images_from_post($post) {
   $images=$xml->xpath('//img');
 
     foreach ($images as $img) {
-      echo "postid: " . $post->ID . " - ";
-      echo "found:        " . $img['src'] . " <br>";
-      echo "found (slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
+
 
       if(strpos($img['src'], 'wp-content') === false ){
+        echo "postid: " . $post->ID . " - ";
+        echo "found:  " . $img['src'] . " <br>";
+        echo "(slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
+
         $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
@@ -150,8 +152,6 @@ function swap_images_from_post($post) {
         } else {
           echo " but not attached.<br>";
         }
-      } else {
-        echo "already updated. <br>";
       }
     }
     $content_out = $doc->saveHTML();
