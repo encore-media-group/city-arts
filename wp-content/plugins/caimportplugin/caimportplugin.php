@@ -95,12 +95,7 @@ function update_image_urls_in_posts() {
           echo $error;
         }
       }
-    } else {
-      echo 'content is not udpated. <br>';
     }
-
-
-
   }
 }
 
