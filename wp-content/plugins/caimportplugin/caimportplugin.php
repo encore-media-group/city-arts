@@ -119,7 +119,7 @@ function swap_images_from_post($post) {
   libxml_use_internal_errors(true);
   $doc = new DOMDocument();
 
-  $doc->loadHTML($post->post_content);//, LIBXML_HTML_NOIMPLIED);
+  $doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED);
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
