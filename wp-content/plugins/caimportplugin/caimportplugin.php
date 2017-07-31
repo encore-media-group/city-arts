@@ -76,8 +76,7 @@ function cityarts_import_admin_page() {
 }
 
 function update_image_urls_in_posts() {
-  phpinfo();
-  echo phpinfo();
+
   $posts = get_all_wp_posts();
   foreach( $posts as $post ) {
     $updated_post = swap_images_from_post( $post );
@@ -151,7 +150,14 @@ function swap_images_from_post($post) {
         }
       }
     }
-    $content_out = $doc->saveHTML();
+
+    $trim_off_front = strpos($doc->saveHTML(),'<body>') + 6;
+    $trim_off_end = (strrpos($doc->saveHTML(),'</body>')) - strlen($doc->saveHTML());
+
+    $content_out substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
+
+
+    //$content_out = $doc->saveHTML();
     return array(
       'content_is_updated' => $content_is_updated,
       'post_content' => $content_out);
