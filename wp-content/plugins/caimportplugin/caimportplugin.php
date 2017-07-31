@@ -132,7 +132,7 @@ function swap_images_from_post($post) {
         echo "postid: " . $post->ID . " - ";
         echo "found:  " . $img['src'] . " <br>";
         echo "(slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
-
+        echo "vardump <pre>" . var_dump($attached_images) . "</pre>";
         $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
