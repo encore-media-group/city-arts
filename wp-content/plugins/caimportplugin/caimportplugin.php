@@ -177,7 +177,7 @@ function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
  // $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 16000');
-   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' ');
+   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_status = 'publish'");
    return $myrows;
 }
 
