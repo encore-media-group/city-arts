@@ -175,8 +175,9 @@ function swap_images_from_post($post) {
 function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 16000');
-  return $myrows;
+ // $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 16000');
+   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' ');
+   return $myrows;
 }
 
 function delete_all_images_in_the_database() {
@@ -189,7 +190,9 @@ function delete_all_images_in_the_database() {
 
 
 function sync_wp_post_id_to_image_inline_images(){
+  /* this was the original way to do it, but it was slow. now I used a que based system. */
   /*  run this first:
+      we need to run this so that the img list has the wp post id shared.
 
       update tmp_inline_image_list til, tmp_article_export_7_9_2017 tae
       set til.new_wp_post_id = tae.new_wp_id
