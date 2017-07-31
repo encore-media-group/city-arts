@@ -76,6 +76,8 @@ function cityarts_import_admin_page() {
 }
 
 function update_image_urls_in_posts() {
+  phpinfo();
+  echo phpinfo();
   $posts = get_all_wp_posts();
   foreach( $posts as $post ) {
     $updated_post = swap_images_from_post( $post );
@@ -119,7 +121,7 @@ function swap_images_from_post($post) {
   libxml_use_internal_errors(true);
   $doc = new DOMDocument();
 
-  $doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+  $doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE );
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
