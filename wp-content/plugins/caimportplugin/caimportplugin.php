@@ -154,7 +154,7 @@ function swap_images_from_post($post) {
     $trim_off_front = strpos($doc->saveHTML(),'<body>') + 6;
     $trim_off_end = (strrpos($doc->saveHTML(),'</body>')) - strlen($doc->saveHTML());
 
-    $content_out substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
+    $content_out = substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
 
 
     //$content_out = $doc->saveHTML();
