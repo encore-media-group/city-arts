@@ -31,7 +31,7 @@ function cityarts_import_admin_page() {
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
-  set_contributors(); //do 1
+  //set_contributors(); //do 1
   //set_articles(); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -40,8 +40,9 @@ function cityarts_import_admin_page() {
   //set_parent_child_category_relationship(); //do 6
   // import pages by calling set_articles and update to be "pages" //do 7
   //set_excerpts(); //do 8
+  //sync_wp_post_id_to_image_inline_images();
+  update_image_urls_in_posts(); // do 9
 
-   sync_wp_post_id_to_image_inline_images();
     /*
     HOW TO IMPORT AND ATTACH IMAGES
       temp way to show some images:
@@ -74,7 +75,103 @@ function cityarts_import_admin_page() {
 
 }
 
+function update_image_urls_in_posts() {
 
+  $posts = get_all_wp_posts();
+  foreach( $posts as $post ) {
+    $updated_post = swap_images_from_post( $post );
+
+    if($updated_post['content_is_updated'] == true ) {
+      $array_to_update = array(
+        'ID' => ($post->ID),
+        'post_content' => $updated_post['post_content']
+        );
+      echo "<pre>updating post: " . ($post->ID) . "</pre>";
+
+      $post_id_out = wp_update_post($array_to_update, true);
+
+      if (is_wp_error($post_id_out)) {
+        $errors = $post_id_out->get_error_messages();
+        foreach ($errors as $error) {
+          echo $error;
+        }
+      }
+    }
+  }
+}
+
+function get_all_wp_posts() {
+  global $wpdb;
+  $table = "wpsa_posts";
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' ");
+  // limit 0, 5000000");
+  return $myrows;
+}
+function swap_images_from_post($post) {
+  $ID = $post->ID;
+  $content_is_updated = false;
+  /* parse the contents of the post and extract image urls */
+  $attached_images = array();
+  $attached_images = get_images_attached_to_this_post($ID);
+
+  $post_thumbnail_id = get_post_thumbnail_id( $ID ); //we want to know what the featured image is.
+
+  $post_images = array();
+  libxml_use_internal_errors(true);
+  $doc = new DOMDocument();
+
+  $doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE );
+  $xml=simplexml_import_dom($doc);
+  $images=$xml->xpath('//img');
+
+    foreach ($images as $img) {
+
+
+      if(strpos($img['src'], 'wp-content') === false ){
+        echo "postid: " . $post->ID . " - ";
+        echo "found:  " . $img['src'] . " <br>";
+        echo "(slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
+
+        $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
+        if($match_index !== false) {
+          if( $match_index >= 0) {
+            $img['class'] = "";
+            $img['height'] = "";
+            $img['width'] = "";
+            $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
+
+            echo " and a match found for: " . $img['src'] . ".<br>";
+            $content_is_updated = true;
+          } else {
+            echo "no match for ". $img['src'] . "<br>";
+          }
+        } else {
+          echo " but not attached.<br>";
+        }
+      }
+    }
+
+    $trim_off_front = strpos($doc->saveHTML(),'<body>') + 6;
+    $trim_off_end = (strrpos($doc->saveHTML(),'</body>')) - strlen($doc->saveHTML());
+
+    $content_out = substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
+
+
+    //$content_out = $doc->saveHTML();
+    return array(
+      'content_is_updated' => $content_is_updated,
+      'post_content' => $content_out);
+  }
+
+  function get_images_attached_to_this_post($post_id) {
+    $images = get_attached_media('image', $post_id);
+
+    $image_array = array();
+    foreach($images as $image) {
+        $image_array[] = basename(wp_get_attachment_image_src($image->ID,'full')[0]);
+     }
+     return $image_array;
+  }
 function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
@@ -702,21 +799,25 @@ function import_meta_content($wp_post_id, $meta_name, $meta_value) {
 
 function slug($string, $length = -1, $separator = '-') {
   // transliterate
-  $string = transliterate($string);
+  //not for ca $string = transliterate($string);
 
   // lowercase
-  $string = strtolower($string);
+  //not for ca $string = strtolower($string);
 
   // replace non alphanumeric and non underscore charachters by separator
-  $string = preg_replace('/[^a-z0-9]/i', $separator, $string);
+  $string = str_replace(".JPG", ".jpg", $string);
+  $string = preg_replace('/[(|)|\[|\]]/i', '', $string);
+
+  $string = preg_replace('/[^a-z0-9\._]/i', $separator, $string);
 
   // replace multiple occurences of separator by one instance
   $string = preg_replace('/'. preg_quote($separator) .'['. preg_quote($separator) .']*/', $separator, $string);
 
   // cut off to maximum length
+  /*//not for ca
   if ($length > -1 && strlen($string) > $length) {
     $string = substr($string, 0, $length);
-  }
+  }*/
 
   // remove separator from start and end of string
   $string = preg_replace('/'. preg_quote($separator) .'$/', '', $string);
