@@ -103,7 +103,7 @@ function update_image_urls_in_posts() {
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' ");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish'");
   // limit 0, 5000000");
   return $myrows;
 }
