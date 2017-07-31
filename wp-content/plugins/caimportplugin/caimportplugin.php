@@ -119,8 +119,9 @@ function swap_images_from_post($post) {
   $post_images = array();
   libxml_use_internal_errors(true);
   $doc = new DOMDocument();
-
-  $doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE );
+  $doc->loadHTML(mb_convert_encoding($post->post_content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+  //$doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE );
+  $doc->encoding = 'UTF-8';
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
