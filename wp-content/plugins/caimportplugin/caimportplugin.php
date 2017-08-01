@@ -132,7 +132,7 @@ function swap_images_from_post($post) {
         echo "postid: " . $post->ID . " - ";
         echo "found:  " . $img['src'] . " <br>";
 
-        $img_src = str_replace("-", "", $img['src']);
+        $img_src = str_replace("%2C", "", $img['src']);
         echo "removed -" . $img_src . " <br>";
 
         $img_src = strtok($img_src, '?');
