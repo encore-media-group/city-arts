@@ -132,11 +132,14 @@ function swap_images_from_post($post) {
         echo "postid: " . $post->ID . " - ";
         echo "found:  " . $img['src'] . " <br>";
 
-        $img_src = str_replace("%2C", "", $img['src']);
-        echo "removed -" . $img_src . " <br>";
-
         $img_src = strtok($img_src, '?');
-        echo "querystring removed" . $img_src . "<br>";
+        echo "querystring removed: " . $img_src . "<br>";
+
+        $img_src = str_replace("/", "", $img['src']);
+        echo "removed /: " . $img_src . " <br>";
+
+        $img_src = str_replace("%2C", "", $img['src']);
+        echo "removed % 2 C : " . $img_src . " <br>";
 
         $img_src = slug (rawurldecode( basename( $img_src ) ) );
         echo "(slug): " . $img_src . " <br>";
