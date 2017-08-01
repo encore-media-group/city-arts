@@ -810,9 +810,11 @@ function slug($string, $length = -1, $separator = '-') {
 
   // replace non alphanumeric and non underscore charachters by separator
   $string = str_replace(".JPG", ".jpg", $string);
-  $string = str_replace("\+", "-", $string);
+  $string = str_replace("+", "", $string);
 
   $string = preg_replace('/[(|)|\[|\]]/i', '', $string);
+
+  //$title = preg_replace('/\.[^.]+$/', '', basename($file));
 
   $string = preg_replace('/[^a-z0-9\._]/i', $separator, $string);
 
