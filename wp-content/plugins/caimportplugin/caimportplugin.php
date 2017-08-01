@@ -132,8 +132,9 @@ function swap_images_from_post($post) {
         echo "postid: " . $post->ID . " - ";
         echo "found:  " . $img['src'] . " <br>";
         echo "(slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
+        echo "querystring removed" . strtok($img['src'], '?') . "<br>";
         echo "vardump <pre>" . var_dump($attached_images) . "</pre>";
-        $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
+        $match_index = array_search( slug(rawurldecode( basename( strtok($img['src'], '?') ) ) ), $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
             $img['class'] = "";
@@ -141,10 +142,10 @@ function swap_images_from_post($post) {
             $img['width'] = "";
             $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
 
-            echo " and a match found for: " . $img['src'] . ".<br>";
+            echo " and a match found for: " . strtok($img['src'], '?') . ".<br>";
             $content_is_updated = true;
           } else {
-            echo "no match for ". $img['src'] . "<br>";
+            echo "no match for ". strtok($img['src'], '?') . "<br>";
           }
         } else {
           echo " but not attached.<br>";
