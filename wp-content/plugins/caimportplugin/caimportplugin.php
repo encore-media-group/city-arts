@@ -811,6 +811,7 @@ function slug($string, $length = -1, $separator = '-') {
   // replace non alphanumeric and non underscore charachters by separator
   $string = str_replace(".JPG", ".jpg", $string);
   $string = str_replace("+", "", $string);
+  $string = str_replace("&", "", $string);
   $string = str_replace("'", "", $string);
   $string = preg_replace('/^_/', '', $string);
   $string = preg_replace('/[(|)|\[|\]]/i', '', $string);
