@@ -149,7 +149,7 @@ function swap_images_from_post($post) {
         $img_src = slug (rawurldecode( basename( $img_src ) ) );
         echo "(slug): " . $img_src . " <br>";
 
-        echo "the attached images to this post id are:<br>"
+        echo "the attached images to this post id are:<br>";
         echo "<pre>" . var_dump($attached_images) . "</pre>";
         $match_index = array_search( $img_src, $attached_images  );
         if($match_index !== false) {
