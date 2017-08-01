@@ -812,7 +812,7 @@ function slug($string, $length = -1, $separator = '-') {
   $string = str_replace(".JPG", ".jpg", $string);
   $string = str_replace("+", "", $string);
   $string = str_replace("'", "", $string);
-
+  $string = preg_replace('/[^_]]/i', '', $string);
   $string = preg_replace('/[(|)|\[|\]]/i', '', $string);
 
   //$title = preg_replace('/\.[^.]+$/', '', basename($file));
