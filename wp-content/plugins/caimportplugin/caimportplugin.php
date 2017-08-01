@@ -136,8 +136,8 @@ function swap_images_from_post($post) {
         $img_src = strtok($img_src, '?');
         echo "querystring removed: " . $img_src . "<br>";
 
-        $img_src = str_replace("/", "", $img_src);
-        echo "removed /: " . $img_src . " <br>";
+     //   $img_src = str_replace("/", "", $img_src);
+     //   echo "removed /: " . $img_src . " <br>";
 
         $img_src = str_replace("%3A", "", $img_src);
         echo "removed % 3 A : " . $img_src . " <br>";
