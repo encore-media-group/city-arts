@@ -103,7 +103,7 @@ function update_image_urls_in_posts() {
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' ");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish'");
   // limit 0, 5000000");
   return $myrows;
 }
@@ -127,13 +127,32 @@ function swap_images_from_post($post) {
 
     foreach ($images as $img) {
 
-
       if(strpos($img['src'], 'wp-content') === false ){
+
+        $img_src = $img['src'];
         echo "postid: " . $post->ID . " - ";
-        echo "found:  " . $img['src'] . " <br>";
-        echo "(slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
-        echo "vardump <pre>" . var_dump($attached_images) . "</pre>";
-        $match_index = array_search( slug(rawurldecode( basename( $img['src'] ) ) ), $attached_images  );
+        echo "raw img_src:  " . $img_src . " <br>";
+
+        $img_src = strtok($img_src, '?');
+        echo "querystring removed: " . $img_src . "<br>";
+
+     //   $img_src = str_replace("/", "", $img_src);
+     //   echo "removed /: " . $img_src . " <br>";
+        $img_src = str_replace("%20", "", $img_src);
+        echo "removed % 20 : " . $img_src . " <br>";
+
+        $img_src = str_replace("%3A", "", $img_src);
+        echo "removed % 3 A : " . $img_src . " <br>";
+
+        $img_src = str_replace("%2C", "", $img_src);
+        echo "removed % 2 C : " . $img_src . " <br>";
+
+        $img_src = slug (rawurldecode( basename( $img_src ) ) );
+        echo "(slug): " . $img_src . " <br>";
+
+        echo "the attached images to this post id are:<br>";
+        echo "<pre>" . var_dump($attached_images) . "</pre>";
+        $match_index = array_search( $img_src, $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
             $img['class'] = "";
@@ -141,10 +160,10 @@ function swap_images_from_post($post) {
             $img['width'] = "";
             $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
 
-            echo " and a match found for: " . $img['src'] . ".<br>";
+            echo " and a match found for: " . $img_src . ".<br>";
             $content_is_updated = true;
           } else {
-            echo "no match for ". $img['src'] . "<br>";
+            echo "no match for ". $img_src . "<br>";
           }
         } else {
           echo " but not attached.<br>";
@@ -177,7 +196,7 @@ function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
  // $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' where new_wp_attachment_id = 0 limit 0, 16000');
-   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' ');
+   $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
    return $myrows;
 }
 
@@ -810,7 +829,13 @@ function slug($string, $length = -1, $separator = '-') {
 
   // replace non alphanumeric and non underscore charachters by separator
   $string = str_replace(".JPG", ".jpg", $string);
+  $string = str_replace("+", "", $string);
+  $string = str_replace("&", "", $string);
+  $string = str_replace("'", "", $string);
+  $string = preg_replace('/^_/', '', $string);
   $string = preg_replace('/[(|)|\[|\]]/i', '', $string);
+
+  //$title = preg_replace('/\.[^.]+$/', '', basename($file));
 
   $string = preg_replace('/[^a-z0-9\._]/i', $separator, $string);
 
