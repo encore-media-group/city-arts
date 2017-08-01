@@ -129,16 +129,20 @@ function swap_images_from_post($post) {
 
 
       if(strpos($img['src'], 'wp-content') === false ){
+        $img_src = $img['src'];
         echo "postid: " . $post->ID . " - ";
-        echo "found:  " . $img['src'] . " <br>";
+        echo "raw $img_src:  " . $img_src . " <br>";
 
         $img_src = strtok($img_src, '?');
         echo "querystring removed: " . $img_src . "<br>";
 
-        $img_src = str_replace("/", "", $img['src']);
+        $img_src = str_replace("/", "", $img_src);
         echo "removed /: " . $img_src . " <br>";
 
-        $img_src = str_replace("%2C", "", $img['src']);
+        $img_src = str_replace("%3A", "", $img_src);
+        echo "removed % 3 A : " . $img_src . " <br>";
+
+        $img_src = str_replace("%2C", "", $img_src);
         echo "removed % 2 C : " . $img_src . " <br>";
 
         $img_src = slug (rawurldecode( basename( $img_src ) ) );
