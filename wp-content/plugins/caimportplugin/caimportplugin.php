@@ -131,10 +131,19 @@ function swap_images_from_post($post) {
       if(strpos($img['src'], 'wp-content') === false ){
         echo "postid: " . $post->ID . " - ";
         echo "found:  " . $img['src'] . " <br>";
-        echo "(slug): " . slug (rawurldecode( basename( $img['src'] ) ) ). " <br>";
-        echo "querystring removed" . strtok($img['src'], '?') . "<br>";
+
+        $img_src = str_replace("-", "", $img['src']);
+        echo "removed -" . $img_src . " <br>";
+
+        $img_src = strtok($img_src, '?');
+        echo "querystring removed" . $img_src . "<br>";
+
+        $img_src = slug (rawurldecode( basename( $img_src ) ) );
+        echo "(slug): " . $img_src . " <br>";
+
+
         echo "vardump <pre>" . var_dump($attached_images) . "</pre>";
-        $match_index = array_search( slug(rawurldecode( basename( strtok($img['src'], '?') ) ) ), $attached_images  );
+        $match_index = array_search( $img_src, $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
             $img['class'] = "";
@@ -142,10 +151,10 @@ function swap_images_from_post($post) {
             $img['width'] = "";
             $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
 
-            echo " and a match found for: " . strtok($img['src'], '?') . ".<br>";
+            echo " and a match found for: " . $img_src . ".<br>";
             $content_is_updated = true;
           } else {
-            echo "no match for ". strtok($img['src'], '?') . "<br>";
+            echo "no match for ". $img_src . "<br>";
           }
         } else {
           echo " but not attached.<br>";
