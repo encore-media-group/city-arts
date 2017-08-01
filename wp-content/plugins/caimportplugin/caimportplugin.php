@@ -125,13 +125,14 @@ function swap_images_from_post($post) {
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
+  $count = 0;
     foreach ($images as $img) {
 
-
       if(strpos($img['src'], 'wp-content') === false ){
+        $count++;
         $img_src = $img['src'];
-        echo "postid: " . $post->ID . " - ";
-        echo "raw $img_src:  " . $img_src . " <br>";
+        echo "#" . $count . " - postid: " . $post->ID . " - ";
+        echo "raw img_src:  " . $img_src . " <br>";
 
         $img_src = strtok($img_src, '?');
         echo "querystring removed: " . $img_src . "<br>";
@@ -148,8 +149,8 @@ function swap_images_from_post($post) {
         $img_src = slug (rawurldecode( basename( $img_src ) ) );
         echo "(slug): " . $img_src . " <br>";
 
-
-        echo "vardump <pre>" . var_dump($attached_images) . "</pre>";
+        echo "the attached images to this post id are:<br>"
+        echo "<pre>" . var_dump($attached_images) . "</pre>";
         $match_index = array_search( $img_src, $attached_images  );
         if($match_index !== false) {
           if( $match_index >= 0) {
