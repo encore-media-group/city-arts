@@ -125,13 +125,12 @@ function swap_images_from_post($post) {
   $xml=simplexml_import_dom($doc);
   $images=$xml->xpath('//img');
 
-  $count = 0;
     foreach ($images as $img) {
 
       if(strpos($img['src'], 'wp-content') === false ){
-        $count++;
+
         $img_src = $img['src'];
-        echo "#" . $count . " - postid: " . $post->ID . " - ";
+        echo "postid: " . $post->ID . " - ";
         echo "raw img_src:  " . $img_src . " <br>";
 
         $img_src = strtok($img_src, '?');
@@ -139,6 +138,8 @@ function swap_images_from_post($post) {
 
      //   $img_src = str_replace("/", "", $img_src);
      //   echo "removed /: " . $img_src . " <br>";
+        $img_src = str_replace("%20", "", $img_src);
+        echo "removed % 20 : " . $img_src . " <br>";
 
         $img_src = str_replace("%3A", "", $img_src);
         echo "removed % 3 A : " . $img_src . " <br>";
