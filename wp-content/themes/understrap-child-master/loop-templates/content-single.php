@@ -42,31 +42,6 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
 	<div class="entry-content row">
 		<?php the_content(); ?>
 
-		<?php
-		$postbody = get_the_content();
-		get_images_from_post($postbody);
-
-    function get_images_from_post($tmpPost) {
-      /* parse the contents of the post and extract image urls */
-      $post_images = array();
-      libxml_use_internal_errors(true);
-      $doc = new DOMDocument();
-
-        $doc->loadHTML($tmpPost);
-        $xml=simplexml_import_dom($doc);
-        $images=$xml->xpath('//img');
-
-        foreach ($images as $img) {
-          if(strpos($img['src'], 'http') !== true ){
-            $post_images[] = $img['src'];
-            echo basename($img['src']) . "<br>";
-          }
-        }
-
-      return $post_images;
-    }
-
-		?>
 		<div class="attached-images">
 			<ul>
 			<?php

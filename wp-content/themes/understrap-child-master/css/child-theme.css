@@ -9252,6 +9252,10 @@ h1.navbar-brand a:hover {
 .homepage-sidebar {
   background-color: lightgrey; }
 
+.category-label span {
+  background-color: #ffee33;
+  padding: .3em; }
+
 #single-wrapper,
 #page-wrapper {
   padding-top: 5.8rem; }
