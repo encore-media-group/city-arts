@@ -9252,6 +9252,16 @@ h1.navbar-brand a:hover {
 .homepage-sidebar {
   background-color: lightgrey; }
 
+.large-item {
+  background-color: lightgrey;
+  margin-bottom: 1em; }
+  .large-item .item-content-container {
+    padding: 1em; }
+
+.category-label {
+  margin-bottom: 1em;
+  margin-top: 1em; }
+
 .category-label span {
   background-color: #ffee33;
   padding: .3em; }

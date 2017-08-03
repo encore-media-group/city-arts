@@ -11,6 +11,17 @@
   background-color: lightgrey;
 }
 
+.large-item {
+  background-color: lightgrey;
+  margin-bottom: 1em;
+  .item-content-container {
+    padding: 1em;
+  }
+}
+.category-label {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 .category-label span{
   background-color: $yellow;
   padding: .3em;
