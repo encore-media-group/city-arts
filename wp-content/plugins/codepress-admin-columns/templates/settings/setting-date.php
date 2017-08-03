@@ -27,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                 </div>
                 <p class="help-msg"></p>
+				<input type="hidden" class="ac-setting-input-date__value" name="<?php echo $this->setting->get_name(); ?>" value="<?php echo $this->date_format; ?>">
             </div>
         </td>
     </tr>

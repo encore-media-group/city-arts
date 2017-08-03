@@ -77,7 +77,7 @@ class AC_Column {
 	 * @return $this
 	 */
 	public function set_name( $name ) {
-		$this->name = $name;
+		$this->name = (string) $name;
 
 		return $this;
 	}
@@ -98,7 +98,7 @@ class AC_Column {
 	 * @return $this
 	 */
 	public function set_type( $type ) {
-		$this->type = $type;
+		$this->type = (string) $type;
 
 		return $this;
 	}
@@ -141,7 +141,7 @@ class AC_Column {
 	 * @return $this
 	 */
 	public function set_label( $label ) {
-		$this->label = $label;
+		$this->label = (string) $label;
 
 		return $this;
 	}
