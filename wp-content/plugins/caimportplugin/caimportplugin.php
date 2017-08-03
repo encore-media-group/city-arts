@@ -40,15 +40,12 @@ function cityarts_import_admin_page() {
   //set_parent_child_category_relationship(); //do 6
   // import pages by calling set_articles and update to be "pages" //do 7
   //set_excerpts(); //do 8
-  //sync_wp_post_id_to_image_inline_images();
+  //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   update_image_urls_in_posts(); // do 9
 
     /*
     HOW TO IMPORT AND ATTACH IMAGES
-      temp way to show some images:
-      update wpsa_posts
-      SET post_content = REPLACE ( post_content, '/sites/default/files/inline_images/', 'http://cityartsmagazine.com/sites/default/files/inline_images/')
-      WHERE  post_content LIKE '%/sites/default/files/inline_images/%'
+
 
       overall image processing:
       - take update from master production database
@@ -108,90 +105,91 @@ function get_all_wp_posts() {
   return $myrows;
 }
 function swap_images_from_post($post) {
+  /* parse the contents of the post and extract image urls */
+
   $ID = $post->ID;
   $content_is_updated = false;
-  /* parse the contents of the post and extract image urls */
+  $post_images = array();
   $attached_images = array();
-  $attached_images = get_images_attached_to_this_post($ID);
 
+  $attached_images = get_images_attached_to_this_post($ID);
   $post_thumbnail_id = get_post_thumbnail_id( $ID ); //we want to know what the featured image is.
 
-  $post_images = array();
   libxml_use_internal_errors(true);
+
   $doc = new DOMDocument();
   $doc->loadHTML(mb_convert_encoding($post->post_content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-  //$doc->loadHTML($post->post_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE );
   $doc->encoding = 'UTF-8';
-  $xml=simplexml_import_dom($doc);
-  $images=$xml->xpath('//img');
 
-    foreach ($images as $img) {
+  $xml = simplexml_import_dom($doc);
+  $images = $xml->xpath('//img');
 
-      if(strpos($img['src'], 'wp-content') === false ){
+  foreach ($images as $img) {
 
-        $img_src = $img['src'];
-        echo "postid: " . $post->ID . " - ";
-        echo "raw img_src:  " . $img_src . " <br>";
+    if(strpos($img['src'], 'wp-content') === false ){
 
-        $img_src = strtok($img_src, '?');
-        echo "querystring removed: " . $img_src . "<br>";
+      $img_src = $img['src'];
+      echo "postid: " . $post->ID . " - ";
+      echo "raw img_src:  " . $img_src . " <br>";
 
-     //   $img_src = str_replace("/", "", $img_src);
-     //   echo "removed /: " . $img_src . " <br>";
-        $img_src = str_replace("%20", "", $img_src);
-        echo "removed % 20 : " . $img_src . " <br>";
+      $img_src = strtok($img_src, '?');
+      echo "querystring removed: " . $img_src . "<br>";
 
-        $img_src = str_replace("%3A", "", $img_src);
-        echo "removed % 3 A : " . $img_src . " <br>";
+      $img_src = str_replace("%20", "", $img_src);
+      echo "removed % 20 : " . $img_src . " <br>";
 
-        $img_src = str_replace("%2C", "", $img_src);
-        echo "removed % 2 C : " . $img_src . " <br>";
+      $img_src = str_replace("%3A", "", $img_src);
+      echo "removed % 3A : " . $img_src . " <br>";
 
-        $img_src = slug (rawurldecode( basename( $img_src ) ) );
-        echo "(slug): " . $img_src . " <br>";
+      $img_src = str_replace("%2C", "", $img_src);
+      echo "removed % 2C : " . $img_src . " <br>";
 
-        echo "the attached images to this post id are:<br>";
-        echo "<pre>" . var_dump($attached_images) . "</pre>";
-        $match_index = array_search( $img_src, $attached_images  );
-        if($match_index !== false) {
-          if( $match_index >= 0) {
-            $img['class'] = "";
-            $img['height'] = "";
-            $img['width'] = "";
-            $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
+      $img_src = slug (rawurldecode( basename( $img_src ) ) );
+      echo "(slug): " . $img_src . " <br>";
 
-            echo " and a match found for: " . $img_src . ".<br>";
-            $content_is_updated = true;
-          } else {
-            echo "no match for ". $img_src . "<br>";
-          }
+      echo "the attached images to this post id are:<br>";
+      echo "<pre>" . var_dump($attached_images) . "</pre>";
+
+      $match_index = array_search( $img_src, $attached_images  );
+      if($match_index !== false) {
+        if( $match_index >= 0) {
+          $img['class'] = "";
+          $img['height'] = "";
+          $img['width'] = "";
+          $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
+
+          echo " and a match found for: " . $img_src . ".<br>";
+          $content_is_updated = true;
         } else {
-          echo " but not attached.<br>";
+          echo "no match for ". $img_src . "<br>";
         }
+      } else {
+        echo " but not attached.<br>";
       }
     }
-
-    $trim_off_front = strpos($doc->saveHTML(),'<body>') + 6;
-    $trim_off_end = (strrpos($doc->saveHTML(),'</body>')) - strlen($doc->saveHTML());
-
-    $content_out = substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
-
-
-    //$content_out = $doc->saveHTML();
-    return array(
-      'content_is_updated' => $content_is_updated,
-      'post_content' => $content_out);
   }
 
-  function get_images_attached_to_this_post($post_id) {
-    $images = get_attached_media('image', $post_id);
+  $trim_off_front = strpos($doc->saveHTML(),'<body>') + 6;
+  $trim_off_end = (strrpos($doc->saveHTML(),'</body>')) - strlen($doc->saveHTML());
 
-    $image_array = array();
-    foreach($images as $image) {
-        $image_array[] = basename(wp_get_attachment_image_src($image->ID,'full')[0]);
-     }
-     return $image_array;
+  $content_out = substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
+
+  return array(
+    'content_is_updated' => $content_is_updated,
+    'post_content' => $content_out
+    );
   }
+
+function get_images_attached_to_this_post($post_id) {
+  $images = get_attached_media('image', $post_id);
+
+  $image_array = array();
+  foreach($images as $image) {
+      $image_array[] = basename(wp_get_attachment_image_src($image->ID,'full')[0]);
+   }
+  return $image_array;
+}
+
 function get_all_images() {
   global $wpdb;
   $table = "tmp_inline_image_list";
@@ -209,7 +207,7 @@ function delete_all_images_in_the_database() {
 }
 
 
-function sync_wp_post_id_to_image_inline_images(){
+function NOT_USED_sync_wp_post_id_to_image_inline_images(){
   /* this was the original way to do it, but it was slow. now I used a que based system. */
   /*  run this first:
       we need to run this so that the img list has the wp post id shared.
@@ -287,9 +285,6 @@ function sync_wp_post_id_to_image_inline_images(){
               echo "wp_insert_attachment for: " . $attachment_id . " and post_parent: " . $new_wp_post_id . " with caption: ".  $image_caption ."<br>";
             }
 
-
-
-
             $wpdb->query('UPDATE tmp_inline_image_list SET new_wp_attachment_id = ' . $attachment_id .  ' WHERE new_wp_post_id= ' . $new_wp_post_id);
           }
       }
@@ -312,24 +307,21 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
 
 
   if ($myrow) {
-      $new_wp_post_id = $myrow->new_wp_post_id;
-      $inline_image_title = $myrow->field_inline_images_title;
-      $filename = $myrow->filename;
-      $uri = $myrow->uri;
-//      $file_path_and_name = $upload_dir . '/inline_images/' . $filename;
-        $file_path_and_name = $upload_dir . '/inline_images/' . str_replace("public://inline_images/","",$uri);
 
-      $delta = $myrow->delta;
-      $image_caption = $myrow->field_inline_images_title;
-      $image_caption2 = $myrow->field_inline_images_alt;
-      if($image_caption == '') { $image_caption = $image_caption2; }
+      $uri = $myrow->uri;
+      $file_path_and_name = $upload_dir . '/inline_images/' . str_replace("public://inline_images/","",$uri);
 
       if(!is_file($file_path_and_name)) {
         $output .=  "FILE NOT FOUND: " . $file_path_and_name . "<br>";
       } else {
-        $output .=  "FILE FOUND: " . $file_path_and_name . "<br>";
 
-        //echo '<pre> ' . var_dump($myrow ). '</pre>';
+        $output .=  "FILE FOUND: " . $file_path_and_name . "<br>";
+        $new_wp_post_id = $myrow->new_wp_post_id;
+        $inline_image_title = $myrow->field_inline_images_title;
+        $delta = $myrow->delta;
+        $image_caption = $myrow->field_inline_images_title;
+        $image_caption2 = $myrow->field_inline_images_alt;
+        if($image_caption == '') { $image_caption = $image_caption2; }
 
         $array = array( //array to mimic $_FILES
           'name' => basename($file_path_and_name), //isolates and outputs the file name from its absolute path
@@ -338,8 +330,6 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
           'error' => 0, //normally, this is used to store an error, should the upload fail. but since this isnt actually an instance of $_FILES we can default it to zero here
           'size' => filesize($file_path_and_name) //returns image filesize in bytes
         );
-
-     //   $output .=   '<pre>' .  var_dump($array) . '</pre>';
 
         $attachment_id = media_handle_sideload($array, $new_wp_post_id); //the actual image processing, that is, move to upload directory, generate thumbnails and image sizes and writing into the database happens here
 
@@ -350,7 +340,7 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
             }
             $output .=  "<p>";
           } else {
-            $output .= ' Aattachment id: ' . $attachment_id . '<br>';
+            $output .= ' Attachment id: ' . $attachment_id . '<br>';
 
             if($delta == 0) { set_post_thumbnail( $new_wp_post_id, $attachment_id ); }
 

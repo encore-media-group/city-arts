@@ -35,3 +35,22 @@ $brand-info:                $teal !default;
 $brand-warning:             $orange !default;
 $brand-danger:              $red !default;
 $brand-inverse:             $gray-dark !default;
+/*
+"ff-basic-gothic-sc-web-pro" font-weight: 300, 500
+"alternate-gothic-no-2-d" font-weight: 400
+"kepler-std-display" font-weight: 400
+"ingra-condensed" font-weight: 200
+"alda" font-weights: 300, 400
+body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-gothic
+*/
+$body-color:    $black !default;
+
+$font-family-sans-serif: "alda", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      "alda", serif !default;
+$font-family-monospace:  $font-family-sans-serif !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+$headings-font-family:    "ingra-condensed";
+$headings-font-weight:    500 !default;
+$headings-line-height:    1.1 !default;
+$headings-color:          $black !default;

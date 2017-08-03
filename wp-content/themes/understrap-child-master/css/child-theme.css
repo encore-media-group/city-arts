@@ -1,4 +1,12 @@
 @charset "UTF-8";
+/*
+"ff-basic-gothic-sc-web-pro" font-weight: 300, 500
+"alternate-gothic-no-2-d" font-weight: 400
+"kepler-std-display" font-weight: 400
+"ingra-condensed" font-weight: 200
+"alda" font-weights: 300, 400
+body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-gothic
+*/
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -269,11 +277,11 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: #d9d0c2;
+  color: #000;
   background-color: #fff; }
 
 [tabindex="-1"]:focus {
@@ -426,10 +434,10 @@ output {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: inherit;
+  font-family: "ingra-condensed";
   font-weight: 500;
   line-height: 1.1;
-  color: inherit; }
+  color: #000; }
 
 h1, .h1 {
   font-size: 2.5rem; }
@@ -560,7 +568,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif; }
 
 code {
   padding: 0.2rem 0.4rem;
@@ -2438,7 +2446,7 @@ tbody.collapse.show {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #d9d0c2;
+  color: #000;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -4130,7 +4138,7 @@ a.badge:focus, a.badge:hover {
     text-decoration: none;
     background-color: #f6f3f0; }
   .list-group-item-action:active {
-    color: #d9d0c2;
+    color: #000;
     background-color: #f1ede8; }
 
 .list-group-item {
@@ -4421,7 +4429,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -4503,7 +4511,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
