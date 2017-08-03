@@ -9249,6 +9249,9 @@ h1.navbar-brand a:hover {
   padding-right: 0;
   padding-bottom: 0; }
 
+.homepage-sidebar {
+  background-color: lightgrey; }
+
 #single-wrapper,
 #page-wrapper {
   padding-top: 5.8rem; }
