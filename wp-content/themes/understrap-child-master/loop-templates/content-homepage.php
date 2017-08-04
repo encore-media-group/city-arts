@@ -11,6 +11,7 @@ $catquery = new WP_Query( 'cat=' . ($cat_idObj->term_id)  . '&posts_per_page=1' 
 $recent_posts = new WP_Query(array('posts_per_page' => 2,'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
 $recent_posts_medium = new WP_Query(array('posts_per_page' => 1, 'offset' => 3, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+$recent_posts_medium_small = new WP_Query(array('posts_per_page' => 2, 'offset' => 4, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 ?>
 
 <div class="wrapper" id="page-wrapper">
@@ -53,6 +54,17 @@ $recent_posts_medium = new WP_Query(array('posts_per_page' => 1, 'offset' => 3, 
     <div class="row px-3">
       <div class="col-sm-6">
         <?php get_template_part( 'item-templates/item', 'current' ); ?>
+        <div class="row">
+        <?php
+          while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post();
+         ?>
+          <div class="col-md-6">
+            <?php  get_template_part( 'item-templates/item', 'medium-small' ); ?>
+           </div>
+          <?php endwhile;
+          wp_reset_postdata();
+        ?>
+        </div>
       </div>
       <div class="col-sm-6">
       <?php

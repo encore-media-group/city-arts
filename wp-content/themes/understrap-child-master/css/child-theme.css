@@ -9252,10 +9252,10 @@ h1.navbar-brand a:hover {
 .homepage-sidebar {
   background-color: #f6f3f0; }
 
-.large-item {
+.item-large {
   background-color: #f6f3f0;
   margin-bottom: 1em; }
-  .large-item .item-content-container {
+  .item-large .item-content-container {
     padding: 1em; }
 
 span.category-label {

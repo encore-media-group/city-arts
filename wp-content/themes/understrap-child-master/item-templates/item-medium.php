@@ -14,7 +14,7 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'medium-540x405' );
 ?>
 
-  <div class="large-item">
+  <div class="item-medium">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 540px) 100vw, 540px" alt="">

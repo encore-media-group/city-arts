@@ -14,10 +14,10 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'medium' );
 ?>
 
-  <div class="large-item">
+  <div class="item-medium-small">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 540px) 100vw, 540px" alt="">
+     sizes="(max-width: 255px) 100vw, 255px" alt="">
     <div class="item-content-container">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
