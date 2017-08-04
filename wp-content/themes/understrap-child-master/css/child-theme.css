@@ -9263,6 +9263,16 @@ span.category-label {
   background-color: #ffee33;
   font-size: .7em; }
 
+.current-section .header {
+  background-color: #000;
+  color: #fff; }
+
+.current-section .make-my {
+  background-color: #f5c6c0; }
+
+.current-section .picky {
+  background-color: #b5dcd6; }
+
 #single-wrapper,
 #page-wrapper {
   padding-top: 5.8rem; }

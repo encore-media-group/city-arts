@@ -25,6 +25,19 @@ span.category-label {
   font-size: .7em;
 }
 
+.current-section {
+  .header {
+    background-color: $black;
+    color: $white;
+  }
+  .make-my {
+    background-color: $pink;
+  }
+  .picky {
+    background-color: $green;
+  }
+}
+
 #single-wrapper,
 #page-wrapper {
   padding-top: 5.8rem;

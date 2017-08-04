@@ -30,7 +30,7 @@
 
                 while( $recent_posts->have_posts() ) : $recent_posts->the_post();
               ?>
-                  <div class="col-sm-6">
+                  <div class="col-md-6 pb-2">
                     <?php get_template_part( 'item-templates/item', 'small' ); ?>
                   </div>
                 <?php
