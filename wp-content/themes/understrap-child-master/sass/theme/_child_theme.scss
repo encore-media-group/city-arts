@@ -8,11 +8,11 @@
 }
 
 .homepage-sidebar {
-  background-color: lightgrey;
+  background-color: $gray-lightest;
 }
 
 .large-item {
-  background-color: lightgrey;
+  background-color: $gray-lightest;
   margin-bottom: 1em;
   .item-content-container {
     padding: 1em;
@@ -23,7 +23,6 @@ span.category-label {
   text-transform: uppercase;
   background-color: $yellow;
   font-size: .7em;
-  line-height: .7em;
 }
 
 #single-wrapper,

@@ -207,8 +207,9 @@ function get_contributors(){
       foreach( $relationships as $relationship ) {
         if(get_post_type($relationship->ID) == 'contributor') {
           if($count == 0) {
-          $html .= sprintf(esc_html_x( 'by %s', 'post author', 'understrap' ),
-          '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
+//          $html .= sprintf(esc_html_x( 'by %s', 'post author', 'understrap' ),
+            $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
+            '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
           );
           } else{
             $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),

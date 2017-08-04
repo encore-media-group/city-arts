@@ -9250,10 +9250,10 @@ h1.navbar-brand a:hover {
   padding-bottom: 0; }
 
 .homepage-sidebar {
-  background-color: lightgrey; }
+  background-color: #f6f3f0; }
 
 .large-item {
-  background-color: lightgrey;
+  background-color: #f6f3f0;
   margin-bottom: 1em; }
   .large-item .item-content-container {
     padding: 1em; }
@@ -9261,8 +9261,7 @@ h1.navbar-brand a:hover {
 span.category-label {
   text-transform: uppercase;
   background-color: #ffee33;
-  font-size: .7em;
-  line-height: .7em; }
+  font-size: .7em; }
 
 #single-wrapper,
 #page-wrapper {
