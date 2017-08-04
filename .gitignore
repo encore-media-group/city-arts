@@ -116,5 +116,6 @@ wp-config.php
 !wp-content/plugins/wp-log-viewer/
 !wp-content/plugins/responsive-menu-pro/
 !wp-content/plugins/redirection/
+!wp-content/plugins/regenerate-thumbnails/
 
 

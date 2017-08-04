@@ -63,6 +63,15 @@ function article_widgets_init() {
 add_action( 'widgets_init', 'article_widgets_init' );
 
 
+add_image_size( 'medium-540x405', 540, 405 );
+
+// Register the three useful image sizes for use in Add Media modal
+add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
+function wpshout_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'medium-540x405' => __( 'Medium 540x405' )
+    ) );
+}
 
 /**************************************************************/
 /*
