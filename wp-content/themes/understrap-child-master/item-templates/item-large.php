@@ -7,17 +7,19 @@
 
 ?>
 <?php
-$thumbnail_id = get_post_thumbnail_id( $post->ID );
-$thumbnail = wp_get_attachment_image_src( $thumbnail_id, "full" );
+  $thumbnail_id = get_post_thumbnail_id( $post->ID );
+  $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-$thumbnail_url = $thumbnail[0];
-$thumbnail_width = $thumbnail[1];
-$thumbnail_height = $thumbnail[2];
-
-$thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'full' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
 ?>
+
   <div class="large-item">
-    <div class="image"><img src="<?php echo $thumbnail_url; ?>" style=" height: 500px; width: 750px; "></div>
+    <div class="image">
+    <img src="<?php echo esc_url( $img_src ); ?>"
+     srcset="<?php echo esc_attr( $img_srcset ); ?>"
+     sizes="(max-width: 46em) 87vw, 750px" alt="">
+
     <div class="item-content-container">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
@@ -26,3 +28,4 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
       <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
     </div>
   </div>
+git rm --cached -r wp-config.php
