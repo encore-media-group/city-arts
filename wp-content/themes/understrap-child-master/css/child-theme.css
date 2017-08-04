@@ -9259,6 +9259,7 @@ h1.navbar-brand a:hover {
     padding: 1em; }
 
 span.category-label {
+  display: inline-block;
   text-transform: uppercase;
   background-color: #ffee33;
   font-size: .7em; }

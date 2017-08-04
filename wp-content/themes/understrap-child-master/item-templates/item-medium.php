@@ -17,7 +17,9 @@
   <div class="item-medium">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 540px) 100vw, 540px" alt="">
+     sizes="(max-width: 540px) 100vw, 540px"
+     style="max-height:405px;"
+     alt="">
     <div class="item-content-container">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div>
