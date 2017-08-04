@@ -17,7 +17,9 @@ $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'small' );
     <div class="col-sm-5 pl-0 image">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
-       sizes="(max-width: 10em) 100vw, 160px" alt=""><!-- width: 160px; height: 120px; -->
+       sizes="(max-width: 10em) 100vw, 160px"
+       style="min-widht: 160px;"
+       alt=""><!-- width: 160px; height: 120px; -->
     </div>
     <div class="col-sm-7 pl-0 pr-0">
       <span class="category-label align-top  mb-2 pl-2 pr-2">Category</span>

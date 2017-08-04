@@ -13,17 +13,17 @@
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'medium' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'medium' );
 ?>
-
+  <!-- medium small -->
   <div class="item-medium-small text-center">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 255px) 100vw, 255px"
+     sizes="(mind-width: 255px) 100vw,
+            (max-width: 255px) 100vw, 255px"
      style="max-height:191px;"
      alt="">
     <div class="item-content-container">
       <span class="category-label mb-2 pl-2 pr-2">Category</span>
       <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"> <?php echo get_contributors(); ?></div>
-
     </div>
   </div>

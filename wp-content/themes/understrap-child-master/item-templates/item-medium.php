@@ -20,7 +20,7 @@
      sizes="(max-width: 540px) 100vw, 540px"
      style="max-height:405px;"
      alt="">
-    <div class="item-content-container">
+    <div class="item-content-container p-4">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div>
         <span class="category-label mb-2 pl-2 pr-2">Category</span>

@@ -14,11 +14,11 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
 ?>
 
-  <div class="item-large">
+  <div class="item-large mb-4">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 46em) 100vw, 750px" alt="">
-    <div class="item-content-container">
+    <div class="item-content-container p-4">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div>
         <span class="category-label mb-2 pl-2 pr-2">Category</span>

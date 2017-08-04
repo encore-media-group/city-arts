@@ -9252,11 +9252,17 @@ h1.navbar-brand a:hover {
 .homepage-sidebar {
   background-color: #f6f3f0; }
 
-.item-large {
-  background-color: #f6f3f0;
-  margin-bottom: 1em; }
-  .item-large .item-content-container {
-    padding: 1em; }
+.item-large .item-content-container {
+  background-color: #f6f3f0; }
+
+.item-medium .item-content-container {
+  background-color: #f6f3f0; }
+
+.item-medium-horizontal {
+  background-color: #f6f3f0; }
+
+.ad-container {
+  background-color: #f6f3f0; }
 
 span.category-label {
   display: inline-block;

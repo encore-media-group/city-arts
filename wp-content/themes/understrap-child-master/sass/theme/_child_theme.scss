@@ -12,11 +12,23 @@
 }
 
 .item-large {
-  background-color: $gray-lightest;
-  margin-bottom: 1em;
   .item-content-container {
-    padding: 1em;
+    background-color: $gray-lightest;
   }
+}
+
+.item-medium {
+  .item-content-container {
+    background-color: $gray-lightest;
+  }
+}
+
+.item-medium-horizontal {
+  background-color: $gray-lightest;
+}
+
+.ad-container {
+  background-color: $gray-lightest;
 }
 
 span.category-label {
