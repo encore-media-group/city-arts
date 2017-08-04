@@ -28,4 +28,3 @@
       <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
     </div>
   </div>
-git rm --cached -r wp-config.php
