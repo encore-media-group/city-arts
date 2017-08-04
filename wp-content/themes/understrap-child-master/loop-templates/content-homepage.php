@@ -36,16 +36,39 @@
                 <?php
                 endwhile;
                 wp_reset_postdata();
-              ?>
+                ?>
               </div>
             </div>
           </main>
       </div>
       <div class="col-sm-4" id="homepage-sidebar"></div>
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
-        </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-xl-12 text-center">
+        <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-6">
+        <?php get_template_part( 'item-templates/item', 'current' ); ?>
+      </div>
+      <div class="col-sm-6">
+      <?php
+        $recent_posts = new WP_Query(array(
+          'posts_per_page' => 1,
+          'offset' => 3,
+          'meta_query' => array(array('key' => '_thumbnail_id' ))
+          ));
+
+        while( $recent_posts->have_posts() ) : $recent_posts->the_post();
+          get_template_part( 'item-templates/item', 'medium' );
+        endwhile;
+        wp_reset_postdata();
+        ?>
       </div>
     </div>
   </div>
