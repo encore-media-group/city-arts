@@ -15,11 +15,9 @@
 ?>
 
   <div class="large-item">
-    <div class="image">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 46em) 100vw, 750px" alt="">
-
     <div class="item-content-container">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>

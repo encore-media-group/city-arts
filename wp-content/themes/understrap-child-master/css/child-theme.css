@@ -9263,8 +9263,9 @@ h1.navbar-brand a:hover {
   margin-top: 1em; }
 
 .category-label span {
+  text-transform: uppercase;
   background-color: #ffee33;
-  padding: .3em; }
+  padding: .2em; }
 
 #single-wrapper,
 #page-wrapper {

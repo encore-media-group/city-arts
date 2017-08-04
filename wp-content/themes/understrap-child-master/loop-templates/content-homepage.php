@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-sm-8 content-area" id="primary">
           <main class="site-main" id="main">
-            <div class="main-article" style="background-color: white">
+            <div class="main-article">
               <?php
                 $cat_idObj = get_term_by( 'slug', 'homepage-feature', 'category' );
                 $catquery = new WP_Query( 'cat=' . ($cat_idObj->term_id)  . '&posts_per_page=1' );
@@ -24,12 +24,12 @@
               <div class="row no-gutters">
               <?php
                 $recent_posts = new WP_Query(array(
-                      'posts_per_page' => 2,
-                      'meta_query' => array(array('key' => '_thumbnail_id' ))
-                      ));
+                  'posts_per_page' => 2,
+                  'meta_query' => array(array('key' => '_thumbnail_id' ))
+                  ));
 
                 while( $recent_posts->have_posts() ) : $recent_posts->the_post();
-                ?>
+              ?>
                   <div class="col-sm-6">
                     <?php get_template_part( 'item-templates/item', 'small' ); ?>
                   </div>
@@ -41,7 +41,11 @@
             </div>
           </main>
       </div>
-      <div class="col-sm-4" id="homepage-sidebar">
+      <div class="col-sm-4" id="homepage-sidebar"></div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+        </div>
       </div>
     </div>
   </div>
