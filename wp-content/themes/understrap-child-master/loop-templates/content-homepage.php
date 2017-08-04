@@ -23,7 +23,11 @@
               ?>
               <div class="row no-gutters">
               <?php
-                $recent_posts = new WP_Query( array( 'posts_per_page' => 2 ) );
+                $recent_posts = new WP_Query(array(
+                      'posts_per_page' => 2,
+                      'meta_query' => array(array('key' => '_thumbnail_id' ))
+                      ));
+
                 while( $recent_posts->have_posts() ) : $recent_posts->the_post();
                 ?>
                   <div class="col-sm-6">
