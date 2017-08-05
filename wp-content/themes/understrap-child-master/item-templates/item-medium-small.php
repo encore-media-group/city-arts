@@ -25,5 +25,6 @@
       <span class="category-label mb-2 pl-2 pr-2">Category</span>
       <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"> <?php echo get_contributors(); ?></div>
+
     </div>
   </div>
