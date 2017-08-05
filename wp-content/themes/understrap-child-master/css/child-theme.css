@@ -9242,6 +9242,10 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
+/* Menu */
+#responsive-menu-pro-header {
+  border-bottom: solid 1px #ece7e1; }
+
 #archive-wrapper,
 #wrapper-index {
   padding-top: 7em;

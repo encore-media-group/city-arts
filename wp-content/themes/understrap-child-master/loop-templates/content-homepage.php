@@ -19,12 +19,11 @@ $recent_posts_medium_small_bottom = new WP_Query(array('posts_per_page' => 4, 'o
 $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
 ?>
-
 <div class="wrapper" id="page-wrapper">
-  <div class="container" id="content" tabindex="-1">
-    <div class="row no-gutters">
-      <div class="col-sm-8 content-area" id="primary">
-          <main class="site-main" id="main">
+  <main class="site-main" id="main">
+    <div class="container" id="content" tabindex="-1">
+      <div class="row no-gutters">
+        <div class="col-sm-8 content-area" id="primary">
             <div class="main-article">
               <?php
                 while( $catquery->have_posts() ) : $catquery->the_post();
@@ -44,7 +43,6 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
               ?>
               </div>
             </div>
-          </main>
       </div>
       <div class="col-sm-4" id="homepage-sidebar"></div>
     </div>
@@ -59,7 +57,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
   <!-- section 3 -->
   <div class="container mt-4 px-0">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-12 col-sm-6">
         <?php get_template_part( 'item-templates/item', 'current' ); ?>
         <div class="row mt-4">
         <?php
@@ -73,7 +71,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
         ?>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="ccol-12 col-sm-6">
       <?php
         while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
           get_template_part( 'item-templates/item', 'medium' );
@@ -102,7 +100,5 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
         wp_reset_postdata();
       ?>
   </div>
+  </main>
 </div>
-<?php
-
-the_content();
