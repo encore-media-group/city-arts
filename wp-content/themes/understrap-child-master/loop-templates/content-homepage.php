@@ -71,7 +71,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
         ?>
         </div>
       </div>
-      <div class="ccol-12 col-sm-6">
+      <div class="col-12 col-sm-6">
       <?php
         while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
           get_template_part( 'item-templates/item', 'medium' );
@@ -81,12 +81,13 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
       </div>
     </div>
   </div>
+  <!--row of medium small -->
   <div class="container mt-4 px-0">
     <div class="row px-3">
       <?php
         while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post();
        ?>
-        <div class="col-md-3"><?php  get_template_part( 'item-templates/item', 'medium-small' ); ?></div>
+        <div class="col-12 col-sm-6 col-lg-3"><?php  get_template_part( 'item-templates/item', 'medium-small' ); ?></div>
         <?php endwhile;
         wp_reset_postdata();
       ?>
