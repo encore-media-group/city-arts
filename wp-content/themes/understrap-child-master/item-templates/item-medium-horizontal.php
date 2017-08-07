@@ -17,26 +17,25 @@
   $flag_from_magazine = true;
 ?>
 
-  <div class="row item-medium-horizontal no-gutters">
-    <div class="col-sm-6">
+<div class="row item-medium-horizontal no-gutters">
+  <div class="col-sm-6">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 540px) 100vw, 540px"
      style="max-height:405px;"
      alt="">
-    </div>
-    <div class="col-sm-6">
-      <div class="item-content-container p-4">
-        <div class="caption"><?php echo $thumbnail_caption ?></div>
-        <div><?php if( $flag_from_magazine ):?> FROM THE MAGAZINE <?php endif; ?>
-
-        <div>
-          <span class="category-label mb-2 pl-2 pr-2">Category</span>
-        </div>
-        <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-        <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
-        <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
-        <div><?php if( $flag_from_magazine ):?> MORE FROM THIS ISSUE -> <?php endif; ?>
-      </div>
-      </div>
   </div>
+  <div class="col-sm-6 p-4">
+    <div class="caption"><?php echo $thumbnail_caption ?></div>
+    <?php if( $flag_from_magazine ):?>
+      <div>FROM THE MAGAZINE</div>
+    <?php endif; ?>
+    <span class="category-label mb-2 pl-2 pr-2">Category</span>
+    <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+    <div class="contributors"> <?php echo understrap_posted_on(); ?> </div>
+    <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
+    <?php if( $flag_from_magazine ):?>
+      <div>MORE FROM THIS ISSUE -></div>
+    <?php endif; ?>
+  </div>
+</div>
