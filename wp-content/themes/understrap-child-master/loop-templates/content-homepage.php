@@ -32,19 +32,23 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
                 wp_reset_postdata();
               ?>
               <div class="row no-gutters">
-              <?php
-                while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+              <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
                 <div class="col-md-6 pb-2">
                   <?php get_template_part( 'item-templates/item', 'small' ); ?>
                 </div>
-              <?php
-                endwhile;
+              <?php endwhile;
                 wp_reset_postdata();
               ?>
               </div>
             </div>
       </div>
-      <div class="col-sm-4" id="homepage-sidebar"></div>
+      <div class="col-sm-4" id="homepage-sidebar">
+      <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
+        <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
+          <?php dynamic_sidebar( 'homepage-right-1' ); ?>
+        </div><!-- #homepage-right-1 -->
+      <?php endif; ?>
+      </div>
     </div>
   </div>
   <div class="container ad-container mt-4 px-0">
@@ -60,13 +64,11 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
       <div class="col-12 col-sm-6">
         <?php get_template_part( 'item-templates/item', 'current' ); ?>
         <div class="row mt-4">
-        <?php
-          while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post();
-         ?>
-          <div class="col-md-6">
+        <?php while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
+          <div class="col-lg-6 mb-4">
             <?php  get_template_part( 'item-templates/item', 'medium-small' ); ?>
            </div>
-          <?php endwhile;
+        <?php endwhile;
           wp_reset_postdata();
         ?>
         </div>
@@ -84,11 +86,9 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
   <!--row of medium small -->
   <div class="container mt-4 px-0">
     <div class="row px-3">
-      <?php
-        while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post();
-       ?>
-        <div class="col-12 col-sm-6 col-lg-3"><?php  get_template_part( 'item-templates/item', 'medium-small' ); ?></div>
-        <?php endwhile;
+      <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
+        <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-5"><?php  get_template_part( 'item-templates/item', 'medium-small' ); ?></div>
+      <?php endwhile;
         wp_reset_postdata();
       ?>
     </div>
