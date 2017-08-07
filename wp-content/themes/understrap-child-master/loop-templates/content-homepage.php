@@ -23,7 +23,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
   <main class="site-main" id="main">
     <div class="container" id="content" tabindex="-1">
       <div class="row no-gutters">
-        <div class="col-sm-8 content-area" id="primary">
+        <div class="col-md-8 content-area" id="primary">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();
               get_template_part( 'item-templates/item', 'large' );
@@ -40,7 +40,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
           ?>
           </div>
         </div>
-        <div class="col-sm-4" id="homepage-sidebar">
+        <div class="col-md-4" id="homepage-sidebar">
           <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
             <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
               <?php dynamic_sidebar( 'homepage-right-1' ); ?>
@@ -48,7 +48,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
           <?php endif; ?>
         </div>
       </div>
-    </div><!-- end container-->
+    </div>
     <div class="container ad-container mt-4 px-0">
     <div class="row no-gutters">
       <div class="col-xl-12 py-2 text-center">
@@ -103,11 +103,17 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <!-- bottom row -->
     <div class="container mt-4 px-0">
       <div class="row">
-        <div class="col"><h3>SEE IT THIS WEEK</h3></div>
-        <div class="col">
+        <div class="col-12 col-md-5">
+        <?php
+          get_template_part( 'item-templates/item', 'see-it-this-week' );
+        ?>
+        </div>
+        <div class="col-12 col-md-7">
           <div class="row">
             <div class="col">Album of the Month"</div>
-            <div class="col">300x250ad</div>
+            <div class="col ">
+               <?php get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
+            </div>
           </div>
           <div class="row">Attractive Singles</div>
         </div>

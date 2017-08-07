@@ -281,7 +281,10 @@ class ca_top_articles_widget extends WP_Widget {
 
     echo $args['before_widget'];
     if ( ! empty( $title ) )
-      echo $args['before_title'];
+    echo $args['before_title'];
+    echo '<div class="row"><div class="col mb-4">';
+      get_template_part( 'item-templates/item', 'ad-300x250' );
+    echo '</div></div>';
     echo '<div class="row"><div class="col"><hr/></div><div class="col-auto"><h3>' . $title . '</h3></div><div class="col"><hr/></div></div>';
     echo $args['after_title'];
 

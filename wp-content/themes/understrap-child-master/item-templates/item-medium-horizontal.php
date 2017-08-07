@@ -18,14 +18,14 @@
 ?>
 
 <div class="row item-medium-horizontal no-gutters">
-  <div class="col-sm-6">
+  <div class="col-md-6">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 540px) 100vw, 540px"
      style="max-height:405px;"
      alt="">
   </div>
-  <div class="col-sm-6 p-4">
+  <div class="col-md-6 p-4">
     <div class="caption"><?php echo $thumbnail_caption ?></div>
     <?php if( $flag_from_magazine ):?>
       <div>FROM THE MAGAZINE</div>
