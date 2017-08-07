@@ -24,32 +24,31 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <div class="container" id="content" tabindex="-1">
       <div class="row no-gutters">
         <div class="col-sm-8 content-area" id="primary">
-            <div class="main-article">
-              <?php
-                while( $catquery->have_posts() ) : $catquery->the_post();
-                  get_template_part( 'item-templates/item', 'large' );
-                endwhile;
-                wp_reset_postdata();
-              ?>
-              <div class="row no-gutters">
-              <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-                <div class="col-md-6 pb-2">
-                  <?php get_template_part( 'item-templates/item', 'small' ); ?>
-                </div>
-              <?php endwhile;
-                wp_reset_postdata();
-              ?>
-              </div>
+          <?php
+            while( $catquery->have_posts() ) : $catquery->the_post();
+              get_template_part( 'item-templates/item', 'large' );
+            endwhile;
+            wp_reset_postdata();
+          ?>
+          <div class="row no-gutters">
+          <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+            <div class="col-md-6 pb-2">
+              <?php get_template_part( 'item-templates/item', 'small' ); ?>
             </div>
+          <?php endwhile;
+            wp_reset_postdata();
+          ?>
+          </div>
+        </div>
+        <div class="col-sm-4" id="homepage-sidebar">
+          <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
+            <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
+              <?php dynamic_sidebar( 'homepage-right-1' ); ?>
+            </div><!-- #homepage-right-1 -->
+          <?php endif; ?>
+        </div>
       </div>
-      <div class="col-sm-4" id="homepage-sidebar">
-      <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
-        <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
-          <?php dynamic_sidebar( 'homepage-right-1' ); ?>
-        </div><!-- #homepage-right-1 -->
-      <?php endif; ?>
-      </div>
-    </div>
+    </div><!-- end container-->
     <div class="container ad-container mt-4 px-0">
     <div class="row no-gutters">
       <div class="col-xl-12 py-2 text-center">
