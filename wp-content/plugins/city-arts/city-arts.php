@@ -71,10 +71,10 @@ function homepage_widgets_init() {
   register_sidebar( array(
     'name'          => 'Homepage sidebar',
     'id'            => 'homepage-right-1',
-    'before_widget' => '<div>',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2 class="rounded">',
-    'after_title'   => '</h2>',
+    'before_widget' => '',
+    'after_widget'  => '',
+    'before_title'  => '',
+    'after_title'   => '',
   ) );
 
 }
@@ -281,7 +281,9 @@ class ca_top_articles_widget extends WP_Widget {
 
     echo $args['before_widget'];
     if ( ! empty( $title ) )
-      echo $args['before_title'] . $title . $args['after_title'];
+      echo $args['before_title'];
+    echo '<div class="row"><div class="col"><hr/></div><div class="col-auto"><h3>' . $title . '</h3></div><div class="col"><hr/></div></div>';
+    echo $args['after_title'];
 
     $recent_posts = new WP_Query(array('posts_per_page' => 3, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
     // This is where you run the code and display the output

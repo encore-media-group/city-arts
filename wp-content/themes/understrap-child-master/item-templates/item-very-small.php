@@ -13,16 +13,17 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 $img_src = wp_get_attachment_image_url( $thumbnail_id, 'small' );
 $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'small' );
 ?>
-  <div class="row small-item">
-    <div class="col-5 pl-sm-0 pl-4">
+  <div class="row mb-3 small-item">
+    <div class="col-auto mr-3">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
-       sizes="(max-width: 10em) 100vw, 100px"
+       sizes="(min-width: 100px) 100vw, 300px"
+       style="min-width:100px;width:100px;height: 100px;"
        alt="">
     </div>
-    <div class="col-7 px-sm-0 pt-0">
+    <div class="col px-0 pt-0">
       <span class="category-label align-top  mb-2 pl-2 pr-2">Category</span>
-      <h5><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h5>
+      <h6><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h6>
       <div class="contributors"><?php echo get_contributors() ?></div>
     </div>
   </div>
