@@ -103,12 +103,12 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <!-- bottom row -->
     <div class="container mt-4 px-0">
       <div class="row">
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-lg-5">
         <?php
           get_template_part( 'item-templates/item', 'see-it-this-week' );
         ?>
         </div>
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-lg-7">
           <div class="row">
             <div class="col-auto px-sm-0 px-lg-0 mx-4 my-0">
               <?php get_template_part( 'item-templates/item', 'album-of-the-month' ); ?>
