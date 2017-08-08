@@ -117,5 +117,6 @@ wp-config.php
 !wp-content/plugins/responsive-menu-pro/
 !wp-content/plugins/redirection/
 !wp-content/plugins/regenerate-thumbnails/
+!wp-content/plugins/city-arts/
 
 
