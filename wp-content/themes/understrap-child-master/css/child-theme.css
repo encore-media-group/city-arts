@@ -9253,23 +9253,19 @@ h1.navbar-brand a:hover {
   padding-right: 0;
   padding-bottom: 0; }
 
-.homepage-sidebar {
-  background-color: #f6f3f0; }
-
-.item-large .item-content-container {
-  background-color: #f6f3f0; }
-
-.item-medium .item-content-container {
-  background-color: #f6f3f0; }
-
-.item-medium-horizontal {
-  background-color: #f6f3f0; }
-
-.ad-container {
+.homepage-sidebar,
+.ad-container,
+.item-large > .item-content-container,
+.item-medium > .item-content-container,
+.item-medium-horizontal,
+.item-small-horizontal {
   background-color: #f6f3f0; }
 
 .see-it-this-week-container {
   background-color: #ffee33; }
+
+.album-of-the-month-container {
+  border: 4px solid #a18967; }
 
 span.category-label {
   display: inline-block;

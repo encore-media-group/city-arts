@@ -110,12 +110,18 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
         </div>
         <div class="col-12 col-md-7">
           <div class="row">
-            <div class="col">Album of the Month"</div>
-            <div class="col ">
+            <div class="col-auto px-sm-0 px-lg-0 mx-4 my-0">
+              <?php get_template_part( 'item-templates/item', 'album-of-the-month' ); ?>
+              </div>
+            <div class="col my-auto">
                <?php get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
             </div>
           </div>
-          <div class="row">Attractive Singles</div>
+          <div class="row">
+             <div class="col-12 mt-4 ml-4">
+              <?php get_template_part( 'item-templates/item', 'small-horizontal' ); ?>
+             </div>
+          </div>
         </div>
       </div>
     </div>

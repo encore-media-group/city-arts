@@ -12,27 +12,12 @@
   padding-bottom: 0;
 }
 
-.homepage-sidebar {
-  background-color: $gray-lightest;
-}
-
-.item-large {
-  .item-content-container {
-    background-color: $gray-lightest;
-  }
-}
-
-.item-medium {
-  .item-content-container {
-    background-color: $gray-lightest;
-  }
-}
-
-.item-medium-horizontal {
-  background-color: $gray-lightest;
-}
-
-.ad-container {
+.homepage-sidebar,
+.ad-container,
+.item-large > .item-content-container,
+.item-medium > .item-content-container,
+.item-medium-horizontal,
+.item-small-horizontal {
   background-color: $gray-lightest;
 }
 
@@ -40,6 +25,9 @@
   background-color: $yellow;
 }
 
+.album-of-the-month-container {
+  border: 4px solid $orange;
+}
 span.category-label {
   display: inline-block;
   text-transform: uppercase;

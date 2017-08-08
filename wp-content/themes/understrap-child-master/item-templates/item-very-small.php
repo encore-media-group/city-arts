@@ -10,14 +10,14 @@
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-$img_src = wp_get_attachment_image_url( $thumbnail_id, 'small' );
-$img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'small' );
+$img_src = wp_get_attachment_image_url( $thumbnail_id, 'thumbnail' );
+$img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'thumbnail' );
 ?>
   <div class="row mb-3 small-item">
     <div class="col-auto mr-3">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
-       sizes="(min-width: 100px) 100vw, 300px"
+       sizes="(min-width: 100px) 100vw, 150px"
        style="min-width:100px;width:100px;height: 100px;"
        alt="">
     </div>

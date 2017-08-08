@@ -8,7 +8,7 @@
 ?>
 <div class="row see-it-this-week-container p-4">
   <div class="col px-0">
-    <h2><strong>SEE IT THIS WEEK</strong></h3>
+    <h4><strong>SEE IT THIS WEEK</strong></h4>
     <span>Looking for something to do? We've got you Covered.</span> <!--this could go into a widget -->
 
 <?php
