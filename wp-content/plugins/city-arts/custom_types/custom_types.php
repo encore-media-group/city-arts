@@ -1,8 +1,5 @@
 <?php
 
-/* register custom types */
-add_action( 'init', 'cptui_register_my_cpts' );
-add_action( 'init', 'cptui_register_my_taxes' );
 
 function cptui_register_my_cpts() {
 
@@ -69,8 +66,8 @@ function cptui_register_my_taxes() {
   register_taxonomy( "article_format", array( "post" ), $args );
 }
 
-
-if( function_exists('acf_add_local_field_group') ):
+function register_acf_field_group() {
+  if( function_exists('acf_add_local_field_group') ):
 
   acf_add_local_field_group(array (
     'key' => 'group_595dcb3b5899c',
@@ -175,5 +172,5 @@ if( function_exists('acf_add_local_field_group') ):
     'active' => 1,
     'description' => '',
   ));
-
-endif;
+  endif;
+}

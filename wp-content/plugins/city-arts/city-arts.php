@@ -13,8 +13,10 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 
-
-
+/* register custom types */
+add_action( 'init', 'cptui_register_my_cpts' );
+add_action( 'init', 'cptui_register_my_taxes' );
+add_action( 'init', 'register_acf_field_group');
 
 add_action('admin_menu', 'city_arts_website_menu');
 
