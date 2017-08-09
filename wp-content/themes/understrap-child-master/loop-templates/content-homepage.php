@@ -23,7 +23,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
   <main class="site-main" id="main">
     <div class="container" id="content" tabindex="-1">
       <div class="row no-gutters">
-        <div class="col-md-8 content-area" id="primary">
+        <div class="col-12 col-md-7 col-lg-8 content-area" id="primary">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();
               get_template_part( 'item-templates/item', 'large' );
@@ -40,7 +40,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
           ?>
           </div>
         </div>
-        <div class="col-md-4" id="homepage-sidebar">
+        <div class="col-12 col-md-5 col-lg-4" id="homepage-sidebar">
           <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
             <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
               <?php dynamic_sidebar( 'homepage-right-1' ); ?>

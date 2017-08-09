@@ -93,6 +93,35 @@ span.category-label {
   background-color: #000;
   color: #fff;
 }
-.mceItem {
-  display: none;
+
+.sidelines {
+    overflow: hidden;
+    text-align: center;
 }
+.sidelines:before,
+.sidelines:after {
+    background-color: $black;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.sidelines:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+.sidelines:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+
+
+
+
+
+
+
+

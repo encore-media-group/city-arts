@@ -23,7 +23,7 @@ class ca_top_articles_widget extends WP_Widget {
     echo '<div class="row"><div class="col mb-4">';
       get_template_part( 'item-templates/item', 'ad-300x250' );
     echo '</div></div>';
-    echo '<div class="row"><div class="col"><hr/></div><div class="col-auto"><h3>' . $title . '</h3></div><div class="col"><hr/></div></div>';
+    echo '<div class="row"><div class="col-12"><h3 class="sidelines">' . $title . '</h3></div></div>';
     echo $args['after_title'];
 
     $recent_posts = new WP_Query(array('posts_per_page' => 3, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));

@@ -5,7 +5,6 @@
  * @package understrap
  */
 
-$cat_idObj = get_term_by( 'slug', 'album-of-the-month', 'category' );
 $recent_album_of_the_month = new WP_Query(
     array(
       'posts_per_page' => 1,
