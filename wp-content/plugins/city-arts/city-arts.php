@@ -10,6 +10,7 @@ Author URI: http://factorybeltproductions.org
 */
 
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
+include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 
 add_action('admin_menu', 'city_arts_website_menu');
 
@@ -25,6 +26,7 @@ function city_arts_admin_page() {
 
   echo '<div class="wrap">';
   echo '<h2>City Arts Website</h2>';
+  echo 'Nothing to see here. This plugin is designed to provide customization to the website without specific theme dependencies.';
   /*
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['do_something_button']) && check_admin_referer('do_something_button_button_clicked')) {
@@ -46,10 +48,7 @@ function city_arts_admin_page() {
 }
 
 
-/**
- * Register custom article sidebar
- *
- */
+/*  Register custom article sidebar*/
 function article_widgets_init() {
 
   register_sidebar( array(
@@ -62,12 +61,8 @@ function article_widgets_init() {
   ) );
 
 }
-add_action( 'widgets_init', 'article_widgets_init' );
 
-/**
- * Register custom article sidebar
- *
- */
+/* Register homepage widget sidebar */
 function homepage_widgets_init() {
 
   register_sidebar( array(
@@ -80,7 +75,16 @@ function homepage_widgets_init() {
   ) );
 
 }
+
+// Register and load top articles widget
+function ca_load_widgets() {
+  register_widget( 'ca_top_articles_widget' );
+  register_widget( 'ca_mailchimp_widget' );
+}
+
+add_action( 'widgets_init', 'ca_load_widgets' );
 add_action( 'widgets_init', 'homepage_widgets_init' );
+add_action( 'widgets_init', 'article_widgets_init' );
 
 add_image_size( 'medium-540x405', 540, 405 );
 
@@ -254,12 +258,6 @@ function get_contributors(){
 }
 endif;
 
-
-// Register and load the widget
-function ca_load_widget() {
-  register_widget( 'ca_top_articles_widget' );
-}
-add_action( 'widgets_init', 'ca_load_widget' );
 
 
 
