@@ -35,7 +35,6 @@ function cptui_register_my_cpts() {
   register_post_type( "contributor", $args );
 }
 
-add_action( 'init', 'cptui_register_my_cpts' );
 
 function cptui_register_my_taxes() {
 
@@ -67,113 +66,111 @@ function cptui_register_my_taxes() {
   register_taxonomy( "article_format", array( "post" ), $args );
 }
 
-add_action( 'init', 'cptui_register_my_taxes' );
-
 
 if( function_exists('acf_add_local_field_group') ):
 
-acf_add_local_field_group(array (
-  'key' => 'group_595dcb3b5899c',
-  'title' => 'Post Relationships',
-  'fields' => array (
-    array (
-      'key' => 'field_5960730a4bb42',
-      'label' => 'Relationship',
-      'name' => 'relationship',
-      'type' => 'relationship',
-      'instructions' => '',
-      'required' => 0,
-      'conditional_logic' => 0,
-      'wrapper' => array (
-        'width' => '',
-        'class' => '',
-        'id' => '',
-      ),
-      'post_type' => array (
-      ),
-      'taxonomy' => array (
-      ),
-      'filters' => array (
-        0 => 'search',
-        1 => 'post_type',
-        2 => 'taxonomy',
-      ),
-      'elements' => '',
-      'min' => '',
-      'max' => '',
-      'return_format' => 'object',
-    ),
-  ),
-  'location' => array (
-    array (
+  acf_add_local_field_group(array (
+    'key' => 'group_595dcb3b5899c',
+    'title' => 'Post Relationships',
+    'fields' => array (
       array (
-        'param' => 'post_type',
-        'operator' => '==',
-        'value' => 'post',
+        'key' => 'field_5960730a4bb42',
+        'label' => 'Relationship',
+        'name' => 'relationship',
+        'type' => 'relationship',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array (
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'post_type' => array (
+        ),
+        'taxonomy' => array (
+        ),
+        'filters' => array (
+          0 => 'search',
+          1 => 'post_type',
+          2 => 'taxonomy',
+        ),
+        'elements' => '',
+        'min' => '',
+        'max' => '',
+        'return_format' => 'object',
       ),
     ),
-    array (
+    'location' => array (
       array (
-        'param' => 'post_type',
-        'operator' => '==',
-        'value' => 'contributor',
+        array (
+          'param' => 'post_type',
+          'operator' => '==',
+          'value' => 'post',
+        ),
+      ),
+      array (
+        array (
+          'param' => 'post_type',
+          'operator' => '==',
+          'value' => 'contributor',
+        ),
       ),
     ),
-  ),
-  'menu_order' => 0,
-  'position' => 'normal',
-  'style' => 'default',
-  'label_placement' => 'top',
-  'instruction_placement' => 'label',
-  'hide_on_screen' => '',
-  'active' => 1,
-  'description' => '',
-));
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'description' => '',
+  ));
 
-acf_add_local_field_group(array (
-  'key' => 'group_598b523f58656',
-  'title' => 'Post Styles',
-  'fields' => array (
-    array (
-      'key' => 'field_598b526fe8434',
-      'label' => 'Post Style',
-      'name' => 'post_style',
-      'type' => 'taxonomy',
-      'instructions' => '',
-      'required' => 0,
-      'conditional_logic' => 0,
-      'wrapper' => array (
-        'width' => '',
-        'class' => '',
-        'id' => '',
-      ),
-      'taxonomy' => 'article_format',
-      'field_type' => 'radio',
-      'allow_null' => 0,
-      'add_term' => 0,
-      'save_terms' => 1,
-      'load_terms' => 1,
-      'return_format' => 'id',
-      'multiple' => 0,
-    ),
-  ),
-  'location' => array (
-    array (
+  acf_add_local_field_group(array (
+    'key' => 'group_598b523f58656',
+    'title' => 'Post Styles',
+    'fields' => array (
       array (
-        'param' => 'post_type',
-        'operator' => '==',
-        'value' => 'post',
+        'key' => 'field_598b526fe8434',
+        'label' => 'Post Style',
+        'name' => 'post_style',
+        'type' => 'taxonomy',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array (
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'taxonomy' => 'article_format',
+        'field_type' => 'radio',
+        'allow_null' => 0,
+        'add_term' => 0,
+        'save_terms' => 1,
+        'load_terms' => 1,
+        'return_format' => 'id',
+        'multiple' => 0,
       ),
     ),
-  ),
-  'menu_order' => 0,
-  'position' => 'side',
-  'style' => 'default',
-  'label_placement' => 'top',
-  'instruction_placement' => 'label',
-  'hide_on_screen' => '',
-  'active' => 1,
-  'description' => '',
-));
+    'location' => array (
+      array (
+        array (
+          'param' => 'post_type',
+          'operator' => '==',
+          'value' => 'post',
+        ),
+      ),
+    ),
+    'menu_order' => 0,
+    'position' => 'side',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'description' => '',
+  ));
 
 endif;
