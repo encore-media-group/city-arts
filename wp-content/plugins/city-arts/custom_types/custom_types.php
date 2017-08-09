@@ -1,5 +1,9 @@
 <?php
 
+/* register custom types */
+add_action( 'init', 'cptui_register_my_cpts' );
+add_action( 'init', 'cptui_register_my_taxes' );
+
 function cptui_register_my_cpts() {
 
   /**
