@@ -21,8 +21,8 @@
   <div class="col-md-6">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 540px) 100vw, 540px"
-     style="max-height:405px;"
+     sizes="(max-width: 45em) 100vw, 540px"
+     style="width:100%;"
      alt="">
   </div>
   <div class="col-md-6 p-4">
