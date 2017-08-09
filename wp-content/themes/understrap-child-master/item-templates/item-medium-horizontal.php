@@ -13,7 +13,7 @@
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'medium-540x405' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'medium-540x405' );
 
-  //check if this is "from the magazeine"..
+  //check if this is "from the magazine"..
   $flag_from_magazine = true;
 ?>
 

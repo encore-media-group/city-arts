@@ -11,6 +11,8 @@ Author URI: http://factorybeltproductions.org
 
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
+include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
+
 
 add_action('admin_menu', 'city_arts_website_menu');
 
@@ -39,7 +41,7 @@ function city_arts_admin_page() {
   // this is a WordPress security feature - see: https://codex.wordpress.org/WordPress_Nonces
   */
   /*
-  wp_nonce_field('do_something_button_button_clicked');
+  wp_nonce_field('do_something_buttodn_button_clicked');
   echo '<input type="hidden" value="true" name="do_something_button" />';
   submit_button('Do Something');
   echo '</form>';
@@ -48,23 +50,19 @@ function city_arts_admin_page() {
 }
 
 
-/*  Register custom article sidebar*/
-function article_widgets_init() {
 
+function ca_register_sidebars() {
+  /*  Register custom article sidebar*/
   register_sidebar( array(
     'name'          => 'Article sidebar',
-    'id'            => 'article-left-1',
-    'before_widget' => '<div>',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2 class="rounded">',
-    'after_title'   => '</h2>',
+    'id'            => 'article-right-1',
+    'before_widget' => '',
+    'after_widget'  => '',
+    'before_title'  => '',
+    'after_title'   => '',
   ) );
 
-}
-
-/* Register homepage widget sidebar */
-function homepage_widgets_init() {
-
+  /* Register homepage widget sidebar */
   register_sidebar( array(
     'name'          => 'Homepage sidebar',
     'id'            => 'homepage-right-1',
@@ -73,7 +71,6 @@ function homepage_widgets_init() {
     'before_title'  => '',
     'after_title'   => '',
   ) );
-
 }
 
 // Register and load top articles widget
@@ -83,8 +80,7 @@ function ca_load_widgets() {
 }
 
 add_action( 'widgets_init', 'ca_load_widgets' );
-add_action( 'widgets_init', 'homepage_widgets_init' );
-add_action( 'widgets_init', 'article_widgets_init' );
+add_action( 'widgets_init', 'ca_register_sidebars' );
 
 add_image_size( 'medium-540x405', 540, 405 );
 
@@ -231,31 +227,31 @@ function understrap_posted_on() {
 endif;
 
 if ( ! function_exists( 'get_contributors' ) ) :
-function get_contributors(){
-  $relationships = get_field('relationship');
-  $html = '';
-  if( $relationships ) {
-      $count = 0;
-      foreach( $relationships as $relationship ) {
-        if(get_post_type($relationship->ID) == 'contributor') {
-          if($count == 0) {
-//          $html .= sprintf(esc_html_x( 'by %s', 'post author', 'understrap' ),
-            $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
-            '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
-          );
-          } else{
-            $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
-            '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
+  function get_contributors(){
+    $relationships = get_field('relationship');
+    $html = '';
+    if( $relationships ) {
+        $count = 0;
+        foreach( $relationships as $relationship ) {
+          if(get_post_type($relationship->ID) == 'contributor') {
+            if($count == 0) {
+  //          $html .= sprintf(esc_html_x( 'by %s', 'post author', 'understrap' ),
+              $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
+              '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
             );
+            } else{
+              $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
+              '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
+              );
 
+            }
+            $count++;
           }
-          $count++;
         }
-      }
-  }
+    }
 
-  return $html;
-}
+    return $html;
+  }
 endif;
 
 

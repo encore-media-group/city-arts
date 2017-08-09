@@ -9,12 +9,11 @@ get_header();
 $container   = get_theme_mod( 'understrap_container_type' );
 $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 ?>
-
+FOO
 <div class="wrapper" id="single-wrapper">
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row">
-
 
 			<main class="site-main" id="main">
 

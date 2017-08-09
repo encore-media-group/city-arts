@@ -22,16 +22,13 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
 		<div class="single-post-image-hero " style="padding-bottom: <?php echo $thumbnail_height; ?>px;background-image: url('<?php echo $thumbnail_url; ?>');"></div>
 		<div><?php echo $thumbnail_caption ?></div>
 		<div>
-		<?php dynamic_sidebar( 'article-left-1' ); ?>
-			<?php if ( is_active_sidebar( 'article-1eft-1' ) ) : ?>
-				<div id="article-left-1-sidebar" class="primary-sidebar widget-area" role="complementary">
-					<?php dynamic_sidebar( 'article-left-1' ); ?>
+			<?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
+				<div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
+					<?php dynamic_sidebar( 'article-right-1' ); ?>
 				</div><!-- #primary-sidebar -->
 			<?php endif; ?>
 		</div>
 	</div>
-
-
 
 	<div class="col-sm-6 col-lg-6">
 			<header class="entry-header row">
