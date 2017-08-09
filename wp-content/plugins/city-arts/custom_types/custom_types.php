@@ -37,7 +37,6 @@ function cptui_register_my_cpts() {
 
 
 function cptui_register_my_taxes() {
-  echo "cptui_register_my_taxes CALLED";
   /**
    * Taxonomy: Article Formats.
    */
