@@ -36,7 +36,6 @@ function cptui_register_my_cpts() {
   register_post_type( "contributor", $args );
 }
 
-
 function cptui_register_my_taxes() {
   /**
    * Taxonomy: Article Formats.
@@ -53,9 +52,9 @@ function cptui_register_my_taxes() {
     "public" => false,
     "hierarchical" => false,
     "label" => "Article Formats",
-    "show_ui" => false,
+    "show_ui" => true,
     "show_in_menu" => true,
-    "show_in_nav_menus" => false,
+    "show_in_nav_menus" => true,
     "query_var" => true,
     "rewrite" => array( 'slug' => 'article_format', 'with_front' => true, ),
     "show_admin_column" => false,
@@ -174,3 +173,38 @@ function register_acf_field_group() {
   ));
   endif;
 }
+
+function populate_article_format_tax(){
+
+  $default_articles = array(
+  'art_tax' => array( 'slug' => 'article-current', 'name' => 'Article Current', 'description' => '', 'parent' => 0) ,
+  'art_tax' => array( 'slug' => 'article-enhanced', 'name' => 'Article Enhanced', 'description' => '', 'parent' => 0) ,
+  'art_tax' => array( 'slug' => 'article-past', 'name' => 'Article Past', 'description' => '', 'parent' => 0),
+  'art_tax' => array( 'slug' => 'article-simple', 'name' => 'Article Simple', 'description' => '', 'parent' => 0),
+
+  );
+
+  foreach($default_articles as $article) {
+    if(!term_exists( $article['slug'] ) ) {
+      wp_insert_term( $article['name'], 'article_format', $article );
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
