@@ -16,7 +16,6 @@ include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 /* register custom types */
 add_action( 'init', 'cptui_register_my_cpts' );
 add_action( 'init', 'cptui_register_my_taxes' );
-add_action('init', 'populate_article_format_tax');
 
 add_action( 'widgets_init', 'register_acf_field_group');
 
@@ -35,23 +34,20 @@ function city_arts_admin_page() {
   echo '<div class="wrap">';
   echo '<h2>City Arts Website</h2>';
   echo 'Nothing to see here. This plugin is designed to provide customization to the website without specific theme dependencies.';
-  /*
+
   // Check whether the button has been pressed AND also check the nonce
-  if (isset($_POST['do_something_button']) && check_admin_referer('do_something_button_button_clicked')) {
+  if (isset($_POST['set_tax_button']) && check_admin_referer('set_tax_button_button_clicked')) {
    // the button has been pressed AND we've passed the security check
-   //
+   populate_article_format_tax();
   }
 
   echo '<form action="options-general.php?page=city-arts-plugin" method="post">';
 
-  // this is a WordPress security feature - see: https://codex.wordpress.org/WordPress_Nonces
-  */
-  /*
-  wp_nonce_field('do_something_buttodn_button_clicked');
-  echo '<input type="hidden" value="true" name="do_something_button" />';
-  submit_button('Do Something');
+  wp_nonce_field('set_tax_button_button_clicked');
+  echo '<input type="hidden" value="true" name="set_tax_button" />';
+  submit_button('Set Default Taxonomy');
   echo '</form>';
-  */
+
   echo '</div>';
 }
 

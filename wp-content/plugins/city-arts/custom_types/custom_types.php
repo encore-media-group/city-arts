@@ -177,15 +177,20 @@ function register_acf_field_group() {
 function populate_article_format_tax(){
 
   $default_articles = array(
-    'art_tax' => array( 'slug' => 'article-current', 'name' => 'Article Current', 'description' => '', 'parent' => 0) ,
-    'art_tax' => array( 'slug' => 'article-enhanced', 'name' => 'Article Enhanced', 'description' => '', 'parent' => 0) ,
-    'art_tax' => array( 'slug' => 'article-past', 'name' => 'Article Past', 'description' => '', 'parent' => 0),
-    'art_tax' => array( 'slug' => 'article-simple', 'name' => 'Article Simple', 'description' => '', 'parent' => 0)
+    array( 'slug' => 'article-current', 'name' => 'Article Current', 'description' => '', 'parent' => 0) ,
+    array( 'slug' => 'article-enhanced', 'name' => 'Article Enhanced', 'description' => '', 'parent' => 0) ,
+    array( 'slug' => 'article-past', 'name' => 'Article Past', 'description' => '', 'parent' => 0),
+    array( 'slug' => 'article-simple', 'name' => 'Article Simple', 'description' => '', 'parent' => 0)
   );
 
   foreach($default_articles as $article) {
-    if(!term_exists( $article['slug'] ) ) {
+
+    if(term_exists( $article['slug'] ) == 0 ) {
+      echo "creating new entry for " . $article['slug'] . "<br>" ;
       wp_insert_term( $article['name'], 'article_format', $article );
+    }
+    else {
+      echo "already exists: " .  $article['slug'] . "<br>" ;
     }
   }
 }
