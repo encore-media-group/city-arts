@@ -19,7 +19,6 @@ if(is_array($term_list)) {
 	$template = $term_list[0]->slug;
 }
 
-
 ?>
 
 
@@ -31,11 +30,7 @@ if(is_array($term_list)) {
 	    </div>
 	  </div>
 	</div>
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<div class="row">
-
-			<main class="site-main" id="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -45,25 +40,7 @@ if(is_array($term_list)) {
 
 				<?php endwhile; // end of the loop. ?>
 
-			</main><!-- #main -->
 
-		</div><!-- #primary -->
-
-		<?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
-				<div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
-					<?php dynamic_sidebar( 'article-right-1' ); ?>
-				</div><!-- #primary-sidebar -->
-			<?php endif; ?>
-		<!-- Do the right sidebar check -->
-		<?php //if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
-
-			<?php// get_sidebar( 'right' ); ?>
-
-		<?php// endif; ?>
-
-	</div><!-- .row -->
-
-</div><!-- Container end -->
 
 </div><!-- Wrapper end -->
 
