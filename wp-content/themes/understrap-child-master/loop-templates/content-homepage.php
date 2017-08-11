@@ -49,12 +49,13 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
         </div>
       </div>
     </div>
+  <!-- landscape banner -->
     <div class="container ad-container mt-4 px-0">
-    <div class="row no-gutters">
-      <div class="col-xl-12 py-2 text-center">
-        <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+      <div class="row no-gutters">
+        <div class="col-xl-12 py-2 text-center">
+          <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+        </div>
       </div>
-    </div>
     </div>
     <!-- section 3 -->
     <div class="container mt-4 px-0">
