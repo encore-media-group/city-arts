@@ -10,6 +10,7 @@ Author URI: http://factorybeltproductions.org
 */
 
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
+include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_250_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 
@@ -78,6 +79,7 @@ function ca_register_sidebars() {
 // Register and load top articles widget
 function ca_load_widgets() {
   register_widget( 'ca_top_articles_widget' );
+  register_widget( 'ca_300_x_250_ad_widget' );
   register_widget( 'ca_mailchimp_widget' );
 }
 

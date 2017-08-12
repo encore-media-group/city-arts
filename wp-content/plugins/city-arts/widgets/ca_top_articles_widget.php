@@ -1,7 +1,7 @@
 <?php
 
 /*
-Widget: City Arts Top Articles
+Widget: City Arts Top Articles Widget
 */
 class ca_top_articles_widget extends WP_Widget {
 
@@ -20,9 +20,6 @@ class ca_top_articles_widget extends WP_Widget {
     echo $args['before_widget'];
     if ( ! empty( $title ) )
     echo $args['before_title'];
-    echo '<div class="row"><div class="col mb-4">';
-      get_template_part( 'item-templates/item', 'ad-300x250' );
-    echo '</div></div>';
     echo '<div class="row"><div class="col-12"><h3 class="sidelines">' . $title . '</h3></div></div>';
     echo $args['after_title'];
 

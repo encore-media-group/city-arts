@@ -5,19 +5,16 @@
  * @package understrap
  */
 
+
+  $container   = get_theme_mod( 'understrap_container_type' );
+
+  $thumbnail_id = get_post_thumbnail_id( $post->ID );
+  $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
+
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'full' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
+
 ?>
-<?php
-$container   = get_theme_mod( 'understrap_container_type' );
-
-
-$thumbnail_id = get_post_thumbnail_id( $post->ID );
-$thumbnail = wp_get_attachment_image_src( $thumbnail_id, "full" );
-
-$thumbnail_url = $thumbnail[0];
-$thumbnail_width = $thumbnail[1];
-$thumbnail_height = $thumbnail[2];
-
-$thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
 <div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
     <div class="row">
@@ -29,17 +26,23 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
           <div class="row">
 
             <header class="entry-header col-12">
-            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+              <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
               <div class="entry-meta"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
-              <?php the_category( ' | ' ); ?>
             </header><!-- .entry-header -->
 
           </div>
 
           <div class="row">
             <div class="col-12 col-md-7 col-lg-8">
-              <div class="single-post-image-hero " style="padding-bottom: <?php echo $thumbnail_height; ?>px;background-image: url('<?php echo $thumbnail_url; ?>');"></div>
-              <div><?php echo $thumbnail_caption ?></div>
+              <img
+               src="<?php echo esc_url( $img_src ); ?>"
+               srcset="<?php echo esc_attr( $img_srcset ); ?>"
+               sizes="(max-width: 2000px) 100vw, 730px"
+               style=""
+               class="img-fluid"
+               alt="">
+
+                    <div><?php echo $thumbnail_caption ?></div>
               <?php the_content(); ?>
             </div>
             <div class="col-12 col-md-5 col-lg-4 ">
