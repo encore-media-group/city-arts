@@ -33,7 +33,7 @@
           </div>
 
           <div class="row">
-            <div class="col-12 col-md-7 col-lg-8">
+            <div class="col-12 col-md-7 col-lg-8 px-0">
               <img
                src="<?php echo esc_url( $img_src ); ?>"
                srcset="<?php echo esc_attr( $img_srcset ); ?>"
@@ -54,6 +54,7 @@
                         </div><!-- #primary-sidebar -->
                       <?php endif; ?>
 
+<!--
                   <div class="attached-images">
                     <ul>
                     <?php
@@ -65,7 +66,7 @@
                         <li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
                     <?php } ?>
                     </ul>
-                  </div>
+                  </div>-->
               <?php
               wp_link_pages( array(
                 'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
@@ -120,11 +121,6 @@
           </div>
         </div>
       </div>
-
-
-
-
-
 
 
     </div><!-- #primary -->

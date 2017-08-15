@@ -87,13 +87,26 @@ add_action( 'widgets_init', 'ca_load_widgets' );
 add_action( 'widgets_init', 'ca_register_sidebars' );
 
 
-add_image_size( 'medium-540x405', 540, 405 );
+
+add_image_size( 'ca-1140-760', 1140, 760, true );
+add_image_size( 'ca-730-487', 730, 487, true);
+add_image_size( 'ca-540x360', 540, 360, true );
+add_image_size( 'ca-320x213', 320, 213, true );
+add_image_size( 'ca-255x170', 255, 170, true );
+add_image_size( 'ca-160x107', 160, 107, true );
+
 
 // Register the three useful image sizes for use in Add Media modal
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
 function wpshout_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'medium-540x405' => __( 'Medium 540x405' )
+        'ca-1140-760' => __( 'ca-1140-760' ),
+        'ca-730-487' => __( 'ca-730-487' ),
+        'ca-540x360' => __( 'ca-540x360' ),
+        'ca-320x213' => __( 'ca-320x213' ),
+        'ca-255x170' => __( 'ca-255x170' ),
+        'ca-160x107' => __( 'ca-160x107' ),
+
     ) );
 }
 

@@ -9298,6 +9298,12 @@ span.category-label {
         margin: 0 auto;
         max-width: 100%;
         width: 100%; }
+    #single-wrapper #content article .updated-image:first-of-type,
+    #page-wrapper #content article .updated-image:first-of-type {
+      display: none; }
+    #single-wrapper #content article .updated-image:first-of-type + em,
+    #page-wrapper #content article .updated-image:first-of-type + em {
+      display: none; }
     #single-wrapper #content article .single-post-image-hero,
     #page-wrapper #content article .single-post-image-hero {
       height: auto;

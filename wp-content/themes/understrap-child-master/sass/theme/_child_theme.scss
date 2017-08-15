@@ -66,6 +66,13 @@ span.category-label {
     }
 
   article {
+    .updated-image:first-of-type {
+      display: none;
+    }
+    .updated-image:first-of-type + em {
+      display: none;
+    }
+
     .single-post-image-hero {
       height: auto;
       max-width: 100%;
