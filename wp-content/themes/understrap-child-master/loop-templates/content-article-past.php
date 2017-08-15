@@ -15,17 +15,17 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
 
 ?>
-<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+<div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
     <div class="row">
 
       <main class="site-main" id="main">
 
-        <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
+        <article <?php post_class('col px-0'); ?> id="post-<?php the_ID(); ?>">
 
           <div class="row">
 
-            <header class="entry-header col-12">
+            <header class="entry-header col-12 px-0">
               <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
               <div class="entry-meta"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
             </header><!-- .entry-header -->
@@ -82,6 +82,51 @@
           </footer><!-- .entry-footer -->
         </article><!-- #post-## -->
       </main><!-- #main -->
+      <?php
+      $genre_cat = get_category_by_slug('genre');
+      $genre_cat_id = $genre_cat->term_id;
+
+      $categories = get_the_category($post->ID);
+      $category_ids = array();
+      if ( $categories ) {
+          foreach ( $categories as $individual_category ) {
+            if( ($individual_category->term_id) == $genre_cat_id) {
+              $category_ids[] = $individual_category->term_id;
+            }
+          }
+        }
+
+      $recent_posts_medium_small = new WP_Query(array(
+        'posts_per_page' => 6,
+        'offset' => 0,
+        'category__in' => $category_ids,
+        'post__not_in' => array($post->ID),
+        'ignore_sticky_posts' => 1,
+        'meta_query' => array(array('key' => '_thumbnail_id' ))
+        )
+      );
+      ?>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="sidelines">RELATED ARTICLES</h3>
+          <div class="row no-gutters">
+          <?php  while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
+            <div class="col-md-4 pb-2">
+              <?php get_template_part( 'item-templates/item', 'small' ); ?>
+            </div>
+          <?php endwhile;
+            wp_reset_postdata();
+          ?>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
     </div><!-- #primary -->
   </div><!-- .row -->
 </div><!-- Container end -->

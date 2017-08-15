@@ -100,7 +100,7 @@ function update_image_urls_in_posts() {
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish'");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish' and id=18989");
   // limit 0, 5000000");
   return $myrows;
 }
@@ -118,14 +118,13 @@ function swap_images_from_post($post) {
   libxml_use_internal_errors(true);
 
   $doc = new DOMDocument();
-  $doc->loadHTML(mb_convert_encoding($post->post_content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+  $doc->loadHTML('<html>' . mb_convert_encoding($post->post_content, 'HTML-ENTITIES', 'UTF-8') .'</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
   $doc->encoding = 'UTF-8';
 
   $xml = simplexml_import_dom($doc);
   $images = $xml->xpath('//img');
 
   foreach ($images as $img) {
-
     if(strpos($img['src'], 'wp-content') === false ){
 
       $img_src = $img['src'];
@@ -153,7 +152,7 @@ function swap_images_from_post($post) {
       $match_index = array_search( $img_src, $attached_images  );
       if($match_index !== false) {
         if( $match_index >= 0) {
-          $img['class'] = "";
+          $img['class'] = " updated-image";
           $img['height'] = "";
           $img['width'] = "";
           $img['src'] = "/wp-content/uploads/" . $attached_images[$match_index];
@@ -172,8 +171,14 @@ function swap_images_from_post($post) {
   $trim_off_front = strpos($doc->saveHTML(),'<body>') + 6;
   $trim_off_end = (strrpos($doc->saveHTML(),'</body>')) - strlen($doc->saveHTML());
 
-  $content_out = substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
+//  $content_out = substr($doc->saveHTML(), $trim_off_front, $trim_off_end);
+   $content_out =  str_replace(array('<html>','</html>') , '' , $doc->saveHTML());
+   $content_out_to_strip = $content_out;
+//   $content_out = strip_tags($content_out_to_strip, "<p><a><b><i><strong><img><blockquote><em><h1><h2><h3><h4>");
+//  $content_is_updated = true;
 
+  //  $content_out =  $doc->saveHTML();
+  echo "OUTPUT: " . $content_out . "<br>";
   return array(
     'content_is_updated' => $content_is_updated,
     'post_content' => $content_out
