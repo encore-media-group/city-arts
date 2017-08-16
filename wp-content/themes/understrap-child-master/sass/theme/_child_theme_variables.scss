@@ -50,7 +50,29 @@ $font-family-serif:      "alda", serif !default;
 $font-family-monospace:  $font-family-sans-serif !default;
 $font-family-base:       $font-family-sans-serif !default;
 
-$headings-font-family:    "ingra-condensed";
+$font-size-p: 1.5em;
+$font-weight-p: 100;
+
+$headings-font-family:    "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          $black !default;
+
+$article-heading-font-family: "ingra", Arial, "sans-serif";
+$article-heading-font-weight: 200;
+$article-heading-font-size-h1: 3.5rem;
+
+$article-byline-font-family: "ff-basic-gothic";
+$article-byline-font-weight: 500;
+$article-byline-font-size: 1em;
+
+
+/*
+font-size: 40px;
+font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+font-weight: normal;
+margin-bottom: 0;
+*/
+
+
+

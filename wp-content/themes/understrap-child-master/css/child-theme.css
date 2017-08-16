@@ -7,6 +7,12 @@
 "alda" font-weights: 300, 400
 body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-gothic
 */
+/*
+font-size: 40px;
+font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+font-weight: normal;
+margin-bottom: 0;
+*/
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -434,7 +440,7 @@ output {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "ingra-condensed";
+  font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
   font-weight: 500;
   line-height: 1.1;
   color: #000; }
@@ -9243,6 +9249,10 @@ h1.navbar-brand a:hover {
   display: block; }
 
 /* Menu */
+p {
+  font-size: 1.5em;
+  font-weight: 100; }
+
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
 
@@ -9298,30 +9308,28 @@ span.category-label {
         margin: 0 auto;
         max-width: 100%;
         width: 100%; }
+    #single-wrapper #content article h1.entry-title,
+    #page-wrapper #content article h1.entry-title {
+      font-family: "ingra", Arial, "sans-serif";
+      font-weight: 200;
+      font-size: 3.5rem; }
     #single-wrapper #content article .updated-image:first-of-type,
     #page-wrapper #content article .updated-image:first-of-type {
       display: none; }
     #single-wrapper #content article .updated-image:first-of-type + em,
     #page-wrapper #content article .updated-image:first-of-type + em {
       display: none; }
-    #single-wrapper #content article .single-post-image-hero,
-    #page-wrapper #content article .single-post-image-hero {
-      height: auto;
-      max-width: 100%;
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: contain;
-      background-position: top center; }
     #single-wrapper #content article .entry-header,
     #page-wrapper #content article .entry-header {
-      display: inline-block; }
-    #single-wrapper #content article .entry-content,
-    #page-wrapper #content article .entry-content {
-      margin: 0 auto;
-      padding-top: 0; }
+      padding-top: 1em; }
+    #single-wrapper #content article .entry-meta,
+    #page-wrapper #content article .entry-meta {
+      padding-bottom: 1em; }
+    #single-wrapper #content article .byline,
+    #page-wrapper #content article .byline {
+      font-family: "ff-basic-gothic";
+      font-weight: 500;
+      font-size: 1em; }
 
 #wrapper-footer {
   background-color: #000;

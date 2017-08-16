@@ -21,11 +21,11 @@
 
       <main class="site-main" id="main">
 
-        <article <?php post_class('col px-0'); ?> id="post-<?php the_ID(); ?>">
+        <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
 
           <div class="row">
 
-            <header class="entry-header col-12 px-0">
+            <header class="entry-header col-9">
               <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
               <div class="entry-meta"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
             </header><!-- .entry-header -->
@@ -33,7 +33,7 @@
           </div>
 
           <div class="row">
-            <div class="col-12 col-md-7 col-lg-8 px-0">
+            <div class="col-12 col-md-7 col-lg-8 ">
               <img
                src="<?php echo esc_url( $img_src ); ?>"
                srcset="<?php echo esc_attr( $img_srcset ); ?>"
@@ -42,17 +42,17 @@
                class="img-fluid"
                alt="">
 
-                    <div><?php echo $thumbnail_caption ?></div>
+              <div><?php echo $thumbnail_caption ?></div>
               <?php the_content(); ?>
             </div>
             <div class="col-12 col-md-5 col-lg-4 ">
               <div class="entry-content">
 
-                      <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
-                        <div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
-                          <?php dynamic_sidebar( 'article-right-1' ); ?>
-                        </div><!-- #primary-sidebar -->
-                      <?php endif; ?>
+                <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
+                  <div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
+                    <?php dynamic_sidebar( 'article-right-1' ); ?>
+                  </div><!-- #primary-sidebar -->
+                <?php endif; ?>
 
 <!--
                   <div class="attached-images">
@@ -83,44 +83,10 @@
           </footer><!-- .entry-footer -->
         </article><!-- #post-## -->
       </main><!-- #main -->
-      <?php
-      $genre_cat = get_category_by_slug('genre');
-      $genre_cat_id = $genre_cat->term_id;
 
-      $categories = get_the_category($post->ID);
-      $category_ids = array();
-      if ( $categories ) {
-          foreach ( $categories as $individual_category ) {
-            if( ($individual_category->term_id) == $genre_cat_id) {
-              $category_ids[] = $individual_category->term_id;
-            }
-          }
-        }
 
-      $recent_posts_medium_small = new WP_Query(array(
-        'posts_per_page' => 6,
-        'offset' => 0,
-        'category__in' => $category_ids,
-        'post__not_in' => array($post->ID),
-        'ignore_sticky_posts' => 1,
-        'meta_query' => array(array('key' => '_thumbnail_id' ))
-        )
-      );
-      ?>
-      <div class="row">
-        <div class="col-12">
-          <h3 class="sidelines">RELATED ARTICLES</h3>
-          <div class="row no-gutters">
-          <?php  while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
-            <div class="col-md-4 pb-2">
-              <?php get_template_part( 'item-templates/item', 'small' ); ?>
-            </div>
-          <?php endwhile;
-            wp_reset_postdata();
-          ?>
-          </div>
-        </div>
-      </div>
+
+
 
 
     </div><!-- #primary -->
