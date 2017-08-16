@@ -23,13 +23,8 @@ if(is_array($term_list)) {
 
 
 <div class="wrapper" id="single-wrapper">
-	<div class="container ad-container">
-	  <div class="row no-gutters">
-	    <div class="col-xl-12 py-2 text-center">
-	      <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
-	    </div>
-	  </div>
-	</div>
+
+  <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
@@ -39,13 +34,7 @@ if(is_array($term_list)) {
 
 	<?php endwhile; // end of the loop. ?>
 
-	<div class="container ad-container">
-		<div class="row no-gutters">
-		  <div class="col-xl-12 py-2 text-center">
-		    <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
-		  </div>
-		</div>
-	</div>
+  <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
 
 		<!-- RELATED ARTICLES -->
       <?php
@@ -76,7 +65,7 @@ if(is_array($term_list)) {
       <div class="row">
         <div class="col-12">
           <h3 class="sidelines py-4">RELATED ARTICLES</h3>
-          <div class="row">
+          <div class="row px-4">
           <?php
           $count = 0;
 
