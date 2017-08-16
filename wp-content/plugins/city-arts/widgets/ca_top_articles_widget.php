@@ -20,17 +20,20 @@ class ca_top_articles_widget extends WP_Widget {
     echo $args['before_widget'];
     if ( ! empty( $title ) )
     echo $args['before_title'];
-    echo '<div class="row"><div class="col-12"><h3 class="sidelines">' . $title . '</h3></div></div>';
+    echo '<div class="row"><div class="col-12 px-0"><h3 class="sidelines">' . $title . '</h3></div></div>';
     echo $args['after_title'];
 
     $recent_posts = new WP_Query(array('posts_per_page' => 3, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
     // This is where you run the code and display the output
-
+    $row_num  = 1;
     while( $recent_posts->have_posts() ) : $recent_posts->the_post();
-      echo __('<div class="col-12">');
-        get_template_part( 'item-templates/item', 'very-small' );
+      echo __('<div class="row">');
+        set_query_var( 'row_num', $row_num );
+        get_template_part( 'item-templates/item', '320x213' );
       echo __('</div>');
-      endwhile;
+       $row_num++;
+    endwhile;
+     $row_num = null;
     wp_reset_postdata();
 
     echo $args['after_widget'];

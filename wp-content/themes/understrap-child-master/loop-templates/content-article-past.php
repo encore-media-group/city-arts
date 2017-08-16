@@ -11,8 +11,8 @@
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'full' );
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 
 ?>
 <div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
@@ -45,7 +45,7 @@
               <div><?php echo $thumbnail_caption ?></div>
               <?php the_content(); ?>
             </div>
-            <div class="col-12 col-md-5 col-lg-4 ">
+            <div class="col-12 col-md-5 col-lg-4">
               <div class="entry-content">
 
                 <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>

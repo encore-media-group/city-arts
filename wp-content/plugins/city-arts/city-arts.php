@@ -9,6 +9,7 @@ Version: 1.0
 Author URI: http://factorybeltproductions.org
 */
 
+/* include required files */
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_250_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
@@ -17,9 +18,9 @@ include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 /* register custom types */
 add_action( 'init', 'cptui_register_my_cpts' );
 add_action( 'init', 'cptui_register_my_taxes' );
-
 add_action( 'widgets_init', 'register_acf_field_group');
 
+/* register this in the admin menu */
 add_action('admin_menu', 'city_arts_website_menu');
 
 function city_arts_website_menu(){
@@ -87,16 +88,18 @@ add_action( 'widgets_init', 'ca_load_widgets' );
 add_action( 'widgets_init', 'ca_register_sidebars' );
 
 
+add_action( 'after_setup_theme', 'ca_add_image_sizes' );
+function ca_add_image_sizes() {
+  add_image_size( 'ca-1140-760', 1140, 760, true );
+  add_image_size( 'ca-730-487', 730, 487, true);
+  add_image_size( 'ca-540x360', 540, 360, true );
+  add_image_size( 'ca-320x213', 320, 213, true );
+  add_image_size( 'ca-255x170', 255, 170, true );
+  add_image_size( 'ca-160x107', 160, 107, true );
+}
 
-add_image_size( 'ca-1140-760', 1140, 760, true );
-add_image_size( 'ca-730-487', 730, 487, true);
-add_image_size( 'ca-540x360', 540, 360, true );
-add_image_size( 'ca-320x213', 320, 213, true );
-add_image_size( 'ca-255x170', 255, 170, true );
-add_image_size( 'ca-160x107', 160, 107, true );
 
-
-// Register the three useful image sizes for use in Add Media modal
+// Register the useful image sizes for use in Add Media modal
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
 function wpshout_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(

@@ -9253,6 +9253,20 @@ p {
   font-size: 1.5em;
   font-weight: 100; }
 
+h3.sidelines {
+  font-family: "tk-alternate-gothic-no-2-d-n4";
+  font-weight: 700;
+  font-size: 2em; }
+
+.item-320x213 h3 {
+  font-family: "tk-ingra-condensed-n2";
+  font-weight: 200; }
+
+.item-320x213 .contributors {
+  font-family: "tk-ff-basic-gothic-web-pro-n5";
+  font-weight: 500;
+  font-size: 0.7em; }
+
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
 
