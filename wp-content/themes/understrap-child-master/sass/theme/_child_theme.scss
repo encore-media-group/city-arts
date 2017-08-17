@@ -5,11 +5,12 @@ p {
   font-weight: $font-weight-p;
 }
 
-h3 {
-  &.sidelines {
+h2, h3 {
+  &.sidebar {
     font-family: $sideline-heading-font-family;
     font-weight: $sideline-heading-font-weight;
-    font-size: $sideline-heading-font-size-h3;
+    font-size: $sideline-heading-font-size-h2;
+    text-transform: uppercase;
   }
 }
 
@@ -134,6 +135,7 @@ span.category-label {
 
   }
 }
+
 #wrapper-footer {
   background-color: #000;
   color: #fff;
@@ -143,6 +145,7 @@ span.category-label {
     overflow: hidden;
     text-align: center;
 }
+
 .sidelines:before,
 .sidelines:after {
     background-color: $black;
@@ -160,6 +163,24 @@ span.category-label {
 .sidelines:after {
     left: 0.5em;
     margin-right: -50%;
+}
+
+.mail-wrapper {
+  border: 3px solid $black;
+  .sidebar {
+    margin-top: -0.5em;
+    background-color: white;
+  }
+
+  #mc-embedded-subscribe {
+    background-color: $red;
+    margin-left: 10px;
+    border-radius: 33px;
+  }
+  #mc_embed_signup {
+    clear: left;
+    width: 100%;
+  }
 }
 
 

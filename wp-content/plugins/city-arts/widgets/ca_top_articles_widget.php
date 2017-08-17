@@ -20,7 +20,7 @@ class ca_top_articles_widget extends WP_Widget {
     echo $args['before_widget'];
     if ( ! empty( $title ) )
     echo $args['before_title'];
-    echo '<div class="row"><div class="col-12 px-0"><h3 class="sidelines">' . $title . '</h3></div></div>';
+    echo '<div class="row"><div class="col-12 px-0"><h2 class="sidelines sidebar">' . $title . '</h2></div></div>';
     echo $args['after_title'];
 
     $recent_posts = new WP_Query(array('posts_per_page' => 3, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));

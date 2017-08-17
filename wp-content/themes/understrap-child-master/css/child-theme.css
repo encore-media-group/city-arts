@@ -9253,10 +9253,11 @@ p {
   font-size: 1.5em;
   font-weight: 100; }
 
-h3.sidelines {
+h2.sidebar, h3.sidebar {
   font-family: "tk-alternate-gothic-no-2-d-n4";
   font-weight: 700;
-  font-size: 2em; }
+  font-size: 2em;
+  text-transform: uppercase; }
 
 .author {
   text-transform: uppercase; }
@@ -9265,7 +9266,7 @@ h3.sidelines {
   color: #a18967; }
 
 .contributors {
-  font-family: "tk-ff-basic-gothic-web-pro-n5";
+  font-family: "tk-ff-basic-gothic-web-pro-n3";
   font-weight: 500;
   font-size: 1em; }
   .contributors .by {
@@ -9378,3 +9379,16 @@ span.category-label {
 .sidelines:after {
   left: 0.5em;
   margin-right: -50%; }
+
+.mail-wrapper {
+  border: 3px solid #000; }
+  .mail-wrapper .sidebar {
+    margin-top: -0.5em;
+    background-color: white; }
+  .mail-wrapper #mc-embedded-subscribe {
+    background-color: #ed302f;
+    margin-left: 10px;
+    border-radius: 33px; }
+  .mail-wrapper #mc_embed_signup {
+    clear: left;
+    width: 100%; }

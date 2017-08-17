@@ -15,13 +15,9 @@ class ca_300_x_250_ad_widget extends WP_Widget {
 
   // Creating widget front-end
   public function widget( $args, $instance ) {
-    $html = '<div class="row"><div class="col mb-4">';
-
-    $html .= get_template_part( 'item-templates/item', 'ad-300x250' );
-
-    $html .= '</div></div>';
-
-    echo $html;
+    echo '<div class="row"><div class="col mb-4">';
+    echo get_template_part( 'item-templates/item', 'ad-300x250' );
+    echo '</div></div>';
   }
 
   // Widget Backend

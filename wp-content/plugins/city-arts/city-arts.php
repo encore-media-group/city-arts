@@ -23,9 +23,14 @@ add_action( 'widgets_init', 'register_acf_field_group');
 /* register this in the admin menu */
 add_action('admin_menu', 'city_arts_website_menu');
 
+/* enqueue any scripts or css required by the city arts plugin */
+function ca_enqueue_scripts_and_styles() {
+  wp_enqueue_style( 'better-simple-slideshow-js', '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css');
+}
+add_action('wp_enqueue_scripts', 'ca_enqueue_scripts_and_styles');
+
 function city_arts_website_menu(){
   add_menu_page('City Arts', 'City Arts ', 'manage_options', 'city-arts-plugin', 'city_arts_admin_page');
-
 }
 
 function city_arts_admin_page() {
