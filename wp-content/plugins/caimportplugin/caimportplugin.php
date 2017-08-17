@@ -178,7 +178,7 @@ function swap_images_from_post($post) {
 //  $content_is_updated = true;
 
   //  $content_out =  $doc->saveHTML();
-  echo "updating: " . $$ID . "<br>";
+  echo "updating: " . $ID . "<br>";
   return array(
     'content_is_updated' => $content_is_updated,
     'post_content' => $content_out
