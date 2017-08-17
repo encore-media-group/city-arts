@@ -25,7 +25,7 @@
        alt="">
     </div>
     <div class="col-12 text-center">
-      <span class="category-label my-2 px-2">Category</span>
+      <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       <h4 class="mb-0 px-4 mx-4"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"> <?php echo get_contributors(); ?></div>
     </div>

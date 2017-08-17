@@ -22,7 +22,8 @@ $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'thumbnail' );
        alt="">
     </div>
     <div class="col px-0 pt-0">
-      <span class="category-label align-top  mb-2 pl-2 pr-2">Category</span>
+            <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+
       <h6><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h6>
       <div class="contributors"><?php echo get_contributors() ?></div>
     </div>

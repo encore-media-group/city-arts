@@ -23,7 +23,7 @@
     <div class="item-content-container p-4">
       <div class="caption"><?php echo $thumbnail_caption ?></div>
       <div>
-        <span class="category-label mb-2 pl-2 pr-2">Category</span>
+              <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       </div>
       <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>

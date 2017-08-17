@@ -30,7 +30,7 @@
     <?php if( $flag_from_magazine ):?>
       <div>FROM THE MAGAZINE</div>
     <?php endif; ?>
-    <span class="category-label mb-2 pl-2 pr-2">Category</span>
+    <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
     <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
     <div class="contributors"> <?php echo understrap_posted_on(); ?> </div>
     <div class="excerpt"><?php echo $post->post_excerpt; ?></div>

@@ -9309,7 +9309,10 @@ span.category-label {
   display: inline-block;
   text-transform: uppercase;
   background-color: #ffee33;
-  font-size: .7em; }
+  font-size: 0.7em;
+  height: 2em;
+  font-family: "tk-ff-basic-gothic-web-pro-n3";
+  font-weight: 500; }
 
 .current-section .header {
   background-color: #000;

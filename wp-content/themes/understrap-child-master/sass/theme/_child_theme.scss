@@ -77,7 +77,10 @@ span.category-label {
   display: inline-block;
   text-transform: uppercase;
   background-color: $yellow;
-  font-size: .7em;
+  font-size: 0.7em;
+  height: 2em;
+  font-family: $item-category-label-font-family;
+  font-weight: $item-category-font-weight-medium;
 }
 
 .current-section {
