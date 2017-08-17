@@ -9387,6 +9387,7 @@ span.category-label {
   border: 3px solid #000; }
   .mail-wrapper .sidebar {
     margin-top: -0.5em;
+    text-align: center;
     background-color: white; }
   .mail-wrapper #mc-embedded-subscribe {
     background-color: #ed302f;

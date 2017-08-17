@@ -13,10 +13,10 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 // the list of article formats is in the city arts plugin
 $term_list = wp_get_post_terms($post->ID, 'article_format', array("fields" => "all"));
 $article_format = "";
-$template = "single";
+$template = "article-past";
 
 if(is_array($term_list)) {
-	$template = $term_list[0]->slug;
+//	$template = $term_list[0]->slug;
 }
 
 ?>

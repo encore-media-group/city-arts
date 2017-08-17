@@ -100,7 +100,7 @@ function update_image_urls_in_posts() {
 function get_all_wp_posts() {
   global $wpdb;
   $table = "wpsa_posts";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish' and id=18989");
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish'");// and id=18989");
   // limit 0, 5000000");
   return $myrows;
 }
@@ -178,7 +178,7 @@ function swap_images_from_post($post) {
 //  $content_is_updated = true;
 
   //  $content_out =  $doc->saveHTML();
-  echo "OUTPUT: " . $content_out . "<br>";
+  echo "updating: " . $$ID . "<br>";
   return array(
     'content_is_updated' => $content_is_updated,
     'post_content' => $content_out
