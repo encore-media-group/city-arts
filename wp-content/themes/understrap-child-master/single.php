@@ -40,7 +40,7 @@ if(is_array($term_list)) {
   <div class="container mb-4">
       <div class="row">
         <div class="col-12">
-          <h3 class="sidelines py-4">RELATED ARTICLES</h3>
+          <h3 class="sidelines sidebar py-4">RELATED ARTICLES</h3>
           <div class="row px-4">
           <?php
           $genre_cat = get_category_by_slug('genre');

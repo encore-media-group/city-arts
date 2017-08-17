@@ -31,7 +31,15 @@ h2, h3 {
     font-weight: $item-contributors-font-weight-normal;
   }
 }
-
+.small-item {
+  h4 {
+    font-family: $subhead-small;
+  }
+  .contributors {
+    font-size: $item-contributors-font-size-small;
+    font-weight: $item-contributors-font-weight-light;
+  }
+}
 .item-320x213 {
   h3 {
     font-family: $item-320x213-font-family-h3;

@@ -9272,6 +9272,13 @@ h2.sidebar, h3.sidebar {
   .contributors .by {
     font-weight: 400; }
 
+.small-item h4 {
+  font-family: "tk-ingra-condensed-n2"; }
+
+.small-item .contributors {
+  font-size: 0.7em;
+  font-weight: 300; }
+
 .item-320x213 h3 {
   font-family: "tk-ingra-condensed-n2";
   font-weight: 200; }
