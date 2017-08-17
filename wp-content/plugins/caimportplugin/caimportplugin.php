@@ -175,7 +175,7 @@ function swap_images_from_post($post) {
    $content_out =  str_replace(array('<html>','</html>') , '' , $doc->saveHTML());
    $content_out_to_strip = $content_out;
 //   $content_out = strip_tags($content_out_to_strip, "<p><a><b><i><strong><img><blockquote><em><h1><h2><h3><h4>");
-//  $content_is_updated = true;
+  $content_is_updated = true;
 
   //  $content_out =  $doc->saveHTML();
   echo "updating: " . $ID . "<br>";
