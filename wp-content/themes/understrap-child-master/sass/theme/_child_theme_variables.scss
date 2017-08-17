@@ -45,8 +45,8 @@ body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-g
 */
 $body-color:    $black !default;
 
-$font-family-sans-serif: "alda", "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:      "alda", serif !default;
+$font-family-sans-serif: "tk-alda", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      serif !default;
 $font-family-monospace:  $font-family-sans-serif !default;
 $font-family-base:       $font-family-sans-serif !default;
 
@@ -58,13 +58,9 @@ $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          $black !default;
 
-$article-heading-font-family: "ingra", Arial, "sans-serif";
+$article-heading-font-family: "tk-ingra-condensed-n2", Arial, "sans-serif";
 $article-heading-font-weight: 200;
 $article-heading-font-size-h1: 3.5rem;
-
-$article-byline-font-family: "ff-basic-gothic";
-$article-byline-font-weight: 500;
-$article-byline-font-size: 1em;
 
 $sideline-heading-font-family: "tk-alternate-gothic-no-2-d-n4";
 $sideline-heading-font-size-h3: 2em;
@@ -73,10 +69,13 @@ $sideline-heading-font-weight: 700;
 $item-320x213-font-family-h3: "tk-ingra-condensed-n2";
 $item-320x213-font-weight-h3: 200;
 
-$item-320x213-contributors-font-family: "tk-ff-basic-gothic-web-pro-n5";
-$item-320x213-contributors-font-weight: 500;
-$item-320x213-contributors-font-size: .7em;
+$item-contributors-font-family: "tk-ff-basic-gothic-web-pro-n5";
 
+$item-contributors-font-weight-normal: 400;
+$item-contributors-font-weight-medium: 500;
+
+$item-contributors-font-size-small: .7em;
+$item-contributors-font-size-med: 1em;
 
 /*
 font-size: 40px;

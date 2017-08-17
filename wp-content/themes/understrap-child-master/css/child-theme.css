@@ -283,7 +283,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
+  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -574,7 +574,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "alda", "Helvetica Neue", Arial, sans-serif; }
+  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif; }
 
 code {
   padding: 0.2rem 0.4rem;
@@ -4435,7 +4435,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
+  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -4517,7 +4517,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
+  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -9258,14 +9258,27 @@ h3.sidelines {
   font-weight: 700;
   font-size: 2em; }
 
+.author {
+  text-transform: uppercase; }
+
+.posted-on a {
+  color: #a18967; }
+
+.contributors {
+  font-family: "tk-ff-basic-gothic-web-pro-n5";
+  font-weight: 500;
+  font-size: 1em; }
+  .contributors .by {
+    font-weight: 400; }
+
 .item-320x213 h3 {
   font-family: "tk-ingra-condensed-n2";
   font-weight: 200; }
 
-.item-320x213 .contributors {
-  font-family: "tk-ff-basic-gothic-web-pro-n5";
-  font-weight: 500;
-  font-size: 0.7em; }
+.item-320x213 .contributors,
+.item-320x213 .by {
+  font-size: 0.7em;
+  font-weight: 500; }
 
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
@@ -9324,7 +9337,7 @@ span.category-label {
         width: 100%; }
     #single-wrapper #content article h1.entry-title,
     #page-wrapper #content article h1.entry-title {
-      font-family: "ingra", Arial, "sans-serif";
+      font-family: "tk-ingra-condensed-n2", Arial, "sans-serif";
       font-weight: 200;
       font-size: 3.5rem; }
     #single-wrapper #content article .updated-image:first-of-type,
@@ -9339,11 +9352,6 @@ span.category-label {
     #single-wrapper #content article .entry-meta,
     #page-wrapper #content article .entry-meta {
       padding-bottom: 1em; }
-    #single-wrapper #content article .byline,
-    #page-wrapper #content article .byline {
-      font-family: "ff-basic-gothic";
-      font-weight: 500;
-      font-size: 1em; }
 
 #wrapper-footer {
   background-color: #000;

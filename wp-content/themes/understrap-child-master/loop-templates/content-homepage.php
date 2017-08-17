@@ -22,7 +22,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
 <div class="wrapper" id="page-wrapper">
   <main class="site-main" id="main">
     <div class="container" id="content" tabindex="-1">
-      <div class="row no-gutters">
+      <div class="row">
         <div class="col-12 col-md-7 col-lg-8 content-area" id="primary">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();

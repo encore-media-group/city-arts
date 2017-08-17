@@ -24,6 +24,7 @@ class ca_mailchimp_widget extends WP_Widget {
     echo $args['after_title'];
 
     echo '<div class="row"><div class="col mb-4">';
+    echo '<h3>SUBSCRIBE TO OUR MAILINGLIST</h3>';
       get_template_part( 'item-templates/item', 'mailchimp' );
     echo '</div></div>';
 

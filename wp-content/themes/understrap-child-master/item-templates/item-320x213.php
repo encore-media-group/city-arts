@@ -32,7 +32,7 @@
     <div class="row">
       <div class="col offset-2 px-0 py-3">
         <h3 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
-        <div class="contributors">by <?php echo get_contributors(); ?></div>
+        <div class="contributors"><?php echo get_contributors(); ?></div>
       </div>
     </div>
   </div>

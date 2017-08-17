@@ -54,7 +54,6 @@ function city_arts_admin_page() {
 }
 
 
-
 function ca_register_sidebars() {
   /*  Register custom article sidebar*/
   register_sidebar( array(
@@ -243,7 +242,7 @@ function understrap_posted_on() {
     '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   );
   $byline = get_contributors();
-  echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+  echo '<span class="byline"> ' . $byline . '</span> <span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 }
 endif;
 
@@ -258,7 +257,7 @@ if ( ! function_exists( 'get_contributors' ) ) :
             if($count == 0) {
   //          $html .= sprintf(esc_html_x( 'by %s', 'post author', 'understrap' ),
               $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
-              '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
+              '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
             );
             } else{
               $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),

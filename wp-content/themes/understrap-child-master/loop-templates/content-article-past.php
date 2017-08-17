@@ -27,7 +27,7 @@
 
             <header class="entry-header col-9">
               <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-              <div class="entry-meta"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
+              <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
             </header><!-- .entry-header -->
 
           </div>
