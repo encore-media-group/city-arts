@@ -148,8 +148,27 @@ span.category-label {
 }
 
 #wrapper-footer {
-  background-color: #000;
-  color: #fff;
+  background-color: $black;
+
+  h1, h2, h3, h4, h5, h6, p, span, div, li > a {
+    color: $white;
+  }
+
+  h2 {
+    font-family: $sideline-heading-font-family;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li,
+  .site-info {
+    font-size: $item-contributors-font-size-small;
+    font-family: $item-contributors-font-family;
+    font-weight: $item-contributors-font-weight-normal;
+    text-transform: uppercase;
+  }
 }
 
 .sidelines {

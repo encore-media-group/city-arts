@@ -9365,8 +9365,20 @@ span.category-label {
       padding-bottom: 1em; }
 
 #wrapper-footer {
-  background-color: #000;
-  color: #fff; }
+  background-color: #000; }
+  #wrapper-footer h1, #wrapper-footer h2, #wrapper-footer h3, #wrapper-footer h4, #wrapper-footer h5, #wrapper-footer h6, #wrapper-footer p, #wrapper-footer span, #wrapper-footer div, #wrapper-footer li > a {
+    color: #fff; }
+  #wrapper-footer h2 {
+    font-family: "tk-alternate-gothic-no-2-d-n4"; }
+  #wrapper-footer ul {
+    list-style: none;
+    padding-left: 0; }
+  #wrapper-footer li,
+  #wrapper-footer .site-info {
+    font-size: 0.7em;
+    font-family: "tk-ff-basic-gothic-web-pro-n3";
+    font-weight: 400;
+    text-transform: uppercase; }
 
 .sidelines {
   overflow: hidden;

@@ -12,7 +12,16 @@
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' );
+
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
+
+$img_width = wp_get_attachment_metadata($thumbnail_id)['width'];
+$img_height = wp_get_attachment_metadata($thumbnail_id)['height'];
+$img_orientation = 'landscape';
+
+if($img_width < $img_height) { $img_orientation = 'portrait'; }
+
+echo $img_orientation;
 
 ?>
 <div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">

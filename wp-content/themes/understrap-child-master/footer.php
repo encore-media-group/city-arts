@@ -16,29 +16,57 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="wrapper" id="wrapper-footer">
 
 	<div class="<?php echo esc_attr( $container ); ?>">
-		<div class="row">
-			<div class="col-md-3">
-				<h5>NEWSLETTERS</h5>
+		<div class="row px-3 justify-content-center">
+			<div class="col-12 col-sm-auto">
+				<h2>NEWSLETTERS</h2>
+				<ul>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+				</ul>
 			</div>
-			<div class="col-md-3">
-				<h5>MAGAZINE</h5>
+			<div class="col-12 col-sm-auto">
+				<h2>MAGAZINE</h2>
+				<ul>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+				</ul>
 			</div>
-			<div class="col-md-3">
-				<h5>ABOUT</h5>
+			<div class="col-12 col-sm-auto">
+				<h2>ABOUT</h2>
+				<ul>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+					<li><a href="">See it this week</a></li>
+				</ul>
 			</div>
-			<div class="col-md-3">
-				<h5>SOCIAL</h5>
+			<div class="col-12 col-sm-auto">
+				<h2>FOLLOW</h2>
+				<ul>
+					<li><a href="">twitter icon</a></li>
+					<li><a href="">face</a></li>
+					<li><a href="">instagram</a></li>
+					<li><a href="">soundcloud</a></li>
+				</ul>
+
 			</div>
 		</div>
 
 		<div class="row">
 
-			<div class="col-md-12">
+			<div class="col-12">
 
 				<footer class="site-footer" id="colophon">
 
-					<div class="site-info">
-								&copy; <?php echo date("Y"); ?> City Arts Magazine<span class="sep"> | </span> Encore Media
+					<div class="site-info text-center">
+								&copy; <?php echo date("Y"); ?>  Encore Media Group
 
 					</div><!-- .site-info -->
 
