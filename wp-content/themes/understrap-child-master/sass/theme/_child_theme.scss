@@ -2,14 +2,14 @@
 /* Menu */
 p {
   font-size: $font-size-p;
-  font-weight: $font-weight-p;
+  font-weight: $font-weight-thin;
 }
 
 h2, h3 {
   &.sidebar {
     font-family: $sideline-heading-font-family;
-    font-weight: $sideline-heading-font-weight;
-    font-size: $sideline-heading-font-size-h2;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-h2;
     text-transform: uppercase;
   }
 }
@@ -23,32 +23,32 @@ h2, h3 {
   color: $orange;
 }
 .contributors {
-  font-family: $item-contributors-font-family;
-  font-weight: $item-contributors-font-weight-medium;
-  font-size: $item-contributors-font-size-med;
+  font-family: $card-meta-font-family;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-h6;
 
   .by {
-    font-weight: $item-contributors-font-weight-normal;
+    font-weight: $font-weight-normal;
   }
 }
 .small-item {
   h4 {
-    font-family: $subhead-small;
+    font-family: $subhead-font-family;
   }
   .contributors {
-    font-size: $item-contributors-font-size-small;
-    font-weight: $item-contributors-font-weight-light;
+    font-size: $card-meta-font-size-small;
+    font-weight: $font-weight-light;
   }
 }
 .item-320x213 {
   h3 {
-    font-family: $item-320x213-font-family-h3;
-    font-weight: $item-320x213-font-weight-h3;
+    font-family: $subhead-font-family;
+    font-weight: $font-weight-extra-light;
   }
   .contributors,
   .by {
-    font-size: $item-contributors-font-size-small;
-    font-weight: $item-contributors-font-weight-medium;
+    font-size: $card-meta-font-size-small;
+    font-weight: $font-weight-medium;
   }
 }
 
@@ -85,10 +85,10 @@ span.category-label {
   display: inline-block;
   text-transform: uppercase;
   background-color: $yellow;
-  font-size: 0.7em;
+  font-size: $card-meta-font-size-small;
   height: 2em;
-  font-family: $item-category-label-font-family;
-  font-weight: $item-category-font-weight-medium;
+  font-family: $card-meta-font-family;
+  font-weight: $font-weight-medium;
 }
 
 .current-section {
@@ -123,9 +123,9 @@ span.category-label {
 
   article {
     h1.entry-title {
-      font-family: $article-heading-font-family;
-      font-weight: $article-heading-font-weight;
-      font-size: $article-heading-font-size-h1;
+      font-family: $subhead-font-family;
+      font-weight: $font-weight-extra-light;
+      font-size: $display4-size;
     }
 
     .updated-image:first-of-type {
@@ -164,9 +164,9 @@ span.category-label {
 
   li,
   .site-info {
-    font-size: $item-contributors-font-size-small;
-    font-family: $item-contributors-font-family;
-    font-weight: $item-contributors-font-weight-normal;
+    font-size: $card-meta-font-size-small;
+    font-family: $card-meta-font-family;
+    font-weight: $font-weight-normal;
     text-transform: uppercase;
   }
 }
@@ -200,7 +200,7 @@ span.category-label {
   .sidebar {
     margin-top: -0.5em;
     text-align: center;
-    background-color: white;
+    background-color: $white;
   }
 
   #mc-embedded-subscribe {

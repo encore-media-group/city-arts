@@ -44,53 +44,39 @@ $brand-inverse:             $gray-dark !default;
 body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-gothic
 special h1 = kepler
 */
-$body-color:    $black !default;
 
-$font-family-sans-serif: "tk-alda", "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:      serif !default;
-$font-family-monospace:  $font-family-sans-serif !default;
-$font-family-base:       $font-family-sans-serif !default;
+/*city arts colors */
+$body-color:    $black;
 
+/*city arts font faces */
+$subhead-font-family: "ingra-condensed", Arial, "sans-serif";
+$card-meta-font-family: "ff-basic-gothic-web-pro";
+$sideline-heading-font-family: "alternate-gothic-no-2-d";
+
+/*city arts font sizes */
+$card-meta-font-size-small: .7em;
 $font-size-p: 1.5em;
-$font-weight-p: 100;
+
+/* city arts font weights */
+$font-weight-thin: 100;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+
+
+/* misc overrides */
+$font-family-sans-serif: "alda", "Helvetica Neue", Arial, sans-serif;
+$font-family-serif:      serif !default;
+$font-family-monospace:  $font-family-sans-serif;
+$font-family-base:       $font-family-sans-serif;
 
 $headings-font-family:    "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-$headings-font-weight:    500 !default;
-$headings-line-height:    1.1 !default;
-$headings-color:          $black !default;
-
-$article-heading-font-family: "tk-ingra-condensed-n2", Arial, "sans-serif";
-$article-heading-font-weight: 200;
-$article-heading-font-size-h1: 3.5rem;
-
-$sideline-heading-font-family: "tk-alternate-gothic-no-2-d-n4";
-$sideline-heading-font-size-h2: 2em;
-$sideline-heading-font-weight: 700;
-
-$item-320x213-font-family-h3: "tk-ingra-condensed-n2";
-$item-320x213-font-weight-h3: 200;
-
-$subhead-small: "tk-ingra-condensed-n2";
-
-$item-contributors-font-family: "tk-ff-basic-gothic-web-pro-n3";
-
-$item-contributors-font-weight-light: 300;
-$item-contributors-font-weight-normal: 400;
-$item-contributors-font-weight-medium: 500;
-
-$item-contributors-font-size-small: .7em;
-$item-contributors-font-size-med: 1em;
-
-$item-category-label-font-family: "tk-ff-basic-gothic-web-pro-n3";
-$item-category-font-weight-medium: 500;
-
-
-/*
-font-size: 40px;
-font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-font-weight: normal;
-margin-bottom: 0;
-*/
+$headings-font-weight:    $font-weight-medium;
+$headings-line-height:    1.1;
+$headings-color:          $black;
 
 
 

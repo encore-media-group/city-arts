@@ -1,18 +1,18 @@
 @charset "UTF-8";
 /*
-"ff-basic-gothic-sc-web-pro" font-weight: 300, 500
+"ff-basic-gothic-web-pro" font-weight: 300, 500
 "alternate-gothic-no-2-d" font-weight: 400
 "kepler-std-display" font-weight: 400
 "ingra-condensed" font-weight: 200
 "alda" font-weights: 300, 400
 body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-gothic
+special h1 = kepler
 */
-/*
-font-size: 40px;
-font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-font-weight: normal;
-margin-bottom: 0;
-*/
+/*city arts colors */
+/*city arts font faces */
+/*city arts font sizes */
+/* city arts font weights */
+/* misc overrides */
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -283,9 +283,9 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif;
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   color: #000;
   background-color: #fff; }
@@ -323,7 +323,7 @@ ul ol {
   margin-bottom: 0; }
 
 dt {
-  font-weight: bold; }
+  font-weight: 700; }
 
 dd {
   margin-bottom: .5rem;
@@ -496,7 +496,7 @@ hr {
 small,
 .small {
   font-size: 80%;
-  font-weight: normal; }
+  font-weight: 400; }
 
 mark,
 .mark {
@@ -574,7 +574,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif; }
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif; }
 
 code {
   padding: 0.2rem 0.4rem;
@@ -596,7 +596,7 @@ kbd {
   kbd kbd {
     padding: 0;
     font-size: 100%;
-    font-weight: bold; }
+    font-weight: 700; }
 
 pre {
   display: block;
@@ -2088,7 +2088,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .btn, .wpcf7 input[type=submit] {
   display: inline-block;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.25;
   text-align: center;
   white-space: nowrap;
@@ -2356,7 +2356,7 @@ fieldset[disabled] a.btn {
     border-color: #ed302f; }
 
 .btn-link {
-  font-weight: normal;
+  font-weight: 400;
   color: #000;
   border-radius: 0; }
   .btn-link, .btn-link:active, .btn-link.active, .btn-link:disabled {
@@ -2471,7 +2471,7 @@ tbody.collapse.show {
   width: 100%;
   padding: 3px 1.5rem;
   clear: both;
-  font-weight: normal;
+  font-weight: 400;
   color: #d9d0c2;
   text-align: inherit;
   white-space: nowrap;
@@ -2988,7 +2988,7 @@ tbody.collapse.show {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.25;
   color: #e7e1d9;
   text-align: center;
@@ -3967,7 +3967,7 @@ tbody.collapse.show {
   display: inline-block;
   padding: 0.25em 0.4em;
   font-size: 75%;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -4048,7 +4048,7 @@ a.badge:focus, a.badge:hover {
   color: inherit; }
 
 .alert-link {
-  font-weight: bold; }
+  font-weight: 700; }
 
 .alert-dismissible .close {
   position: relative;
@@ -4317,7 +4317,7 @@ button.list-group-item-danger {
 .close {
   float: right;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
@@ -4435,9 +4435,9 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif;
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.5;
@@ -4517,9 +4517,9 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "tk-alda", "Helvetica Neue", Arial, sans-serif;
+  font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.5;
@@ -6644,10 +6644,10 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   text-transform: capitalize !important; }
 
 .font-weight-normal {
-  font-weight: normal; }
+  font-weight: 400; }
 
 .font-weight-bold {
-  font-weight: bold; }
+  font-weight: 700; }
 
 .font-italic {
   font-style: italic; }
@@ -9254,9 +9254,9 @@ p {
   font-weight: 100; }
 
 h2.sidebar, h3.sidebar {
-  font-family: "tk-alternate-gothic-no-2-d-n4";
+  font-family: "alternate-gothic-no-2-d";
   font-weight: 700;
-  font-size: 2em;
+  font-size: 2rem;
   text-transform: uppercase; }
 
 .author {
@@ -9266,21 +9266,21 @@ h2.sidebar, h3.sidebar {
   color: #a18967; }
 
 .contributors {
-  font-family: "tk-ff-basic-gothic-web-pro-n3";
+  font-family: "ff-basic-gothic-web-pro";
   font-weight: 500;
-  font-size: 1em; }
+  font-size: 1rem; }
   .contributors .by {
     font-weight: 400; }
 
 .small-item h4 {
-  font-family: "tk-ingra-condensed-n2"; }
+  font-family: "ingra-condensed", Arial, "sans-serif"; }
 
 .small-item .contributors {
   font-size: 0.7em;
   font-weight: 300; }
 
 .item-320x213 h3 {
-  font-family: "tk-ingra-condensed-n2";
+  font-family: "ingra-condensed", Arial, "sans-serif";
   font-weight: 200; }
 
 .item-320x213 .contributors,
@@ -9318,7 +9318,7 @@ span.category-label {
   background-color: #ffee33;
   font-size: 0.7em;
   height: 2em;
-  font-family: "tk-ff-basic-gothic-web-pro-n3";
+  font-family: "ff-basic-gothic-web-pro";
   font-weight: 500; }
 
 .current-section .header {
@@ -9348,7 +9348,7 @@ span.category-label {
         width: 100%; }
     #single-wrapper #content article h1.entry-title,
     #page-wrapper #content article h1.entry-title {
-      font-family: "tk-ingra-condensed-n2", Arial, "sans-serif";
+      font-family: "ingra-condensed", Arial, "sans-serif";
       font-weight: 200;
       font-size: 3.5rem; }
     #single-wrapper #content article .updated-image:first-of-type,
@@ -9369,14 +9369,14 @@ span.category-label {
   #wrapper-footer h1, #wrapper-footer h2, #wrapper-footer h3, #wrapper-footer h4, #wrapper-footer h5, #wrapper-footer h6, #wrapper-footer p, #wrapper-footer span, #wrapper-footer div, #wrapper-footer li > a {
     color: #fff; }
   #wrapper-footer h2 {
-    font-family: "tk-alternate-gothic-no-2-d-n4"; }
+    font-family: "alternate-gothic-no-2-d"; }
   #wrapper-footer ul {
     list-style: none;
     padding-left: 0; }
   #wrapper-footer li,
   #wrapper-footer .site-info {
     font-size: 0.7em;
-    font-family: "tk-ff-basic-gothic-web-pro-n3";
+    font-family: "ff-basic-gothic-web-pro";
     font-weight: 400;
     text-transform: uppercase; }
 
@@ -9407,7 +9407,7 @@ span.category-label {
   .mail-wrapper .sidebar {
     margin-top: -0.5em;
     text-align: center;
-    background-color: white; }
+    background-color: #fff; }
   .mail-wrapper #mc-embedded-subscribe {
     background-color: #ed302f;
     margin-left: 10px;
