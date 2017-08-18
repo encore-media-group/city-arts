@@ -28,7 +28,10 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 					<header class="page-header">
 						<h3 class="page-title sidelines sidebar py-4"> <?php single_cat_title() ?> </h3>
 						<div class="row justify-content-center">
+					<?php if ( $paged < 2 ) : ?>
 						<?php the_archive_description( '<div class="col-12 col-sm-10 pb-4 taxonomy-description">', '</div>' ); ?>
+					<?php endif; ?>
+
 						</div>
 					</header><!-- .page-header -->
 
