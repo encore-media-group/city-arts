@@ -13,7 +13,7 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-160x107' );
 $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
 ?>
-  <div class="row small-item">
+  <div class="row item-small">
     <div class="col-auto">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"

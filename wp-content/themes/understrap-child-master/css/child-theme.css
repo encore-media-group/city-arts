@@ -9272,10 +9272,12 @@ h2.sidebar, h3.sidebar {
   .contributors .by {
     font-weight: 400; }
 
-.small-item h4 {
+.item-small h4,
+.item-medium-small h4 {
   font-family: "ingra-condensed", Arial, "sans-serif"; }
 
-.small-item .contributors {
+.item-small .contributors,
+.item-medium-small .contributors {
   font-size: 0.7em;
   font-weight: 300; }
 

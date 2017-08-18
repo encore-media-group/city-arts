@@ -31,7 +31,8 @@ h2, h3 {
     font-weight: $font-weight-normal;
   }
 }
-.small-item {
+.item-small,
+.item-medium-small {
   h4 {
     font-family: $subhead-font-family;
   }
