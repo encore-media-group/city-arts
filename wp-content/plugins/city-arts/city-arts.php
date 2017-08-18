@@ -252,7 +252,7 @@ function understrap_posted_on() {
 endif;
 
 if ( ! function_exists( 'get_contributors' ) ) :
-  function get_contributors(d){
+  function get_contributors(){
     $relationships = get_field('relationship');
     $html = '';
     if( $relationships ) {
