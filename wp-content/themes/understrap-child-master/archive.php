@@ -27,13 +27,15 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 					<header class="page-header">
 						<h3 class="page-title sidelines sidebar py-4"> <?php single_cat_title() ?> </h3>
-					<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
+						<div class="row justify-content-center">
+						<?php the_archive_description( '<div class="col-12 col-sm-10 taxonomy-description">', '</div>' ); ?>
+						</div>
 					</header><!-- .page-header -->
 
 					<div class="row">
 
 					<?php while ( have_posts() ) : the_post(); ?>
-						<div class="col-3">
+						<div class="col-12 col-sm-6 col-lg-3">
 						<?php
 						 get_template_part( 'item-templates/item', 'medium-small' );
 						?>
