@@ -14,7 +14,7 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
 ?>
   <!-- medium small -->
-  <div class="row item-medium-small">
+  <div class="row item-medium-small pb-4">
     <div class="col-12 text-center">
       <img
        src="<?php echo esc_url( $img_src ); ?>"
@@ -24,7 +24,7 @@
        class="img-fluid"
        alt="">
     </div>
-    <div class="col-12 text-center">
+    <div class="col-12 text-center pt-4">
       <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       <h4 class="mb-0 px-4 mx-4"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
