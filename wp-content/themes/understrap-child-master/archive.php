@@ -40,7 +40,7 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 					<?php while ( have_posts() ) : the_post(); ?>
 						<div class="col-12 col-sm-6 col-lg-3">
 						<?php
-						 get_template_part( 'item-templates/item', 'medium-small' );
+						 get_template_part( 'item-templates/item', '255x170' );
 						?>
 						</div>
 					<?php endwhile; ?>

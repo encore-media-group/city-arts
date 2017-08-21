@@ -1,6 +1,6 @@
 <?php
 /**
- * Single item medium partial template.
+ * Single item 255x170 template.
  *
  * @package understrap
  */
