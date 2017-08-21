@@ -29,7 +29,7 @@ class ca_top_articles_widget extends WP_Widget {
     while( $recent_posts->have_posts() ) : $recent_posts->the_post();
       echo __('<div class="row">');
         set_query_var( 'row_num', $row_num );
-        get_template_part( 'item-templates/item', '320x213' );
+        get_template_part( 'item-templates/item', '320x213-ordered' );
       echo __('</div>');
        $row_num++;
     endwhile;

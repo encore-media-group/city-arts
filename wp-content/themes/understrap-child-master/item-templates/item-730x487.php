@@ -13,21 +13,25 @@
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 ?>
-
-  <div class="item-730x487">
-    <img src="<?php echo esc_url( $img_src ); ?>"
-     srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 46em) 100vw, 487px"
-    class="img-fluid"
-    style="max-width: 100%;height:auto;"
-    alt="">
-    <div class="item-content-container p-4">
-      <div class="caption"><?php echo $thumbnail_caption ?></div>
-      <div>
-              <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+  <div class="col item-730x487">
+    <div class="row">
+      <div class="col">
+        <img src="<?php echo esc_url( $img_src ); ?>"
+         srcset="<?php echo esc_attr( $img_srcset ); ?>"
+         sizes="(max-width: 46em) 100vw, 730px"
+        class="img-fluid"
+        style="max-width: 100%;height:auto;"
+        alt="">
       </div>
-      <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-      <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
-      <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
+
+      <div class="col item-content-container p-4">
+        <div class="caption"><?php echo $thumbnail_caption ?></div>
+        <div>
+            <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+        </div>
+        <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+        <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
+        <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
+      </div>
     </div>
   </div>

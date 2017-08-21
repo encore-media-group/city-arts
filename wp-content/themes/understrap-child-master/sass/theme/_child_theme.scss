@@ -32,7 +32,7 @@ h2, h3 {
   }
 }
 .item-small,
-.item-medium-small {
+.item-255z170 {
   h4 {
     font-family: $subhead-font-family;
   }
@@ -68,9 +68,9 @@ h2, h3 {
 
 .homepage-sidebar,
 .ad-container,
-.item-large > .item-content-container,
-.item-540x360 > .item-content-container,
-.item-730x487 > .item-content-container,
+.item-large .item-content-container,
+.item-540x360 .item-content-container,
+.item-730x487 ,
 .item-medium-horizontal,
 .item-small-horizontal {
   background-color: $gray-lightest;
