@@ -13,6 +13,17 @@ get_header();
 <?php
 $container   = get_theme_mod( 'understrap_container_type' );
 $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
+$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+$the_query = new WP_Query(array(
+    'posts_per_page' => 20,
+    'cat' => get_cat_ID('music'),
+    'meta_query' => array(array('key' => '_thumbnail_id' )),
+    'paged' => $paged
+));
+
+//$recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+
 ?>
 
 <div class="wrapper" id="archive-wrapper">
@@ -37,13 +48,32 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 					<div class="row">
 
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php
+						$count = 1;
+
+//						while ( have_posts() ) : the_post();
+
+            while( $the_query->have_posts() ) : $the_query->the_post();
+
+							if($count == 1) {
+						?>
+						<div class="col-12">
+						<?php
+						 get_template_part( 'item-templates/item', '730x487' );
+						?>
+						</div>
+						<?php
+							}
+						?>
 						<div class="col-12 col-sm-6 col-lg-3">
+
 						<?php
 						 get_template_part( 'item-templates/item', '255x170' );
 						?>
 						</div>
-					<?php endwhile; ?>
+					<?php
+							$count++;
+						endwhile; ?>
 
 				<?php else : ?>
 

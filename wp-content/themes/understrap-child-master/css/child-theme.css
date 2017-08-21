@@ -9303,7 +9303,8 @@ h2.sidebar, h3.sidebar {
 .homepage-sidebar,
 .ad-container,
 .item-large > .item-content-container,
-.item-medium > .item-content-container,
+.item-540x360 > .item-content-container,
+.item-730x487 > .item-content-container,
 .item-medium-horizontal,
 .item-small-horizontal {
   background-color: #f6f3f0; }

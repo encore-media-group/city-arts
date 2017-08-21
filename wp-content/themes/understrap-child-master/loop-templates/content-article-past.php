@@ -15,9 +15,9 @@
 
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 
-$img_width = wp_get_attachment_metadata($thumbnail_id)['width'];
-$img_height = wp_get_attachment_metadata($thumbnail_id)['height'];
-$img_orientation = 'landscape';
+  $img_width = wp_get_attachment_metadata($thumbnail_id)['width'];
+  $img_height = wp_get_attachment_metadata($thumbnail_id)['height'];
+  $img_orientation = 'landscape';
 
 if($img_width < $img_height) { $img_orientation = 'portrait'; }
 
