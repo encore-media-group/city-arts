@@ -17,7 +17,7 @@
 
   <div class="col-12 col-sm-6 item-320x213">
     <div class="row">
-      <div class="col">
+      <div class="col-12 col-lg">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 320px"
@@ -25,8 +25,10 @@
          style="max-width: 100%;height:auto;"
          alt="">
       </div>
-      <div class="col py-3">
+      <div class="col mt-2 mt-lg-0">
+        <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
         <h3 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+        <div class="excerpt py-3"><?php echo $post->post_excerpt; ?></div>
         <div class="contributors"><?php echo get_contributors(); ?></div>
       </div>
     </div>

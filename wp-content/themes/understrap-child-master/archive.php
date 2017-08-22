@@ -14,12 +14,15 @@ get_header();
 $container   = get_theme_mod( 'understrap_container_type' );
 $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
+$archive_slug =  get_queried_object()->category_nicename;
+
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+if ($paged < 2) : $posts_per_page = 15; else: $posts_per_page = 16; endif;
 
 $the_query = new WP_Query(array(
-    'posts_per_page' => 15,
-    'cat' => get_cat_ID('music'),
-    'meta_query' => array(array('key' => '_thumbnail_id' )),
+    'posts_per_page' => $posts_per_page,
+    'cat' => get_cat_ID( $archive_slug ),
+    'meta_query' => array( array('key' => '_thumbnail_id' ) ),
     'paged' => $paged
 ));
 
@@ -36,10 +39,14 @@ $the_query = new WP_Query(array(
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">
-						<h3 class="page-title sidelines sidebar py-4"> <?php single_cat_title() ?> </h3>
+						<?php if ( $paged < 2 ) : ?>
+							<h1 class="page-title text-center py-4"> <?php single_cat_title() ?> </h1>
+
+						<?php endif; ?>
+
 						<div class="row justify-content-center">
 						<?php if ( $paged < 2 ) : ?>
-							<?php the_archive_description( '<div class="col-12 col-sm-10 pb-4 taxonomy-description">', '</div>' ); ?>
+							<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
 						<?php endif; ?>
 						</div><!-- end row -->
 					</header><!-- .page-header -->
@@ -48,14 +55,16 @@ $the_query = new WP_Query(array(
 						$count = 1;
 					  echo '<div class="row">';
             while( $the_query->have_posts() ) : $the_query->the_post();
-							if ( $count == 1 ) :
+							if ( $count == 1 && $paged < 2) :
 						 		get_template_part( 'item-templates/item', '730x487' );
 						 		echo '</div><!-- end row --><div class="row pt-4">';
-							elseif ($count == 2):
+							elseif ($count == 2 && $paged < 2):
 						 		get_template_part( 'item-templates/item', '320x213' );
-							elseif ($count == 3):
+							elseif ($count == 3 && $paged < 2):
 						 		get_template_part( 'item-templates/item', '320x213' );
-						 		echo '</div><!-- end row --><div class="row">';
+						 		echo '</div><!-- end row -->';
+				 				get_template_part( 'item-templates/item', 'landscape-ad' );
+						 		echo '<div class="row">';
 							else:
 						?>
 						<div class="col-12 col-sm-6 col-lg-3">

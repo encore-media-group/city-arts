@@ -15,7 +15,7 @@
 ?>
   <div class="col item-730x487">
     <div class="row">
-      <div class="col">
+      <div class="col-12 col-lg">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 730px"

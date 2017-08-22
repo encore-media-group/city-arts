@@ -9290,6 +9290,9 @@ h2.sidebar, h3.sidebar {
   font-size: 0.7em;
   font-weight: 500; }
 
+#archive-wrapper h1.page-title {
+  font-size: 6rem; }
+
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
 

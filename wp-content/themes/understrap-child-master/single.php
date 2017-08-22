@@ -23,9 +23,9 @@ if(is_array($term_list)) {
 
 
 <div class="wrapper" id="single-wrapper">
-
-  <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
-
+	<div class="container-fluid ad-container">
+		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+	</div>
 	<?php while ( have_posts() ) : the_post(); ?>
 
 		<?php get_template_part( 'loop-templates/content', $template ); ?>
@@ -34,7 +34,9 @@ if(is_array($term_list)) {
 
 	<?php endwhile; // end of the loop. ?>
 
-  <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+	<div class="container-fluid ad-container">
+		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+	</div>
 
 	<!-- RELATED ARTICLES -->
   <div class="container mb-4">
