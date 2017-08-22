@@ -9272,16 +9272,16 @@ h2.sidebar, h3.sidebar {
   .contributors .by {
     font-weight: 400; }
 
-.item-small h4,
-.item-255z170 h4 {
+.item-small h3,
+.item-255x170 h3 {
   font-family: "ingra-condensed", Arial, "sans-serif"; }
 
 .item-small .contributors,
-.item-255z170 .contributors {
+.item-255x170 .contributors {
   font-size: 0.7em;
   font-weight: 300; }
 
-.item-320x213 h3 {
+.item-320x213 h4 {
   font-family: "ingra-condensed", Arial, "sans-serif";
   font-weight: 200; }
 
@@ -9289,6 +9289,9 @@ h2.sidebar, h3.sidebar {
 .item-320x213 .by {
   font-size: 0.7em;
   font-weight: 500; }
+
+.item-320x213 .excerpt {
+  font-weight: 300; }
 
 #archive-wrapper h1.page-title {
   font-size: 6rem; }

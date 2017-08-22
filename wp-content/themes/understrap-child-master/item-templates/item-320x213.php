@@ -27,7 +27,7 @@
       </div>
       <div class="col mt-2 mt-lg-0">
         <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
-        <h3 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+        <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
         <div class="excerpt py-3"><?php echo $post->post_excerpt; ?></div>
         <div class="contributors"><?php echo get_contributors(); ?></div>
       </div>
