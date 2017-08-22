@@ -14,17 +14,28 @@ get_header();
 $container   = get_theme_mod( 'understrap_container_type' );
 $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
-$archive_slug =  get_queried_object()->category_nicename;
-
+$archive_slug =  get_queried_object()->slug;
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
 if ($paged < 2) : $posts_per_page = 15; else: $posts_per_page = 16; endif;
 
 $the_query = new WP_Query(array(
     'posts_per_page' => $posts_per_page,
-    'cat' => get_cat_ID( $archive_slug ),
+    //'cat' => get_cat_ID( $archive_slug ),
     'meta_query' => array( array('key' => '_thumbnail_id' ) ),
-    'paged' => $paged
+    'paged' => $paged,
+    'tax_query' => [
+            [
+                'taxonomy' => 'category',
+                'field'    => 'slug',
+                'terms'    =>  array( $archive_slug ),
+                'include_children' => true,
+        				'operator' => 'IN'
+            ],
+        ],
 ));
+
+
 
 ?>
 
@@ -39,16 +50,17 @@ $the_query = new WP_Query(array(
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">
+
 						<?php if ( $paged < 2 ) : ?>
 							<h1 class="page-title text-center py-4"> <?php single_cat_title() ?> </h1>
-
 						<?php endif; ?>
 
 						<div class="row justify-content-center">
-						<?php if ( $paged < 2 ) : ?>
-							<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
-						<?php endif; ?>
+							<?php if ( $paged < 2 ) : ?>
+								<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
+							<?php endif; ?>
 						</div><!-- end row -->
+
 					</header><!-- .page-header -->
 
 					<?php
@@ -75,7 +87,7 @@ $the_query = new WP_Query(array(
 								endif;
 							$count++;
 							endwhile;
-
+							wp_reset_postdata();
 							echo "</div><!-- end row -->";
 						else :
 							get_template_part( 'loop-templates/content', 'none' );
