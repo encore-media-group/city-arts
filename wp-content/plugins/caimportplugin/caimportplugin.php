@@ -31,6 +31,8 @@ function cityarts_import_admin_page() {
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
+  set_writers();
+
   //set_contributors(); //do 1
   //set_articles(); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
@@ -41,7 +43,7 @@ function cityarts_import_admin_page() {
   // import pages by calling set_articles and update to be "pages" //do 7
   //set_excerpts(); //do 8
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
-  update_image_urls_in_posts(); // do 9
+  //update_image_urls_in_posts(); // do 9
 
     /*
     HOW TO IMPORT AND ATTACH IMAGES
@@ -407,6 +409,106 @@ function sync_posts_to_writers() {
 
   //update contributor post with list of articles
 
+}
+
+function set_writers() {
+/* this is a new version of importing writers (that needs to be renmaed to contributors that makes them a taxonomy vs. a post
+  .5 add new column to artist table that captures the taxonomoy id
+  0. create temporary writer class
+  1. pull from author post table and create new taxonomy
+  2. associate those with the posts by running this query:
+  update tmp_author_post tap,  tmp_article_export_7_9_2017 tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid
+
+  3. rename writer to contributor
+*/
+
+/* get the authors */
+  global $wpdb;
+  $myrows = $wpdb->get_results( "SELECT * FROM tmp_author_post");
+
+  if ($myrows) {
+    foreach ( $myrows as $myrow ) {
+      $drupal_id = $myrow->nid;
+      $post_title = wp_strip_all_tags($myrow->post_title);
+      $post_slug = slug($myrow->wp_ready_postname);
+      $post_content = $myrow->body_value;
+
+      /* set taxonomy */
+      $writer = array( 'slug' => $post_slug, 'name' => $post_title, 'description' => $post_content, 'parent' => 0);
+
+      //echo "<pre>" . var_dump($writer) . "</pre>";
+      insert_writer($writer, $drupal_id);
+    }
+  }
+
+  // sycn it all up..
+  connect_posts_to_new_writers();
+
+}
+
+function insert_writer( $writer, $drupal_id ) {
+  $cat_id = 0;
+
+  if( term_exists( $writer['slug'] ) == 0 ) {
+    echo "creating new entry for " . $writer['slug'] . "<br>" ;
+
+    $cid = wp_insert_term( $writer['name'], 'writer', $writer );
+
+    if ( ! is_wp_error( $cid ) ) {
+      echo "preparing to update database with " . var_dump($cid) . "<br>";
+
+      $cat_id = isset( $cid['term_id'] ) ? $cid['term_id'] : 0;
+      update_writer_with_cat_id( $cat_id, $drupal_id );
+
+    } else {
+       echo $cid->get_error_message();
+    }
+  }
+  else {
+    echo "already exists: " .  $writer['slug'] . "<br>" ;
+  }
+  return $cat_id;
+}
+
+function update_writer_with_cat_id( $cat_id, $drupal_id ) {
+  if( !empty($cat_id) && !empty($drupal_id) ) {
+    global $wpdb;
+    $wpdb->query('UPDATE tmp_author_post SET new_cat_id = ' . $cat_id .  ' WHERE nid = ' . $drupal_id);
+    echo 'success on insert of drupal_id: ' . $drupal_id . ' and wp_post_id' . $cat_id .'<br>';
+  } else {
+    echo 'error on insert of drupal_id: ' . $drupal_id . "<br>";
+  }
+}
+
+function connect_posts_to_new_writers() {
+
+  /* does the article import table have a wordpress id? */
+  global $wpdb;
+  $table = "tmp_article_export_7_9_2017";
+
+  $wpdb->query("update tmp_author_post tap,  ". $table . " tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid");
+
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
+
+  $count = 0;
+
+  if ($myrows) {
+    foreach ( $myrows as $myrow ) {
+      $count++;
+      echo "# " . $count . " - ";
+      $new_wp_id = $myrow->new_wp_id;
+      $new_wp_writer_cat_id = $myrow->new_wp_writer_cat_id;
+
+      if( $new_wp_writer_cat_id > 0 ) {
+
+        wp_set_object_terms(  $new_wp_id , array( (int)$new_wp_writer_cat_id ), 'writer' , false );
+
+      } else {
+        echo "not updating -> ";
+      }
+      echo 'new_wp_id: ' . $new_wp_id . " - " . $new_wp_writer_cat_id . "<br>";
+    }
+  }
 
 }
 

@@ -1,5 +1,35 @@
 <?php
 
+function cptui_register_my_taxes_writer() {
+
+  /**
+   * Taxonomy: Writers.
+   */
+
+  $labels = array(
+    "name" => __( "Writers", "understrap-child" ),
+    "singular_name" => __( "Writer", "understrap-child" ),
+  );
+
+  $args = array(
+    "label" => __( "Writers", "understrap-child" ),
+    "labels" => $labels,
+    "public" => true,
+    "hierarchical" => false,
+    "label" => "Writers",
+    "show_ui" => true,
+    "show_in_menu" => true,
+    "show_in_nav_menus" => true,
+    "query_var" => true,
+    "rewrite" => array( 'slug' => 'writer', 'with_front' => true, ),
+    "show_admin_column" => true,
+    "show_in_rest" => false,
+    "rest_base" => "",
+    "show_in_quick_edit" => true,
+  );
+  register_taxonomy( "writer", array( "post" ), $args );
+}
+
 
 function cptui_register_my_cpts() {
 

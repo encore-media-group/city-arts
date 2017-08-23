@@ -36,7 +36,6 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
         <?php
 
           $posts = get_field('relationship');
-
           if( $posts ):
             foreach( $posts as $post):
               setup_postdata($post);
