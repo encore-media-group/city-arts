@@ -15,11 +15,13 @@
 
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 
-  $img_width = wp_get_attachment_metadata($thumbnail_id)['width'];
-  $img_height = wp_get_attachment_metadata($thumbnail_id)['height'];
+  $image_attachment_metadata = wp_get_attachment_metadata($thumbnail_id);
+  $img_width = isset($image_attachment_metadata['width']) ? $image_attachment_metadata['width'] : 0;
+  $img_height = isset($image_attachment_metadata['height']) ? $image_attachment_metadata['height'] : 0;
+
   $img_orientation = 'landscape';
 
-if($img_width < $img_height) { $img_orientation = 'portrait'; }
+if( $img_width < $img_height ) { $img_orientation = 'portrait'; }
 
 echo $img_orientation;
 
