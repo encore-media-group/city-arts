@@ -1,6 +1,6 @@
 <?php
 /**
- * Single post partial template.
+ * Single contributor partial template.
  *
  * @package understrap
  */

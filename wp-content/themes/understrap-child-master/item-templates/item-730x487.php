@@ -14,7 +14,7 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 ?>
   <div class="col item-730x487">
-    <div class="row">
+    <div class="row no-gutters">
       <div class="col-12 col-lg">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
@@ -24,7 +24,7 @@
         alt="">
       </div>
 
-      <div class="col item-content-container p-4">
+      <div class="col item-content-container py-4 pl-4">
         <div class="caption"><?php echo $thumbnail_caption ?></div>
         <div>
             <?php get_template_part( 'item-templates/item', 'category-label' ); ?>

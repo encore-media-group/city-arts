@@ -32,7 +32,7 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-12 col-lg">
         <?php
 
           $posts = get_field('relationship');
@@ -40,19 +40,21 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
           if( $posts ):
             foreach( $posts as $post):
               setup_postdata($post);
-
+              echo '<div class="row">';
               get_template_part( 'item-templates/item', '320x213' );
-
+              echo "</div>";
             endforeach;
             wp_reset_postdata();
           endif;
         ?>
       </div>
-      <div class="col">
-        <!-- Do the right sidebar check -->
-        <?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
-          <?php get_sidebar( 'right' ); ?>
-        <?php endif; ?>
+      <div class="col-12 col-lg">
+        <div class="row">
+          <!-- Do the right sidebar check -->
+          <?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
+            <?php get_sidebar( 'right' ); ?>
+          <?php endif; ?>
+        </div>
       </div>
     </div><!-- end row -->
   </div>
