@@ -360,7 +360,7 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
   }
   return $output;
 }
-
+/* not used anymore, we use a taxonomy instead.
 function update_post_relationship($new_wp_id, $new_wp_contributor_id) {
   //this really only needs to be run once.
   $article_relationship = get_field( 'relationship', $new_wp_id );
@@ -385,7 +385,8 @@ function update_post_relationship($new_wp_id, $new_wp_contributor_id) {
 
   echo "updating -> ";
 }
-
+*/
+/* not used anymore, we use a taxonomy instead.
 function sync_posts_to_writers() {
   global $wpdb;
   $table = "tmp_article_export_7_9_2017";
@@ -410,7 +411,7 @@ function sync_posts_to_writers() {
   //update contributor post with list of articles
 
 }
-
+*/
 function set_writers() {
 /* this is a new version of importing writers (that needs to be renmaed to contributors that makes them a taxonomy vs. a post
   .5 add new column to artist table that captures the taxonomoy id
@@ -511,7 +512,7 @@ function connect_posts_to_new_writers() {
   }
 
 }
-
+/* not used anymore, we use a taxonomy instead.
 function set_contributors() {
 
   /*
@@ -531,6 +532,7 @@ function set_contributors() {
   so for the contrinbutor wp_post_id -> update that meta_value for key "relationship" by adding the article wp_post_ids
   ****
   */
+  /*
   global $wpdb;
   $myrows = $wpdb->get_results( "SELECT * FROM tmp_author_post");
 
@@ -590,7 +592,7 @@ function set_contributors() {
       }
     }
 }
-
+*/
 function set_articles() {
   global $wpdb;
 
