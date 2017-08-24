@@ -19,7 +19,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 if ($paged < 2) : $posts_per_page = 15; else: $posts_per_page = 16; endif;
 
-$the_query = new
+$the_query = new WP_Query(array(
     'posts_per_page' => $posts_per_page,
     'meta_query' => array( array('key' => '_thumbnail_id' ) ),
     'paged' => $paged,
