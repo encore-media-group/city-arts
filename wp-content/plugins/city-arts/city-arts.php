@@ -255,26 +255,24 @@ endif;
 
 if ( ! function_exists( 'get_contributors' ) ) :
   function get_contributors(){
-    $relationships = get_field('relationship');
-    $html = '';
-    if( $relationships ) {
-        $count = 0;
-        foreach( $relationships as $relationship ) {
-          if(get_post_type($relationship->ID) == 'contributor') {
-            if($count == 0) {
-  //          $html .= sprintf(esc_html_x( 'by %s', 'post author', 'understrap' ),
-              $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
-              '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
-            );
-            } else{
-              $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
-              '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_permalink( $relationship->ID ) ) . '">' . esc_html( get_the_title( $relationship->ID ) ) . '</a></span>'
-              );
+    $writers = get_the_terms(get_the_ID(), 'writer');
+      $html = '';
 
-            }
-            $count++;
-          }
+    if( $writers ) {
+      $count = 0;
+      foreach( $writers as $writer ) {
+        if($count == 0) {
+          $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
+          '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
+        );
+        } else{
+          $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
+          '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
+          );
+
         }
+        $count++;
+      }
     }
 
     return $html;
