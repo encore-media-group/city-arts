@@ -60,6 +60,20 @@ function city_arts_admin_page() {
   echo '</div>';
 }
 
+function get_disciplines() {
+  return array(
+    'music',
+    'visual-art',
+    'art',
+    'film',
+    'dance',
+    'comedy',
+    'books-talks',
+    'food-design',
+    'food-style'
+    );
+}
+
 
 function ca_register_sidebars() {
   /*  Register custom article sidebar*/
