@@ -23,6 +23,22 @@ $container = get_theme_mod( 'understrap_container_type' );
   <script src="https://use.typekit.net/faz4bwi.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
 	<?php wp_head(); ?>
+	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21626118154/cityarts_mediumrectangle', [300, 250], 'div-gpt-ad-1503646437266-0').addService(googletag.pubads());
+    googletag.defineSlot('/21626118154/cityarts_leaderboards', [[728, 90]], 'div-gpt-ad-1503646437266-1').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
 </head>
 
 <body <?php body_class(); ?>>
