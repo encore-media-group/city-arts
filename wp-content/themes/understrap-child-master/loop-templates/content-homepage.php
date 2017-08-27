@@ -24,12 +24,16 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <div class="container" id="content" tabindex="-1">
       <div class="row">
         <div class="col-12 col-md-7 col-lg-8 content-area" id="primary">
+          <div class="row">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();
-              get_template_part( 'item-templates/item', 'large' );
+//              get_template_part( 'item-templates/item', 'large' );
+              get_template_part( 'item-templates/item', '730x487-vertical' );
+
             endwhile;
             wp_reset_postdata();
           ?>
+          </div>
           <div class="row no-gutters">
           <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
             <div class="col-md-6 pb-2">

@@ -18,7 +18,6 @@
 
 ?>
 
-
   <div class="col pl-0 pr-2 item-320x213  item-320x213-ordered">
     <div class="row">
       <div class="col-2 my-auto px-2 text-center"><h3><?echo $row_num_local ?>.</h3></div>

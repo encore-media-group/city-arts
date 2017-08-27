@@ -8,14 +8,14 @@
 ?>
 <?php
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
-  $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
+
 ?>
-  <div class="col item-730x487">
+  <div class="col item-730x487-verticals">
     <div class="row no-gutters">
-      <div class="col-12 col-lg">
+      <div class="col-12">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 730px"
@@ -24,8 +24,8 @@
         alt="">
       </div>
 
-      <div class="col item-content-container py-4 pl-4">
-        <div class="caption"><?php echo $thumbnail_caption ?></div>
+      <div class="col-12 item-content-container py-4 pl-4">
+        <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
         <div>
             <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
         </div>

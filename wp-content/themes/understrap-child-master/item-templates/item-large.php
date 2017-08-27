@@ -14,7 +14,7 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
 ?>
 
-  <div class="item-large mb-4">
+  <div class="item-large mb-4">large
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 46em) 100vw, 440px"

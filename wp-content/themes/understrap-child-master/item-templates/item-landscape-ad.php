@@ -8,8 +8,8 @@
 ?>
 
 <div class="row no-gutters">
-  <div class="col-xl-12 py-2 text-center">
-    Advertisement
+  <div class="col-xl-12 pb-3 text-center">
+    <span style="font-size:.5em;">ADVERTISEMENT</span>
     <div class=" mx-auto " style="max-width:728px;height:90px;">
 
     <!-- /21626118154/cityarts_leaderboards -->

@@ -67,7 +67,7 @@ $the_query = new WP_Query(array(
 					  echo '<div class="row">';
             while( $the_query->have_posts() ) : $the_query->the_post();
 							if ( $count == 1 && $paged < 2) :
-						 		get_template_part( 'item-templates/item', '730x487' );
+						 		get_template_part( 'item-templates/item', '730x487-horizontal' );
 						 		echo '</div><!-- end row --><div class="row pt-4">';
 							elseif ($count == 2 && $paged < 2):
 						 		get_template_part( 'item-templates/item', '320x213' );
