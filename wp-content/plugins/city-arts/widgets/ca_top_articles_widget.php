@@ -26,7 +26,7 @@ class ca_top_articles_widget extends WP_Widget {
     echo $args['after_title'];
 
     $recent_posts = new WP_Query(array(
-        'posts_per_page' => 3, 'offset' => 10,
+        'posts_per_page' => 4, 'offset' => 10,
           'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
     $row_num  = 1;

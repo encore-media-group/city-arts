@@ -31,6 +31,7 @@ h2, h3 {
     font-weight: $font-weight-normal;
   }
 }
+
 .item-160x107,
 .item-255x170 {
   h3 {
@@ -60,9 +61,7 @@ h2, h3 {
   h1.page-title {
     font-size: $display1-size;
   }
-
 }
-
 
 #responsive-menu-pro-header {
   border-bottom: solid 1px $gray-light;
@@ -78,6 +77,7 @@ h2, h3 {
 
 .homepage-sidebar,
 .ad-container,
+.ad-300x250,
 .item-large .item-content-container,
 .item-540x360 .item-content-container,
 .item-730x487-horizontal .item-content-container,
