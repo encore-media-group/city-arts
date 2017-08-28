@@ -1,6 +1,6 @@
 <?php
 /**
- * Single item medium partial template.
+ * Single item item-540x360-horizontal.php partial template.
  *
  * @package understrap
  */
@@ -10,8 +10,8 @@
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'medium-540x405' );
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'medium-540x405' );
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-540x360' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-540x360' );
 
   //check if this is "from the magazine"..
   $flag_from_magazine = true;
@@ -22,7 +22,8 @@
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 45em) 100vw, 540px"
-     style="width:100%;"
+    class="img-fluid"
+    style="max-width: 100%;height:auto;"
      alt="">
   </div>
   <div class="col-md-6 p-4">

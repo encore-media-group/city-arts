@@ -16,13 +16,13 @@ $recent_posts_medium_small = new WP_Query(array('posts_per_page' => 2, 'offset' 
 
 $recent_posts_medium_small_bottom = new WP_Query(array('posts_per_page' => 4, 'offset' => 6, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
-$recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'offset' => 10, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+$recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'offset' => 12, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
 ?>
 <div class="wrapper" id="page-wrapper">
   <main class="site-main" id="main">
     <div class="container" id="content" tabindex="-1">
-      <div class="row">
+      <div class="row pt-4">
         <div class="col-12 col-md-7 col-lg-8 content-area" id="primary">
           <div class="row">
           <?php
@@ -105,7 +105,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <div class="container mt-4 px-0">
         <?php
           while( $recent_posts_medium_horiztonal->have_posts() ) : $recent_posts_medium_horiztonal->the_post();
-            get_template_part( 'item-templates/item', 'medium-horizontal' );
+            get_template_part( 'item-templates/item', '540x360-horizontal' );
           endwhile;
           wp_reset_postdata();
         ?>

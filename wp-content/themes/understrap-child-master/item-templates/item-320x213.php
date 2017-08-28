@@ -15,7 +15,6 @@
 ?>
 
 
-  <!--div class="col-12 col-sm-6 item-320x213"-->
   <div class="col-12 col-sm item-320x213">
     <div class="row">
       <div class="col-12 col-lg">
