@@ -9272,11 +9272,11 @@ h2.sidebar, h3.sidebar {
   .contributors .by {
     font-weight: 400; }
 
-.item-small h3,
+.item-160x107 h3,
 .item-255x170 h3 {
   font-family: "ingra-condensed", Arial, "sans-serif"; }
 
-.item-small .contributors,
+.item-160x107 .contributors,
 .item-255x170 .contributors {
   font-size: 0.7em;
   font-weight: 300; }
@@ -9310,7 +9310,8 @@ h2.sidebar, h3.sidebar {
 .ad-container,
 .item-large .item-content-container,
 .item-540x360 .item-content-container,
-.item-730x487 .item-content-container,
+.item-730x487-horizontal .item-content-container,
+.item-730x487-vertical .item-content-container,
 .item-medium-horizontal,
 .item-small-horizontal {
   background-color: #f6f3f0; }

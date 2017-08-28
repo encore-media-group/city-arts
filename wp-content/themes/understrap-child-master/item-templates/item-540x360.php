@@ -1,6 +1,6 @@
 <?php
 /**
- * Single item medium 540x360 partial template.
+ * Single item 540x360 partial template.
  *
  * @package understrap
  */
@@ -10,8 +10,8 @@
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'medium-540x360' );
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'medium-540x360' );
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-540x360' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-540x360' );
 ?>
 
   <div class="item-540x360">

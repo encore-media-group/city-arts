@@ -27,17 +27,16 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
           <div class="row">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();
-//              get_template_part( 'item-templates/item', 'large' );
               get_template_part( 'item-templates/item', '730x487-vertical' );
 
             endwhile;
             wp_reset_postdata();
           ?>
           </div>
-          <div class="row no-gutters">
+          <div class="row pt-4 no-gutters">
           <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
             <div class="col-md-6 pb-2">
-              <?php get_template_part( 'item-templates/item', 'small' ); ?>
+              <?php get_template_part( 'item-templates/item', '160x107' ); ?>
             </div>
           <?php endwhile;
             wp_reset_postdata();
@@ -54,7 +53,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
       </div>
     </div>
   <!-- landscape banner -->
-    <div class="container ad-container mt-4 px-0">
+    <div class="container-fluid ad-container mt-4 px-0">
       <div class="row no-gutters">
         <div class="col-xl-12 py-2 text-center">
           <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
@@ -65,21 +64,26 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <div class="container mt-4 px-0">
       <div class="row">
         <div class="col-12 col-sm-6">
-          <?php get_template_part( 'item-templates/item', 'current' ); ?>
-          <div class="row mt-4">
+          <div class="row">
           <?php while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-6">
+              <?php set_query_var( 'show_excerpt', true ); ?>
               <?php  get_template_part( 'item-templates/item', '255x170' ); ?>
              </div>
           <?php endwhile;
             wp_reset_postdata();
           ?>
           </div>
+          <div class="row">
+            <div class="col-auto mx-auto">
+              <?php  get_template_part( 'item-templates/item', 'mailchimp' ); ?>
+            </div>
+          </div>
         </div>
         <div class="col-12 col-sm-6">
           <?php
           while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
-            get_template_part( 'item-templates/item', 'medium' );
+            get_template_part( 'item-templates/item', '540x360' );
           endwhile;
           wp_reset_postdata();
           ?>
@@ -90,6 +94,7 @@ $recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'off
     <div class="container mt-4 px-0">
       <div class="row px-3">
         <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
+          <?php set_query_var( 'show_excerpt', false ); ?>
           <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-5"><?php  get_template_part( 'item-templates/item', '255x170' ); ?></div>
         <?php endwhile;
           wp_reset_postdata();

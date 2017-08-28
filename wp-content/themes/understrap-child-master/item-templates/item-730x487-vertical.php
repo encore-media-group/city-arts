@@ -13,7 +13,7 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 
 ?>
-  <div class="col item-730x487-verticals">
+  <div class="col px-0 item-730x487-vertical">
     <div class="row no-gutters">
       <div class="col-12">
         <img src="<?php echo esc_url( $img_src ); ?>"

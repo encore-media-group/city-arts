@@ -12,9 +12,12 @@
 
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-255x170' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-255x170' );
+
+  $show_excerpt = isset( $show_excerpt ) ? $show_excerpt : false ;
+
 ?>
   <!-- item 255x170 -->
-  <div class="row item-255x170 py-4 text-center">
+  <div class="row item-255x170 text-center">
     <div class="col-12">
       <img
        src="<?php echo esc_url( $img_src ); ?>"
@@ -28,5 +31,8 @@
       <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       <h3 class="mb-0 px-2"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
+     <?php if( $show_excerpt ) : ?>
+        <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
+      <?php endif; ?>
     </div>
   </div>
