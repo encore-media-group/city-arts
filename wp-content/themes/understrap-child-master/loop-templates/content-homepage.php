@@ -130,13 +130,15 @@ $recent_posts_see_it_this_week = new WP_Query(
         <div class="col">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
         </div>
-        <div class="col col-lg-5">
-          <?php
-            while( $recent_posts_see_it_this_week->have_posts() ) : $recent_posts_see_it_this_week->the_post();
-              get_template_part( 'item-templates/item', '730x487-vertical' );
-            endwhile;
-            wp_reset_postdata();
-          ?>
+        <div class="col">
+          <div class="row">
+            <?php
+              while( $recent_posts_see_it_this_week->have_posts() ) : $recent_posts_see_it_this_week->the_post();
+                get_template_part( 'item-templates/item', '730x487-vertical' );
+              endwhile;
+              wp_reset_postdata();
+            ?>
+          </div>
         </div>
       </div>
     </div>
