@@ -9416,7 +9416,11 @@ span.category-label {
 .mail-wrapper {
   border: 3px solid #000; }
   .mail-wrapper .sidebar {
+    display: table;
+    margin: 0 auto;
     margin-top: -0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
     text-align: center;
     background-color: #fff; }
   .mail-wrapper #mc-embedded-subscribe {

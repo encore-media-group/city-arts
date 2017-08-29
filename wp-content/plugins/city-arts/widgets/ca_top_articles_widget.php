@@ -32,7 +32,7 @@ class ca_top_articles_widget extends WP_Widget {
     $row_num  = 1;
 
     while( $recent_posts->have_posts() ) : $recent_posts->the_post();
-      echo __('<div class="row">');
+      echo __('<div class="row mb-2">');
         set_query_var( 'row_num', $row_num );
         set_query_var( 'show_numbers' , $show_numbers_checkbox);
         set_query_var( 'show_thumbnails' , $show_images_checkbox);

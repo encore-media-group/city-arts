@@ -7,14 +7,13 @@
 
 ?>
 
-
-<div class=" mx-auto current-section">
-  <div class="row header no-gutters">
-    <div class="col-md-5 title">Current</div>
-    <div class="col-md-7 copy">Explore arts and cultural events in Seattle in a new way with our interactive calendar tools</div>
+<div class="row">
+  <div class="col mail-wrapper">
+    <h2 class="sidebar">Current</h2>
   </div>
-  <div class="row no-gutters">
-    <div class="col-md-6 make-my" style="height:191px;">Make My</div>
-    <div class="col-md-6 picky" style="height:191px;">Picky</div>
+</div>
+<div class="row">
+  <div class="col">
+    Explore arts and cultural events in Seattle in a new way with our interactive calendar tools
   </div>
 </div>
