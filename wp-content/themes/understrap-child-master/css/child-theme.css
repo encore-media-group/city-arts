@@ -9301,7 +9301,8 @@ h2.sidebar, h3.sidebar {
   border-bottom: solid 1px #ece7e1; }
 
 #archive-wrapper,
-#wrapper-index {
+#wrapper-index,
+#search-wrapper {
   padding-top: 7em;
   padding-left: 0;
   padding-right: 0;
