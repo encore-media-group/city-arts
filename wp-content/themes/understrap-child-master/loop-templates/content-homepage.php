@@ -37,9 +37,9 @@ $recent_posts_see_it_this_week = new WP_Query(
 ?>
 <div class="wrapper" id="page-wrapper">
   <main class="site-main" id="main">
-    <div class="container" id="content" tabindex="-1">
+    <div class="container mb-4 px-0" id="content" tabindex="-1">
       <div class="row pt-4">
-        <div class="col-12 col-md-7 col-lg-8 content-area" id="primary">
+        <div class="col-12 col-md-7 col-lg-8 px-0 content-area" id="primary">
           <div class="row">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();
@@ -50,7 +50,7 @@ $recent_posts_see_it_this_week = new WP_Query(
           </div>
           <div class="row pt-4 justify-content-between">
           <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-            <div class="col-md-6 px-0 pb-2">
+            <div class="col-lg-6 px-0 mb-4">
               <?php get_template_part( 'item-templates/item', '160x107' ); ?>
             </div>
           <?php endwhile;
@@ -67,16 +67,14 @@ $recent_posts_see_it_this_week = new WP_Query(
         </div>
       </div>
     </div>
-  <!-- landscape banner -->
-    <div class="container-fluid ad-container mt-4 px-0">
+    <div class="container-fluid ad-container my-4 px-0">
       <div class="row no-gutters">
         <div class="col-xl-12 py-2 text-center">
           <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
         </div>
       </div>
     </div>
-    <!-- section 3 -->
-    <div class="container mt-4 px-0">
+    <div class="container py-4 px-0">
       <div class="row">
         <div class="col-12 col-sm-6">
           <div class="row">
@@ -98,15 +96,15 @@ $recent_posts_see_it_this_week = new WP_Query(
         <div class="col-12 col-sm-6">
           <?php
           while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
-            get_template_part( 'item-templates/item', '540x360' );
+            get_template_part( 'item-templates/item', '540x360-vertical' );
           endwhile;
           wp_reset_postdata();
           ?>
         </div>
       </div>
     </div>
-    <div class="container mt-4 px-0">
-      <div class="row justify-content-between">
+    <div class="container py-4 px-0">
+      <div class="row d-flex justify-content-between">
         <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
           <?php set_query_var( 'show_excerpt', false ); ?>
           <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-5"><?php  get_template_part( 'item-templates/item', '255x170' ); ?></div>
@@ -115,8 +113,7 @@ $recent_posts_see_it_this_week = new WP_Query(
         ?>
       </div>
     </div>
-    <!--from the magazine -->
-    <div class="container mt-4 px-0">
+    <div class="container py-4 px-0">
         <?php
           while( $recent_posts_medium_horiztonal->have_posts() ) : $recent_posts_medium_horiztonal->the_post();
             get_template_part( 'item-templates/item', '540x360-horizontal' );
@@ -124,14 +121,13 @@ $recent_posts_see_it_this_week = new WP_Query(
           wp_reset_postdata();
         ?>
     </div>
-
-    <div class="container mt-4 px-0">
+    <div class="container py-4 px-0">
       <div class="row">
-        <div class="col">
+        <div class="col-12 col-md-4 mr-sm-5 pb-sm-4">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row see-it-this-week ">
             <?php
               while( $recent_posts_see_it_this_week->have_posts() ) : $recent_posts_see_it_this_week->the_post();
                 get_template_part( 'item-templates/item', '730x487-vertical' );
@@ -142,15 +138,15 @@ $recent_posts_see_it_this_week = new WP_Query(
         </div>
       </div>
     </div>
-        <div class="container mt-4 px-0">
-          <div class="row justify-content-between">
-            <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
-              <?php set_query_var( 'show_excerpt', false ); ?>
-              <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-5"><?php  get_template_part( 'item-templates/item', '255x170' ); ?></div>
-            <?php endwhile;
-              wp_reset_postdata();
-            ?>
-          </div>
+    <div class="container py-4 px-0">
+      <div class="row d-flex justify-content-between">
+        <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
+          <?php set_query_var( 'show_excerpt', false ); ?>
+          <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-5"><?php  get_template_part( 'item-templates/item', '255x170' ); ?></div>
+        <?php endwhile;
+          wp_reset_postdata();
+        ?>
+      </div>
     </div>
   </main>
 </div>

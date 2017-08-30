@@ -9310,12 +9310,18 @@ h2.sidebar, h3.sidebar {
 .ad-container,
 .ad-300x250,
 .item-large .item-content-container,
-.item-540x360 .item-content-container,
+.item-540x360-vertical .item-content-container,
+.item-540x360-horizontal .item-content-container,
 .item-730x487-horizontal .item-content-container,
 .item-730x487-vertical .item-content-container,
-.item-medium-horizontal,
 .item-small-horizontal {
   background-color: #f6f3f0; }
+
+.see-it-this-week .item-730x487-vertical .item-content-container {
+  background-color: #f9e1de; }
+
+.item-730x487-vertical .item-content-container {
+  max-width: 730px; }
 
 .see-it-this-week-container {
   background-color: #ffee33; }
@@ -9328,19 +9334,16 @@ span.category-label {
   text-transform: uppercase;
   background-color: #ffee33;
   font-size: 0.7em;
-  height: 2em;
+  min-height: 2em;
   font-family: "ff-basic-gothic-web-pro";
   font-weight: 500; }
 
-.current-section .header {
+.current .current-icons {
+  max-width: 10rem; }
+
+.current .bottom {
   background-color: #000;
   color: #fff; }
-
-.current-section .make-my {
-  background-color: #f5c6c0; }
-
-.current-section .picky {
-  background-color: #b5dcd6; }
 
 #single-wrapper,
 #page-wrapper {

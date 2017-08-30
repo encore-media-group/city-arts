@@ -8,12 +8,36 @@
 ?>
 
 <div class="row">
-  <div class="col mail-wrapper">
+  <div class="col mt-2 mail-wrapper text-center current">
     <h2 class="sidebar">Current</h2>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    Explore arts and cultural events in Seattle in a new way with our interactive calendar tools
+    <h6>an interative calendar</h4>
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <a href="">
+          <img
+            class="current-icons dice"
+            src=""
+            srcset="/wp-content/themes/understrap-child-master/assets/icon-dice.svg">
+            <h1>MAKE MY DAY/NIGHT</h1>
+            <h3>roll the dice</h3>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <a href="">
+          <img class="current-icons finger"
+            src=""
+            srcset="/wp-content/themes/understrap-child-master/assets/icon-finger.svg">
+          <h1>PICKY PICKY</h1>
+          <h3>create your own adventure</h3>
+        </a>
+      </div>
+    </div>
+    <div class="row bottom py-2">
+      <div class="col">
+        plug in - go out
+      </div>
+    </div>
   </div>
 </div>

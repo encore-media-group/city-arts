@@ -14,8 +14,8 @@
 
 ?>
   <div class="col px-0 item-730x487-vertical">
-    <div class="row no-gutters">
-      <div class="col-12">
+    <div class="row">
+      <div class="col-12 px-0">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 730px"
@@ -24,7 +24,7 @@
         alt="">
       </div>
 
-      <div class="col-12 item-content-container py-4 px-4">
+      <div class="col-12 py-4 px-4 item-content-container">
         <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
         <div>
             <?php get_template_part( 'item-templates/item', 'category-label' ); ?>

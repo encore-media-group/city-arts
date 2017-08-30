@@ -27,7 +27,7 @@
        class="img-fluid"
        alt="">
     </div>
-    <div class="col-12 pt-4">
+    <div class="col-12 py-4">
       <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       <h3 class="mb-0 px-2"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>

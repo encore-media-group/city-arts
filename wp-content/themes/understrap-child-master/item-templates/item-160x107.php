@@ -14,7 +14,7 @@ $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-160x107' );
 $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
 ?>
   <div class="row item-160x107">
-    <div class="col-auto">
+    <div class="col-auto pl-4 pl-sm-0">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
        sizes="(max-width: 10em) 100vw, 160px"
@@ -22,7 +22,7 @@ $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
        style="max-width: 100%;height:auto;"
        alt=""><!-- height: 107px; width: 160px;  -->
     </div>
-    <div class="col pr-0">
+    <div class="col pr-0 pl-lg-3">
       <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       <h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"><?php echo get_contributors() ?></div>
