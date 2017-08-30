@@ -10,7 +10,7 @@ $catquery = new WP_Query( 'cat=' . ($cat_idObj->term_id)  . '&posts_per_page=1' 
 
 $recent_posts = new WP_Query(array('posts_per_page' => 2,'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
-$recent_posts_medium = new WP_Query(array('posts_per_page' => 1, 'offset' => 3, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+$recent_posts_medium = new WP_Query(array('posts_per_page' => 1, 'offset' => 13, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
 $recent_posts_medium_small = new WP_Query(array('posts_per_page' => 2, 'offset' => 4, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 

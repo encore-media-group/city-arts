@@ -285,7 +285,7 @@ html {
 body {
   font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: #000;
   background-color: #fff; }
@@ -496,7 +496,7 @@ hr {
 small,
 .small {
   font-size: 80%;
-  font-weight: 400; }
+  font-weight: 300; }
 
 mark,
 .mark {
@@ -2088,7 +2088,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .btn, .wpcf7 input[type=submit] {
   display: inline-block;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.25;
   text-align: center;
   white-space: nowrap;
@@ -2356,7 +2356,7 @@ fieldset[disabled] a.btn {
     border-color: #ed302f; }
 
 .btn-link {
-  font-weight: 400;
+  font-weight: 300;
   color: #000;
   border-radius: 0; }
   .btn-link, .btn-link:active, .btn-link.active, .btn-link:disabled {
@@ -2471,7 +2471,7 @@ tbody.collapse.show {
   width: 100%;
   padding: 3px 1.5rem;
   clear: both;
-  font-weight: 400;
+  font-weight: 300;
   color: #d9d0c2;
   text-align: inherit;
   white-space: nowrap;
@@ -2988,7 +2988,7 @@ tbody.collapse.show {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.25;
   color: #e7e1d9;
   text-align: center;
@@ -4437,7 +4437,7 @@ button.close {
   display: block;
   font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.5;
@@ -4519,7 +4519,7 @@ button.close {
   padding: 1px;
   font-family: "alda", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.5;
@@ -6644,7 +6644,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   text-transform: capitalize !important; }
 
 .font-weight-normal {
-  font-weight: 400; }
+  font-weight: 300; }
 
 .font-weight-bold {
   font-weight: 700; }
@@ -9270,10 +9270,11 @@ h2.sidebar, h3.sidebar {
   font-weight: 500;
   font-size: 1rem; }
   .contributors .by {
-    font-weight: 400; }
+    font-weight: 300; }
 
-.item-160x107 h3,
-.item-255x170 h3 {
+.item-160x107 h3, .item-160x107 h4,
+.item-255x170 h3,
+.item-255x170 h4 {
   font-family: "ingra-condensed", Arial, "sans-serif"; }
 
 .item-160x107 .contributors,
@@ -9281,7 +9282,7 @@ h2.sidebar, h3.sidebar {
   font-size: 0.7em;
   font-weight: 300; }
 
-.item-320x213 h4 {
+.item-320x213 h3, .item-320x213 h4 {
   font-family: "ingra-condensed", Arial, "sans-serif";
   font-weight: 200; }
 
@@ -9391,7 +9392,7 @@ span.category-label {
   #wrapper-footer .site-info {
     font-size: 0.7em;
     font-family: "ff-basic-gothic-web-pro";
-    font-weight: 400;
+    font-weight: 300;
     text-transform: uppercase; }
 
 .sidelines {

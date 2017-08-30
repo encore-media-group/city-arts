@@ -34,7 +34,7 @@ h2, h3 {
 
 .item-160x107,
 .item-255x170 {
-  h3 {
+  h3, h4 {
     font-family: $subhead-font-family;
   }
   .contributors {
@@ -43,7 +43,7 @@ h2, h3 {
   }
 }
 .item-320x213 {
-  h4 {
+  h3, h4 {
     font-family: $subhead-font-family;
     font-weight: $font-weight-extra-light;
   }
