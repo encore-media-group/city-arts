@@ -43,7 +43,7 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 						 * called content-search.php and that will be used instead.
 						 */
 //						get_template_part( 'loop-templates/content', 'search' );
-						echo '<div class="row">';
+						echo '<div class="row py-4">';
 						get_template_part( 'item-templates/item', '320x213' );
 						echo '</div>';
 						?>
