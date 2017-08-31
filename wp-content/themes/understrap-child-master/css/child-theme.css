@@ -9435,3 +9435,6 @@ span.category-label {
   .mail-wrapper #mc_embed_signup {
     clear: left;
     width: 100%; }
+
+.social-list li {
+  display: inline; }

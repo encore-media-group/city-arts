@@ -16,7 +16,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="wrapper" id="wrapper-footer">
 
 	<div class="<?php echo esc_attr( $container ); ?>">
-		<div class="row px-3 justify-content-center">
+		<div class="row px-3 d-flex justify-content-around">
 			<div class="col-12 col-sm-auto">
 				<h2>NEWSLETTERS</h2>
 				<ul>
@@ -41,19 +41,20 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="col-12 col-sm-auto">
 				<h2>ABOUT</h2>
 				<ul>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
+					<li><a href="">Contact</a></li>
+					<li><a href="">Jobs</a></li>
+					<li><a href="">Terms &amp; Conditinos</a></li>
+					<li><a href="">Privcay Policy</a></li>
 				</ul>
 			</div>
 			<div class="col-12 col-sm-auto">
 				<h2>FOLLOW</h2>
-				<ul>
-					<li><a href="">twitter icon</a></li>
-					<li><a href="">face</a></li>
-					<li><a href="">instagram</a></li>
-					<li><a href="">soundcloud</a></li>
+				<ul class="social-list">
+					<li class="pr-2"><a href="https://twitter.com/City_Arts" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
+					<li class="px-2"><a href="https://www.facebook.com/cityartsmagazine/" target="_blank"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
+					<li class="px-2"><a href="https://www.instagram.com/city_arts_magazine" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+					<li class="px-2"><a href="https://soundcloud.com/cityartsmagazine" target="_blank"><i class="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a></li>
+
 				</ul>
 
 			</div>
