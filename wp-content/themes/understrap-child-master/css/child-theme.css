@@ -9253,7 +9253,7 @@ p {
   font-size: 1.5em;
   font-weight: 100; }
 
-h2.sidebar, h3.sidebar {
+h1.sidebar, h2.sidebar, h3.sidebar {
   font-family: "alternate-gothic-no-2-d";
   font-weight: 700;
   font-size: 2rem;
