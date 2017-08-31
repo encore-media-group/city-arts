@@ -9343,7 +9343,7 @@ span.category-label {
 .current .current-icons {
   max-width: 10rem; }
 
-.current .bottom {
+.inverse-color {
   background-color: #000;
   color: #fff; }
 

@@ -117,16 +117,11 @@ span.category-label {
   .current-icons {
     max-width: 10rem;
   }
-  .bottom {
-    background-color: $black;
-    color: $white;
-  }
-  .dice {
- //   background-color: $pink;
-  }
-  .finger {
-  //  background-color: $green;
-  }
+}
+
+.inverse-color {
+  background-color: $black;
+  color: $white;
 }
 
 #single-wrapper,

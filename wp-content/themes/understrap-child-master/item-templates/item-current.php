@@ -34,10 +34,10 @@
         </a>
       </div>
     </div>
-    <div class="row bottom py-2">
-      <div class="col">
-        plug in - go out
-      </div>
-    </div>
+  </div>
+</div>
+<div class="row inverse-color text-center py-2">
+  <div class="col">
+    plug in - go out
   </div>
 </div>
