@@ -73,7 +73,7 @@ if(is_array($term_list)) {
           	$count++;
           ?>
             <div class="col-lg-4 mb-2">
-              <?php get_template_part( 'item-templates/item', 'small' ); ?>
+              <?php get_template_part( 'item-templates/item', '160x107' ); ?>
             </div>
             <?php if($count == 3) { echo '<div class="w-100"></div>'; } ?>
           <?php endwhile;

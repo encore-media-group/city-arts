@@ -11,19 +11,22 @@
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' );
-
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
-
   $image_attachment_metadata = wp_get_attachment_metadata($thumbnail_id);
   $img_width = isset($image_attachment_metadata['width']) ? $image_attachment_metadata['width'] : 0;
   $img_height = isset($image_attachment_metadata['height']) ? $image_attachment_metadata['height'] : 0;
 
   $img_orientation = 'landscape';
 
-if( $img_width < $img_height ) { $img_orientation = 'portrait'; }
+if( $img_width < $img_height ) {
+  $img_orientation = 'portrait';
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730xauto' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730xauto' );
+} else {
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
+}
 
-echo $img_orientation;
+echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
 
 ?>
 <div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
@@ -50,8 +53,8 @@ echo $img_orientation;
               <img
                src="<?php echo esc_url( $img_src ); ?>"
                srcset="<?php echo esc_attr( $img_srcset ); ?>"
-               sizes="(max-width: 2000px) 100vw, 730px"
-               style=""
+               sizes="(max-width: 46em) 100vw, 730px"
+               style="max-width:100%;height:auto;"
                class="img-fluid"
                alt="">
 
@@ -74,7 +77,7 @@ echo $img_orientation;
                     $images = get_attached_media('image', $post->ID);
 
                     foreach($images as $image) {
-                        echo var_dump($image);
+                      //  echo var_dump($image);
                         ?>
                         <li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
                     <?php } ?>

@@ -22,7 +22,7 @@ $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
        style="max-width: 100%;height:auto;"
        alt=""><!-- height: 107px; width: 160px;  -->
     </div>
-    <div class="col pr-0 pl-lg-3">
+    <div class="col pr-2 pl-lg-3">
       <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
       <h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"><?php echo get_contributors() ?></div>

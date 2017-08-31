@@ -1,9 +1,4 @@
 
-/* Menu */
-p {
-  font-size: $font-size-p;
-  font-weight: $font-weight-thin;
-}
 
 h1, h2, h3 {
   &.sidebar {
@@ -42,6 +37,7 @@ h1, h2, h3 {
     font-weight: $font-weight-light;
   }
 }
+
 .item-320x213 {
   h3, h4 {
     font-family: $subhead-font-family;
@@ -57,6 +53,7 @@ h1, h2, h3 {
   }
 
 }
+
 #archive-wrapper {
   h1.page-title {
     font-size: $display1-size;
