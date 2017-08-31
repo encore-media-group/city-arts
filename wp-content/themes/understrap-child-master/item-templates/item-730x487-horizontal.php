@@ -24,7 +24,7 @@
         alt="">
       </div>
 
-      <div class="col item-content-container py-4 pl-4">
+      <div class="col item-content-container p-4">
         <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
         <div>
             <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
