@@ -18,7 +18,7 @@
 ?>
 
 <div class="row item-540x360-horizontal">
-  <div class="col-md-6 px-0">
+  <div class="col-auto px-0">
     <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 45em) 100vw, 540px"
@@ -26,7 +26,7 @@
     style="max-width: 100%;height:auto;"
      alt="">
   </div>
-  <div class="col-md-6 p-4 item-content-container">
+  <div class="col p-4 item-content-container">
     <div class="caption"><?php echo $thumbnail_caption ?></div>
     <?php if( $flag_from_magazine ):?>
       <div>FROM THE MAGAZINE</div>
