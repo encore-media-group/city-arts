@@ -16,27 +16,32 @@
   //check if this is "from the magazine"..
   $flag_from_magazine = true;
 ?>
+<div class="col item-540x360-horizontal">
+  <div class="row no-gutters">
+    <div class="col-auto">
+      <img src="<?php echo esc_url( $img_src ); ?>"
+       srcset="<?php echo esc_attr( $img_srcset ); ?>"
+       sizes="(max-width: 46em) 100vw, 540px"
+      class="img-fluid"
+      style="max-width: 100%;height:auto;"
+      alt="">
+    </div>
 
-<div class="row item-540x360-horizontal">
-  <div class="col-auto px-0">
-    <img src="<?php echo esc_url( $img_src ); ?>"
-     srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 45em) 100vw, 540px"
-    class="img-fluid"
-    style="max-width: 100%;height:auto;"
-     alt="">
-  </div>
-  <div class="col p-4 item-content-container">
-    <div class="caption"><?php echo $thumbnail_caption ?></div>
-    <?php if( $flag_from_magazine ):?>
-      <div>FROM THE MAGAZINE</div>
-    <?php endif; ?>
-    <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
-    <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-    <div class="contributors"> <?php echo understrap_posted_on(); ?> </div>
-    <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
-    <?php if( $flag_from_magazine ):?>
-      <div>MORE FROM THIS ISSUE -></div>
-    <?php endif; ?>
+    <div class="col item-content-container p-4">
+      <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
+      <?php if( $flag_from_magazine ):?>
+        <div>FROM THE MAGAZINE</div>
+      <?php endif; ?>
+      <div>
+          <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+      </div>
+      <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+      <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
+      <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
+      <?php if( $flag_from_magazine ):?>
+        <div>MORE FROM THIS ISSUE -></div>
+      <?php endif; ?>
+    </div>
   </div>
 </div>
+

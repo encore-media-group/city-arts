@@ -9289,6 +9289,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .item-320x213 .excerpt {
   font-weight: 300; }
 
+.item-540x360-vertical .item-content-container {
+  max-width: 540px; }
+
 #archive-wrapper h1.page-title {
   font-size: 6rem; }
 
@@ -9306,12 +9309,10 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .homepage-sidebar,
 .ad-container,
 .ad-300x250,
-.item-large .item-content-container,
 .item-540x360-vertical .item-content-container,
 .item-540x360-horizontal .item-content-container,
 .item-730x487-horizontal .item-content-container,
-.item-730x487-vertical .item-content-container,
-.item-small-horizontal {
+.item-730x487-vertical .item-content-container {
   background-color: #f6f3f0; }
 
 .see-it-this-week .item-730x487-vertical .item-content-container {
@@ -9319,12 +9320,6 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 .item-730x487-vertical .item-content-container {
   max-width: 730px; }
-
-.see-it-this-week-container {
-  background-color: #ffee33; }
-
-.album-of-the-month-container {
-  border: 4px solid #a18967; }
 
 span.category-label {
   display: inline-block;
@@ -9335,8 +9330,19 @@ span.category-label {
   font-family: "ff-basic-gothic-web-pro";
   font-weight: 500; }
 
+.current h1 {
+  font-family: "alternate-gothic-no-2-d";
+  font-weight: 500; }
+
+.current h3 {
+  font-family: "ingra-condensed", Arial, "sans-serif";
+  font-weight: 200; }
+
 .current .current-icons {
   max-width: 10rem; }
+
+.current-footer {
+  font-family: "ff-basic-gothic-web-pro"; }
 
 .inverse-color {
   background-color: #000;
@@ -9345,35 +9351,23 @@ span.category-label {
 #single-wrapper,
 #page-wrapper {
   padding-top: 5rem; }
-  #single-wrapper #content,
-  #page-wrapper #content {
-    padding: 0;
-    margin: 0 auto; }
-    #single-wrapper #content .row,
-    #page-wrapper #content .row {
-      margin: 0; }
-      #single-wrapper #content .row #main,
-      #page-wrapper #content .row #main {
-        margin: 0 auto;
-        max-width: 100%;
-        width: 100%; }
-    #single-wrapper #content article h1.entry-title,
-    #page-wrapper #content article h1.entry-title {
-      font-family: "ingra-condensed", Arial, "sans-serif";
-      font-weight: 200;
-      font-size: 3.5rem; }
-    #single-wrapper #content article .updated-image:first-of-type,
-    #page-wrapper #content article .updated-image:first-of-type {
-      display: none; }
-    #single-wrapper #content article .updated-image:first-of-type + em,
-    #page-wrapper #content article .updated-image:first-of-type + em {
-      display: none; }
-    #single-wrapper #content article .entry-header,
-    #page-wrapper #content article .entry-header {
-      padding-top: 1em; }
-    #single-wrapper #content article .entry-meta,
-    #page-wrapper #content article .entry-meta {
-      padding-bottom: 1em; }
+  #single-wrapper #content article h1.entry-title,
+  #page-wrapper #content article h1.entry-title {
+    font-family: "ingra-condensed", Arial, "sans-serif";
+    font-weight: 200;
+    font-size: 3.5rem; }
+  #single-wrapper #content article .updated-image:first-of-type,
+  #page-wrapper #content article .updated-image:first-of-type {
+    display: none; }
+  #single-wrapper #content article .updated-image:first-of-type + em,
+  #page-wrapper #content article .updated-image:first-of-type + em {
+    display: none; }
+  #single-wrapper #content article .entry-header,
+  #page-wrapper #content article .entry-header {
+    padding-top: 1em; }
+  #single-wrapper #content article .entry-meta,
+  #page-wrapper #content article .entry-meta {
+    padding-bottom: 1em; }
 
 #wrapper-footer {
   background-color: #000; }
@@ -9419,17 +9413,14 @@ span.category-label {
     display: table;
     margin: 0 auto;
     margin-top: -0.5em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: .5em;
+    padding-right: .5em;
     text-align: center;
     background-color: #fff; }
   .mail-wrapper #mc-embedded-subscribe {
     background-color: #ed302f;
     margin-left: 10px;
     border-radius: 33px; }
-  .mail-wrapper #mc_embed_signup {
-    clear: left;
-    width: 100%; }
 
 .social-list li {
   display: inline; }

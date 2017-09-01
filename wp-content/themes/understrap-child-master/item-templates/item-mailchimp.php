@@ -1,6 +1,6 @@
 
 <div class="row">
-    <div class="col my-4 mail-wrapper">
+    <div class="col pb-4 mt-4 mail-wrapper">
     <h2 class="sidebar">Subscribe to our Email List</h2>
     <h6 class="text-center">this is random text about subscribing to our email list!</h6>
             <!-- Begin MailChimp Signup Form -->

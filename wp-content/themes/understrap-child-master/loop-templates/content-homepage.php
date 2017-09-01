@@ -76,7 +76,7 @@ $recent_posts_see_it_this_week = new WP_Query(
     </div>
     <div class="container py-4 px-0">
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-md-6">
           <div class="row">
           <?php while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
             <div class="col-lg-6">
@@ -88,12 +88,12 @@ $recent_posts_see_it_this_week = new WP_Query(
           ?>
           </div>
           <div class="row">
-            <div class="col-auto mx-auto">
+            <div class="col mx-auto">
               <?php  get_template_part( 'item-templates/item', 'mailchimp' ); ?>
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-md-6">
           <?php
           while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
             get_template_part( 'item-templates/item', '540x360-vertical' );
@@ -114,16 +114,18 @@ $recent_posts_see_it_this_week = new WP_Query(
       </div>
     </div>
     <div class="container py-4 px-0">
+      <div class="row">
         <?php
           while( $recent_posts_medium_horiztonal->have_posts() ) : $recent_posts_medium_horiztonal->the_post();
             get_template_part( 'item-templates/item', '540x360-horizontal' );
           endwhile;
           wp_reset_postdata();
         ?>
+      </div>
     </div>
-    <div class="container py-4 px-0">
+    <div class="container py-md-1 py-4 px-0">
       <div class="row">
-        <div class="col-12 col-md-4 mr-sm-5 pb-sm-4">
+        <div class="col-8 col-sm-10 col-md-4 mx-auto mr-md-4 mr-lg-5 pb-4 px-0 px-md-3">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
         </div>
         <div class="col">
@@ -138,7 +140,7 @@ $recent_posts_see_it_this_week = new WP_Query(
         </div>
       </div>
     </div>
-    <div class="container py-4 px-0">
+    <div class="container py-md-1 py-4 px-0">
       <div class="row d-flex justify-content-between">
         <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
           <?php set_query_var( 'show_excerpt', false ); ?>

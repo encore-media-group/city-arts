@@ -12,7 +12,7 @@
     <h2 class="sidebar">Current</h2>
     <h6>an interative calendar</h4>
     <div class="row">
-      <div class="col-8 mx-auto">
+      <div class="col-12 col-lg-8 mx-auto">
         <a href="">
           <img
             class="current-icons dice"
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-8 mx-auto">
+      <div class="col-12 col-lg-8 mx-auto my-4">
         <a href="">
           <img class="current-icons finger"
             src=""
@@ -36,7 +36,7 @@
     </div>
   </div>
 </div>
-<div class="row inverse-color text-center py-2">
+<div class="row inverse-color text-center py-2 current-footer">
   <div class="col">
     plug in - go out
   </div>
