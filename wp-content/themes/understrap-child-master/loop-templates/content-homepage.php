@@ -123,7 +123,7 @@ $recent_posts_see_it_this_week = new WP_Query(
         ?>
       </div>
     </div>
-    <div class="container py-md-1 py-4">
+    <div class="container py-4 py-md-1 ">
       <div class="row">
         <div class="col-8 col-sm-10 col-md-4 mx-auto mr-md-4 mr-lg-5 pb-4 px-0 px-md-3">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
@@ -140,7 +140,7 @@ $recent_posts_see_it_this_week = new WP_Query(
         </div>
       </div>
     </div>
-    <div class="container py-md-1 py-4">
+    <div class="container py-4 py-md-4">
       <div class="row d-flex justify-content-between">
         <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
           <?php set_query_var( 'show_excerpt', false ); ?>

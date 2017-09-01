@@ -14,8 +14,8 @@
 
 ?>
   <div class="col item-730x487-horizontal">
-    <div class="row no-gutters">
-      <div class="col-auto">
+    <div class="row">
+      <div class="col-12 col-md px-0">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 730px"
