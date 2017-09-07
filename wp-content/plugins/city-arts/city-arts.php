@@ -17,7 +17,6 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 
 /* register custom types */
-add_action( 'init', 'cptui_register_my_cpts' );
 add_action( 'init', 'cptui_register_my_taxes' );
 add_action( 'init', 'cptui_register_my_taxes_writer' );
 add_action( 'widgets_init', 'register_acf_field_group');

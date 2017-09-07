@@ -15,6 +15,9 @@ $container   = get_theme_mod( 'understrap_container_type' );
 $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 $archive_slug =  get_queried_object()->slug;
+
+$disciplines = get_disciplines();
+
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 if ($paged < 2) : $posts_per_page = 15; else: $posts_per_page = 16; endif;

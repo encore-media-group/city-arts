@@ -31,17 +31,17 @@ function cityarts_import_admin_page() {
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
-  set_writers();
-
+  //set_writers();
   //set_contributors(); //do 1
-  //set_articles(); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
+  //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
+  //new: set_issues()
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
   //set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
   // import pages by calling set_articles and update to be "pages" //do 7
-  //set_excerpts(); //do 8
+  //set_excerpts(); //do 8 (this sets the short and long excerpts)
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
 
@@ -51,7 +51,7 @@ function cityarts_import_admin_page() {
 
       overall image processing:
       - take update from master production database
-      - run querey to export slideshow
+      - run query to export slideshow
       - run query to export inline
       - then, import those two tables into the production enviroment
       - then run synce_wp_post_id_to_image() which wil update the tables we imported with the related wp_id
@@ -214,92 +214,9 @@ function delete_all_images_in_the_database() {
 }
 
 
-function NOT_USED_sync_wp_post_id_to_image_inline_images(){
-  /* this was the original way to do it, but it was slow. now I used a que based system. */
-  /*  run this first:
-      we need to run this so that the img list has the wp post id shared.
-
-      update tmp_inline_image_list til, tmp_article_export_7_9_2017 tae
-      set til.new_wp_post_id = tae.new_wp_id
-      where til.nid = tae.nid
-
-  */
-
-  global $wpdb;
-  $table = "tmp_inline_image_list";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . ' limit 0, 20 ');
-
-  require_once(ABSPATH . '/wp-admin/includes/file.php');
-  require_once(ABSPATH . '/wp-admin/includes/media.php');
-  require_once(ABSPATH . '/wp-admin/includes/image.php');
-  $upload_dir = MEDIAFROMFTP_PLUGIN_UPLOAD_DIR;
-  echo 'the path: ' . $upload_dir . "<br>";
-
-
-
-
-  $count = 0;
-
-  if ($myrows) {
-    foreach ( $myrows as $myrow ) {
-      $count++;
-      echo "# " . $count . " - ";
-      $new_wp_post_id = $myrow->new_wp_post_id;
-      $inline_image_title = $myrow->field_inline_images_title;
-      $filename = $myrow->filename;
-      $file_path_and_name = $upload_dir . '/inline_images/' . $filename;
-      $delta = $myrow->delta;
-      $image_caption = $myrow->field_inline_images_title;
-      $image_caption2 = $myrow->field_inline_images_alt;
-      if($image_caption == '') { $image_caption = $image_caption2; }
-
-      echo "exists? " . is_file($file_path_and_name) . " filename: " . $file_path_and_name  . "<br>";
-      if(!is_file($file_path_and_name)) {
-        echo "FILE NOT FOUND: " . $file_path_and_name . "<br>";
-      } else {
-          echo "FILE FOUND: " . $file_path_and_name . "<br>";
-
-        //echo '<pre> ' . var_dump($myrow ). '</pre>';
-
-        $array = array( //array to mimic $_FILES
-          'name' => basename($file_path_and_name), //isolates and outputs the file name from its absolute path
-          'type' => wp_check_filetype($file_path_and_name), // get mime type of image file
-          'tmp_name' => $file_path_and_name, //this field passes the actual path to the image
-          'error' => 0, //normally, this is used to store an error, should the upload fail. but since this isnt actually an instance of $_FILES we can default it to zero here
-          'size' => filesize($file_path_and_name) //returns image filesize in bytes
-        );
-
-        echo '<pre>' . var_dump($array) . '</pre>';
-
-        $attachment_id = media_handle_sideload($array, $new_wp_post_id); //the actual image processing, that is, move to upload directory, generate thumbnails and image sizes and writing into the database happens here
-
-        if (is_wp_error($attachment_id)) {
-            $errors = $attachment_id->get_error_messages();
-            foreach ($errors as $error) {
-              echo $error . "<br>";
-            }
-            echo "<p>";
-          } else {
-            echo' Aattachment id: ' . $attachment_id . '<br>';
-            echo 'all good - ';
-
-            if($delta == 0) { set_post_thumbnail( $new_wp_post_id, $attachment_id ); }
-
-            if($image_caption != '') {
-              $attachment = array( 'ID' => $attachment_id, 'post_excerpt' => $image_caption );
-
-              wp_update_post(array('ID' => $attachment_id, 'post_excerpt' => $image_caption));
-              echo "wp_insert_attachment for: " . $attachment_id . " and post_parent: " . $new_wp_post_id . " with caption: ".  $image_caption ."<br>";
-            }
-
-            $wpdb->query('UPDATE tmp_inline_image_list SET new_wp_attachment_id = ' . $attachment_id .  ' WHERE new_wp_post_id= ' . $new_wp_post_id);
-          }
-      }
-    }
-  }
-}
-
 function sync_single_image_wp_post_id_to_image_inline_images($myrow){
+  //this is used by the async plugin.
+
   $output = "start: ";
   global $wpdb;
 
@@ -593,12 +510,13 @@ function set_contributors() {
     }
 }
 */
-function set_articles() {
+function set_articles($post_type) {
   global $wpdb;
 
+// RESET FOR ARTICLE OR FOR POST
 //  $table = "tmp_article_export_7_9_2017";
   $table = "tmp_page_export_7_10_2017";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_type=" . $post_type);
   $count = 0;
       if ($myrows) {
         foreach ( $myrows as $myrow )
@@ -614,15 +532,12 @@ function set_articles() {
           $post_slug = slug($myrow->wp_ready_postname);
           $post_date = $myrow->post_date;
           $post_date_modified = $myrow->post_modified;
-          //$post_long_teaser_value = $myrow->post_long_teaser_value;
-          $post_content = $myrow->post_content;
+          $post_content = $myrow->post_content; //this is for posts only, not pages.
           $post_status = $myrow->post_status;
           $guid = 'http://71672.com/uncategorized/' . $post_slug;
           if($myrow->post_type == 'page') {
-            $post_content = $myrow->body_value;
+            $post_content = $myrow->body_value; // only for pages
           }
-          //$post_author = $myrow->post_author;
-          //$post_category = [9];
 
           $array_to_insert = array(
               'ID' => 0,
@@ -637,10 +552,9 @@ function set_articles() {
               'post_title'    =>  $post_title,
               'post_name'   =>  $post_slug,
               'post_status'   =>  $post_status,
-              //'post_excerpt' => $post_long_teaser_value,
               'post_content' => 'temp content', //we do this as some post have empty content..you can't create a post with empty content, but you can update it to be empty.
               'filter' => true,
-              'post_type'   =>  'page' //'post'
+              'post_type'   =>  $post_type //'post'
             );
 
         echo "<pre>" . var_dump($array_to_insert) . "</pre>";

@@ -30,42 +30,6 @@ function cptui_register_my_taxes_writer() {
   register_taxonomy( "writer", array( "post" ), $args );
 }
 
-
-function cptui_register_my_cpts() {
-
-  /**
-   * Post Type: Contributors.
-   */
-
-  $labels = array(
-    "name" => __( "Contributors", "understrap-child" ),
-    "singular_name" => __( "Contributor", "understrap-child" ),
-  );
-
-  $args = array(
-    "label" => __( "Contributors", "understrap-child" ),
-    "labels" => $labels,
-    "description" => "",
-    "public" => true,
-    "publicly_queryable" => true,
-    "show_ui" => true,
-    "show_in_rest" => false,
-    "rest_base" => "",
-    "has_archive" => "contributors",
-    "show_in_menu" => true,
-    "exclude_from_search" => false,
-    "capability_type" => "post",
-    "map_meta_cap" => true,
-    "hierarchical" => false,
-    "rewrite" => array( "slug" => "contributor", "with_front" => true ),
-    "query_var" => true,
-    "supports" => array( "title", "editor", "thumbnail", "excerpt", "custom-fields", "author", "post-formats" ),
-    "taxonomies" => array( "category" ),
-  );
-
-  register_post_type( "contributor", $args );
-}
-
 function cptui_register_my_taxes() {
   /**
    * Taxonomy: Article Formats.
@@ -97,64 +61,6 @@ function cptui_register_my_taxes() {
 
 function register_acf_field_group() {
   if( function_exists('acf_add_local_field_group') ):
-
-  acf_add_local_field_group(array (
-    'key' => 'group_595dcb3b5899c',
-    'title' => 'Post Relationships',
-    'fields' => array (
-      array (
-        'key' => 'field_5960730a4bb42',
-        'label' => 'Relationship',
-        'name' => 'relationship',
-        'type' => 'relationship',
-        'instructions' => '',
-        'required' => 0,
-        'conditional_logic' => 0,
-        'wrapper' => array (
-          'width' => '',
-          'class' => '',
-          'id' => '',
-        ),
-        'post_type' => array (
-        ),
-        'taxonomy' => array (
-        ),
-        'filters' => array (
-          0 => 'search',
-          1 => 'post_type',
-          2 => 'taxonomy',
-        ),
-        'elements' => '',
-        'min' => '',
-        'max' => '',
-        'return_format' => 'object',
-      ),
-    ),
-    'location' => array (
-      array (
-        array (
-          'param' => 'post_type',
-          'operator' => '==',
-          'value' => 'post',
-        ),
-      ),
-      array (
-        array (
-          'param' => 'post_type',
-          'operator' => '==',
-          'value' => 'contributor',
-        ),
-      ),
-    ),
-    'menu_order' => 0,
-    'position' => 'normal',
-    'style' => 'default',
-    'label_placement' => 'top',
-    'instruction_placement' => 'label',
-    'hide_on_screen' => '',
-    'active' => 1,
-    'description' => '',
-  ));
 
   acf_add_local_field_group(array (
     'key' => 'group_598b523f58656',
