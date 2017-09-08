@@ -16,20 +16,35 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 
+
+/* register this in the admin menu */
+add_action( 'admin_menu', 'city_arts_website_menu' );
+
 /* register custom types */
 add_action( 'init', 'cptui_register_my_taxes' );
 add_action( 'init', 'cptui_register_my_taxes_writer' );
 add_action( 'widgets_init', 'register_acf_field_group');
-
-
-/* register this in the admin menu */
-add_action('admin_menu', 'city_arts_website_menu');
+add_action( 'widgets_init', 'ca_load_widgets' );
+add_action( 'widgets_init', 'ca_register_sidebars' );
 
 /* enqueue any scripts or css required by the city arts plugin */
+add_action( 'wp_enqueue_scripts', 'ca_enqueue_scripts_and_styles' );
+
+/* register eveything else */
+add_action( 'after_setup_theme', 'ca_add_image_sizes' );
+
+add_action( 'after_setup_theme', 'create_required_ca_categories' );
+
+add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
+
+add_action( 'pre_get_posts', 'ca_alter_query' );
+
+add_action( 'pre_get_posts', 'wpsites_query' );
+
+
 function ca_enqueue_scripts_and_styles() {
   wp_enqueue_style( 'better-simple-slideshow-js', '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css');
 }
-add_action('wp_enqueue_scripts', 'ca_enqueue_scripts_and_styles');
 
 function city_arts_website_menu(){
   add_menu_page('City Arts', 'City Arts ', 'manage_options', 'city-arts-plugin', 'city_arts_admin_page');
@@ -105,11 +120,6 @@ function ca_load_widgets() {
   register_widget( 'ca_current_widget' );
 }
 
-add_action( 'widgets_init', 'ca_load_widgets' );
-add_action( 'widgets_init', 'ca_register_sidebars' );
-
-
-add_action( 'after_setup_theme', 'ca_add_image_sizes' );
 function ca_add_image_sizes() {
   add_image_size( 'ca-1140-760', 1140, 760, true );
   add_image_size( 'ca-730-487', 730, 487, true);
@@ -122,7 +132,6 @@ function ca_add_image_sizes() {
 
 
 // Register the useful image sizes for use in Add Media modal
-add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
 function wpshout_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'ca-1140-760' => __( 'ca-1140-760' ),
@@ -146,7 +155,6 @@ function ca_alter_query( $query )
         $query->set( 'order', 'asc' );
     }
 }
-add_action( 'pre_get_posts', 'ca_alter_query' );
 
 
 /* override function in parent */
@@ -202,18 +210,23 @@ if ( ! function_exists( 'get_contributors' ) ) :
   }
 endif;
 
-
 /* increase the number of posts on the archive pages */
 function wpsites_query( $query ) {
 if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
         $query->set( 'posts_per_page', 12 );
     }
 }
-add_action( 'pre_get_posts', 'wpsites_query' );
 
-
-
-
+function create_required_ca_categories() {
+  wp_insert_term(
+    'Issue',
+    'category',
+    array(
+      'description' => 'This is the base category for all issues.',
+      'slug'    => 'issue'
+    )
+  );
+}
 
 
 
