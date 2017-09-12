@@ -34,8 +34,8 @@ function cityarts_import_admin_page() {
   //set_writers();
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-   set_issues();
-  //set_features_to_issues();
+  //set_issues();
+  set_features_to_issues();
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
   //set_top_categories(); //do 4
@@ -675,7 +675,29 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug) {
 }
 
 function set_features_to_issues() {
+  global $wpdb;
 
+  $sql = "select fff.entity_id, fff.field_features_target_id, fff.delta,
+  tie.new_wp_category_id, tae.new_wp_id
+  from field_revision_field_features fff
+  left outer join tmp_issues_export_9_8_2017 tie on tie.nid = fff.entity_id
+  left outer join tmp_article_export_7_9_2017 tae on tae.nid = fff.field_features_target_id";
+
+//  $sql = "select * from tmp_attach_features_to_issues";
+  echo $sql;
+  $myrows = $wpdb->get_results( $sql );
+  if ($myrows) {
+    $count = 0;
+    foreach ( $myrows as $myrow ) {
+      $count++;
+      echo "# " . $count . ": ";
+
+      $new_wp_id = $myrow->new_wp_id;
+      $new_wp_category_id = $myrow->new_wp_category_id;
+      echo "updating" . $new_wp_id . "<br>";
+      wp_set_post_categories( $new_wp_id, $new_wp_category_id, true);
+    }
+  }
 
 }
 
