@@ -587,6 +587,9 @@ function set_issues() {
 
   $parent_slug = 'issue';
 
+  $cover_story_cat_id_obj = get_category_by_slug('cover-story');
+  $cover_story_cat_id = $cover_story_cat_id_obj->term_id;
+
   $issue_table = "tmp_issues_export_9_8_2017";
   $article_table = "tmp_article_export_7_9_2017";
 
@@ -604,16 +607,17 @@ function set_issues() {
       echo $postnameclean . " - " . $new_wp_id . " - ";
       $slug_array = explode("-", $postnameclean);
 
-        if( strlen( $slug_array[0] ) == 4 && is_numeric($slug_array[0]) ) { //it's a year
-          $year = $slug_array[0];
-          $monthNum = $slug_array[1];
+      if( strlen( $slug_array[0] ) == 4 && is_numeric($slug_array[0]) ) { //it's a year
+        $year = $slug_array[0];
+        $monthNum = $slug_array[1];
 
-          $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-          $monthName = $dateObj->format('F');
-        } else {
-          $year = $slug_array[1];
-          $monthName = $slug_array[0];
-        }
+        $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+        $monthName = $dateObj->format('F');
+      } else {
+        $year = $slug_array[1];
+        $monthName = $slug_array[0];
+      }
+
       $cat_name = "Issue - " . ucfirst($monthName) . " - " . $year;
       $cat_slug = strtolower($monthName) . "-" . $year;
 
@@ -628,6 +632,7 @@ function set_issues() {
       //assign this new category to the post
 
       wp_set_post_categories( $new_wp_id, $new_cat_id, true);
+      wp_set_post_categories( $new_wp_id, $cover_story_cat_id, true);
 
       echo $new_cat_id  . "-" . $cat_name . " - " . $cat_slug . "<br>";
 
