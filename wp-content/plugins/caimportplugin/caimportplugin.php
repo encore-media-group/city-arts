@@ -34,7 +34,8 @@ function cityarts_import_admin_page() {
   //set_writers();
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-  set_issues();
+   set_issues();
+  //set_features_to_issues();
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
   //set_top_categories(); //do 4
@@ -593,7 +594,7 @@ function set_issues() {
   $issue_table = "tmp_issues_export_9_8_2017";
   $article_table = "tmp_article_export_7_9_2017";
 
-  $query =  "select  tae.nid,  tae.new_wp_id, replace( replace( replace(tie.wp_ready_postname, 'issues-', ''), 'seattle-', ''), 'tacoma-', '') `postnameclean` from " . $issue_table . " tie LEFT OUTER JOIN " . $article_table . " tae on tae.nid = tie.field_featured_article_target_id";
+  $query =  "select  tae.nid,  tae.new_wp_id, tie.field_featured_article_target_id, replace( replace( replace(tie.wp_ready_postname, 'issues-', ''), 'seattle-', ''), 'tacoma-', '') `postnameclean` from " . $issue_table . " tie LEFT OUTER JOIN " . $article_table . " tae on tae.nid = tie.field_featured_article_target_id";
 
   $myrows = $wpdb->get_results( $query);
   if ($myrows) {
@@ -604,7 +605,9 @@ function set_issues() {
       $nid = $myrow->nid;
       $postnameclean = $myrow->postnameclean;
       $new_wp_id = $myrow->new_wp_id;
-      echo $postnameclean . " - " . $new_wp_id . " - ";
+      $field_featured_article_target_id = $myrow->field_featured_article_target_id;
+
+      echo  'clean: ' . $postnameclean . " - new_wp_id: " . $new_wp_id . " - ";
       $slug_array = explode("-", $postnameclean);
 
       if( strlen( $slug_array[0] ) == 4 && is_numeric($slug_array[0]) ) { //it's a year
@@ -618,30 +621,30 @@ function set_issues() {
         $monthName = $slug_array[0];
       }
 
-      $cat_name = "Issue - " . ucfirst($monthName) . " - " . $year;
+      $cat_name = " Issue - " . ucfirst($monthName) . " - " . $year;
       $cat_slug = strtolower($monthName) . "-" . $year;
 
       //set new category
       $new_cat_id = set_issue_category( $cat_name, $cat_slug, $parent_slug );
 
       //update our source table with the new cat id
-      $wpdb->query(
-        $wpdb->prepare( 'UPDATE ' . $issue_table  . ' SET new_wp_category_id = %d WHERE nid = %d ', $new_cat_id, $nid
-      ));
+      $update_sql = 'UPDATE ' . $issue_table  . ' SET new_wp_category_id = ' .  $new_cat_id . ' WHERE field_featured_article_target_id = ' . $field_featured_article_target_id;
 
-      //assign this new category to the post
+      echo $update_sql . "<br>";
 
+      //$wpdb->query( $wpdb->prepare( $update_sql ) );
+      $wpdb->query( $update_sql );
+
+      //assign this new category to the posts
       wp_set_post_categories( $new_wp_id, $new_cat_id, true);
       wp_set_post_categories( $new_wp_id, $cover_story_cat_id, true);
 
-      echo $new_cat_id  . "-" . $cat_name . " - " . $cat_slug . "<br>";
+      echo $new_cat_id  . " - " . $cat_name . " - " . $cat_slug . "<br>";
 
 
     }
   }
 }
-
-
 
 function set_issue_category($cat_name, $cat_slug, $parent_slug) {
 
@@ -669,6 +672,11 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug) {
   }
 
   return $cat_id;
+}
+
+function set_features_to_issues() {
+
+
 }
 
 
