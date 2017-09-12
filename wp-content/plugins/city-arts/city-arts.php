@@ -226,6 +226,25 @@ function create_required_ca_categories() {
       'slug'    => 'issue'
     )
   );
+
+wp_insert_term(
+    'Cover Story',
+    'category',
+    array(
+      'description' => 'This is the category for all articles that are cover stories.',
+      'slug'    => 'cover-story'
+    )
+  );
+
+wp_insert_term(
+    'Issue Feature',
+    'category',
+    array(
+      'description' => 'This is the category for all articles that are features of an issue.',
+      'slug'    => 'issue-feature'
+    )
+  );
+
 }
 
 

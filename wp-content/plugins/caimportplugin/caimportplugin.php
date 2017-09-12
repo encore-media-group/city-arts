@@ -34,7 +34,7 @@ function cityarts_import_admin_page() {
   //set_writers();
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-  //new: set_issues()
+  set_issues();
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
   //set_top_categories(); //do 4
@@ -582,6 +582,91 @@ function set_articles($post_type) {
   echo "<br><b>SET ARTICLES FINISHED.<b><br>";
 }
 
+function set_issues() {
+  global $wpdb;
+
+  $parent_slug = 'issue';
+
+  $issue_table = "tmp_issues_export_9_8_2017";
+  $article_table = "tmp_article_export_7_9_2017";
+
+  $query =  "select  tae.nid,  tae.new_wp_id, replace( replace( replace(tie.wp_ready_postname, 'issues-', ''), 'seattle-', ''), 'tacoma-', '') `postnameclean` from " . $issue_table . " tie LEFT OUTER JOIN " . $article_table . " tae on tae.nid = tie.field_featured_article_target_id";
+
+  $myrows = $wpdb->get_results( $query);
+  if ($myrows) {
+    $count = 0;
+    foreach ( $myrows as $myrow ) {
+      $count++;
+      echo "# " . $count . ": ";
+      $nid = $myrow->nid;
+      $postnameclean = $myrow->postnameclean;
+      $new_wp_id = $myrow->new_wp_id;
+      echo $postnameclean . " - " . $new_wp_id . " - ";
+      $slug_array = explode("-", $postnameclean);
+
+        if( strlen( $slug_array[0] ) == 4 && is_numeric($slug_array[0]) ) { //it's a year
+          $year = $slug_array[0];
+          $monthNum = $slug_array[1];
+
+          $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+          $monthName = $dateObj->format('F');
+        } else {
+          $year = $slug_array[1];
+          $monthName = $slug_array[0];
+        }
+      $cat_name = "Issue - " . ucfirst($monthName) . " - " . $year;
+      $cat_slug = strtolower($monthName) . "-" . $year;
+
+      //set new category
+      $new_cat_id = set_issue_category( $cat_name, $cat_slug, $parent_slug );
+
+      //update our source table with the new cat id
+      $wpdb->query(
+        $wpdb->prepare( 'UPDATE ' . $issue_table  . ' SET new_wp_category_id = %d WHERE nid = %d ', $new_cat_id, $nid
+      ));
+
+      //assign this new category to the post
+
+      wp_set_post_categories( $new_wp_id, $new_cat_id, true);
+
+      echo $new_cat_id  . "-" . $cat_name . " - " . $cat_slug . "<br>";
+
+
+    }
+  }
+}
+
+
+
+function set_issue_category($cat_name, $cat_slug, $parent_slug) {
+
+  $parent_cat_id_obj = get_category_by_slug($parent_slug);
+  $parent_cat_id = $parent_cat_id_obj->term_id;
+
+  $cat_id_obj = get_category_by_slug($cat_slug);
+  $cat_id = $cat_id_obj->term_id;
+
+  if(!$cat_id){
+    echo $cat_slug . " <- slug not found, creating new catagory.<br>";
+
+    $my_cat = array(
+      'cat_name' => $cat_name,
+      'category_description' => '',
+      'category_nicename' => $cat_slug,
+      'category_parent' => $parent_cat_id);
+
+    echo '<pre>' . var_dump($my_cat) . '</pre>';
+    $cat_id = wp_insert_category($my_cat);
+    var_dump($cat_id);
+
+  } else {
+    echo "cat " . $cat_id . " exists.<br>";
+  }
+
+  return $cat_id;
+}
+
+
 function set_excerpts() {
   global $wpdb;
 
@@ -986,3 +1071,24 @@ function transliterate($string) {
 function is_slug($str) {
   return $str == slug($str);
 }
+
+
+
+/*
+This is how issues work:
+1. the cover story is also the issue page and has a secondary image for the cover.
+2. the url for the issue is the category: /issue/month-year
+3. the url for the cover story is: /article-title
+4. the category for a cover story is cover-story
+5. the old "featured" article for an issue, is now a cover story
+6. the old "features" as mapped from the drupal issue context will have categories of:
+"issue-feature" and "month-year"
+
+the actual import will be from a table that is a subset of articles of type issue:
+each one points to a featured drupal id.
+1. create table of "issues-to-import-as-categories"
+2. select all, then, create categories for each one, if it doesn't exist, then, find the wp_post, based on id, that matches, and add the new category id to it.
+3. DONE.
+
+*/
+
