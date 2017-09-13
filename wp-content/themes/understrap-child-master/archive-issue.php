@@ -22,6 +22,23 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 if ($paged < 2) : $posts_per_page = 15; else: $posts_per_page = 16; endif;
 
+$cover_story_query = new WP_Query(array(
+    'posts_per_page' => 1,
+    'tax_query' => [
+			'relation' => 'AND',
+				[
+	        'taxonomy' => 'category',
+	        'field'    => 'slug',
+	        'terms'    =>  array( $archive_slug ),
+					'operator' => 'IN' ],
+	    	[
+	        'taxonomy' => 'category',
+	        'field'    => 'slug',
+	        'terms'    =>  array( 'cover-story' ),
+					'operator' => 'IN' ],
+     ],
+));
+
 $the_query = new WP_Query(array(
     'posts_per_page' => $posts_per_page,
   //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
@@ -67,7 +84,28 @@ ISSUE
 
 					<?php
 						$count = 1;
-					  echo '<div class="row">';
+						echo '<div class="row">';
+
+		        while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
+								echo '<div class="col">';
+
+						 		get_template_part( 'item-templates/item', '730x487-vertical' );
+						 		$cover_image =  get_field('cover_image');
+
+								echo '</div><div class="col">';
+
+						 		?>
+						 		<img src="<?php echo esc_url(  $cover_image['url'] ); ?>"
+				        class="img-fluid"
+				        style="max-width: 350px;max-height:454px"
+				        alt="">
+				      	</div><!--col -->
+						<?php
+            endwhile;
+            echo '</div><!--row-->';
+
+						echo '<div class="row">';
+
             while( $the_query->have_posts() ) : $the_query->the_post();
 							if ( $count == 1 && $paged < 2) :
 						 		get_template_part( 'item-templates/item', '730x487-horizontal' );
