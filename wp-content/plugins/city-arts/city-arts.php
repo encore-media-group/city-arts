@@ -137,6 +137,7 @@ function ca_add_image_sizes() {
   add_image_size( 'ca-730-487', 730, 487, true);
   add_image_size( 'ca-730xauto', 730);
   add_image_size( 'ca-540x360', 540, 360, true );
+  add_image_size( 'ca-350x454', 350, 454, true );
   add_image_size( 'ca-320x213', 320, 213, true );
   add_image_size( 'ca-255x170', 255, 170, true );
   add_image_size( 'ca-160x107', 160, 107, true );
@@ -150,6 +151,7 @@ function wpshout_custom_sizes( $sizes ) {
         'ca-730-487' => __( 'ca-730-487' ),
         'ca-730xauto' => __( 'ca-730xauto' ),
         'ca-540x360' => __( 'ca-540x360' ),
+        'ca-350x454' => __( 'ca-350x454' ),
         'ca-320x213' => __( 'ca-320x213' ),
         'ca-255x170' => __( 'ca-255x170' ),
         'ca-160x107' => __( 'ca-160x107' ),
@@ -259,7 +261,16 @@ wp_insert_term(
 
 }
 
+function issue_child_template_redirect() {
+    if (is_category() && !is_feed()) {
+        if (is_category( get_cached_cat_id_by_slug('issue') ) || cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
+            load_template( get_stylesheet_directory() . '/archive-issue.php' );
+            exit;
+        }
+    }
+}
 
+add_action('template_redirect', 'issue_child_template_redirect');
 
 
 

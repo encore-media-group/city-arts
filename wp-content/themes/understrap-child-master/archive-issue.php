@@ -48,7 +48,7 @@ $the_query = new WP_Query(array(
 		<div class="row">
 
 			<main class="col site-main" id="main">
-standard archive page
+ISSUE
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">
