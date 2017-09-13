@@ -74,9 +74,9 @@ $recent_posts_see_it_this_week = new WP_Query(
         </div>
       </div>
     </div>
-    <div class="container py-4 px-0">
+    <div class="container py-4 px-sm-0">
       <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <div class="row">
           <?php while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
             <div class="col-lg-6">
@@ -93,7 +93,7 @@ $recent_posts_see_it_this_week = new WP_Query(
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <?php
           while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
             get_template_part( 'item-templates/item', '540x360-vertical' );
@@ -125,7 +125,7 @@ $recent_posts_see_it_this_week = new WP_Query(
     </div>
     <div class="container py-4 py-md-1 ">
       <div class="row">
-        <div class="col-8 col-sm-10 col-md-4 mx-auto mr-md-4 mr-lg-5 pb-4 px-0 px-md-3">
+        <div class="col-8 col-sm-10 col-md-4 mx-auto mr-md-4 mr-lg-3 pb-4 px-0 px-md-3">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
         </div>
         <div class="col">

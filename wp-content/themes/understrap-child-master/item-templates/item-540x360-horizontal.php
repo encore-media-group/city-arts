@@ -16,9 +16,9 @@
   //check if this is "from the magazine"..
   $flag_from_magazine = true;
 ?>
-<div class="col item-540x360-horizontal">
+<div class="col pl-sm-0 item-540x360-horizontal">
   <div class="row no-gutters">
-    <div class="col-auto">
+    <div class="col-sm-auto">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
        sizes="(max-width: 46em) 100vw, 540px"

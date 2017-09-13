@@ -9417,9 +9417,14 @@ span.category-label {
     padding-right: .5em;
     text-align: center;
     background-color: #fff; }
+  .mail-wrapper #mc_embed_signup {
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto; }
+    .mail-wrapper #mc_embed_signup input.email {
+      max-width: 100% !important; }
   .mail-wrapper #mc-embedded-subscribe {
     background-color: #ed302f;
-    margin-left: 10px;
     border-radius: 33px; }
 
 .social-list li {

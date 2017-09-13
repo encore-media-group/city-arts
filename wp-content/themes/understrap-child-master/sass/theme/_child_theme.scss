@@ -217,10 +217,16 @@ span.category-label {
     text-align: center;
     background-color: $white;
   }
-
+  #mc_embed_signup {
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    input.email {
+      max-width: 100% !important;
+    }
+  }
   #mc-embedded-subscribe {
     background-color: $red;
-    margin-left: 10px;
     border-radius: 33px;
   }
 
