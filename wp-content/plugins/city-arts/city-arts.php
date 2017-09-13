@@ -89,6 +89,18 @@ function get_disciplines() {
     );
 }
 
+// special function to store oft used category ids from slugs
+function get_cached_cat_id_by_slug( $slug ) {
+  $cache_key = $slug . "_id";
+  $cat_id = wp_cache_get( $cache_key );
+
+  if ( false === $cat_id ) {
+    $cat_obj = get_category_by_slug( $slug );
+    $cat_id = $cat_obj->term_id;
+    wp_cache_set( $cache_key, $cat_id );
+  }
+  return $cat_id;
+}
 
 function ca_register_sidebars() {
   /*  Register custom article sidebar*/

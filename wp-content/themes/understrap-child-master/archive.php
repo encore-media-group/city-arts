@@ -24,7 +24,7 @@ if ($paged < 2) : $posts_per_page = 15; else: $posts_per_page = 16; endif;
 
 $the_query = new WP_Query(array(
     'posts_per_page' => $posts_per_page,
-    'meta_query' => array( array('key' => '_thumbnail_id' ) ),
+  //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
     'paged' => $paged,
     'tax_query' => [
             [
@@ -48,7 +48,7 @@ $the_query = new WP_Query(array(
 		<div class="row">
 
 			<main class="col site-main" id="main">
-
+HERE
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">
