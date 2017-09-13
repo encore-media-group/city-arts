@@ -18,7 +18,7 @@
 ?>
 <div class="col pl-sm-0 item-540x360-horizontal">
   <div class="row no-gutters">
-    <div class="col-sm-auto">
+    <div class="col-12 col-md-auto">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
        sizes="(max-width: 46em) 100vw, 540px"
@@ -27,8 +27,7 @@
       alt="">
     </div>
 
-    <div class="col item-content-container p-4">
-      <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
+    <div class="col-12 col-lg item-content-container p-4">
       <?php if( $flag_from_magazine ):?>
         <div>FROM THE MAGAZINE</div>
       <?php endif; ?>
