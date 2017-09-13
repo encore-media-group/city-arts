@@ -41,4 +41,13 @@ if ( ! empty($categories) ) :
 endif;
 ?>
 
-<span class="category-label align-middle text-center mb-2 px-2 py-1"><?php echo '<a class="url fn n" href="' . $url . '">' . $name . '</a>'; ?></span>
+<a class="url fn n" href="<?php echo $url ?>"><span class="category-label align-middle text-center mb-2 px-2 py-1"><?php echo $name ?></span><a>
+
+
+
+
+
+
+
+
+
