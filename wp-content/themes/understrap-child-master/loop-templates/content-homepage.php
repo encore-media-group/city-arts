@@ -34,7 +34,6 @@ $recent_posts_see_it_this_week = new WP_Query(
     );
 
 ?>
-?>
 <div class="wrapper pb-0" id="page-wrapper">
   <main class="site-main" id="main">
     <div class="container mb-4" id="content" tabindex="-1">
@@ -123,13 +122,13 @@ $recent_posts_see_it_this_week = new WP_Query(
         ?>
       </div>
     </div>
-    <div class="container mb-4 py-md-1 ">
+    <div class="container mb-4 ">
       <div class="row">
-        <div class="col-8 col-sm-10 col-md-4 mx-auto mr-md-4 mr-lg-3 pb-4 px-0 px-md-3">
+        <div class="col-9 col-sm-10 col-md-4 mx-auto mr-md-4 py-md-4 px-md-3" style="min-height: 100%;">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
         </div>
         <div class="col">
-          <div class="row see-it-this-week ">
+          <div class="row pt-4 see-it-this-week ">
             <?php
               while( $recent_posts_see_it_this_week->have_posts() ) : $recent_posts_see_it_this_week->the_post();
                 get_template_part( 'item-templates/item', '730x487-vertical' );

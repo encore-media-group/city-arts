@@ -34,9 +34,9 @@ function cityarts_import_admin_page() {
   //set_writers();
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-  //set_issues();
-//  set_features_to_issues();
-  set_here_now_to_issues();
+  set_issues();
+  //set_features_to_issues();
+  //set_here_now_to_issues();
 
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -623,7 +623,7 @@ function set_issues() {
         $monthName = $slug_array[0];
       }
 
-      $cat_name = " Issue - " . ucfirst($monthName) . " - " . $year;
+      $cat_name =  ucfirst($monthName) . " " . $year;
       $cat_slug = strtolower($monthName) . "-" . $year;
 
       //set new category
@@ -656,21 +656,26 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug) {
   $cat_id_obj = get_category_by_slug($cat_slug);
   $cat_id = $cat_id_obj->term_id;
 
+  $my_cat_args = array(
+    'cat_name' => $cat_name, // for insret
+    'name' => $cat_name, //for update
+    'category_description' => '',
+    'category_nicename' => $cat_slug,
+    'category_parent' => $parent_cat_id
+  );
+
   if(!$cat_id){
     echo $cat_slug . " <- slug not found, creating new catagory.<br>";
-
-    $my_cat = array(
-      'cat_name' => $cat_name,
-      'category_description' => '',
-      'category_nicename' => $cat_slug,
-      'category_parent' => $parent_cat_id);
-
-    echo '<pre>' . var_dump($my_cat) . '</pre>';
-    $cat_id = wp_insert_category($my_cat);
+    echo '<pre>' . var_dump($my_cat_args) . '</pre>';
+    $cat_id = wp_insert_category($my_cat_args);
     var_dump($cat_id);
 
   } else {
-    echo "cat " . $cat_id . " exists.<br>";
+    echo "cat " . $cat_id . " exists. so let's update.<br>";
+    wp_update_term(
+      $cat_id,
+      'category', $my_cat_args
+    );
   }
 
   return $cat_id;
