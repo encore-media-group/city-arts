@@ -639,15 +639,15 @@ pre {
       padding-left: 15px; } }
   @media (min-width: 576px) {
     .container {
-      width: 540px;
+      width: 95%;
       max-width: 100%; } }
   @media (min-width: 768px) {
     .container {
-      width: 720px;
+      width: 96%;
       max-width: 100%; } }
   @media (min-width: 992px) {
     .container {
-      width: 960px;
+      width: 98%;
       max-width: 100%; } }
   @media (min-width: 1200px) {
     .container {
@@ -9292,6 +9292,13 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .item-540x360-vertical .item-content-container {
   max-width: 540px; }
 
+.ad-300x250 {
+  padding: 25px; }
+
+@media (max-width: 991px) {
+  .ad-300x250 {
+    padding: 0; } }
+
 #archive-wrapper h1.page-title {
   font-size: 6rem; }
 
@@ -9318,8 +9325,15 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .see-it-this-week .item-730x487-vertical .item-content-container {
   background-color: #f9e1de; }
 
-.item-730x487-vertical {
-  max-width: 730px; }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .item-730x487-vertical,
+  .item-730x487-width {
+    max-width: 550px; } }
+
+@media (min-width: 992px) {
+  .item-730x487-vertical,
+  .item-730x487-width {
+    max-width: 730px; } }
 
 span.category-label {
   display: inline-block;

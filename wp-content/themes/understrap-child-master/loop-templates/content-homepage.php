@@ -38,8 +38,8 @@ $recent_posts_see_it_this_week = new WP_Query(
   <main class="site-main" id="main">
     <div class="container mb-4" id="content" tabindex="-1">
       <div class="row pt-4">
-        <div class="col-12 col-lg-8" id="primary">
-          <div class="row">
+        <div class="col-12 px-0 px-sm col-md-auto" id="primary">
+          <div class="row mx-0">
           <?php
             while( $catquery->have_posts() ) : $catquery->the_post();
               get_template_part( 'item-templates/item', '730x487-vertical' );
@@ -47,9 +47,9 @@ $recent_posts_see_it_this_week = new WP_Query(
             wp_reset_postdata();
           ?>
           </div>
-          <div class="row pt-4 justify-content-between">
+          <div class="row mx-0 pt-4 justify-content-between item-730x487-width">
           <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-            <div class="col-lg-6 mb-4 mb-md-0">
+            <div class="col-xl-6 mb-4 mb-md-0">
               <?php get_template_part( 'item-templates/item', '160x107' ); ?>
             </div>
           <?php endwhile;
@@ -57,7 +57,7 @@ $recent_posts_see_it_this_week = new WP_Query(
           ?>
           </div>
         </div>
-        <div class="col-12 px-4 px-xl-2 col-lg-4" id="homepage-sidebar">
+        <div class="col" id="homepage-sidebar">
           <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
             <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
               <?php dynamic_sidebar( 'homepage-right-1' ); ?>

@@ -13,19 +13,20 @@
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 
 ?>
-  <div class="col item-730x487-vertical">
-    <div class="row">
+  <div class="col-12 px-0 col-sm-auto item-730x487-vertical">
+    <div class="row mx-0">
       <div class="col-12 px-0 ">
-        <img src="<?php echo esc_url( $img_src ); ?>"
-         srcset="<?php echo esc_attr( $img_srcset ); ?>"
-         sizes="(max-width: 46em) 100vw, 730px"
-        class="img-fluid"
-        style="max-width: 100%;height:auto;"
-        alt="">
+        <a href="<?php the_permalink(); ?>">
+          <img src="<?php echo esc_url( $img_src ); ?>"
+           srcset="<?php echo esc_attr( $img_srcset ); ?>"
+           sizes="(max-width: 46em) 100vw, 730px"
+          class="img-fluid"
+          style="max-width: 100%;height:auto;"
+          alt="">
+      </a>
       </div>
 
-      <div class="col-12 py-4 px-4 item-content-container">
-        <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
+      <div class="col py-4 px-4 item-content-container item-730x487-width">
         <div class="cat-label"><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
         <h1> <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a> </h1>
         <div class="contributors"> <?php echo understrap_posted_on(); ?></div>

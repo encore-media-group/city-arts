@@ -22,7 +22,7 @@ class ca_top_articles_widget extends WP_Widget {
     echo $args['before_widget'];
     if ( ! empty( $title ) )
     echo $args['before_title'];
-    echo '<div class="row"><div class="col-12 px-lg-3 px-5"><h2 class="sidelines sidebar">' . $title . '</h2></div></div>';
+    echo '<div class="row px-3"><div class="col-12 px-lg-3 px-5"><h2 class="sidelines sidebar">' . $title . '</h2></div></div>';
     echo $args['after_title'];
 
     $recent_posts = new WP_Query(array(
@@ -32,7 +32,7 @@ class ca_top_articles_widget extends WP_Widget {
     $row_num  = 1;
 
     while( $recent_posts->have_posts() ) : $recent_posts->the_post();
-      echo __('<div class="row mb-2">');
+      echo __('<div class="row px-3 mb-2">');
         set_query_var( 'row_num', $row_num );
         set_query_var( 'show_numbers' , $show_numbers_checkbox);
         set_query_var( 'show_thumbnails' , $show_images_checkbox);
