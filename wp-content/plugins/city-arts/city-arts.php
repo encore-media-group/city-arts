@@ -33,6 +33,7 @@ add_action( 'wp_enqueue_scripts', 'ca_enqueue_scripts_and_styles' );
 /* register eveything else */
 add_action( 'after_setup_theme', 'ca_add_image_sizes' );
 
+//load categories that CA requires
 add_action( 'after_setup_theme', 'create_required_ca_categories' );
 
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
@@ -40,6 +41,10 @@ add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
 add_action( 'pre_get_posts', 'ca_alter_query' );
 
 add_action( 'pre_get_posts', 'wpsites_query' );
+
+//load child template for issue instead of the default archive page
+add_filter( 'template_include', 'load_issue_template', 99 );
+
 
 
 function ca_enqueue_scripts_and_styles() {
@@ -261,19 +266,20 @@ wp_insert_term(
 
 }
 
-function issue_child_template_redirect() {
-    if (is_category() && !is_feed()) {
-        if (is_category( get_cached_cat_id_by_slug('issue') ) || cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
-            load_template( get_stylesheet_directory() . '/archive-issue.php' );
-            exit;
-        }
+
+function load_issue_template( $template ) {
+  //  if ( is_page( 'portfolio' )  ) {
+  if (is_category() && !is_feed()) {
+    if (is_category( get_cached_cat_id_by_slug('issue') ) || cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
+      $new_template = locate_template( array( 'archive-issue.php' ) );
+      if ( '' != $new_template ) {
+        return $new_template;
+      }
     }
+  }
+
+ return $template;
 }
-
-add_action('template_redirect', 'issue_child_template_redirect');
-
-
-
 
 
 
