@@ -49,81 +49,70 @@ $the_query = new WP_Query(array(
 ?>
 
 <div class="wrapper" id="archive-wrapper">
+  <main class="site-main" id="main">
+		<?php if ( have_posts() ) : ?>
+			<header class="page-header">
+				<h1 class="page-title text-center py-4"> <?php single_cat_title() ?> </h1>
+			</header><!-- .page-header -->
+		<?php endif; ?>
 
-	<div class="container px-0 m-0 mx-md-auto mb-4" id="content" tabindex="-1">
+   	<div class="container mb-4" id="content" tabindex="-1">
+      <div class="row pt-4">
+        <div class="col-12 px-0 px-sm col-md-auto" id="primary">
+          <div class="row mx-0">
+						<?php
+	  					while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
+			 					get_template_part( 'item-templates/item', '730x487-vertical' );
+			 					$cover_image =  get_field('cover_image');
+			 			?>
+					</div>
+				</div><!-- col -->
+				<div class="col">
+			 		<img src="<?php echo esc_url(  $cover_image['url'] ); ?>"
+	        class="img-fluid"
+	        style="max-width: 350px;max-height:454px"
+	        alt="">
+          <?php
+        		endwhile;
+            wp_reset_postdata();
+          ?>
+          </div>
+			</div><!--row-->
+		</div><!-- Container end -->
 
-		<div class="row">
-
-			<main class="col site-main" id="main">
-
-				<?php if ( have_posts() ) : ?>
-
-					<header class="page-header">
-							<h1 class="page-title text-center py-4"> <?php single_cat_title() ?> </h1>
-					</header><!-- .page-header -->
-
-				<?php
-				endif;
-	        while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
-							echo '<div class="row">';
-
-						 		get_template_part( 'item-templates/item', '730x487-vertical' );
-						 		$cover_image =  get_field('cover_image');
-
-								echo '<div class="col">';
-						 		?>
-						 		<img src="<?php echo esc_url(  $cover_image['url'] ); ?>"
-				        class="img-fluid"
-				        style="max-width: 350px;max-height:454px"
-				        alt="">
-			      	</div><!--row-->
-					<?php
-          endwhile;
-					?>
-
-				</div><!--row-->
-
-			</main><!-- #main -->
-
-		</div><!-- #primary -->
-
-		</div> <!-- .row -->
-
-	</div><!-- Container end -->
-
-	<div class="container-fluid ad-container mb-4">
-	  <div class="row no-gutters">
-	    <div class="col-xl-12 py-2 text-center">
-	      <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
-	    </div>
-	  </div>
-	</div>
-	<div class="container mb-4">
-		<?php
-	    while( $the_query->have_posts() ) : $the_query->the_post();
+		<div class="container-fluid ad-container mb-4">
+		  <div class="row no-gutters">
+		    <div class="col-xl-12 py-2 text-center">
+		      <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+		    </div>
+		  </div>
+		</div>
+		<div class="container mb-4">
+			<?php
+		    while( $the_query->have_posts() ) : $the_query->the_post();
 
 				get_template_part( 'item-templates/item', 'landscape-ad' );
 
-	 		get_template_part( 'item-templates/item', '540x360' );
+		 		get_template_part( 'item-templates/item', '540x360' );
 
-	 		get_template_part( 'item-templates/item', '540x360' );
+		 		get_template_part( 'item-templates/item', '540x360' );
 
-	 		get_template_part( 'item-templates/item', '320x213' );
+		 		get_template_part( 'item-templates/item', '320x213' );
 
-			endwhile;
-			wp_reset_postdata();
-	?>
-	</div>
-
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-auto">
-			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
-			</div>
+				endwhile;
+				wp_reset_postdata();
+			?>
 		</div>
-	</divi>
 
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-auto">
+				<!-- The pagination component -->
+				<?php understrap_pagination(); ?>
+				</div>
+			</div>
+		</divi>
+	</main><!-- #main -->
 </div><!-- Wrapper end -->
 
 <?php get_footer(); ?>
