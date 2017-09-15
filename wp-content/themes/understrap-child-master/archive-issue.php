@@ -31,6 +31,23 @@ $cover_story_query = new WP_Query(array(
      ],
 ));
 
+$photo_essays_query = new WP_Query(array(
+    'posts_per_page' => 1,
+    'tax_query' => [
+			'relation' => 'AND',
+				[
+	        'taxonomy' => 'category',
+	        'field'    => 'slug',
+	        'terms'    =>  array( $archive_slug ),
+					'operator' => 'IN' ],
+	    	[
+	        'taxonomy' => 'category',
+	        'field'    => 'slug',
+	        'terms'    =>  array( 'issue-feature' ),
+					'operator' => 'IN' ],
+     ],
+));
+
 $the_query = new WP_Query(array(
     'posts_per_page' => $posts_per_page,
   //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
@@ -88,14 +105,27 @@ $the_query = new WP_Query(array(
 		  </div>
 		</div>
 		<div class="container mb-4">
+			<div class="row">
+	          photos
+	          <?php
+	          while( $photo_essays_query->have_posts() ) : $photo_essays_query->the_post();
+						?>
+							<div class="col-12 col-lg-6">
+								<?php
+			            get_template_part( 'item-templates/item', '540x360-vertical' );
+			          ?>
+			          end photos
+		        	</div>
+
+	          <?php
+	          endwhile;
+	          wp_reset_postdata();
+	          ?>
+	      </div>
+		</div>
+		<div class="container mb-4">
 			<?php
 		    while( $the_query->have_posts() ) : $the_query->the_post();
-
-				get_template_part( 'item-templates/item', 'landscape-ad' );
-
-		 		get_template_part( 'item-templates/item', '540x360' );
-
-		 		get_template_part( 'item-templates/item', '540x360' );
 
 		 		get_template_part( 'item-templates/item', '320x213' );
 
@@ -104,14 +134,6 @@ $the_query = new WP_Query(array(
 			?>
 		</div>
 
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-auto">
-				<!-- The pagination component -->
-				<?php understrap_pagination(); ?>
-				</div>
-			</div>
-		</divi>
 	</main><!-- #main -->
 </div><!-- Wrapper end -->
 

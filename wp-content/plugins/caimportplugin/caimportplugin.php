@@ -34,8 +34,8 @@ function cityarts_import_admin_page() {
   //set_writers();
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-  set_issues();
-  //set_features_to_issues();
+  //set_issues();
+//set_features_to_issues();
   //set_here_now_to_issues();
 
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
@@ -47,6 +47,9 @@ function cityarts_import_admin_page() {
   //set_excerpts(); //do 8 (this sets the short and long excerpts)
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
+  //clean up functions - do last
+  remove_current_categories( 'city_neighborhood' );
+  remove_current_categories('venue_amenity');
 
     /*
     HOW TO IMPORT AND ATTACH IMAGES
@@ -684,10 +687,12 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug) {
 function set_features_to_issues() {
   // YOU MUST IMPORT the field_revision_field_features TABLE into production FIRST!!!!!
   global $wpdb;
+    $cat_obj = get_category_by_slug( 'issue-feature' );
+    $feature_cat_id = $cat_obj->term_id;
 
   $sql = "select fff.entity_id, fff.field_features_target_id, fff.delta,
   tie.new_wp_category_id, tae.new_wp_id
-  from field_revision_field_features fff
+  from cityarts.field_revision_field_features fff
   left outer join tmp_issues_export_9_8_2017 tie on tie.nid = fff.entity_id
   left outer join tmp_article_export_7_9_2017 tae on tae.nid = fff.field_features_target_id";
 
@@ -704,6 +709,8 @@ function set_features_to_issues() {
       $new_wp_category_id = $myrow->new_wp_category_id;
       echo "updating" . $new_wp_id . "<br>";
       wp_set_post_categories( $new_wp_id, $new_wp_category_id, true);
+      wp_set_post_categories( $new_wp_id, $feature_cat_id, true);
+
     }
   }
 
@@ -1140,7 +1147,20 @@ function is_slug($str) {
   return $str == slug($str);
 }
 
+function remove_current_categories( $slug ) {
 
+  $cat_obj = get_category_by_slug( $slug );
+  $cat_id = $cat_obj->term_id;
+  $categories = get_term_children( $cat_id, 'category' );
+
+  foreach ( $categories as $child ) {
+    $term = get_term_by( 'id', $child, 'category' );
+    echo 'deleting: ' . $term->term_id . ' - ' . $term->name . '<br>';
+    wp_delete_category( $term->term_id );
+  }
+  //thene delete the actual parent
+  wp_delete_category( $cat_id );
+}
 
 /*
 This is how issues work:

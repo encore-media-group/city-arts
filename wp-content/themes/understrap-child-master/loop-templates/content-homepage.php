@@ -40,21 +40,21 @@ $recent_posts_see_it_this_week = new WP_Query(
       <div class="row pt-4">
         <div class="col-12 px-0 px-sm col-md-auto" id="primary">
           <div class="row mx-0">
-          <?php
-            while( $catquery->have_posts() ) : $catquery->the_post();
-              get_template_part( 'item-templates/item', '730x487-vertical' );
-            endwhile;
-            wp_reset_postdata();
-          ?>
+            <?php
+              while( $catquery->have_posts() ) : $catquery->the_post();
+                get_template_part( 'item-templates/item', '730x487-vertical' );
+              endwhile;
+              wp_reset_postdata();
+            ?>
           </div>
           <div class="row mx-0 pt-4 justify-content-between item-730x487-width">
-          <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-            <div class="col-xl-6 mb-4 mb-md-0">
-              <?php get_template_part( 'item-templates/item', '160x107' ); ?>
-            </div>
-          <?php endwhile;
-            wp_reset_postdata();
-          ?>
+            <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+              <div class="col-xl-6 mb-4 mb-md-0">
+                <?php get_template_part( 'item-templates/item', '160x107' ); ?>
+              </div>
+            <?php endwhile;
+              wp_reset_postdata();
+            ?>
           </div>
         </div>
         <div class="col" id="homepage-sidebar">
