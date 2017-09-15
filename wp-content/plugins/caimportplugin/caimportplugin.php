@@ -48,13 +48,16 @@ function cityarts_import_admin_page() {
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
   //clean up functions - do last
-  remove_current_categories('city_neighborhood');
-  remove_current_categories('venue_amenity');
-  remove_current_categories('ad_groups');
-  remove_current_categories('current_moods');
-  remove_current_categories('current_tagging');
-  remove_current_categories('current_venue_tags');
-  remove_current_categories('event_type');
+  /*
+      remove_current_categories('city_neighborhood');
+      remove_current_categories('venue_amenity');
+      remove_current_categories('ad_groups');
+      remove_current_categories('current_moods');
+      remove_current_categories('current_tagging');
+      remove_current_categories('current_venue_tags');
+      remove_current_categories('event_type');
+  */
+      remove_current_categories('current_neighborhoods');
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
