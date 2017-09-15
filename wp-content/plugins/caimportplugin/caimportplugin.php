@@ -48,9 +48,13 @@ function cityarts_import_admin_page() {
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
   //clean up functions - do last
-  remove_current_categories( 'city_neighborhood' );
+  remove_current_categories('city_neighborhood');
   remove_current_categories('venue_amenity');
-
+  remove_current_categories('ad_groups');
+  remove_current_categories('current_moods');
+  remove_current_categories('current_tagging');
+  remove_current_categories('current_venue_tags');
+  remove_current_categories('event_type');
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -1150,16 +1154,37 @@ function is_slug($str) {
 function remove_current_categories( $slug ) {
 
   $cat_obj = get_category_by_slug( $slug );
-  $cat_id = $cat_obj->term_id;
-  $categories = get_term_children( $cat_id, 'category' );
+  $exists = false;
 
-  foreach ( $categories as $child ) {
-    $term = get_term_by( 'id', $child, 'category' );
-    echo 'deleting: ' . $term->term_id . ' - ' . $term->name . '<br>';
-    wp_delete_category( $term->term_id );
+  if( $cat_obj ) {
+    $cat_id = $cat_obj->term_id;
+    echo $slug . ' - exists. <br>';
+    $categories = get_term_children( $cat_id, 'category' );
+
+    if (is_wp_error($categories)) {
+      $errors = $categories->get_error_messages();
+      foreach ($errors as $error) {
+        echo $error;
+      }
+    } else {
+
+      foreach ( $categories as $child ) {
+        $term = get_term_by( 'id', $child, 'category' );
+        echo 'deleting: ' . $term->term_id . ' - ' . $term->name . ' - ' . $term->slug . '<br>';
+        wp_delete_category( $term->term_id );
+      }
+    }
+
+    //thene delete the actual parent
+    $exists = wp_delete_category( $cat_id );
   }
-  //thene delete the actual parent
-  wp_delete_category( $cat_id );
+
+  if($exists) {
+    echo "category: " . $slug . ' was deleted.<br>';
+  } else {
+    echo "category: " . $slug . ' doesn\'t exist.<br>';
+  }
+
 }
 
 /*
