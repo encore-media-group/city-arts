@@ -62,7 +62,7 @@ $photo_essays_query = new WP_Query(array(
 	    	[
 	        'taxonomy' => 'category',
 	        'field'    => 'slug',
-	        'terms'    =>  array( 'issue-feature' ),
+	        'terms'    =>  array( 'feature' ),
 					'operator' => 'IN' ],
      ],
 ));
