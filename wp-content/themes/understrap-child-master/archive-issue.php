@@ -14,6 +14,24 @@ get_header();
 
 $archive_slug =  get_queried_object()->slug;
 
+$date = explode( "-", $archive_slug );
+$nmonth = date( 'm', strtotime( $date[0] ) );
+$full_date = "1/" . $nmonth . "/" . $date[1];
+
+$issue_date =  date('d/m/Y', strtotime($full_date));
+$date_now = new DateTime();
+
+if ($date_now > $issue_date) {
+        echo 'greater than';
+    }else{
+        echo 'Less than';
+    }
+/*
+convert slug to time data
+
+if slug = current month, then build slugs for past two issues.
+if slug < current month, then grab past and next monht.
+*/
 $cover_story_query = new WP_Query(array(
     'posts_per_page' => 1,
     'tax_query' => [
@@ -30,6 +48,7 @@ $cover_story_query = new WP_Query(array(
 					'operator' => 'IN' ],
      ],
 ));
+//var_dump($cover_story_query);
 
 $photo_essays_query = new WP_Query(array(
     'posts_per_page' => 1,
@@ -81,6 +100,8 @@ $the_query = new WP_Query(array(
 	  					while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
 			 					get_template_part( 'item-templates/item', '730x487-vertical' );
 			 					$cover_image =  get_field('cover_image');
+			 					$issue_publish_date = get_field('issue_publish_date');
+			 					var_dump($issue_publish_date);
 			 			?>
 					</div>
 				</div><!-- col -->

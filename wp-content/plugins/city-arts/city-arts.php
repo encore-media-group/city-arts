@@ -256,11 +256,20 @@ wp_insert_term(
   );
 
 wp_insert_term(
-    'Issue Feature',
+    'Column',
+    'category',
+    array(
+      'description' => '',
+      'slug'    => 'column'
+    )
+  );
+
+wp_insert_term(
+    'Feature',
     'category',
     array(
       'description' => 'This is the category for all articles that are features of an issue.',
-      'slug'    => 'issue-feature'
+      'slug'    => 'feature'
     )
   );
 
@@ -268,7 +277,6 @@ wp_insert_term(
 
 
 function load_issue_template( $template ) {
-  //  if ( is_page( 'portfolio' )  ) {
   if (is_category() && !is_feed()) {
     if (is_category( get_cached_cat_id_by_slug('issue') ) || cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
       $new_template = locate_template( array( 'archive-issue.php' ) );

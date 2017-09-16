@@ -35,8 +35,7 @@ function cityarts_import_admin_page() {
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   //set_issues();
-//set_features_to_issues();
-  //set_here_now_to_issues();
+  //set_features_to_issues();
 
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -56,8 +55,26 @@ function cityarts_import_admin_page() {
       remove_current_categories('current_tagging');
       remove_current_categories('current_venue_tags');
       remove_current_categories('event_type');
-  */
       remove_current_categories('current_neighborhoods');
+      */
+      reset_category_parent( 'photo-essay', 'feature' );
+      reset_category_parent( 'open-studio', 'feature' );
+      reset_category_parent( 'fabric', 'feature' );
+
+      reset_category_parent( 'album-of-the-month', 'review' );
+      reset_category_parent( 'book-of-the-month', 'review' );
+      reset_category_parent( 'singles', 'review', 'Attractive Singles' );
+      reset_category_parent( 'scarecrow', 'review', 'Scarecrow Suggests' ); //rename the name of the category
+      reset_category_parent( 'review', '' ); //make ths cateogry have no parent
+      reset_category_parent( 'hamil-with-care', 'column' );
+
+      reset_category_parent( 'faded-signs', 'column' );
+      reset_category_parent( 'field-notes', 'column' );
+      reset_category_parent( 'at-large', 'column' );
+      reset_category_parent( 'the-week-in-arts', 'column' );
+      reset_category_parent( 'editors-note', 'column' );
+
+
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -658,34 +675,53 @@ function set_issues() {
   }
 }
 
+
 function set_issue_category($cat_name, $cat_slug, $parent_slug) {
 
-  $parent_cat_id_obj = get_category_by_slug($parent_slug);
-  $parent_cat_id = $parent_cat_id_obj->term_id;
+  if( $parent_slug ) {
+    $parent_cat_id_obj = get_category_by_slug($parent_slug);
+    $parent_cat_id = $parent_cat_id_obj->term_id;
+  } else {
+    $parent_cat_id = 0;
+  }
 
   $cat_id_obj = get_category_by_slug($cat_slug);
   $cat_id = $cat_id_obj->term_id;
 
   $my_cat_args = array(
-    'cat_name' => $cat_name, // for insret
-    'name' => $cat_name, //for update
+    // for insert
+    'cat_name' => $cat_name,
     'category_description' => '',
     'category_nicename' => $cat_slug,
-    'category_parent' => $parent_cat_id
+    'category_parent' => $parent_cat_id,
+    //for update
+    'name' => $cat_name,
+    'slug' => $cat_slug,
+    'parent' => $parent_cat_id
   );
+  echo "the cat id is: " . $cat_id . "<BR>";
+  var_dump($my_cat_args);
 
   if(!$cat_id){
-    echo $cat_slug . " <- slug not found, creating new catagory.<br>";
+    echo $cat_slug . " <- slug not found, creating new category.<br>";
     echo '<pre>' . var_dump($my_cat_args) . '</pre>';
     $cat_id = wp_insert_category($my_cat_args);
     var_dump($cat_id);
 
   } else {
     echo "cat " . $cat_id . " exists. so let's update.<br>";
-    wp_update_term(
-      $cat_id,
-      'category', $my_cat_args
-    );
+    //wp_update_term( $term_id, $taxonomy, $args )
+    //Defaults will set 'alias_of', 'description', 'parent', and 'slug' if not defined in $args already.
+    $update_response = wp_update_term( $cat_id, 'category', $my_cat_args );
+
+    if (is_wp_error($update_response)) {
+      $errors = $update_response->get_error_messages();
+      foreach ($errors as $error) {
+        echo $error;
+      }
+    } else {
+      echo var_dump($update_response) . "<br>";
+    }
   }
 
   return $cat_id;
@@ -694,7 +730,7 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug) {
 function set_features_to_issues() {
   // YOU MUST IMPORT the field_revision_field_features TABLE into production FIRST!!!!!
   global $wpdb;
-    $cat_obj = get_category_by_slug( 'issue-feature' );
+    $cat_obj = get_category_by_slug( 'feature' );
     $feature_cat_id = $cat_obj->term_id;
 
   $sql = "select fff.entity_id, fff.field_features_target_id, fff.delta,
@@ -723,31 +759,6 @@ function set_features_to_issues() {
 
 }
 
-function set_here_now_to_issues() {
-  // YOU MUST IMPORT the field_revision_field_here_now TABLE into production FIRST!!!!!
-  //NOTE: BEFORE YOU PUBLISH TO USE IN PROD YOU HAVE TO REMOVE THE CITY ARTS TABLE PREFACE
-  global $wpdb;
-
-  $sql = "select fhn.entity_id, fhn.field_here_now_target_id, fhn.delta, tie.new_wp_category_id, tae.new_wp_id from field_revision_field_here_now fhn left outer join tmp_issues_export_9_8_2017 tie on tie.nid = fhn.entity_id left outer join tmp_article_export_7_9_2017 tae on tae.nid = fhn.field_here_now_target_id";
-
-//  $sql = "select * from tmp_attach_features_to_issues";
-  echo $sql;
-  $myrows = $wpdb->get_results( $sql );
-  if ($myrows) {
-    echo "found rows<br>";
-    $count = 0;
-    foreach ( $myrows as $myrow ) {
-      $count++;
-      echo "# " . $count . ": ";
-
-      $new_wp_id = $myrow->new_wp_id;
-      $new_wp_category_id = $myrow->new_wp_category_id;
-      echo "updating" . $new_wp_id . "<br>";
-      wp_set_post_categories( $new_wp_id, $new_wp_category_id, true);
-    }
-  }
-
-}
 
 function set_excerpts() {
   global $wpdb;
@@ -979,6 +990,70 @@ function set_parent_child_category_relationship() {
 }
 
 
+function remove_current_categories( $slug ) {
+
+  $cat_obj = get_category_by_slug( $slug );
+  $exists = false;
+
+  if( $cat_obj ) {
+    $cat_id = $cat_obj->term_id;
+    echo $slug . ' - exists. <br>';
+    $categories = get_term_children( $cat_id, 'category' );
+
+    if (is_wp_error($categories)) {
+      $errors = $categories->get_error_messages();
+      foreach ($errors as $error) {
+        echo $error;
+      }
+    } else {
+
+      foreach ( $categories as $child ) {
+        $term = get_term_by( 'id', $child, 'category' );
+        echo 'deleting: ' . $term->term_id . ' - ' . $term->name . ' - ' . $term->slug . '<br>';
+        wp_delete_category( $term->term_id );
+      }
+    }
+
+    //thene delete the actual parent
+    $exists = wp_delete_category( $cat_id );
+  }
+
+  if($exists) {
+    echo "category: " . $slug . ' was deleted.<br>';
+  } else {
+    echo "category: " . $slug . ' doesn\'t exist.<br>';
+  }
+
+}
+
+
+function reset_category_parent( $slug, $parent_slug, $cat_name = '') {
+
+  if(! $cat_name ) {
+    $cat_obj = get_category_by_slug( $slug );
+    $cat_name = $cat_obj->name;
+  }
+
+  set_issue_category( $cat_name, $slug, $parent_slug );
+
+}
+
+/*
+This is how issues work:
+1. the cover story is also the issue page and has a secondary image for the cover.
+2. the url for the issue is the category: /issue/month-year
+3. the url for the cover story is: /article-title
+4. the category for a cover story is cover-story and was the drupal "Featured"
+5. the old "featured" article for an issue, is now a cover story
+6. the old "features" as mapped from the drupal issue context will have category "month-year"
+
+the actual import will be from a table that is a subset of articles of type issue:
+each one points to a featured drupal id.
+1. create table of "issues-to-import-as-categories"
+2. select all, then, create categories for each one, if it doesn't exist, then, find the wp_post, based on id, that matches, and add the new category id to it.
+3. DONE.
+
+*/
 
 /***************************************************************************
 
@@ -1154,57 +1229,4 @@ function is_slug($str) {
   return $str == slug($str);
 }
 
-function remove_current_categories( $slug ) {
-
-  $cat_obj = get_category_by_slug( $slug );
-  $exists = false;
-
-  if( $cat_obj ) {
-    $cat_id = $cat_obj->term_id;
-    echo $slug . ' - exists. <br>';
-    $categories = get_term_children( $cat_id, 'category' );
-
-    if (is_wp_error($categories)) {
-      $errors = $categories->get_error_messages();
-      foreach ($errors as $error) {
-        echo $error;
-      }
-    } else {
-
-      foreach ( $categories as $child ) {
-        $term = get_term_by( 'id', $child, 'category' );
-        echo 'deleting: ' . $term->term_id . ' - ' . $term->name . ' - ' . $term->slug . '<br>';
-        wp_delete_category( $term->term_id );
-      }
-    }
-
-    //thene delete the actual parent
-    $exists = wp_delete_category( $cat_id );
-  }
-
-  if($exists) {
-    echo "category: " . $slug . ' was deleted.<br>';
-  } else {
-    echo "category: " . $slug . ' doesn\'t exist.<br>';
-  }
-
-}
-
-/*
-This is how issues work:
-1. the cover story is also the issue page and has a secondary image for the cover.
-2. the url for the issue is the category: /issue/month-year
-3. the url for the cover story is: /article-title
-4. the category for a cover story is cover-story
-5. the old "featured" article for an issue, is now a cover story
-6. the old "features" as mapped from the drupal issue context will have categories of:
-"issue-feature" and "month-year"
-
-the actual import will be from a table that is a subset of articles of type issue:
-each one points to a featured drupal id.
-1. create table of "issues-to-import-as-categories"
-2. select all, then, create categories for each one, if it doesn't exist, then, find the wp_post, based on id, that matches, and add the new category id to it.
-3. DONE.
-
-*/
 
