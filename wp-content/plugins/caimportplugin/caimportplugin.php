@@ -35,7 +35,7 @@ function cityarts_import_admin_page() {
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   //set_issues();
-  //set_features_to_issues();
+  set_features_to_issues();
 
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -56,13 +56,15 @@ function cityarts_import_admin_page() {
       remove_current_categories('current_venue_tags');
       remove_current_categories('event_type');
       remove_current_categories('current_neighborhoods');
-      */
+
       reset_category_parent( 'issue', '', 'Issue' );// create category
       reset_category_parent( 'column', '', 'Column' );// create category
       reset_category_parent( 'feature', '', 'Feature' );// create category
       reset_category_parent( 'lifestyle', '', 'lifestyle' );// create category
       reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
-
+      reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
+      reset_category_parent( 'poetry', '', 'Poetry' );// create category
+//pick up and figure out fiction
       reset_category_parent( 'cover-story', 'feature' );
       reset_category_parent( 'photo-essay', 'feature' );
       reset_category_parent( 'open-studio', 'feature' );
@@ -80,7 +82,6 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'scarecrow', 'review', 'Scarecrow Suggests' ); //rename the name of the category
       reset_category_parent( 'review', '' ); //make ths cateogry have no parent
 
-      reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
       reset_category_parent( 'epilogue', 'creative-nonfiction');
 
       reset_category_parent( 'hamil-with-care', 'column' );
@@ -102,6 +103,7 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'creative-writing', 'poetry');
       reset_category_parent( 'food', 'lifestyle');
       reset_category_parent( 'sponsored', '');
+      */
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -677,7 +679,7 @@ function set_issues() {
         $monthName = $slug_array[0];
       }
 
-      $cat_name =  ucfirst($monthName) . " " . $year;
+      $cat_name = ucfirst($monthName) . " " . $year;
       $cat_slug = strtolower($monthName) . "-" . $year;
 
       //set new category
@@ -777,7 +779,7 @@ function set_features_to_issues() {
     foreach ( $myrows as $myrow ) {
       $count++;
       echo "# " . $count . ": ";
-
+      echo "<pre> " . var_dump($myrow) . "</pre><p>";
       $new_wp_id = $myrow->new_wp_id;
       $new_wp_category_id = $myrow->new_wp_category_id;
       echo "updating" . $new_wp_id . "<br>";
