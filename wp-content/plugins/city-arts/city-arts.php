@@ -273,6 +273,15 @@ wp_insert_term(
     )
   );
 
+wp_insert_term(
+    'Lifestyle',
+    'category',
+    array(
+      'description' => '',
+      'slug'    => 'lifestyle'
+    )
+  );
+
 }
 
 

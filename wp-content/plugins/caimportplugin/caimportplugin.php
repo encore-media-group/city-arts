@@ -60,6 +60,12 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'photo-essay', 'feature' );
       reset_category_parent( 'open-studio', 'feature' );
       reset_category_parent( 'fabric', 'feature' );
+      reset_category_parent( 'band-in-process', 'feature');
+      reset_category_parent( 'lit', 'feature');
+      reset_category_parent( 'multimedia', 'feature');
+      reset_category_parent( 'profile', 'feature');
+      reset_category_parent( 'style', 'feature');
+
 
       reset_category_parent( 'album-of-the-month', 'review' );
       reset_category_parent( 'book-of-the-month', 'review' );
@@ -73,8 +79,17 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'at-large', 'column' );
       reset_category_parent( 'the-week-in-arts', 'column' );
       reset_category_parent( 'editors-note', 'column' );
+      reset_category_parent( 'news-notes', '', 'News' );
+      reset_category_parent( 'qa', '' );
 
-
+      reset_category_parent( 'preview', '' );
+      reset_category_parent( 'premiere', '');
+      reset_category_parent( 'essay', '');
+      reset_category_parent( 'see-it-this-week', '');
+      reset_category_parent( 'art-article_type', '', 'Artwork', 'artwork');//give it a new slug
+      reset_category_parent( 'creative-writing', 'poetry');
+      reset_category_parent( 'food', 'lifestyle');
+      reset_category_parent( 'sponsored', '');
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -676,9 +691,9 @@ function set_issues() {
 }
 
 
-function set_issue_category($cat_name, $cat_slug, $parent_slug) {
+function set_issue_category($cat_name, $cat_slug, $parent_slug, $new_cat_slug = '') {
 
-  if( $parent_slug ) {
+  if ( $parent_slug ) {
     $parent_cat_id_obj = get_category_by_slug($parent_slug);
     $parent_cat_id = $parent_cat_id_obj->term_id;
   } else {
@@ -687,6 +702,10 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug) {
 
   $cat_id_obj = get_category_by_slug($cat_slug);
   $cat_id = $cat_id_obj->term_id;
+
+  if ( !empty( $new_cat_slug ) ) {
+    $cat_slug = $new_cat_slug;
+  }
 
   $my_cat_args = array(
     // for insert
@@ -1027,14 +1046,14 @@ function remove_current_categories( $slug ) {
 }
 
 
-function reset_category_parent( $slug, $parent_slug, $cat_name = '') {
+function reset_category_parent( $slug, $parent_slug, $cat_name = '', $new_slug = '') {
 
   if(! $cat_name ) {
     $cat_obj = get_category_by_slug( $slug );
     $cat_name = $cat_obj->name;
   }
 
-  set_issue_category( $cat_name, $slug, $parent_slug );
+  set_issue_category( $cat_name, $slug, $parent_slug, $new_slug );
 
 }
 
