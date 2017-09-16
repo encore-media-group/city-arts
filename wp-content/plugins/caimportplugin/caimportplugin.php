@@ -767,7 +767,7 @@ function set_features_to_issues() {
 
   $sql = "select fff.entity_id, fff.field_features_target_id, fff.delta,
   tie.new_wp_category_id, tae.new_wp_id
-  from cityarts.field_revision_field_features fff
+  from field_revision_field_features fff
   left outer join tmp_issues_export_9_8_2017 tie on tie.nid = fff.entity_id
   left outer join tmp_article_export_7_9_2017 tae on tae.nid = fff.field_features_target_id";
 
