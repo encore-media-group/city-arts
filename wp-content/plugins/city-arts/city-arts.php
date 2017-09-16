@@ -237,6 +237,7 @@ if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
 }
 
 function create_required_ca_categories() {
+  /*
   wp_insert_term(
     'Issue',
     'category',
@@ -246,14 +247,7 @@ function create_required_ca_categories() {
     )
   );
 
-wp_insert_term(
-    'Cover Story',
-    'category',
-    array(
-      'description' => 'This is the category for all articles that are cover stories.',
-      'slug'    => 'cover-story'
-    )
-  );
+
 
 wp_insert_term(
     'Column',
@@ -274,6 +268,16 @@ wp_insert_term(
   );
 
 wp_insert_term(
+    'Cover Story',
+    'category',
+    array(
+      'description' => 'This is the category for all articles that are cover stories.',
+      'slug'    => 'cover-story',
+      'category_parent' => $parent_cat_id,
+    )
+  );
+
+wp_insert_term(
     'Lifestyle',
     'category',
     array(
@@ -281,7 +285,7 @@ wp_insert_term(
       'slug'    => 'lifestyle'
     )
   );
-
+ */
 }
 
 

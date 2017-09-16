@@ -57,6 +57,13 @@ function cityarts_import_admin_page() {
       remove_current_categories('event_type');
       remove_current_categories('current_neighborhoods');
       */
+      reset_category_parent( 'issue', '', 'Issue' );// create category
+      reset_category_parent( 'column', '', 'Column' );// create category
+      reset_category_parent( 'feature', '', 'Feature' );// create category
+      reset_category_parent( 'lifestyle', '', 'lifestyle' );// create category
+      reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
+
+      reset_category_parent( 'cover-story', 'feature' );
       reset_category_parent( 'photo-essay', 'feature' );
       reset_category_parent( 'open-studio', 'feature' );
       reset_category_parent( 'fabric', 'feature' );
@@ -65,27 +72,32 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'multimedia', 'feature');
       reset_category_parent( 'profile', 'feature');
       reset_category_parent( 'style', 'feature');
-
+      reset_category_parent( 'sketchbook-porn', 'feature');
 
       reset_category_parent( 'album-of-the-month', 'review' );
       reset_category_parent( 'book-of-the-month', 'review' );
       reset_category_parent( 'singles', 'review', 'Attractive Singles' );
       reset_category_parent( 'scarecrow', 'review', 'Scarecrow Suggests' ); //rename the name of the category
       reset_category_parent( 'review', '' ); //make ths cateogry have no parent
-      reset_category_parent( 'hamil-with-care', 'column' );
 
+      reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
+      reset_category_parent( 'epilogue', 'creative-nonfiction');
+
+      reset_category_parent( 'hamil-with-care', 'column' );
       reset_category_parent( 'faded-signs', 'column' );
       reset_category_parent( 'field-notes', 'column' );
       reset_category_parent( 'at-large', 'column' );
       reset_category_parent( 'the-week-in-arts', 'column' );
       reset_category_parent( 'editors-note', 'column' );
-      reset_category_parent( 'news-notes', '', 'News' );
-      reset_category_parent( 'qa', '' );
 
+      reset_category_parent( 'news-notes', '', 'News' );
+
+      reset_category_parent( 'qa', '' );
       reset_category_parent( 'preview', '' );
       reset_category_parent( 'premiere', '');
       reset_category_parent( 'essay', '');
       reset_category_parent( 'see-it-this-week', '');
+
       reset_category_parent( 'art-article_type', '', 'Artwork', 'artwork');//give it a new slug
       reset_category_parent( 'creative-writing', 'poetry');
       reset_category_parent( 'food', 'lifestyle');
@@ -690,7 +702,6 @@ function set_issues() {
   }
 }
 
-
 function set_issue_category($cat_name, $cat_slug, $parent_slug, $new_cat_slug = '') {
 
   if ( $parent_slug ) {
@@ -701,7 +712,7 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug, $new_cat_slug = 
   }
 
   $cat_id_obj = get_category_by_slug($cat_slug);
-  $cat_id = $cat_id_obj->term_id;
+  $cat_id = ($cat_id_obj == true ? $cat_id_obj->term_id : null);
 
   if ( !empty( $new_cat_slug ) ) {
     $cat_slug = $new_cat_slug;
@@ -718,7 +729,7 @@ function set_issue_category($cat_name, $cat_slug, $parent_slug, $new_cat_slug = 
     'slug' => $cat_slug,
     'parent' => $parent_cat_id
   );
-  echo "the cat id is: " . $cat_id . "<BR>";
+
   var_dump($my_cat_args);
 
   if(!$cat_id){
@@ -1045,7 +1056,8 @@ function remove_current_categories( $slug ) {
 
 }
 
-
+// "Creative Non-Fiction", "creative-nonfiction", ''
+//"creative-nonfiction", '', "Creative Non-Fiction"
 function reset_category_parent( $slug, $parent_slug, $cat_name = '', $new_slug = '') {
 
   if(! $cat_name ) {
