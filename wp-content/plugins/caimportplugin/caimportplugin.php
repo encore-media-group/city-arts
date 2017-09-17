@@ -105,8 +105,13 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'sponsored', '');
       */
 
-//    one_time_migrate_Features_to_feature();
-    detele_features_category();
+    // one_time_migrate_Features_to_feature();
+    // delete_category('features');
+    shift_genre_bender();
+    delete_category('genre-bender-2015');
+    delete_category('genre-bender-2016');
+    delete_category('genre-bender-2017');
+
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -1075,6 +1080,21 @@ function reset_category_parent( $slug, $parent_slug, $cat_name = '', $new_slug =
 }
 
 function one_time_migrate_Features_to_feature() {
+  one_time_migrate_category_to_another_category( 'features', 'feature');
+
+}
+
+function shift_genre_bender() {
+  if( !term_exists( 'genre-bender', 'category' ) ) {
+    reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
+  }
+
+  one_time_migrate_category_to_another_category( 'genre-bender-2015', 'genre-bender');
+  one_time_migrate_category_to_another_category( 'genre-bender-2016', 'genre-bender');
+  one_time_migrate_category_to_another_category( 'genre-bender-2017', 'genre-bender');
+}
+
+function one_time_migrate_category_to_another_category( $old, $new ) {
 /*
  get posts with category features
  then add feature cateogry
@@ -1087,13 +1107,13 @@ function one_time_migrate_Features_to_feature() {
         [
           'taxonomy' => 'category',
           'field'    => 'slug',
-          'terms'    =>  array( 'features' ),
+          'terms'    =>  array( $old ),
           'operator' => 'IN' ],
       ]
   );
   $query = new WP_Query( $args );
 
-  $cat_obj = get_category_by_slug( 'feature' );
+  $cat_obj = get_category_by_slug( $new );
   $cat_id = $cat_obj->term_id;
 
   while( $query->have_posts() ) : $query->the_post();
@@ -1110,7 +1130,7 @@ function one_time_migrate_Features_to_feature() {
       }
 
     echo " - removed: ";
-    $removecat = wp_remove_object_terms( get_the_ID(), 'features', 'category' );
+    $removecat = wp_remove_object_terms( get_the_ID(), $old, 'category' );
         if (is_wp_error($removecat)) {
         $errors = $removecat->get_error_messages();
         foreach ($errors as $error) {
@@ -1123,8 +1143,9 @@ function one_time_migrate_Features_to_feature() {
   wp_reset_postdata();
 
 }
-function detele_features_category() {
-  $cat_obj = get_category_by_slug( 'features' );
+
+function delete_category( $slug_to_delete) {
+  $cat_obj = get_category_by_slug( $slug_to_delete );
   $categ_ID = $cat_obj->term_id;
   if ( wp_delete_category( $categ_ID ) ) {
   echo "Category #$categ_ID was successfully deleted";
