@@ -33,9 +33,6 @@ add_action( 'wp_enqueue_scripts', 'ca_enqueue_scripts_and_styles' );
 /* register eveything else */
 add_action( 'after_setup_theme', 'ca_add_image_sizes' );
 
-//load categories that CA requires
-add_action( 'after_setup_theme', 'create_required_ca_categories' );
-
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
 
 add_action( 'pre_get_posts', 'ca_alter_query' );
@@ -236,57 +233,6 @@ if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
     }
 }
 
-function create_required_ca_categories() {
-  /*
-  wp_insert_term(
-    'Issue',
-    'category',
-    array(
-      'description' => 'This is the base category for all issues.',
-      'slug'    => 'issue'
-    )
-  );
-
-
-
-wp_insert_term(
-    'Column',
-    'category',
-    array(
-      'description' => '',
-      'slug'    => 'column'
-    )
-  );
-
-wp_insert_term(
-    'Feature',
-    'category',
-    array(
-      'description' => 'This is the category for all articles that are features of an issue.',
-      'slug'    => 'feature'
-    )
-  );
-
-wp_insert_term(
-    'Cover Story',
-    'category',
-    array(
-      'description' => 'This is the category for all articles that are cover stories.',
-      'slug'    => 'cover-story',
-      'category_parent' => $parent_cat_id,
-    )
-  );
-
-wp_insert_term(
-    'Lifestyle',
-    'category',
-    array(
-      'description' => '',
-      'slug'    => 'lifestyle'
-    )
-  );
- */
-}
 
 
 function load_issue_template( $template ) {

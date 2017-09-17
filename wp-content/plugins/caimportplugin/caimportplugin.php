@@ -35,7 +35,7 @@ function cityarts_import_admin_page() {
   //set_contributors(); //do 1
   //set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   //set_issues();
-  set_features_to_issues();
+  //set_features_to_issues();
 
   // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
@@ -104,6 +104,8 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'food', 'lifestyle');
       reset_category_parent( 'sponsored', '');
       */
+
+    one_time_migrate_Features_to_feature();
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -1071,6 +1073,56 @@ function reset_category_parent( $slug, $parent_slug, $cat_name = '', $new_slug =
 
 }
 
+function one_time_migrate_Features_to_feature() {
+/*
+ get posts with category features
+ then add feature cateogry
+ remove the features category
+*/
+  $args = array(
+    'posts_per_page' => -1,
+    'tax_query' => [
+      'relation' => 'AND',
+        [
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    =>  array( 'features' ),
+          'operator' => 'IN' ],
+      ]
+  );
+  $query = new WP_Query( $args );
+
+  $cat_obj = get_category_by_slug( 'feature' );
+  $cat_id = $cat_obj->term_id;
+
+  while( $query->have_posts() ) : $query->the_post();
+   // $post = $query->posts;
+    echo "id = " . get_the_ID();
+    echo "title = " . get_the_title();
+    echo " - added: ";
+    $setcat = wp_set_post_categories( get_the_ID(), array($cat_id), true);
+    if (is_wp_error($setcat)) {
+        $errors = $setcat->get_error_messages();
+        foreach ($errors as $error) {
+          echo $error;
+        }
+      }
+
+    echo " - removed: ";
+    $removecat = wp_remove_object_terms( get_the_ID(), 'features', 'category' );
+        if (is_wp_error($removecat)) {
+        $errors = $removecat->get_error_messages();
+        foreach ($errors as $error) {
+          echo $error;
+        }
+      }
+    echo " <br> ";
+
+  endwhile;
+  wp_reset_postdata();
+
+}
+
 /*
 This is how issues work:
 1. the cover story is also the issue page and has a secondary image for the cover.
@@ -1261,5 +1313,7 @@ function transliterate($string) {
 function is_slug($str) {
   return $str == slug($str);
 }
+
+
 
 
