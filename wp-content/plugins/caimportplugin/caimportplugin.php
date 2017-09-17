@@ -105,7 +105,8 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'sponsored', '');
       */
 
-    one_time_migrate_Features_to_feature();
+//    one_time_migrate_Features_to_feature();
+    detele_features_category();
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -1122,7 +1123,15 @@ function one_time_migrate_Features_to_feature() {
   wp_reset_postdata();
 
 }
-
+function detele_features_category() {
+  $cat_obj = get_category_by_slug( 'features' );
+  $categ_ID = $cat_obj->term_id;
+  if ( wp_delete_category( $categ_ID ) ) {
+  echo "Category #$categ_ID was successfully deleted";
+} else {
+  echo "Impossible to delete category #$categ_ID! Make sure it exists and that it's not the default category";
+}
+}
 /*
 This is how issues work:
 1. the cover story is also the issue page and has a secondary image for the cover.
