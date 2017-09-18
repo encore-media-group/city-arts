@@ -24,49 +24,35 @@ $date_now = new DateTime();
 $issue_query_slugs[] = $archive_slug;
 
 if ($issue_date == $date_now ) {
-	echo 'build slugs for past two issues.';
-	echo "<br>";
-	echo strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-	echo "<br>";
-	echo strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
-	echo "<br>";
+	//echo 'build slugs for past two issues.';
+	$issue_query_slugs[] =  strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+	$issue_query_slugs[] =  strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
 
-    }else{
-  echo 'build prior and following month';
-	echo "<br>";
-	echo strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+  } else {
+  //echo 'build prior and following month';
 	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-
-	echo "<br>";
-	echo strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
 	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
-	echo "<br>";
 
-    }
-    var_dump($issue_query_slugs);
-/*
-convert slug to time data
+	/* convert slug to time data
+		if slug = current month, then build slugs for past two issues.
+		if slug < current month, then grab past and next month. */
 
-if slug = current month, then build slugs for past two issues.
-if slug < current month, then grab past and next month.
-*/
-$cover_story_query = new WP_Query(array(
-    'posts_per_page' => 3,
-    'tax_query' => [
-			'relation' => 'AND',
-				[
-	        'taxonomy' => 'category',
-	        'field'    => 'slug',
-	        'terms'    =>  $issue_query_slugs,
-					'operator' => 'IN' ],
-	    	[
-	        'taxonomy' => 'category',
-	        'field'    => 'slug',
-	        'terms'    =>  array( 'cover-story' ),
-					'operator' => 'IN' ],
-     ],
-));
-//var_dump($cover_story_query);
+	$cover_story_query = new WP_Query(array(
+	    'posts_per_page' => 3,
+	    'tax_query' => [
+				'relation' => 'AND',
+					[
+		        'taxonomy' => 'category',
+		        'field'    => 'slug',
+		        'terms'    =>  $issue_query_slugs,
+						'operator' => 'IN' ],
+		    	[
+		        'taxonomy' => 'category',
+		        'field'    => 'slug',
+		        'terms'    =>  array( 'cover-story' ),
+						'operator' => 'IN' ],
+	     ],
+	));
 
 $photo_essays_query = new WP_Query(array(
     'posts_per_page' => 1,

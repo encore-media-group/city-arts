@@ -62,9 +62,12 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'column', '', 'Column' );// create category
       reset_category_parent( 'feature', '', 'Feature' );// create category
       reset_category_parent( 'lifestyle', '', 'Lifestyle' );// create category
-      */
         reset_category_parent( 'style-profile', 'lifestyle', 'Style Profile' );// create category
         reset_category_parent( 'taste-test', 'lifestyle', 'Taste Test' );// create category
+      */
+      reset_category_parent( 'fiction', '', 'Fiction' );// create category
+      reset_category_parent( 'humor', '', 'Humor' );// create category
+
 /*
       reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
       reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
