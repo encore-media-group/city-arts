@@ -11,7 +11,7 @@ get_header();
 ?>
 
 <?php
-
+//example: july-2017
 $archive_slug =  get_queried_object()->slug;
 
 $date = explode( "-", $archive_slug );
@@ -21,25 +21,43 @@ $full_date = "1/" . $nmonth . "/" . $date[1];
 $issue_date =  date('d/m/Y', strtotime($full_date));
 $date_now = new DateTime();
 
-if ($date_now > $issue_date) {
-        echo 'greater than';
+$issue_query_slugs[] = $archive_slug;
+
+if ($issue_date == $date_now ) {
+	echo 'build slugs for past two issues.';
+	echo "<br>";
+	echo strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+	echo "<br>";
+	echo strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
+	echo "<br>";
+
     }else{
-        echo 'Less than';
+  echo 'build prior and following month';
+	echo "<br>";
+	echo strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+
+	echo "<br>";
+	echo strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
+	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
+	echo "<br>";
+
     }
+    var_dump($issue_query_slugs);
 /*
 convert slug to time data
 
 if slug = current month, then build slugs for past two issues.
-if slug < current month, then grab past and next monht.
+if slug < current month, then grab past and next month.
 */
 $cover_story_query = new WP_Query(array(
-    'posts_per_page' => 1,
+    'posts_per_page' => 3,
     'tax_query' => [
 			'relation' => 'AND',
 				[
 	        'taxonomy' => 'category',
 	        'field'    => 'slug',
-	        'terms'    =>  array( $archive_slug ),
+	        'terms'    =>  $issue_query_slugs,
 					'operator' => 'IN' ],
 	    	[
 	        'taxonomy' => 'category',
@@ -106,6 +124,7 @@ $the_query = new WP_Query(array(
 					</div>
 				</div><!-- col -->
 				<div class="col">
+					HERES	<?php the_title() ?>
 			 		<img src="<?php echo esc_url(  $cover_image['url'] ); ?>"
 	        class="img-fluid"
 	        style="max-width: 350px;max-height:454px"

@@ -42,12 +42,13 @@ function cityarts_import_admin_page() {
   //set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
-  // import pages by calling set_articles and update to be "pages" //do 7
+  //import pages by calling set_articles and update to be "pages" //do 7
   //set_excerpts(); //do 8 (this sets the short and long excerpts)
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
   //clean up functions - do last
   /*
+    //THESE CANN ALL BE RUN AT ONCE
       remove_current_categories('city_neighborhood');
       remove_current_categories('venue_amenity');
       remove_current_categories('ad_groups');
@@ -60,11 +61,15 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'issue', '', 'Issue' );// create category
       reset_category_parent( 'column', '', 'Column' );// create category
       reset_category_parent( 'feature', '', 'Feature' );// create category
-      reset_category_parent( 'lifestyle', '', 'lifestyle' );// create category
+      reset_category_parent( 'lifestyle', '', 'Lifestyle' );// create category
+      */
+        reset_category_parent( 'style-profile', 'lifestyle', 'Style Profile' );// create category
+        reset_category_parent( 'taste-test', 'lifestyle', 'Taste Test' );// create category
+/*
       reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
       reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
       reset_category_parent( 'poetry', '', 'Poetry' );// create category
-//pick up and figure out fiction
+
       reset_category_parent( 'cover-story', 'feature' );
       reset_category_parent( 'photo-essay', 'feature' );
       reset_category_parent( 'open-studio', 'feature' );
@@ -107,10 +112,10 @@ function cityarts_import_admin_page() {
 
     // one_time_migrate_Features_to_feature();
     // delete_category('features');
-    shift_genre_bender();
-    delete_category('genre-bender-2015');
-    delete_category('genre-bender-2016');
-    delete_category('genre-bender-2017');
+    // shift_genre_bender();
+    // delete_category('genre-bender-2015');
+    // delete_category('genre-bender-2016');
+    // delete_category('genre-bender-2017');
 
     /*
     HOW TO IMPORT AND ATTACH IMAGES
