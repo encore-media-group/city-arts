@@ -32,7 +32,7 @@ if ($issue_date == $date_now ) {
   //echo 'build prior and following month';
 	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
 	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
-
+	}
 	/* convert slug to time data
 		if slug = current month, then build slugs for past two issues.
 		if slug < current month, then grab past and next month. */

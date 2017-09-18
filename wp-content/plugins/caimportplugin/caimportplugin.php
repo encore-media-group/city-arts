@@ -49,6 +49,7 @@ function cityarts_import_admin_page() {
   //clean up functions - do last
   /*
     //THESE CANN ALL BE RUN AT ONCE
+
       remove_current_categories('city_neighborhood');
       remove_current_categories('venue_amenity');
       remove_current_categories('ad_groups');
@@ -58,15 +59,17 @@ function cityarts_import_admin_page() {
       remove_current_categories('event_type');
       remove_current_categories('current_neighborhoods');
 
+      // slug (required), parent-slug (should be "" if no parent or reassigning parent) , Name (required), rename-slug (optional)
       reset_category_parent( 'issue', '', 'Issue' );// create category
       reset_category_parent( 'column', '', 'Column' );// create category
       reset_category_parent( 'feature', '', 'Feature' );// create category
       reset_category_parent( 'lifestyle', '', 'Lifestyle' );// create category
         reset_category_parent( 'style-profile', 'lifestyle', 'Style Profile' );// create category
         reset_category_parent( 'taste-test', 'lifestyle', 'Taste Test' );// create category
-      */
       reset_category_parent( 'fiction', '', 'Fiction' );// create category
       reset_category_parent( 'humor', '', 'Humor' );// create category
+
+      */
 
 /*
       reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
