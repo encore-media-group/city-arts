@@ -16,8 +16,8 @@ class ca_top_articles_widget extends WP_Widget {
   // Creating widget front-end
   public function widget( $args, $instance ) {
     $title = apply_filters( 'widget_title', $instance['title'] );
-    $show_images_checkbox = $instance[ 'show_images_checkbox' ] ? true : false;
-    $show_numbers_checkbox = $instance[ 'show_numbers_checkbox' ] ? true : false;
+    $show_images_checkbox = isset( $instance[ 'show_images_checkbox' ] ) ? true : false;
+    $show_numbers_checkbox = isset( $instance[ 'show_numbers_checkbox' ] ) ? true : false;
 
     echo $args['before_widget'];
     if ( ! empty( $title ) )
