@@ -21,39 +21,63 @@ $full_date = "1/" . $nmonth . "/" . $date[1];
 $issue_date =  date('d/m/Y', strtotime($full_date));
 $date_now = new DateTime();
 
-$issue_query_slugs[] = $archive_slug;
+$issue_year_month = date('Y-m', strtotime($full_date));
+$date_now_year_month = $date_now->format('Y-m');
 
-if ($issue_date == $date_now ) {
-	//echo 'build slugs for past two issues.';
-	$issue_query_slugs[] =  strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-	$issue_query_slugs[] =  strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
+echo "issue date: ";
+var_dump($issue_year_month);
+echo "date now: ";
+var_dump($date_now_year_month);
 
-  } else {
-  //echo 'build prior and following month';
-	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-	$issue_query_slugs[] = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
+	$issue_query_slugs[] = $archive_slug;
+
+	if ( $issue_year_month == $date_now_year_month ) {
+		echo 'build slugs for past two issues.';
+	  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
+		$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+  } elseif( $issue_date < $date_now)  {
+	  echo 'build prior and following month';
+	  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+		$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
 	}
-	/* convert slug to time data
-		if slug = current month, then build slugs for past two issues.
-		if slug < current month, then grab past and next month. */
 
-	$cover_story_query = new WP_Query(array(
+	$issue_query_slugs[] = $cover_slot_b;
+	$issue_query_slugs[] = $cover_slot_c;
+
+	$cover_story_query =  new WP_Query(array(
 	    'posts_per_page' => 3,
+	    'nopaging' => true,
+	    'post_status'=> 'publish',
+	    'ignore_sticky_posts' => true,
 	    'tax_query' => [
 				'relation' => 'AND',
 					[
 		        'taxonomy' => 'category',
 		        'field'    => 'slug',
 		        'terms'    =>  $issue_query_slugs,
-						'operator' => 'IN' ],
+					],
 		    	[
 		        'taxonomy' => 'category',
 		        'field'    => 'slug',
 		        'terms'    =>  array( 'cover-story' ),
-						'operator' => 'IN' ],
+					],
 	     ],
 	));
+			$cover_story_post_1 = '';
+			$cover_story_post_2 = '';
+			$cover_story_post_3 = '';
 
+   	while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
+				if ( in_category( $archive_slug ) ) :
+					$cover_story_post_1 = map_cover_story_to_post( get_post(), $archive_slug);
+				elseif( in_category( $cover_slot_b ) ) :
+					$cover_story_post_2 = map_cover_story_to_post( get_post(), $cover_slot_b);
+				elseif( in_category( $cover_slot_c ) ) :
+					$cover_story_post_3 = map_cover_story_to_post( get_post(), $cover_slot_c);
+				endif;
+		endwhile;
+  	wp_reset_postdata();
+/*
 $photo_essays_query = new WP_Query(array(
     'posts_per_page' => 1,
     'tax_query' => [
@@ -69,9 +93,9 @@ $photo_essays_query = new WP_Query(array(
 	        'terms'    =>  array( 'feature' ),
 					'operator' => 'IN' ],
      ],
-));
-
-$the_query = new WP_Query(array(
+)); */
+/*
+$this_issue_query = new WP_Query(array(
     'posts_per_page' => $posts_per_page,
   //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
     'paged' => $paged,
@@ -84,7 +108,7 @@ $the_query = new WP_Query(array(
         				'operator' => 'IN'
             ],
         ],
-));
+)); */
 
 ?>
 
@@ -100,26 +124,38 @@ $the_query = new WP_Query(array(
       <div class="row pt-4">
         <div class="col-12 px-0 px-sm col-md-auto" id="primary">
           <div class="row mx-0">
-						<?php
-	  					while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
-			 					get_template_part( 'item-templates/item', '730x487-vertical' );
-			 					$cover_image =  get_field('cover_image');
-			 					$issue_publish_date = get_field('issue_publish_date');
-			 					var_dump($issue_publish_date);
-			 			?>
+							<?php
+	        		global $post;
+	        		$post = $cover_story_post_1['the_post'];
+	        		setup_postdata( $post );
+
+		 					$cover_slug = $cover_story_post_1['the_slug'];
+	 						$cover_image_src =  get_field('cover_image')['url'];
+		 					$issue_publish_date = get_field('issue_publish_date');
+
+		 					get_template_part( 'item-templates/item', '730x487-vertical' );
+
+	     				wp_reset_postdata();
+	     			?>
+	     			<div class="col">
+	     				<div class="row">
+	     					<div class="col">
+				 					<?php
+				 					echo "<a href=\"/" . $cover_slug . "\">";
+						 			echo '<img src="' . esc_url(  $cover_image_src ) . '" class="img-fluid" style="max-width: 350px;max-height:454px" alt="">';
+						 			echo '</a>';
+						 			?>
+				 				</div>
+     					</div>
+     					<div class="row">
+     						<div class="col"><?php display_cover_story( $cover_story_post_2 ); ?></div>
+     						<div class="col"><?php display_cover_story( $cover_story_post_3 ); ?></div>
+     					</div>
 					</div>
 				</div><!-- col -->
-				<div class="col">
-					HERES	<?php the_title() ?>
-			 		<img src="<?php echo esc_url(  $cover_image['url'] ); ?>"
-	        class="img-fluid"
-	        style="max-width: 350px;max-height:454px"
-	        alt="">
-          <?php
-        		endwhile;
-            wp_reset_postdata();
-          ?>
-          </div>
+				<div class="row">
+
+        </div>
 			</div><!--row-->
 		</div><!-- Container end -->
 
@@ -134,29 +170,29 @@ $the_query = new WP_Query(array(
 			<div class="row">
 	          photos
 	          <?php
-	          while( $photo_essays_query->have_posts() ) : $photo_essays_query->the_post();
+	         // while( $photo_essays_query->have_posts() ) : $photo_essays_query->the_post();
 						?>
 							<div class="col-12 col-lg-6">
 								<?php
-			            get_template_part( 'item-templates/item', '540x360-vertical' );
+			       //     get_template_part( 'item-templates/item', '540x360-vertical' );
 			          ?>
 			          end photos
 		        	</div>
 
 	          <?php
-	          endwhile;
-	          wp_reset_postdata();
+	        //  endwhile;
+	        //  wp_reset_postdata();
 	          ?>
 	      </div>
 		</div>
 		<div class="container mb-4">
 			<?php
-		    while( $the_query->have_posts() ) : $the_query->the_post();
+		  //  while( $this_issue_query>have_posts() ) : $this_issue_query->the_post();
 
-		 		get_template_part( 'item-templates/item', '320x213' );
+		 //		get_template_part( 'item-templates/item', '320x213' );
 
-				endwhile;
-				wp_reset_postdata();
+		///		endwhile;
+			//	wp_reset_postdata();
 			?>
 		</div>
 

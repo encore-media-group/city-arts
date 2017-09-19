@@ -70,9 +70,10 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'humor', '', 'Humor' );// create category
       reset_category_parent( 'genre-bender', '', 'Genre Bender' );// create category
 
-      */
       reset_category_parent( 'style', 'lifestyle' );
       reset_category_parent( 'around-town', 'feature' );
+
+      */
 
 /*
       reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category

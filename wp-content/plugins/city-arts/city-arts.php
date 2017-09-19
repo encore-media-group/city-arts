@@ -229,7 +229,7 @@ endif;
 /* increase the number of posts on the archive pages */
 function wpsites_query( $query ) {
 if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
-        $query->set( 'posts_per_page', 12 );
+ //       $query->set( 'posts_per_page', 12 );
     }
 }
 
@@ -249,6 +249,33 @@ function load_issue_template( $template ) {
 }
 
 
+  function display_cover_story( $the_post ) {
+    if(!empty($the_post)) {
+      global $post;
+      $post = $the_post['the_post'];
+      setup_postdata( $post );
+
+      //get_template_part( 'item-templates/item', '730x487-vertical' );
+      $cover_image =  get_field('cover_image');
+      $issue_publish_date = get_field('issue_publish_date');
+
+      echo "<a href=\"/issue/" . $the_post['the_slug'] . "\">";
+      echo '<img src="' . esc_url(  $cover_image['url'] ) . '" class="img-fluid" style="max-width:154px;max-height:200px" alt="">';
+      echo '</a>';
+      echo "<a href=\"/issue/" . $the_post['the_slug'] . "\">";
+      echo $issue_publish_date . " issue";
+      echo '</a>';
+
+      wp_reset_postdata();
+    }
+  }
+
+  function map_cover_story_to_post($the_post, $the_slug) {
+    return [
+        'the_post' => $the_post,
+        'the_slug' => $the_slug
+    ];
+  }
 
 
 
