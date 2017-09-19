@@ -105,14 +105,14 @@ h1, h2, h3 {
 @include media-breakpoint-between(md,lg) {
   .item-730x487-vertical,
     .item-730x487-width {
-    max-width: 550px;
+   // max-width: 550px;
   }
 }
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xxl) {
   .item-730x487-vertical,
     .item-730x487-width {
-    max-width: 730px;//550px;
+ //   max-width: 730px;//550px;
   }
 }
 

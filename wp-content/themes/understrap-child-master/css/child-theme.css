@@ -639,15 +639,15 @@ pre {
       padding-left: 15px; } }
   @media (min-width: 576px) {
     .container {
-      width: 95%;
+      width: 540px;
       max-width: 100%; } }
   @media (min-width: 768px) {
     .container {
-      width: 96%;
+      width: 720px;
       max-width: 100%; } }
   @media (min-width: 992px) {
     .container {
-      width: 98%;
+      width: 960px;
       max-width: 100%; } }
   @media (min-width: 1200px) {
     .container {
@@ -9324,16 +9324,6 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 .see-it-this-week .item-730x487-vertical .item-content-container {
   background-color: #f9e1de; }
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .item-730x487-vertical,
-  .item-730x487-width {
-    max-width: 550px; } }
-
-@media (min-width: 992px) {
-  .item-730x487-vertical,
-  .item-730x487-width {
-    max-width: 730px; } }
 
 span.category-label {
   display: inline-block;

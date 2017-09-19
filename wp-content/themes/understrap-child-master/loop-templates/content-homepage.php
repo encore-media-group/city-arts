@@ -38,7 +38,7 @@ $recent_posts_see_it_this_week = new WP_Query(
   <main class="site-main" id="main">
     <div class="container mb-4" id="content" tabindex="-1">
       <div class="row pt-4">
-        <div class="col-12 px-0 px-sm col-md-auto" id="primary">
+        <div class="col-12 col-md-7 " id="primary">
           <div class="row mx-0">
             <?php
               while( $catquery->have_posts() ) : $catquery->the_post();
@@ -57,7 +57,7 @@ $recent_posts_see_it_this_week = new WP_Query(
             ?>
           </div>
         </div>
-        <div class="col" id="homepage-sidebar">
+        <div class="col-12 col-md-5 " id="homepage-sidebar">
           <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
             <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
               <?php dynamic_sidebar( 'homepage-right-1' ); ?>

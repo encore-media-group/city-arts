@@ -255,7 +255,6 @@ function load_issue_template( $template ) {
       $post = $the_post['the_post'];
       setup_postdata( $post );
 
-      //get_template_part( 'item-templates/item', '730x487-vertical' );
       $cover_image =  get_field('cover_image');
       $issue_publish_date = get_field('issue_publish_date');
 

@@ -24,10 +24,6 @@ $date_now = new DateTime();
 $issue_year_month = date('Y-m', strtotime($full_date));
 $date_now_year_month = $date_now->format('Y-m');
 
-echo "issue date: ";
-var_dump($issue_year_month);
-echo "date now: ";
-var_dump($date_now_year_month);
 
 	$issue_query_slugs[] = $archive_slug;
 
