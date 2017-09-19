@@ -9325,6 +9325,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .see-it-this-week .item-730x487-vertical .item-content-container {
   background-color: #f9e1de; }
 
+.item-730x487-width {
+  max-width: 730px; }
+
 span.category-label {
   display: inline-block;
   text-transform: uppercase;
