@@ -90,11 +90,13 @@ $photo_essays_query = new WP_Query(array(
 					'operator' => 'IN' ],
      ],
 )); */
-/*
+
 $this_issue_query = new WP_Query(array(
-    'posts_per_page' => $posts_per_page,
+    'posts_per_page' => -1,
   //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
-    'paged' => $paged,
+    'nopaging' => true,
+    'post_status'=> 'publish',
+    'ignore_sticky_posts' => true,
     'tax_query' => [
             [
                 'taxonomy' => 'category',
@@ -104,7 +106,7 @@ $this_issue_query = new WP_Query(array(
         				'operator' => 'IN'
             ],
         ],
-)); */
+));
 
 ?>
 
@@ -182,13 +184,13 @@ $this_issue_query = new WP_Query(array(
 	      </div>
 		</div>
 		<div class="container mb-4">
+			here
 			<?php
-		  //  while( $this_issue_query>have_posts() ) : $this_issue_query->the_post();
+		    while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
+		 			get_template_part( 'item-templates/item', '320x213' );
 
-		 //		get_template_part( 'item-templates/item', '320x213' );
-
-		///		endwhile;
-			//	wp_reset_postdata();
+				endwhile;
+				wp_reset_postdata();
 			?>
 		</div>
 
