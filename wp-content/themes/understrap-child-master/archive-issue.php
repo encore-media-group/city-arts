@@ -108,6 +108,8 @@ $this_issue_query = new WP_Query(array(
         ],
 ));
 
+	$used_ids = [];
+
 	$cover_story_sections = [
 		'editors-note',
 		'lifestyle',
@@ -119,15 +121,19 @@ $this_issue_query = new WP_Query(array(
 		'news-notes'
 	];
 
-	$issue_page_content = array_fill_keys($cover_story_sections, [] );
-	$used_ids = [];
+	$issue_page_content = array_fill_keys($cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
+
+	foreach ($cover_story_sections as $section) {
+			$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
+			array_push( $cats , get_cached_cat_id_by_slug( $section ) );
+			$issue_page_content[ $section ]['posts'] = [];
+			$issue_page_content[ $section ]['cats'] = $cats;
+	}
 
 	while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
 		foreach( $cover_story_sections as $section ) :
-			$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
-			array_push( $cats , $section );
-			if( in_category( $cats ) )  :
-				$issue_page_content[ $section ][] = map_post_obj_and_slug( get_post(), $section );
+			if( in_category( $issue_page_content[ $section ]['cats'] ) )  :
+				$issue_page_content[ $section ]['posts'][] = map_post_obj_and_slug( get_post(), $section );
 				$used_ids[] = $post->ID;
 			endif;
 		endforeach;
@@ -136,28 +142,28 @@ $this_issue_query = new WP_Query(array(
 
 ?>
 <BR>features:<BR>
-<?php issue_display_posts( $issue_page_content['feature'] ) ?>
+<?php issue_display_posts( $issue_page_content['feature']['posts'] ) ?>
 
 <BR>editors notes: <BR>
-<?php issue_display_posts( $issue_page_content['editors-note'] ) ?>
+<?php issue_display_posts( $issue_page_content['editors-note']['posts'] ) ?>
 
 <BR>epilogue: <BR>
-<?php issue_display_posts( $issue_page_content['epilogue'] ) ?>
+<?php issue_display_posts( $issue_page_content['epilogue']['posts'] ) ?>
 
 <br>lifestyle: <BR>
-<?php issue_display_posts(  $issue_page_content['lifestyle'] ) ?>
+<?php issue_display_posts(  $issue_page_content['lifestyle']['posts'] ) ?>
 
 <br>poetry: <BR>
-<?php issue_display_posts(  $issue_page_content['poetry'] ) ?>
+<?php issue_display_posts(  $issue_page_content['poetry']['posts'] ) ?>
 
 <br>artwork: <BR>
-<?php issue_display_posts( $issue_page_content['artwork'] ) ?>
+<?php issue_display_posts( $issue_page_content['artwork']['posts'] ) ?>
 
 <br>review: <BR>
-<?php issue_display_posts( $issue_page_content['review'] ) ?>
+<?php issue_display_posts( $issue_page_content['review']['posts'] ) ?>
 
 <br>news-notes: <BR>
-<?php issue_display_posts( $issue_page_content['news-notes'] ) ?>
+<?php issue_display_posts( $issue_page_content['news-notes']['posts'] ) ?>
 
 <div class="wrapper" id="archive-wrapper">
   <main class="site-main" id="main">
