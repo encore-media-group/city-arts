@@ -154,32 +154,11 @@ $this_issue_query = new WP_Query(array(
 <BR>features:<BR>
 <?php issue_display_posts( $issue_page_content['feature']['posts'] ) ?>
 
-<BR>editors notes: <BR>
-<?php issue_display_posts( $issue_page_content['editors-note']['posts'] ) ?>
-
-<BR>epilogue: <BR>
-<?php issue_display_posts( $issue_page_content['epilogue']['posts'] ) ?>
-
 <br>lifestyle: <BR>
 <?php issue_display_posts(  $issue_page_content['lifestyle']['posts'] ) ?>
 
-<br>poetry: <BR>
-<?php issue_display_posts(  $issue_page_content['poetry']['posts'] ) ?>
-
-<br>artwork: <BR>
-<?php issue_display_posts( $issue_page_content['artwork']['posts'] ) ?>
-
-<br>review: <BR>
-<?php issue_display_posts( $issue_page_content['review']['posts'] ) ?>
-
-<br>preview: <BR>
-<?php issue_display_posts( $issue_page_content['preview']['posts'] ) ?>
-
 <br>reviews and previews: <BR>
 <?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'] ) ?>
-
-<br>news-notes: <BR>
-<?php issue_display_posts( $issue_page_content['news-notes']['posts'] ) ?>
 
 <div class="wrapper" id="archive-wrapper">
   <main class="site-main" id="main">
@@ -239,32 +218,18 @@ $this_issue_query = new WP_Query(array(
 			<div class="row">
 
 	          photos
-	          <?php
-	         // while( $photo_essays_query->have_posts() ) : $photo_essays_query->the_post();
-						?>
-							<div class="col-12 col-lg-6">
+
 								<?php
 			       //     get_template_part( 'item-templates/item', '540x360-vertical' );
 			          ?>
-			          end photos
-		        	</div>
 
-	          <?php
-	        //  endwhile;
-	        //  wp_reset_postdata();
-	          ?>
 	      </div>
 		</div>
 		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12 col-md-7 col-lg-8 px-lg-0">
-					<?php
-				    while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
-				 			get_template_part( 'item-templates/item', '320x213' );
-
-						endwhile;
-						wp_reset_postdata();
-				?>
+					<br>news-notes: <BR>
+					<?php issue_display_posts( $issue_page_content['news-notes']['posts'] ) ?>
 				</div>
 				<div class="col-12 col-md-5 col-lg-4">
 					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
@@ -272,6 +237,24 @@ $this_issue_query = new WP_Query(array(
 						<div class="col">
 							<BR>editors notes: <BR>
 								<?php issue_display_posts( $issue_page_content['editors-note']['posts'] ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<BR>poetry notes: <BR>
+								<?php issue_display_posts( $issue_page_content['poetry']['posts'] ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<BR>epilogue: <BR>
+								<?php issue_display_posts( $issue_page_content['epilogue']['posts'] ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<BR>artwork: <BR>
+								<?php issue_display_posts( $issue_page_content['artwork']['posts'] ) ?>
 						</div>
 					</div>
 				</div>
