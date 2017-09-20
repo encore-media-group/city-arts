@@ -256,16 +256,27 @@ $this_issue_query = new WP_Query(array(
 	      </div>
 		</div>
 		<div class="container mb-4">
-			here
-			<?php
-		    while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
-		 			get_template_part( 'item-templates/item', '320x213' );
+			<div class="row">
+				<div class="col-12 col-md-7 col-lg-8 px-lg-0">
+					<?php
+				    while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
+				 			get_template_part( 'item-templates/item', '320x213' );
 
-				endwhile;
-				wp_reset_postdata();
-			?>
-		</div>
-
+						endwhile;
+						wp_reset_postdata();
+				?>
+				</div>
+				<div class="col-12 col-md-5 col-lg-4">
+					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
+					<div class="row">
+						<div class="col">
+							<BR>editors notes: <BR>
+								<?php issue_display_posts( $issue_page_content['editors-note']['posts'] ) ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--container-->
 	</main><!-- #main -->
 </div><!-- Wrapper end -->
 
