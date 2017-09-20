@@ -98,8 +98,10 @@ function get_cached_cat_id_by_slug( $slug ) {
 
   if ( false === $cat_id ) {
     $cat_obj = get_category_by_slug( $slug );
-    $cat_id = $cat_obj->term_id;
-    wp_cache_set( $cache_key, $cat_id );
+    if( $cat_obj ) {
+      $cat_id = $cat_obj->term_id;
+      wp_cache_set( $cache_key, $cat_id );
+    }
   }
   return $cat_id;
 }
