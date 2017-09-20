@@ -57,7 +57,7 @@ $recent_posts_see_it_this_week = new WP_Query(
             ?>
           </div>
         </div>
-        <div class="col-12 col-md-5 col-lg-4 " id="homepage-sidebar">
+        <div class="col-12 col-md-5 col-lg-4" id="homepage-sidebar">
           <?php if ( is_active_sidebar( 'homepage-right-1' ) ) : ?>
             <div id="homepage-right-1" class="primary-sidebar widget-area" role="complementary">
               <?php dynamic_sidebar( 'homepage-right-1' ); ?>
@@ -78,7 +78,7 @@ $recent_posts_see_it_this_week = new WP_Query(
         <div class="col-12 col-lg-6">
           <div class="row">
           <?php while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
               <?php set_query_var( 'show_excerpt', true ); ?>
               <?php  get_template_part( 'item-templates/item', '255x170' ); ?>
              </div>
