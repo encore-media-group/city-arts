@@ -249,6 +249,7 @@ function load_issue_template( $template ) {
 }
 
 
+
   function display_cover_story( $the_post ) {
     if(!empty($the_post)) {
       global $post;
@@ -269,7 +270,24 @@ function load_issue_template( $template ) {
     }
   }
 
-  function map_cover_story_to_post($the_post, $the_slug) {
+  function issue_display_posts( $the_posts) {
+    if( is_array( $the_posts ) ) :
+      foreach ($the_posts as $the_post) :
+        issue_display_post( $the_post );
+      endforeach;
+    endif;
+  }
+  function issue_display_post( $the_post ) {
+    if( !empty( $the_post ) ) :
+      global $post;
+      $post = $the_post['the_post'];
+      setup_postdata( $post );
+
+      echo the_title() . "<br>";
+      wp_reset_postdata();
+    endif;
+  }
+  function map_post_obj_and_slug($the_post, $the_slug) {
     return [
         'the_post' => $the_post,
         'the_slug' => $the_slug

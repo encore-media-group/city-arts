@@ -28,11 +28,11 @@ $date_now_year_month = $date_now->format('Y-m');
 	$issue_query_slugs[] = $archive_slug;
 
 	if ( $issue_year_month == $date_now_year_month ) {
-		echo 'build slugs for past two issues.';
+		//echo 'build slugs for past two issues.';
 	  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
 		$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
   } elseif( $issue_date < $date_now)  {
-	  echo 'build prior and following month';
+	  //echo 'build prior and following month';
 	  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
 		$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
 	}
@@ -65,11 +65,11 @@ $date_now_year_month = $date_now->format('Y-m');
 
    	while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
 				if ( in_category( $archive_slug ) ) :
-					$cover_story_post_1 = map_cover_story_to_post( get_post(), $archive_slug);
+					$cover_story_post_1 = map_post_obj_and_slug( get_post(), $archive_slug);
 				elseif( in_category( $cover_slot_b ) ) :
-					$cover_story_post_2 = map_cover_story_to_post( get_post(), $cover_slot_b);
+					$cover_story_post_2 = map_post_obj_and_slug( get_post(), $cover_slot_b);
 				elseif( in_category( $cover_slot_c ) ) :
-					$cover_story_post_3 = map_cover_story_to_post( get_post(), $cover_slot_c);
+					$cover_story_post_3 = map_post_obj_and_slug( get_post(), $cover_slot_c);
 				endif;
 		endwhile;
   	wp_reset_postdata();
@@ -108,7 +108,56 @@ $this_issue_query = new WP_Query(array(
         ],
 ));
 
+	$cover_story_sections = [
+		'editors-note',
+		'lifestyle',
+		'epilogue',
+		'feature',
+		'poetry',
+		'artwork',
+		'review',
+		'news-notes'
+	];
+
+	$issue_page_content = array_fill_keys($cover_story_sections, [] );
+	$used_ids = [];
+
+	while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
+		foreach( $cover_story_sections as $section ) :
+			$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
+			array_push( $cats , $section );
+			if( in_category( $cats ) )  :
+				$issue_page_content[ $section ][] = map_post_obj_and_slug( get_post(), $section );
+				$used_ids[] = $post->ID;
+			endif;
+		endforeach;
+	endwhile;
+  wp_reset_postdata();
+
 ?>
+<BR>features:<BR>
+<?php issue_display_posts( $issue_page_content['feature'] ) ?>
+
+<BR>editors notes: <BR>
+<?php issue_display_posts( $issue_page_content['editors-note'] ) ?>
+
+<BR>epilogue: <BR>
+<?php issue_display_posts( $issue_page_content['epilogue'] ) ?>
+
+<br>lifestyle: <BR>
+<?php issue_display_posts(  $issue_page_content['lifestyle'] ) ?>
+
+<br>poetry: <BR>
+<?php issue_display_posts(  $issue_page_content['poetry'] ) ?>
+
+<br>artwork: <BR>
+<?php issue_display_posts( $issue_page_content['artwork'] ) ?>
+
+<br>review: <BR>
+<?php issue_display_posts( $issue_page_content['review'] ) ?>
+
+<br>news-notes: <BR>
+<?php issue_display_posts( $issue_page_content['news-notes'] ) ?>
 
 <div class="wrapper" id="archive-wrapper">
   <main class="site-main" id="main">
@@ -166,6 +215,7 @@ $this_issue_query = new WP_Query(array(
 		</div>
 		<div class="container mb-4">
 			<div class="row">
+
 	          photos
 	          <?php
 	         // while( $photo_essays_query->have_posts() ) : $photo_essays_query->the_post();
