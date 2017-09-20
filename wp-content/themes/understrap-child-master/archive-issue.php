@@ -118,7 +118,8 @@ $this_issue_query = new WP_Query(array(
 		'poetry',
 		'artwork',
 		'review',
-		'news-notes'
+		'news-notes',
+		'preview'
 	];
 
 	$issue_page_content = array_fill_keys($cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
@@ -140,7 +141,16 @@ $this_issue_query = new WP_Query(array(
 	endwhile;
   wp_reset_postdata();
 
+ 	//merge previews into all_reviews
+ 	$issue_page_content['reviews_and_previews']['posts']  = array_merge(
+ 		$issue_page_content['review']['posts'],
+ 		$issue_page_content['preview']['posts']
+ 	);
+
+	uasort($issue_page_content["reviews_and_previews"]["posts"], "compare_by_post_date");
+
 ?>
+
 <BR>features:<BR>
 <?php issue_display_posts( $issue_page_content['feature']['posts'] ) ?>
 
@@ -161,6 +171,12 @@ $this_issue_query = new WP_Query(array(
 
 <br>review: <BR>
 <?php issue_display_posts( $issue_page_content['review']['posts'] ) ?>
+
+<br>preview: <BR>
+<?php issue_display_posts( $issue_page_content['preview']['posts'] ) ?>
+
+<br>reviews and previews: <BR>
+<?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'] ) ?>
 
 <br>news-notes: <BR>
 <?php issue_display_posts( $issue_page_content['news-notes']['posts'] ) ?>

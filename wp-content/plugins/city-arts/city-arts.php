@@ -285,7 +285,7 @@ function load_issue_template( $template ) {
       $post = $the_post['the_post'];
       setup_postdata( $post );
 
-      echo the_title() . "<br>";
+      echo the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
       wp_reset_postdata();
     endif;
   }
@@ -296,6 +296,12 @@ function load_issue_template( $template ) {
     ];
   }
 
+  function compare_by_post_date($a, $b) {
+    if ($a["the_post"]->post_date == $b["the_post"]->post_date) {
+        return 0;
+    }
+    return ($a["the_post"]->post_date < $b["the_post"]->post_date) ? -1 : 1;
+  }
 
 
 
