@@ -12,8 +12,12 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
 $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-160x107' );
 $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
+
+$show_category_label = isset($show_category_label) ? $show_category_label : true ;
+$item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
+
 ?>
-  <div class="row pb-2 pb-xl-0 item-160x107">
+  <div class="row pb-2 pb-xl-0 <? echo $item_css ?> item-160x107">
     <div class="col-auto pl-4 pl-sm-0">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
@@ -23,7 +27,11 @@ $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
        alt=""><!-- height: 107px; width: 160px;  -->
     </div>
     <div class="col pr-2 pl-lg-3">
-      <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+      <?php
+        if( $show_category_label) :
+          get_template_part( 'item-templates/item', 'category-label' );
+        endif;
+      ?>
       <h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"><?php echo get_contributors() ?></div>
     </div>

@@ -202,11 +202,8 @@ $this_issue_query = new WP_Query(array(
 					<div class="row">
 					<?php
 						$args = [
-							'before' => '',
-							'after' => '',
-							'query_var' => [ 'var' =>'item_css', 'val' => 'col-12 mb-4' ],
+							'query_vars' => [ [ 'var' =>'item_css', 'val' => 'col-12 mb-4' ] ],
 							'template' => [ 'path' => 'item-templates/item', 'file'=>'320x213' ]
-
 						];
 
 						issue_display_posts( $issue_page_content['news-notes']['posts'], $args );
@@ -216,28 +213,38 @@ $this_issue_query = new WP_Query(array(
 				</div>
 				<div class="col-12 col-md-5 col-lg-4">
 					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
-					<div class="row">
+					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Editor's Note</h2>
-								<?php issue_display_posts( $issue_page_content['editors-note']['posts'] ) ?>
+							<?php
+							$args_for_sidebar = [
+							'query_vars' => [
+									[ 'var' =>'show_category_label', 'val' => false ],
+									[ 'var' =>'item_css', 'val' => 'text-center' ],
+
+								],
+							'template' => [ 'path' => 'item-templates/item', 'file'=>'160x107' ]
+							];
+						issue_display_posts( $issue_page_content['editors-note']['posts'], $args_for_sidebar );
+						?>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Poetry</h2>
-								<?php issue_display_posts( $issue_page_content['poetry']['posts'] ) ?>
+								<?php issue_display_posts( $issue_page_content['poetry']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Epilogue</h2>
-								<?php issue_display_posts( $issue_page_content['epilogue']['posts'] ) ?>
+								<?php issue_display_posts( $issue_page_content['epilogue']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Artwork</h2>
-								<?php issue_display_posts( $issue_page_content['artwork']['posts'] ) ?>
+								<?php issue_display_posts( $issue_page_content['artwork']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
 				</div>
@@ -254,7 +261,7 @@ $this_issue_query = new WP_Query(array(
 							'before' => '<div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-4 mb-md-0">',
 							'after' => '</div>',
 							'template' => [ 'path' => 'item-templates/item', 'file'=>'255x170' ],
-							'query_var' => [ 'var' =>'show_excerpt', 'val' => false ]
+							'query_vars' => [ [ 'var' =>'show_excerpt', 'val' => false ] ]
 						];
 
 						issue_display_posts( $issue_page_content['lifestyle']['posts'], $args );

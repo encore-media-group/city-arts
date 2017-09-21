@@ -289,20 +289,24 @@ function load_issue_template( $template ) {
       echo isset( $args['before'] ) ? $args['before'] : '' ;
 
       if( isset( $args['template'] ) ) :
-         if( isset( $args['query_var'] ) ) :
-            set_query_var( $args['query_var']['var'], $args['query_var']['val'] );
+
+         if( isset( $args['query_vars'] ) ) :
+          foreach( $args['query_vars'] as $query_var ) :
+            set_query_var( $query_var['var'], $query_var['val'] );
+          endforeach;
          endif;
+
          get_template_part( $args['template']['path'], $args['template']['file'] );
+
       else:
         echo the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
       endif;
+
       echo isset( $args['after'] ) ? $args['after'] : '' ;
 
       wp_reset_postdata();
     endif;
   }
-
-  // set_query_var( 'show_excerpt', false );
 
   function map_post_obj_and_slug($the_post, $the_slug) {
     return [
