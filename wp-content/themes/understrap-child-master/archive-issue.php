@@ -73,27 +73,9 @@ $date_now_year_month = $date_now->format('Y-m');
 				endif;
 		endwhile;
   	wp_reset_postdata();
-/*
-$photo_essays_query = new WP_Query(array(
-    'posts_per_page' => 1,
-    'tax_query' => [
-			'relation' => 'AND',
-				[
-	        'taxonomy' => 'category',
-	        'field'    => 'slug',
-	        'terms'    =>  array( $archive_slug ),
-					'operator' => 'IN' ],
-	    	[
-	        'taxonomy' => 'category',
-	        'field'    => 'slug',
-	        'terms'    =>  array( 'feature' ),
-					'operator' => 'IN' ],
-     ],
-)); */
 
 $this_issue_query = new WP_Query(array(
     'posts_per_page' => -1,
-  //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
     'nopaging' => true,
     'post_status'=> 'publish',
     'ignore_sticky_posts' => true,
@@ -151,14 +133,7 @@ $this_issue_query = new WP_Query(array(
 
 ?>
 
-<BR>features:<BR>
-<?php issue_display_posts( $issue_page_content['feature']['posts'] ) ?>
 
-<br>lifestyle: <BR>
-<?php issue_display_posts(  $issue_page_content['lifestyle']['posts'] ) ?>
-
-<br>reviews and previews: <BR>
-<?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'] ) ?>
 
 <div class="wrapper" id="archive-wrapper">
   <main class="site-main" id="main">
@@ -205,7 +180,7 @@ $this_issue_query = new WP_Query(array(
 
         </div>
 			</div><!--row-->
-		</div><!-- Container end -->
+		</div><!-- container -->
 
 		<div class="container-fluid ad-container mb-4">
 		  <div class="row no-gutters">
@@ -213,50 +188,61 @@ $this_issue_query = new WP_Query(array(
 		      <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
 		    </div>
 		  </div>
-		</div>
+		</div><!-- container -->
 		<div class="container mb-4">
 			<div class="row">
-
-	          photos
-
-								<?php
-			       //     get_template_part( 'item-templates/item', '540x360-vertical' );
-			          ?>
-
-	      </div>
-		</div>
+				<div class="col-12">
+					<?php issue_display_posts( $issue_page_content['feature']['posts'] ) ?>
+				</div>
+			</div>
 		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12 col-md-7 col-lg-8 px-lg-0">
-					<br>news-notes: <BR>
+					<h2 class="sidelines sidebar">News + Notes</h2>
 					<?php issue_display_posts( $issue_page_content['news-notes']['posts'] ) ?>
 				</div>
 				<div class="col-12 col-md-5 col-lg-4">
 					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
 					<div class="row">
 						<div class="col">
-							<BR>editors notes: <BR>
+							<h2 class="sidelines sidebar">Editor's Note</h2>
 								<?php issue_display_posts( $issue_page_content['editors-note']['posts'] ) ?>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<BR>poetry notes: <BR>
+							<h2 class="sidelines sidebar">Poetry</h2>
 								<?php issue_display_posts( $issue_page_content['poetry']['posts'] ) ?>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<BR>epilogue: <BR>
+							<h2 class="sidelines sidebar">Epilogue</h2>
 								<?php issue_display_posts( $issue_page_content['epilogue']['posts'] ) ?>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<BR>artwork: <BR>
+							<h2 class="sidelines sidebar">Artwork</h2>
 								<?php issue_display_posts( $issue_page_content['artwork']['posts'] ) ?>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div><!--container-->
+		<div class="container mb-4">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="sidelines sidebar">Lifestyle</h2>
+					<?php issue_display_posts( $issue_page_content['lifestyle']['posts'] ) ?>
+				</div>
+			</div>
+		</div><!--container-->
+				<div class="container mb-4">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="sidelines sidebar">Recommendations and Reviews</h2>
+					<?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'] ) ?>
 				</div>
 			</div>
 		</div><!--container-->
