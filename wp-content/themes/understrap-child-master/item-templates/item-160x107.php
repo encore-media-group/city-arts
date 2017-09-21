@@ -14,10 +14,12 @@ $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-160x107' );
 $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
 
 $show_category_label = isset($show_category_label) ? $show_category_label : true ;
+$show_thumbnails = isset($show_thumbnails) ? $show_thumbnails : true;
 $item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
 
 ?>
   <div class="row pb-2 pb-xl-0 <? echo $item_css ?> item-160x107">
+    <?php if ( $show_thumbnails ) : ?>
     <div class="col-auto pl-4 pl-sm-0">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
@@ -26,6 +28,7 @@ $item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
        style="max-width: 100%;height:auto;"
        alt=""><!-- height: 107px; width: 160px;  -->
     </div>
+  <?php endif; ?>
     <div class="col pr-2 pl-lg-3">
       <?php
         if( $show_category_label) :
