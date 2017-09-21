@@ -12,10 +12,13 @@
 
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-320x213' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-320x213' );
+
+  $item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
+
 ?>
 
 
-  <div class="col-12 col-sm item-320x213">
+  <div class="<? echo $item_css ?> item-320x213">
     <div class="row">
       <div class="col-12 col-lg">
         <img src="<?php echo esc_url( $img_src ); ?>"

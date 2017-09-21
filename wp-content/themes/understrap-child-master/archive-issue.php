@@ -123,7 +123,7 @@ $this_issue_query = new WP_Query(array(
 	endwhile;
   wp_reset_postdata();
 
- 	//merge previews into all_reviews
+  	//merge previews into all_reviews
  	$issue_page_content['reviews_and_previews']['posts']  = array_merge(
  		$issue_page_content['review']['posts'],
  		$issue_page_content['preview']['posts']
@@ -199,7 +199,20 @@ $this_issue_query = new WP_Query(array(
 			<div class="row">
 				<div class="col-12 col-md-7 col-lg-8 px-lg-0">
 					<h2 class="sidelines sidebar">News + Notes</h2>
-					<?php issue_display_posts( $issue_page_content['news-notes']['posts'] ) ?>
+					<div class="row">
+					<?php
+						$args = [
+							'before' => '',
+							'after' => '',
+							'query_var' => [ 'var' =>'item_css', 'val' => 'col-12 mb-4' ],
+							'template' => [ 'path' => 'item-templates/item', 'file'=>'320x213' ]
+
+						];
+
+						issue_display_posts( $issue_page_content['news-notes']['posts'], $args );
+
+					 ?>
+					</div>
 				</div>
 				<div class="col-12 col-md-5 col-lg-4">
 					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
