@@ -234,7 +234,20 @@ $this_issue_query = new WP_Query(array(
 			<div class="row">
 				<div class="col-12">
 					<h2 class="sidelines sidebar">Lifestyle</h2>
-					<?php issue_display_posts( $issue_page_content['lifestyle']['posts'] ) ?>
+					<div class="row d-flex justify-content-between">
+
+					<?php
+						$args = [
+							'before' => '<div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-4 mb-md-0">',
+							'after' => '</div>',
+							'template' => [ 'path' => 'item-templates/item', 'file'=>'255x170' ],
+							'query_var' => [ 'var' =>'show_excerpt', 'val' => false ]
+						];
+
+						issue_display_posts( $issue_page_content['lifestyle']['posts'], $args );
+
+					 ?>
+					</div>
 				</div>
 			</div>
 		</div><!--container-->
@@ -242,7 +255,9 @@ $this_issue_query = new WP_Query(array(
 			<div class="row">
 				<div class="col-12">
 					<h2 class="sidelines sidebar">Recommendations and Reviews</h2>
-					<?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'] ) ?>
+					<div class="row d-flex justify-content-between">
+						<?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'], $args ) ?>
+					</div>
 				</div>
 			</div>
 		</div><!--container-->

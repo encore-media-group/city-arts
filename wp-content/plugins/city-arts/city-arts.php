@@ -272,23 +272,38 @@ function load_issue_template( $template ) {
     }
   }
 
-  function issue_display_posts( $the_posts) {
+  function issue_display_posts( $the_posts, $args = array() ) {
     if( is_array( $the_posts ) ) :
       foreach ($the_posts as $the_post) :
-        issue_display_post( $the_post );
+        issue_display_post( $the_post, $args );
       endforeach;
     endif;
   }
-  function issue_display_post( $the_post ) {
+
+  function issue_display_post( $the_post, $args = array() ) {
     if( !empty( $the_post ) ) :
       global $post;
       $post = $the_post['the_post'];
       setup_postdata( $post );
 
-      echo the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
+      echo isset( $args['before'] ) ? $args['before'] : '' ;
+
+      if( isset( $args['template'] ) ) :
+         if( isset( $args['query_var'] ) ) :
+            set_query_var( $args['query_var']['var'], $args['query_var']['val'] );
+         endif;
+         get_template_part( $args['template']['path'], $args['template']['file'] );
+      else:
+        echo the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
+      endif;
+      echo isset( $args['after'] ) ? $args['after'] : '' ;
+
       wp_reset_postdata();
     endif;
   }
+
+  // set_query_var( 'show_excerpt', false );
+
   function map_post_obj_and_slug($the_post, $the_slug) {
     return [
         'the_post' => $the_post,
