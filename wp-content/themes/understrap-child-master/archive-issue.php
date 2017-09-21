@@ -197,7 +197,7 @@ $this_issue_query = new WP_Query(array(
 			</div>
 		<div class="container mb-4">
 			<div class="row">
-				<div class="col-12 col-md-7 col-lg-8 px-lg-0">
+				<div class="col-12 col-md-7 col-lg-8">
 					<h2 class="sidelines sidebar">News + Notes</h2>
 					<div class="row">
 					<?php
