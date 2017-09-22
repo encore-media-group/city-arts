@@ -171,9 +171,10 @@ $this_issue_query = new WP_Query(array(
 
    	<div class="container mb-4" id="content" tabindex="-1">
       <div class="row pt-4">
-        <div class="col-12 px-0 px-sm col-md-auto" id="primary">
+        <div class="col-12 px-0 px-sm col-md" id="primary">
           <div class="row mx-0">
 							<?php
+							// THIS NEEDS TO GO INTO A TEMPLATE
 	        		global $post;
 	        		$post = $cover_story_post_1['the_post'];
 	        		setup_postdata( $post );
@@ -186,25 +187,23 @@ $this_issue_query = new WP_Query(array(
 
 	     				wp_reset_postdata();
 	     			?>
-	     			<div class="col">
-	     				<div class="row">
-	     					<div class="col">
-				 					<?php
-				 					echo "<a href=\"/" . $cover_slug . "\">";
-						 			echo '<img src="' . esc_url(  $cover_image_src ) . '" class="img-fluid" style="max-width: 350px;max-height:454px" alt="">';
-						 			echo '</a>';
-						 			?>
-				 				</div>
-     					</div>
-     					<div class="row">
-     						<div class="col"><?php display_cover_story( $cover_story_post_2 ); ?></div>
-     						<div class="col"><?php display_cover_story( $cover_story_post_3 ); ?></div>
-     					</div>
+	     		</div>
+	     	</div>
+	 			<div class="col-12 col-md-5 col-lg-4 px-0 mt-4 mt-md-0	">
+	 				<div class="row mx-md-auto">
+	 					<div class="col px-xl-0" style="max-width: 350px;">
+		 					<?php
+		 					echo "<a href=\"/" . $cover_slug . "\">";
+				 			echo '<img src="' . esc_url(  $cover_image_src ) . '" class="img-fluid" style="max-width: 100%;" alt="">';
+				 			echo '</a>';
+				 			?>
+		 				</div>
 					</div>
-				</div><!-- col -->
-				<div class="row">
-
-        </div>
+					<div class="row mx-auto	mt-4">
+							<div class="col-6"><?php display_cover_story( $cover_story_post_2 ); ?></div>
+							<div class="col-6"><?php display_cover_story( $cover_story_post_3 ); ?></div>
+					</div>
+				</div>
 			</div><!--row-->
 		</div><!-- container -->
 
