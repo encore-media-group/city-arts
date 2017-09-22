@@ -227,7 +227,7 @@ $this_issue_query = new WP_Query(array(
 		</div>
 		<div class="container mb-4">
 			<div class="row">
-				<div class="col-12 col-md-7 col-lg-8">
+				<div class="col-12 col-md-6 col-lg-8">
 					<h2 class="sidelines sidebar">News + Notes</h2>
 					<div class="row">
 					<?php
@@ -241,7 +241,7 @@ $this_issue_query = new WP_Query(array(
 					 ?>
 					</div>
 				</div>
-				<div class="col-12 col-md-5 col-lg-4">
+				<div class="col-12 col-md-6 col-lg-4">
 					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
 					<div class="row mt-4">
 						<div class="col">
