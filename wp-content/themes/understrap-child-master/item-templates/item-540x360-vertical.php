@@ -28,7 +28,6 @@
           alt="">
         </div>
         <div class="col-12 py-4 px-4 item-content-container">
-          <div class="caption"><?php echo get_post($thumbnail_id)->post_excerpt; ?></div>
           <div><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
           <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
           <div class="contributors"> <?php echo understrap_posted_on(); ?></div>

@@ -252,7 +252,7 @@ function load_issue_template( $template ) {
 
 
 
-  function display_cover_story( $the_post ) {
+  function display_cover_story_154x200( $the_post ) {
     if(!empty($the_post)) {
       global $post;
       $post = $the_post['the_post'];
@@ -284,6 +284,7 @@ function load_issue_template( $template ) {
     if( !empty( $the_post ) ) :
       global $post;
       $post = $the_post['the_post'];
+      $the_slug = $the_post['the_slug'];
       setup_postdata( $post );
 
       echo isset( $args['before'] ) ? $args['before'] : '' ;
@@ -295,7 +296,7 @@ function load_issue_template( $template ) {
             set_query_var( $query_var['var'], $query_var['val'] );
           endforeach;
          endif;
-
+          set_query_var ('issue_slug', $the_slug );
          get_template_part( $args['template']['path'], $args['template']['file'] );
 
       else:

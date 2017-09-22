@@ -13,6 +13,22 @@ get_header();
 <?php
 //example: july-2017
 $archive_slug =  get_queried_object()->slug;
+$used_ids = [];
+$cover_story_sections = [
+	'editors-note',
+	'lifestyle',
+	'epilogue',
+	'feature',
+	'poetry',
+	'artwork',
+	'review',
+	'news-notes',
+	'preview',
+	'top_features'
+];
+
+$feature_cat_id = get_cached_cat_id_by_slug('feature');
+$issue_page_content = array_fill_keys( $cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
 
 $date = explode( "-", $archive_slug );
 $nmonth = date( 'm', strtotime( $date[0] ) );
@@ -24,55 +40,57 @@ $date_now = new DateTime();
 $issue_year_month = date('Y-m', strtotime($full_date));
 $date_now_year_month = $date_now->format('Y-m');
 
+$issue_query_slugs[] = $archive_slug;
 
-	$issue_query_slugs[] = $archive_slug;
+if ( $issue_year_month == $date_now_year_month ) {
+	//echo 'build slugs for past two issues.';
+  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
+	$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+} elseif( $issue_date < $date_now)  {
+  //echo 'build prior and following month';
+  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
+	$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
+}
 
-	if ( $issue_year_month == $date_now_year_month ) {
-		//echo 'build slugs for past two issues.';
-	  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
-		$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-  } elseif( $issue_date < $date_now)  {
-	  //echo 'build prior and following month';
-	  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-		$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
-	}
+$issue_query_slugs[] = $cover_slot_b;
+$issue_query_slugs[] = $cover_slot_c;
 
-	$issue_query_slugs[] = $cover_slot_b;
-	$issue_query_slugs[] = $cover_slot_c;
+$cover_story_query =  new WP_Query(array(
+    'posts_per_page' => 3,
+    'nopaging' => true,
+    'post_status'=> 'publish',
+    'ignore_sticky_posts' => true,
+    'tax_query' => [
+			'relation' => 'AND',
+				[
+	        'taxonomy' => 'category',
+	        'field'    => 'slug',
+	        'terms'    =>  $issue_query_slugs,
+				],
+	    	[
+	        'taxonomy' => 'category',
+	        'field'    => 'slug',
+	        'terms'    =>  array( 'cover-story' )
+				]
+     ],
+));
 
-	$cover_story_query =  new WP_Query(array(
-	    'posts_per_page' => 3,
-	    'nopaging' => true,
-	    'post_status'=> 'publish',
-	    'ignore_sticky_posts' => true,
-	    'tax_query' => [
-				'relation' => 'AND',
-					[
-		        'taxonomy' => 'category',
-		        'field'    => 'slug',
-		        'terms'    =>  $issue_query_slugs,
-					],
-		    	[
-		        'taxonomy' => 'category',
-		        'field'    => 'slug',
-		        'terms'    =>  array( 'cover-story' )
-					]
-	     ],
-	));
-			$cover_story_post_1 = '';
-			$cover_story_post_2 = '';
-			$cover_story_post_3 = '';
+$cover_story_post_1 = '';
+$cover_story_post_2 = '';
+$cover_story_post_3 = '';
 
-   	while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
-				if ( in_category( $archive_slug ) ) :
-					$cover_story_post_1 = map_post_obj_and_slug( get_post(), $archive_slug);
-				elseif( in_category( $cover_slot_b ) ) :
-					$cover_story_post_2 = map_post_obj_and_slug( get_post(), $cover_slot_b);
-				elseif( in_category( $cover_slot_c ) ) :
-					$cover_story_post_3 = map_post_obj_and_slug( get_post(), $cover_slot_c);
-				endif;
-		endwhile;
-  	wp_reset_postdata();
+$issue_page_content = array_fill_keys( ['cover_slot_b', 'cover_slot_c'] , [ 'posts' => [], 'cats' => [] ] );
+
+while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
+	if ( in_category( $archive_slug ) ) :
+		$cover_story_post_1 = map_post_obj_and_slug( get_post(), $archive_slug);
+	elseif( in_category( $cover_slot_b ) ) :
+		$issue_page_content[ 'cover_slot_b' ]['posts'][] = map_post_obj_and_slug( get_post(), $cover_slot_b );
+	elseif( in_category( $cover_slot_c ) ) :
+		$issue_page_content[ 'cover_slot_c' ]['posts'][] = map_post_obj_and_slug( get_post(), $cover_slot_c );
+	endif;
+endwhile;
+wp_reset_postdata();
 
 $this_issue_query = new WP_Query(array(
     'posts_per_page' => -1,
@@ -97,22 +115,6 @@ $this_issue_query = new WP_Query(array(
     ],
 ));
 
-	$used_ids = [];
-
-	$cover_story_sections = [
-		'editors-note',
-		'lifestyle',
-		'epilogue',
-		'feature',
-		'poetry',
-		'artwork',
-		'review',
-		'news-notes',
-		'preview',
-		'top_features'
-	];
-	$feature_cat_id = get_cached_cat_id_by_slug('feature');
-	$issue_page_content = array_fill_keys( $cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
 
 	foreach ($cover_story_sections as $section) {
 		$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
@@ -150,16 +152,14 @@ $this_issue_query = new WP_Query(array(
  	);
 	uasort($issue_page_content["review"]["posts"], "compare_by_post_date");
 
+	//merge remaining features into news-notes
 	$issue_page_content['news-notes']['posts']  = array_merge(
  		$issue_page_content['news-notes']['posts'],
  		$issue_page_content['feature']['posts']
  	);
 	uasort($issue_page_content["news-notes"]["posts"], "compare_by_post_date");
 
-
 ?>
-
-
 
 <div class="wrapper" id="archive-wrapper">
   <main class="site-main" id="main">
@@ -200,8 +200,16 @@ $this_issue_query = new WP_Query(array(
 		 				</div>
 					</div>
 					<div class="row mx-auto	mt-4">
-							<div class="col-6"><?php display_cover_story( $cover_story_post_2 ); ?></div>
-							<div class="col-6"><?php display_cover_story( $cover_story_post_3 ); ?></div>
+							<div class="col-6">
+						<?php
+          	$args = [
+          		'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
+
+          		issue_display_posts( $issue_page_content['cover_slot_b']['posts'], $args );
+          	?>
+          		<?php // display_cover_story( $cover_story_post_2 );
+          		?></div>
+							<div class="col-6"><?php //display_cover_story( $cover_story_post_3 ); ?></div>
 					</div>
 				</div>
 			</div><!--row-->
