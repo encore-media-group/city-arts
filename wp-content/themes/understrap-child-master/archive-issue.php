@@ -218,7 +218,9 @@ $this_issue_query = new WP_Query(array(
 		<div class="container mb-4">
 			<div class="row">
 					<?php
-          	$args = [ 'template' => [ 'path' => 'item-templates/item', 'file'=>'540x360-vertical' ] ];
+          	$args = [
+          		'query_vars' => [ [ 'var' =>'item_css', 'val' => 'col-12 col-md-6' ] ],
+          		'template' => [ 'path' => 'item-templates/item', 'file'=>'540x360-vertical' ] ];
 						issue_display_posts( $issue_page_content['top_features']['posts'], $args );
           ?>
 			</div>
