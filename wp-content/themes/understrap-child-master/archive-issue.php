@@ -55,8 +55,8 @@ $date_now_year_month = $date_now->format('Y-m');
 		    	[
 		        'taxonomy' => 'category',
 		        'field'    => 'slug',
-		        'terms'    =>  array( 'cover-story' ),
-					],
+		        'terms'    =>  array( 'cover-story' )
+					]
 	     ],
 	));
 			$cover_story_post_1 = '';
@@ -80,14 +80,21 @@ $this_issue_query = new WP_Query(array(
     'post_status'=> 'publish',
     'ignore_sticky_posts' => true,
     'tax_query' => [
-            [
-                'taxonomy' => 'category',
-                'field'    => 'slug',
-                'terms'    =>  array( $archive_slug ),
-                'include_children' => true,
-        				'operator' => 'IN'
-            ],
-        ],
+    	'relation' => 'AND',
+	      [
+	          'taxonomy' => 'category',
+	          'field'    => 'slug',
+	          'terms'    =>  array( $archive_slug ),
+	          'include_children' => true,
+	  				'operator' => 'IN'
+	      ],
+				[
+          'taxonomy' => 'category',
+          'field' => 'slug',
+          'terms' => array( 'cover-story' ),
+          'operator' => 'NOT IN'
+        ]
+    ],
 ));
 
 	$used_ids = [];
@@ -101,21 +108,22 @@ $this_issue_query = new WP_Query(array(
 		'artwork',
 		'review',
 		'news-notes',
-		'preview'
+		'preview',
+		'top_features'
 	];
-
-	$issue_page_content = array_fill_keys($cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
+	$feature_cat_id = get_cached_cat_id_by_slug('feature');
+	$issue_page_content = array_fill_keys( $cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
 
 	foreach ($cover_story_sections as $section) {
-			$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
-			array_push( $cats , get_cached_cat_id_by_slug( $section ) );
-			$issue_page_content[ $section ]['posts'] = [];
-			$issue_page_content[ $section ]['cats'] = $cats;
+		$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
+		array_push( $cats , get_cached_cat_id_by_slug( $section ) );
+		$issue_page_content[ $section ]['posts'] = [];
+		$issue_page_content[ $section ]['cats'] = $cats;
 	}
 
 	while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
 		foreach( $cover_story_sections as $section ) :
-			if( in_category( $issue_page_content[ $section ]['cats'] ) )  :
+			if( in_category( $issue_page_content[ $section ]['cats'] ) ) :
 				$issue_page_content[ $section ]['posts'][] = map_post_obj_and_slug( get_post(), $section );
 				$used_ids[] = $post->ID;
 			endif;
@@ -123,13 +131,33 @@ $this_issue_query = new WP_Query(array(
 	endwhile;
   wp_reset_postdata();
 
-  	//merge previews into all_reviews
+  //grab the first two features
+	$feature_count = 1;
+
+	foreach( $issue_page_content['feature']['posts'] as $key => $feature_post) {
+		if( $feature_count <= 2 ) {
+			$issue_page_content['top_features']['posts'][] = $feature_post;
+			unset( $issue_page_content['feature']['posts'][$key] );
+		}
+		$feature_count++;
+	}
+
+
+	//merge previews into all_reviews
  	$issue_page_content['reviews_and_previews']['posts']  = array_merge(
  		$issue_page_content['review']['posts'],
  		$issue_page_content['preview']['posts']
  	);
 
 	uasort($issue_page_content["reviews_and_previews"]["posts"], "compare_by_post_date");
+
+	$issue_page_content['news-notes']['posts']  = array_merge(
+ 		$issue_page_content['news-notes']['posts'],
+ 		$issue_page_content['feature']['posts']
+ 	);
+
+	uasort($issue_page_content["news-notes"]["posts"], "compare_by_post_date");
+
 
 ?>
 
@@ -192,7 +220,7 @@ $this_issue_query = new WP_Query(array(
 		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12">
-					<?php issue_display_posts( $issue_page_content['feature']['posts'] ) ?>
+					<?php issue_display_posts( $issue_page_content['top_features']['posts'] ) ?>
 				</div>
 			</div>
 		<div class="container mb-4">

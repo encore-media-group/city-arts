@@ -299,7 +299,9 @@ function load_issue_template( $template ) {
          get_template_part( $args['template']['path'], $args['template']['file'] );
 
       else:
-        echo the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
+
+        echo get_the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
+
       endif;
 
       echo isset( $args['after'] ) ? $args['after'] : '' ;
