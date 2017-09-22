@@ -76,8 +76,6 @@ $cover_story_query =  new WP_Query(array(
 ));
 
 $cover_story_post_1 = '';
-$cover_story_post_2 = '';
-$cover_story_post_3 = '';
 
 $issue_page_content = array_fill_keys( ['cover_slot_b', 'cover_slot_c'] , [ 'posts' => [], 'cats' => [] ] );
 
@@ -199,17 +197,23 @@ $this_issue_query = new WP_Query(array(
 				 			?>
 		 				</div>
 					</div>
-					<div class="row mx-auto	mt-4">
-							<div class="col-6">
-						<?php
-          	$args = [
-          		'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
+					<div class="row d-flex justify-content-between mt-4">
+						<div class="col-6 text-left">
+							<?php
+	          	$args = [
+	          		'query_vars' => [ [ 'var' =>'direction', 'val' => 'left' ] ],
+	          		'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
 
-          		issue_display_posts( $issue_page_content['cover_slot_b']['posts'], $args );
-          	?>
-          		<?php // display_cover_story( $cover_story_post_2 );
-          		?></div>
-							<div class="col-6"><?php //display_cover_story( $cover_story_post_3 ); ?></div>
+	          		issue_display_posts( $issue_page_content['cover_slot_b']['posts'], $args );
+	          	?>
+        	</div>
+					<div class="col-6 text-right">
+						<?php
+						$args = [
+        			'query_vars' => [ [ 'var' =>'direction', 'val' => 'right' ] ],
+        			'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
+
+						issue_display_posts( $issue_page_content['cover_slot_c']['posts'], $args ); ?></div>
 					</div>
 				</div>
 			</div><!--row-->
