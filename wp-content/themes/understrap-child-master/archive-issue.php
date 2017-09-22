@@ -144,18 +144,16 @@ $this_issue_query = new WP_Query(array(
 
 
 	//merge previews into all_reviews
- 	$issue_page_content['reviews_and_previews']['posts']  = array_merge(
+ 	$issue_page_content['review']['posts']  = array_merge(
  		$issue_page_content['review']['posts'],
  		$issue_page_content['preview']['posts']
  	);
-
-	uasort($issue_page_content["reviews_and_previews"]["posts"], "compare_by_post_date");
+	uasort($issue_page_content["review"]["posts"], "compare_by_post_date");
 
 	$issue_page_content['news-notes']['posts']  = array_merge(
  		$issue_page_content['news-notes']['posts'],
  		$issue_page_content['feature']['posts']
  	);
-
 	uasort($issue_page_content["news-notes"]["posts"], "compare_by_post_date");
 
 
@@ -219,10 +217,12 @@ $this_issue_query = new WP_Query(array(
 		</div><!-- container -->
 		<div class="container mb-4">
 			<div class="row">
-				<div class="col-12">
-					<?php issue_display_posts( $issue_page_content['top_features']['posts'] ) ?>
-				</div>
+					<?php
+          	$args = [ 'template' => [ 'path' => 'item-templates/item', 'file'=>'540x360-vertical' ] ];
+						issue_display_posts( $issue_page_content['top_features']['posts'], $args );
+          ?>
 			</div>
+		</div>
 		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12 col-md-7 col-lg-8">
@@ -304,7 +304,7 @@ $this_issue_query = new WP_Query(array(
 				<div class="col-12">
 					<h2 class="sidelines sidebar">Recommendations and Reviews</h2>
 					<div class="row d-flex justify-content-between">
-						<?php issue_display_posts( $issue_page_content['reviews_and_previews']['posts'], $args ) ?>
+						<?php issue_display_posts( $issue_page_content['review']['posts'], $args ) ?>
 					</div>
 				</div>
 			</div>
