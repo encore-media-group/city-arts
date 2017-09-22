@@ -75,13 +75,12 @@ $cover_story_query =  new WP_Query(array(
      ],
 ));
 
-$cover_story_post_1 = '';
 
-$issue_page_content = array_fill_keys( ['cover_slot_b', 'cover_slot_c'] , [ 'posts' => [], 'cats' => [] ] );
+$issue_page_content = array_fill_keys( ['cover_slot_a', 'cover_slot_b', 'cover_slot_c'] , [ 'posts' => [], 'cats' => [] ] );
 
 while( $cover_story_query->have_posts() ) : $cover_story_query->the_post();
 	if ( in_category( $archive_slug ) ) :
-		$cover_story_post_1 = map_post_obj_and_slug( get_post(), $archive_slug);
+		$issue_page_content[ 'cover_slot_a' ]['posts'][] = map_post_obj_and_slug( get_post(), $archive_slug );
 	elseif( in_category( $cover_slot_b ) ) :
 		$issue_page_content[ 'cover_slot_b' ]['posts'][] = map_post_obj_and_slug( get_post(), $cover_slot_b );
 	elseif( in_category( $cover_slot_c ) ) :
@@ -172,28 +171,22 @@ $this_issue_query = new WP_Query(array(
         <div class="col-12 px-0 px-sm col-md" id="primary">
           <div class="row mx-0">
 							<?php
-							// THIS NEEDS TO GO INTO A TEMPLATE
-	        		global $post;
-	        		$post = $cover_story_post_1['the_post'];
-	        		setup_postdata( $post );
+							$args = [
+	        			'template' => [ 'path' => 'item-templates/item', 'file'=>'730x487-vertical' ] ];
 
-		 					$cover_slug = $cover_story_post_1['the_slug'];
-	 						$cover_image_src =  get_field('cover_image')['url'];
-		 					$issue_publish_date = get_field('issue_publish_date');
-
-		 					get_template_part( 'item-templates/item', '730x487-vertical' );
-
-	     				wp_reset_postdata();
+							issue_display_posts( $issue_page_content['cover_slot_a']['posts'], $args );
 	     			?>
 	     		</div>
 	     	</div>
-	 			<div class="col-12 col-md-5 col-lg-4 px-0 mt-4 mt-md-0	">
+	 			<div class="col-12 col-md-5 col-lg-4 mt-4 mt-md-0	">
 	 				<div class="row mx-md-auto">
 	 					<div class="col px-xl-0" style="max-width: 350px;">
 		 					<?php
-		 					echo "<a href=\"/" . $cover_slug . "\">";
-				 			echo '<img src="' . esc_url(  $cover_image_src ) . '" class="img-fluid" style="max-width: 100%;" alt="">';
-				 			echo '</a>';
+	          	$args = [
+	          		'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-350x454' ]
+	          	];
+
+	          		issue_display_posts( $issue_page_content['cover_slot_a']['posts'], $args );
 				 			?>
 		 				</div>
 					</div>
@@ -206,19 +199,19 @@ $this_issue_query = new WP_Query(array(
 
 	          		issue_display_posts( $issue_page_content['cover_slot_b']['posts'], $args );
 	          	?>
-        	</div>
-					<div class="col-6 text-right">
-						<?php
-						$args = [
-        			'query_vars' => [ [ 'var' =>'direction', 'val' => 'right' ] ],
-        			'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
+	        	</div>
+						<div class="col-6 text-right">
+							<?php
+							$args = [
+	        			'query_vars' => [ [ 'var' =>'direction', 'val' => 'right' ] ],
+	        			'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
 
-						issue_display_posts( $issue_page_content['cover_slot_c']['posts'], $args ); ?></div>
+							issue_display_posts( $issue_page_content['cover_slot_c']['posts'], $args ); ?>
+						</div>
 					</div>
 				</div>
 			</div><!--row-->
 		</div><!-- container -->
-
 		<div class="container-fluid ad-container mb-4">
 		  <div class="row no-gutters">
 		    <div class="col-xl-12 py-2 text-center">
@@ -232,10 +225,11 @@ $this_issue_query = new WP_Query(array(
           	$args = [
           		'query_vars' => [ [ 'var' =>'item_css', 'val' => 'col-12 col-md-6' ] ],
           		'template' => [ 'path' => 'item-templates/item', 'file'=>'540x360-vertical' ] ];
+
 						issue_display_posts( $issue_page_content['top_features']['posts'], $args );
           ?>
 			</div>
-		</div>
+		</div><!-- container -->
 		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12 col-md-6 col-lg-8">
@@ -312,7 +306,7 @@ $this_issue_query = new WP_Query(array(
 				</div>
 			</div>
 		</div><!--container-->
-				<div class="container mb-4">
+		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12">
 					<h2 class="sidelines sidebar">Recommendations and Reviews</h2>
