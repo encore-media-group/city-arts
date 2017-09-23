@@ -12,9 +12,10 @@ get_header();
 
 <?php
 //example: july-2017
+//first issue july 2008
 $archive_slug =  get_queried_object()->slug;
 $used_ids = [];
-$cover_story_sections = [
+$issue_page_sections = [
 	'editors-note',
 	'lifestyle',
 	'epilogue',
@@ -27,8 +28,7 @@ $cover_story_sections = [
 	'top_features'
 ];
 
-$feature_cat_id = get_cached_cat_id_by_slug('feature');
-$issue_page_content = array_fill_keys( $cover_story_sections, [ 'posts' => [], 'cats' => [] ] );
+$issue_page_content = array_fill_keys( $issue_page_sections, [ 'posts' => [], 'cats' => [] ] );
 
 $date = explode( "-", $archive_slug );
 $nmonth = date( 'm', strtotime( $date[0] ) );
@@ -40,8 +40,6 @@ $date_now = new DateTime();
 $issue_year_month = date('Y-m', strtotime($full_date));
 $date_now_year_month = $date_now->format('Y-m');
 
-$issue_query_slugs[] = $archive_slug;
-
 if ( $issue_year_month == $date_now_year_month ) {
 	//echo 'build slugs for past two issues.';
   $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
@@ -52,6 +50,7 @@ if ( $issue_year_month == $date_now_year_month ) {
 	$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
 }
 
+$issue_query_slugs[] = $archive_slug;
 $issue_query_slugs[] = $cover_slot_b;
 $issue_query_slugs[] = $cover_slot_c;
 
@@ -113,7 +112,7 @@ $this_issue_query = new WP_Query(array(
 ));
 
 
-	foreach ($cover_story_sections as $section) {
+	foreach ($issue_page_sections as $section) {
 		$cats = get_term_children( get_cached_cat_id_by_slug( $section ), 'category' );
 		array_push( $cats , get_cached_cat_id_by_slug( $section ) );
 		$issue_page_content[ $section ]['posts'] = [];
@@ -121,7 +120,7 @@ $this_issue_query = new WP_Query(array(
 	}
 
 	while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
-		foreach( $cover_story_sections as $section ) :
+		foreach( $issue_page_sections as $section ) :
 			if( in_category( $issue_page_content[ $section ]['cats'] ) ) :
 				$issue_page_content[ $section ]['posts'][] = map_post_obj_and_slug( get_post(), $section );
 				$used_ids[] = $post->ID;
@@ -206,7 +205,8 @@ $this_issue_query = new WP_Query(array(
 	        			'query_vars' => [ [ 'var' =>'direction', 'val' => 'right' ] ],
 	        			'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-154x200' ] ];
 
-							issue_display_posts( $issue_page_content['cover_slot_c']['posts'], $args ); ?>
+							issue_display_posts( $issue_page_content['cover_slot_c']['posts'], $args );
+							?>
 						</div>
 					</div>
 				</div>

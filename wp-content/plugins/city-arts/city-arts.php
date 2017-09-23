@@ -252,78 +252,55 @@ function load_issue_template( $template ) {
 
 
 
-  function display_cover_story_154x200( $the_post ) {
-    if(!empty($the_post)) {
-      global $post;
-      $post = $the_post['the_post'];
-      setup_postdata( $post );
+function issue_display_posts( $the_posts, $args = array() ) {
+  if( is_array( $the_posts ) ) :
+    foreach ($the_posts as $the_post) :
+      issue_display_post( $the_post, $args );
+    endforeach;
+  endif;
+}
 
-      $cover_image =  get_field('cover_image');
-      $issue_publish_date = get_field('issue_publish_date');
+function issue_display_post( $the_post, $args = array() ) {
+  if( !empty( $the_post ) ) :
+    global $post;
+    $post = $the_post['the_post'];
+    $the_slug = $the_post['the_slug'];
+    setup_postdata( $post );
 
-      echo "<a href=\"/issue/" . $the_post['the_slug'] . "\">";
-      echo '<img src="' . esc_url(  $cover_image['url'] ) . '" class="img-fluid" style="max-width:154px;max-height:200px" alt="">';
-      echo '</a>';
-      echo "<a href=\"/issue/" . $the_post['the_slug'] . "\">";
-      echo $issue_publish_date . " issue";
-      echo '</a>';
+    echo isset( $args['before'] ) ? $args['before'] : '' ;
 
-      wp_reset_postdata();
-    }
-  }
+    if( isset( $args['template'] ) ) :
 
-  function issue_display_posts( $the_posts, $args = array() ) {
-    if( is_array( $the_posts ) ) :
-      foreach ($the_posts as $the_post) :
-        issue_display_post( $the_post, $args );
+     if( isset( $args['query_vars'] ) ) :
+      foreach( $args['query_vars'] as $query_var ) :
+        set_query_var( $query_var['var'], $query_var['val'] );
       endforeach;
+     endif;
+
+      set_query_var ('issue_slug', $the_slug );
+      get_template_part( $args['template']['path'], $args['template']['file'] );
+
     endif;
+
+    echo isset( $args['after'] ) ? $args['after'] : '' ;
+
+    wp_reset_postdata();
+  endif;
+}
+
+function map_post_obj_and_slug($the_post, $the_slug) {
+  return [
+      'the_post' => $the_post,
+      'the_slug' => $the_slug
+  ];
+}
+
+function compare_by_post_date($a, $b) {
+  if ($a["the_post"]->post_date == $b["the_post"]->post_date) {
+      return 0;
   }
-
-  function issue_display_post( $the_post, $args = array() ) {
-    if( !empty( $the_post ) ) :
-      global $post;
-      $post = $the_post['the_post'];
-      $the_slug = $the_post['the_slug'];
-      setup_postdata( $post );
-
-      echo isset( $args['before'] ) ? $args['before'] : '' ;
-
-      if( isset( $args['template'] ) ) :
-
-         if( isset( $args['query_vars'] ) ) :
-          foreach( $args['query_vars'] as $query_var ) :
-            set_query_var( $query_var['var'], $query_var['val'] );
-          endforeach;
-         endif;
-          set_query_var ('issue_slug', $the_slug );
-         get_template_part( $args['template']['path'], $args['template']['file'] );
-
-      else:
-
-        echo get_the_id() . " - " . get_the_date() . " - " . get_the_title() . "<br>";
-
-      endif;
-
-      echo isset( $args['after'] ) ? $args['after'] : '' ;
-
-      wp_reset_postdata();
-    endif;
-  }
-
-  function map_post_obj_and_slug($the_post, $the_slug) {
-    return [
-        'the_post' => $the_post,
-        'the_slug' => $the_slug
-    ];
-  }
-
-  function compare_by_post_date($a, $b) {
-    if ($a["the_post"]->post_date == $b["the_post"]->post_date) {
-        return 0;
-    }
-    return ($a["the_post"]->post_date < $b["the_post"]->post_date) ? -1 : 1;
-  }
+  return ($a["the_post"]->post_date < $b["the_post"]->post_date) ? -1 : 1;
+}
 
 
 
