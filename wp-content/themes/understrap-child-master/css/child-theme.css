@@ -9269,7 +9269,11 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 .item-160x107 h3, .item-160x107 h4,
 .item-255x170 h3,
-.item-255x170 h4 {
+.item-255x170 h4,
+.item-320x213 h3,
+.item-320x213 h4,
+.item-730x487-alt h3,
+.item-730x487-alt h4 {
   font-family: "ingra-condensed", Arial, "sans-serif"; }
 
 .item-160x107 .contributors,
@@ -9277,16 +9281,20 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   font-size: 0.7em;
   font-weight: 300; }
 
-.item-320x213 h3, .item-320x213 h4 {
-  font-family: "ingra-condensed", Arial, "sans-serif";
+.item-320x213 h3, .item-320x213 h4,
+.item-730x487-alt h3,
+.item-730x487-alt h4 {
   font-weight: 200; }
 
 .item-320x213 .contributors,
-.item-320x213 .by {
+.item-320x213 .by,
+.item-730x487-alt .contributors,
+.item-730x487-alt .by {
   font-size: 0.7em;
   font-weight: 500; }
 
-.item-320x213 .excerpt {
+.item-320x213 .excerpt,
+.item-730x487-alt .excerpt {
   font-weight: 300; }
 
 .item-540x360-vertical .item-content-container {

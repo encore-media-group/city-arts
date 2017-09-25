@@ -142,6 +142,7 @@ function ca_add_image_sizes() {
   add_image_size( 'ca-730xauto', 730);
   add_image_size( 'ca-540x360', 540, 360, true );
   add_image_size( 'ca-350x454', 350, 454, true );
+  add_image_size( 'ca-175x227', 175, 227, true );
   add_image_size( 'ca-320x213', 320, 213, true );
   add_image_size( 'ca-255x170', 255, 170, true );
   add_image_size( 'ca-160x107', 160, 107, true );
@@ -156,6 +157,7 @@ function wpshout_custom_sizes( $sizes ) {
         'ca-730xauto' => __( 'ca-730xauto' ),
         'ca-540x360' => __( 'ca-540x360' ),
         'ca-350x454' => __( 'ca-350x454' ),
+        'ca-175x227' => __( 'ca-175x227' ),
         'ca-320x213' => __( 'ca-320x213' ),
         'ca-255x170' => __( 'ca-255x170' ),
         'ca-160x107' => __( 'ca-160x107' ),
@@ -180,7 +182,7 @@ if ( ! function_exists( 'understrap_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function understrap_posted_on() {
+function understrap_posted_on( $date_only = false ) {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   /* let's only show the published date.
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
@@ -197,8 +199,12 @@ function understrap_posted_on() {
     esc_html_x( '%s', 'post date', 'understrap' ),
     '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   );
-  $byline = get_contributors();
-  echo '<span class="byline"> ' . $byline . '</span> <span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+  if ( !$date_only ) {
+    $byline = get_contributors();
+    echo '<span class="byline"> ' . $byline . '</span> ';
+  }
+
+  echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 }
 endif;
 

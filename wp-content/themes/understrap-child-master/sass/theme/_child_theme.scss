@@ -28,19 +28,25 @@ h1, h2, h3 {
 }
 
 .item-160x107,
-.item-255x170 {
+.item-255x170,
+.item-320x213,
+.item-730x487-alt {
   h3, h4 {
     font-family: $subhead-font-family;
   }
+}
+
+.item-160x107,
+.item-255x170 {
   .contributors {
     font-size: $card-meta-font-size-small;
     font-weight: $font-weight-light;
   }
 }
 
-.item-320x213 {
+.item-320x213,
+.item-730x487-alt {
   h3, h4 {
-    font-family: $subhead-font-family;
     font-weight: $font-weight-extra-light;
   }
   .contributors,
@@ -102,17 +108,9 @@ h1, h2, h3 {
   }
 }
 
-@include media-breakpoint-between(md,lg) {
-  .item-730x487-vertical,
-    .item-730x487-width {
-   // max-width: 550px;
-  }
-}
-
 .item-730x487-width {
   max-width: 730px;
 }
-
 
 span.category-label {
   display: inline-block;

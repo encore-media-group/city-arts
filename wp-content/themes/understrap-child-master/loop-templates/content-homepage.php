@@ -131,6 +131,7 @@ $recent_posts_see_it_this_week = new WP_Query(
           <div class="row pt-4 see-it-this-week ">
             <?php
               while( $recent_posts_see_it_this_week->have_posts() ) : $recent_posts_see_it_this_week->the_post();
+                set_query_var( 'alt_version', true );
                 get_template_part( 'item-templates/item', '730x487-vertical' );
               endwhile;
               wp_reset_postdata();
