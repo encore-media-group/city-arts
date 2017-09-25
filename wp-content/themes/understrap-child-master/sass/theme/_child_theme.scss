@@ -78,10 +78,18 @@ h1, h2, h3 {
   h1.page-title {
     font-size: $display1-size;
   }
+
+}
+
+#archive-wrapper,
+#writer-wrapper  {
+  h1.page-title {
+    font-family: $subhead-font-family;
+    font-weight: $font-weight-extra-light;
+  }
   h2.page-title.sidelines{
     font-family: $sideline-heading-font-family;
     text-transform: uppercase;
-
   }
 }
 
@@ -91,7 +99,8 @@ h1, h2, h3 {
 
 #archive-wrapper,
 #wrapper-index,
-#search-wrapper {
+#search-wrapper,
+#writer-wrapper {
   padding-top: 7em;
   padding-left: 0;
   padding-right: 0;

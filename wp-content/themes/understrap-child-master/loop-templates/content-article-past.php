@@ -77,19 +77,7 @@ echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
                   </div><!-- #primary-sidebar -->
                 <?php endif; ?>
 
-<!--
-                  <div class="attached-images">
-                    <ul>
-                    <?php
-                    $images = get_attached_media('image', $post->ID);
 
-                    foreach($images as $image) {
-                      //  echo var_dump($image);
-                        ?>
-                        <li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
-                    <?php } ?>
-                    </ul>
-                  </div>-->
               <?php
               wp_link_pages( array(
                 'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
@@ -97,7 +85,7 @@ echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
               ) );
               ?>
               </div><!-- .entry-content -->
-            </div><!--end col-lg-6-->
+            </div>
           </div><!-- row -->
           <footer class="entry-footer">
 

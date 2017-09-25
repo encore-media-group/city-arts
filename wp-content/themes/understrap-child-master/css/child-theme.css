@@ -9310,7 +9310,13 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 #archive-wrapper h1.page-title {
   font-size: 6rem; }
 
-#archive-wrapper h2.page-title.sidelines {
+#archive-wrapper h1.page-title,
+#writer-wrapper h1.page-title {
+  font-family: "ingra-condensed", Arial, "sans-serif";
+  font-weight: 200; }
+
+#archive-wrapper h2.page-title.sidelines,
+#writer-wrapper h2.page-title.sidelines {
   font-family: "alternate-gothic-no-2-d";
   text-transform: uppercase; }
 
@@ -9319,7 +9325,8 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 #archive-wrapper,
 #wrapper-index,
-#search-wrapper {
+#search-wrapper,
+#writer-wrapper {
   padding-top: 7em;
   padding-left: 0;
   padding-right: 0;

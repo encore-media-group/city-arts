@@ -58,17 +58,18 @@ $the_query = new WP_Query(array(
 
 						<?php if ( !$is_discipline_archive ) : ?>
 							<header class="page-header row w-75 mx-auto">
-								<h2 class="col page-title pb-4 sidelines"> <?php single_cat_title() ?> </h1>
+								<h2 class="col page-title pb-4 sidelines"> <?php single_cat_title() ?> </h2>
 						<?php endif; ?>
 
 						<?php if ( $paged < 2 && !$is_discipline_archive ) : ?>
 							<header class="page-header row">
-								<div class="row justify-content-center">
-									<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
-							</div><!-- end row -->
+								<div class="col">
+									<div class="row justify-content-center">
+										<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
+									</div>
+								</div>
 						<?php endif; ?>
-
-							</header><!-- .page-header -->
+						</header><!-- .page-header -->
 
 					<?php
 						$count = 1;
