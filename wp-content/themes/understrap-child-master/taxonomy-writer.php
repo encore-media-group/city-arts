@@ -30,7 +30,6 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 			<main class="col site-main" id="main">
 
 					<header class="row page-header">
-						<?php if ( $paged < 2 ) : ?>
 							<div class="col-auto pl-3">
 								<h1 class="page-title text-left py-4"> <?= single_cat_title('', false) ?> </h1>
 							</div>
@@ -40,12 +39,10 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 								echo ( isset( $twitter_slug ) ) ? sprintf( '<a href="https://twitter.com/%1$s" class="social-handle"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i> @%1$s</a>', $twitter_slug ) : '';
 								?>
 							</div>
-						<?php endif; ?>
 					</header><!-- .page-header -->
 
 					<div class="row">
 						<?php
-							if ( $paged < 2 ) :
 
 								$image = get_field('writer_image', $taxonomy_term);
 								if ( $image ) :
@@ -56,7 +53,6 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 										get_template_part( 'item-templates/item', 'display-writer-profile-image' );
 									?>
 								</div>
-								<? endif; ?>
 								<? the_archive_description( '<div class="col-12 col-md-8 pb-4 writer-description">', '</div>' ); ?>
 						<?
 							endif;
@@ -65,11 +61,7 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 
 					<div class="row mx-auto pb-4">
 						<div class="col px-0">
-							<?php
-							$page_title = '<h2 class="page-title sidelines">Recent Articles</h2>%1$s';
-							echo ( $paged < 2 ) ? sprintf($page_title, '') : sprintf($page_title, '<h3 class="text-center page-title sidelines-heading-only">' . single_cat_title(' by ', false) . "</h3>");
-
-							?>
+							<h2 class="page-title sidelines">Recent Articles</h2>
 						</div>
 					</div>
 					<div class="row">
