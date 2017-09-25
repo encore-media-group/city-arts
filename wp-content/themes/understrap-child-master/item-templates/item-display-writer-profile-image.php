@@ -8,7 +8,7 @@
 ?>
 <?php
 
-  $image = get_field('writer_image', $taxonomy_term);
+
   $size = 'thumbnail';
 
   if( $image ) :

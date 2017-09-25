@@ -17,6 +17,8 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 $queried_object = get_queried_object(); // you need this for ACF to access the custom properties of a tax object!
 $taxonomy = $queried_object->taxonomy;
 $term_id = $queried_object->term_id;
+
+$taxonomy_term = $taxonomy . '_' . $term_id;
 ?>
 
 <div class="wrapper" id="writer-wrapper">
@@ -29,7 +31,7 @@ $term_id = $queried_object->term_id;
 
 					<header class="row page-header">
 						<?php if ( $paged < 2 ) : ?>
-							<div class="col-auto">
+							<div class="col-auto pl-3">
 								<h1 class="page-title text-left py-4"> <?= single_cat_title('', false) ?> </h1>
 							</div>
 							<div class="col my-auto">
@@ -44,13 +46,17 @@ $term_id = $queried_object->term_id;
 					<div class="row">
 						<?php
 							if ( $paged < 2 ) :
+
+								$image = get_field('writer_image', $taxonomy_term);
+								if ( $image ) :
 								?>
-								<div class="col-12 col-md-auto">
-								<?
-								set_query_var ('taxonomy_term', $taxonomy . '_' . $term_id );
-								get_template_part( 'item-templates/item', 'display-writer-profile-image' );
-								?>
-							</div>
+								<div class="col-12 col-md-auto text-center text-md-left">
+									<?
+										set_query_var ('image', $image );
+										get_template_part( 'item-templates/item', 'display-writer-profile-image' );
+									?>
+								</div>
+								<? endif; ?>
 								<? the_archive_description( '<div class="col-12 col-md-8 pb-4 writer-description">', '</div>' ); ?>
 						<?
 							endif;
