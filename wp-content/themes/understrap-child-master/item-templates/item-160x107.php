@@ -18,7 +18,7 @@ $show_thumbnails = isset($show_thumbnails) ? $show_thumbnails : true;
 $item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
 
 ?>
-  <div class="row pb-2 pb-xl-0 <? echo $item_css ?> item-160x107">
+  <div class="row pb-2 pb-xl-0 px-lg-0 <? echo $item_css ?> item-160x107">
     <?php if ( $show_thumbnails ) : ?>
     <div class="col-auto pl-4 pl-sm-0">
       <img src="<?php echo esc_url( $img_src ); ?>"

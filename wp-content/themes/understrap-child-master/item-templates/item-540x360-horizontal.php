@@ -29,7 +29,7 @@
 
     <div class="col-12 col-lg item-content-container p-4">
       <?php if( $flag_from_magazine ):?>
-        <div>FROM THE MAGAZINE</div>
+        <div class="card-span-text mb-3">FROM THE MAGAZINE</div>
       <?php endif; ?>
       <div>
           <?php get_template_part( 'item-templates/item', 'category-label' ); ?>

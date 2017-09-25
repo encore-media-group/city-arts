@@ -112,6 +112,11 @@ h1, h2, h3 {
   max-width: 730px;
 }
 
+div.card-span-text {
+  font-family: $card-meta-font-family;
+  font-weight: $font-weight-medium;
+}
+
 span.category-label {
   display: inline-block;
   text-transform: uppercase;

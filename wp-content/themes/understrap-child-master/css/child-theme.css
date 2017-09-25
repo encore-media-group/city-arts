@@ -9336,6 +9336,10 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .item-730x487-width {
   max-width: 730px; }
 
+div.card-span-text {
+  font-family: "ff-basic-gothic-web-pro";
+  font-weight: 500; }
+
 span.category-label {
   display: inline-block;
   text-transform: uppercase;
