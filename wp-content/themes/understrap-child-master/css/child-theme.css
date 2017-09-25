@@ -9257,6 +9257,13 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .author {
   text-transform: uppercase; }
 
+.social-handle {
+  font-size: 0.875rem;
+  font-family: "ff-basic-gothic-web-pro";
+  font-weight: 300; }
+  .social-handle .fa-twitter {
+    color: #00aced; }
+
 .posted-on a {
   color: #a18967; }
 
@@ -9316,9 +9323,14 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   font-weight: 200; }
 
 #archive-wrapper h2.page-title.sidelines,
-#writer-wrapper h2.page-title.sidelines {
+#archive-wrapper h3.page-title.sidelines-heading-only,
+#writer-wrapper h2.page-title.sidelines,
+#writer-wrapper h3.page-title.sidelines-heading-only {
   font-family: "alternate-gothic-no-2-d";
   text-transform: uppercase; }
+
+#writer-wrapper .writer-description {
+  font-size: 1.25rem; }
 
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }

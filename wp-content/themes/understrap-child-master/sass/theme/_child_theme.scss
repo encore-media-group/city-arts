@@ -13,6 +13,15 @@ h1, h2, h3 {
   text-transform: uppercase;
 }
 
+.social-handle {
+  font-size: $font-size-sm;
+  font-family: $card-meta-font-family;
+  font-weight: $font-weight-light;
+
+  .fa-twitter {
+    color: #00aced;
+  }
+}
 .posted-on
   a {
   color: $orange;
@@ -87,9 +96,17 @@ h1, h2, h3 {
     font-family: $subhead-font-family;
     font-weight: $font-weight-extra-light;
   }
-  h2.page-title.sidelines{
+  h2.page-title.sidelines,
+  h3.page-title.sidelines-heading-only {
     font-family: $sideline-heading-font-family;
     text-transform: uppercase;
+  }
+}
+
+
+#writer-wrapper  {
+  .writer-description {
+    font-size: $font-size-lg;
   }
 }
 
