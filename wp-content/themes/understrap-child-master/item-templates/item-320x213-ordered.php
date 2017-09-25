@@ -30,7 +30,7 @@
     <div class="row py-2">
       <div class="col-2 px-2 text-center <?php echo $col_1_class ?>"><h3><?echo $row_num ?>.</h3></div>
       <?if ( $show_thumbnails ) : ?>
-      <div class="col px-0">
+      <div class="col pr-2 pl-0">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 320px"
