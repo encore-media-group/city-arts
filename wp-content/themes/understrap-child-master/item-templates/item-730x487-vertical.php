@@ -21,14 +21,15 @@
         <a href="<?php the_permalink(); ?>">
           <img src="<?php echo esc_url( $img_src ); ?>"
            srcset="<?php echo esc_attr( $img_srcset ); ?>"
+            sizes="(max-width: 46em) 100vw, 730px"
           class="img-fluid"
           style="max-width: 100%;height:auto;"
           alt="">
       </a>
       </div>
 
+      <?php if( $alt_version ) :?>
       <div class="col py-4 px-4 item-content-container item-730x487-width item-730x487-alt">
-        <?php if( $alt_version ) :?>
         <div class="row">
           <div class="col col-auto pl-3">
             <div class="cat-label"><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
@@ -39,10 +40,11 @@
         </div>
         <h4> <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a> </h4>
         <?php else: ?>
-        <div class="cat-label"><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
-        <h1> <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a> </h1>
-        <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
-        <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
+        <div class="col py-4 px-4 item-content-container item-730x487-width">
+          <div class="cat-label"><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
+          <h1> <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a> </h1>
+          <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
+          <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
         <?php endif; ?>
       </div>
     </div>
