@@ -172,7 +172,101 @@ function register_acf_field_group() {
     'active' => 1,
     'description' => '',
   ));
+
+acf_add_local_field_group(array (
+  'key' => 'group_59c8aa677f994',
+  'title' => 'Writer Metadata',
+  'fields' => array (
+    array (
+      'key' => 'field_59c8aa83fd64c',
+      'label' => 'writer image',
+      'name' => 'writer_image',
+      'type' => 'image',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'return_format' => 'array',
+      'preview_size' => 'thumbnail',
+      'library' => 'all',
+      'min_width' => '',
+      'min_height' => '',
+      'min_size' => '',
+      'max_width' => '',
+      'max_height' => '',
+      'max_size' => '',
+      'mime_types' => '',
+    ),
+    array (
+      'key' => 'field_59c926f04287a',
+      'label' => 'Twitter Profile Slug',
+      'name' => 'writer_twitter_slug',
+      'type' => 'text',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'placeholder' => '',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+    ),
+    array (
+      'key' => 'field_59c927234287b',
+      'label' => 'Facebook Profile Slug',
+      'name' => 'writer_facebook_slug',
+      'type' => 'text',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'placeholder' => '',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+    ),
+  ),
+  'location' => array (
+    array (
+      array (
+        'param' => 'taxonomy',
+        'operator' => '==',
+        'value' => 'writer',
+      ),
+    ),
+  ),
+  'menu_order' => 0,
+  'position' => 'normal',
+  'style' => 'default',
+  'label_placement' => 'top',
+  'instruction_placement' => 'label',
+  'hide_on_screen' => '',
+  'active' => 1,
+  'description' => '',
+));
+
   endif;
+
+
+
+
+
+
+
 }
 
 function populate_article_format_tax(){
