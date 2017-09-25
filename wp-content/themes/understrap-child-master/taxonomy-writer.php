@@ -78,7 +78,7 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 								if ( have_posts() ) :
 									while ( have_posts() ) : the_post();
 									?>
-									<div class="row">
+									<div class="row mb-4">
 										<?php get_template_part( 'item-templates/item', '320x213' ); ?>
 									</div>
 									<?php
