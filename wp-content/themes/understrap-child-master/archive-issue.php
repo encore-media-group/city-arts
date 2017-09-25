@@ -40,6 +40,7 @@ $date_now = new DateTime();
 $issue_year_month = date('Y-m', strtotime($full_date));
 $date_now_year_month = $date_now->format('Y-m');
 
+//to do note: need to makd this work for the entire month
 if ( $issue_year_month == $date_now_year_month ) {
 	//echo 'build slugs for past two issues.';
   $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));

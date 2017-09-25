@@ -9310,6 +9310,10 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 #archive-wrapper h1.page-title {
   font-size: 6rem; }
 
+#archive-wrapper h2.page-title.sidelines {
+  font-family: "alternate-gothic-no-2-d";
+  text-transform: uppercase; }
+
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
 
