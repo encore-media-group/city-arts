@@ -142,6 +142,9 @@ h1, h2, h3 {
 .item-730x487-width {
   max-width: 730px;
 }
+.item-2000x1333-width{
+  max-width: 2000px;
+}
 
 div.card-span-text {
   font-family: $card-meta-font-family;
@@ -179,6 +182,28 @@ span.category-label {
 .inverse-color {
   background-color: $black;
   color: $white;
+}
+
+#single-enhanced-wrapper {
+  #content {
+    article {
+      span.the-first-letter {
+        display: inline-block;
+        float: left;
+        margin-top: 2.5rem;
+        padding-right: 1rem;
+        padding-bottom: 2rem;
+        line-height: 1rem;
+      }
+
+      h1.entry-title,
+      span.the-first-letter{
+        font-family: $headings-font-family;
+        font-weight: $font-weight-normal;
+        font-size: $display1-size;
+      }
+    }
+  }
 }
 
 #single-wrapper,

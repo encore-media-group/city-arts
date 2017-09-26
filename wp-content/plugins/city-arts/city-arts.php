@@ -17,6 +17,7 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 
 
+
 /* register this in the admin menu */
 add_action( 'admin_menu', 'city_arts_website_menu' );
 
@@ -137,6 +138,7 @@ function ca_load_widgets() {
 }
 
 function ca_add_image_sizes() {
+  add_image_size( 'ca-2000x1333', 2000, 1333, true );
   add_image_size( 'ca-1140-760', 1140, 760, true );
   add_image_size( 'ca-730-487', 730, 487, true);
   add_image_size( 'ca-730xauto', 730);
@@ -152,6 +154,7 @@ function ca_add_image_sizes() {
 // Register the useful image sizes for use in Add Media modal
 function wpshout_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
+        'ca-2000x1333' => __( 'ca-2000x1333' ),
         'ca-1140-760' => __( 'ca-1140-760' ),
         'ca-730-487' => __( 'ca-730-487' ),
         'ca-730xauto' => __( 'ca-730xauto' ),
@@ -277,11 +280,11 @@ function issue_display_post( $the_post, $args = array() ) {
 
     if( isset( $args['template'] ) ) :
 
-     if( isset( $args['query_vars'] ) ) :
-      foreach( $args['query_vars'] as $query_var ) :
-        set_query_var( $query_var['var'], $query_var['val'] );
-      endforeach;
-     endif;
+      if( isset( $args['query_vars'] ) ) :
+        foreach( $args['query_vars'] as $query_var ) :
+          set_query_var( $query_var['var'], $query_var['val'] );
+        endforeach;
+      endif;
 
       set_query_var ('issue_slug', $the_slug );
       get_template_part( $args['template']['path'], $args['template']['file'] );
@@ -306,6 +309,27 @@ function compare_by_post_date($a, $b) {
       return 0;
   }
   return ($a["the_post"]->post_date < $b["the_post"]->post_date) ? -1 : 1;
+}
+
+function set_first_letter_of_post( $post ) {
+  $article_body = apply_filters('the_content', $post->post_content);
+
+  $first_word =  wp_trim_words( $article_body, 1, '' );
+  $first_letter = substr($first_word, 0, 1);
+
+  $new_first_word = substr_replace($first_word, '<span class="the-first-letter">' . $first_letter . '</span>', 0, 1);
+
+  $pos = strpos($article_body, $first_word);
+
+  if ($pos !== false) {
+       $article_body = substr_replace(
+        $article_body,
+        $new_first_word,
+        $pos,
+        strlen($first_word)
+      );
+  }
+return  $article_body;
 }
 
 

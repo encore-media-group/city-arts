@@ -9359,6 +9359,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .item-730x487-width {
   max-width: 730px; }
 
+.item-2000x1333-width {
+  max-width: 2000px; }
+
 div.card-span-text {
   font-family: "ff-basic-gothic-web-pro";
   font-weight: 500; }
@@ -9389,6 +9392,20 @@ span.category-label {
 .inverse-color {
   background-color: #000;
   color: #fff; }
+
+#single-enhanced-wrapper #content article span.the-first-letter {
+  display: inline-block;
+  float: left;
+  margin-top: 2.5rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  line-height: 1rem; }
+
+#single-enhanced-wrapper #content article h1.entry-title,
+#single-enhanced-wrapper #content article span.the-first-letter {
+  font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+  font-weight: 300;
+  font-size: 6rem; }
 
 #single-wrapper,
 #page-wrapper {
