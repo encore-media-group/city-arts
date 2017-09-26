@@ -523,7 +523,7 @@ mark,
 .blockquote {
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   border-left: 0.25rem solid #f1ede8; }
 
 .blockquote-footer {
@@ -9340,11 +9340,14 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
 
+#single-wrapper,
+#page-wrapper,
 #archive-wrapper,
 #wrapper-index,
 #search-wrapper,
-#writer-wrapper {
-  padding-top: 7em;
+#writer-wrapper,
+#single-enhanced-wrapper {
+  padding-top: 5rem;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0; }
@@ -9412,26 +9415,35 @@ span.category-label {
   font-weight: 300;
   font-size: 6rem; }
 
-#single-wrapper,
-#page-wrapper {
-  padding-top: 5rem; }
-  #single-wrapper #content article h1.entry-title,
-  #page-wrapper #content article h1.entry-title {
-    font-family: "ingra-condensed", Arial, "sans-serif";
-    font-weight: 200;
-    font-size: 3.5rem; }
-  #single-wrapper #content article .updated-image:first-of-type,
-  #page-wrapper #content article .updated-image:first-of-type {
-    display: none; }
-  #single-wrapper #content article .updated-image:first-of-type + em,
-  #page-wrapper #content article .updated-image:first-of-type + em {
-    display: none; }
-  #single-wrapper #content article .entry-header,
-  #page-wrapper #content article .entry-header {
-    padding-top: 1em; }
-  #single-wrapper #content article .entry-meta,
-  #page-wrapper #content article .entry-meta {
-    padding-bottom: 1em; }
+#single-enhanced-wrapper #content article span.byline {
+  display: block; }
+
+#single-enhanced-wrapper #content article blockquote {
+  font-family: "ff-basic-gothic-web-pro";
+  font-size: 2.25rem;
+  font-weight: 500; }
+
+#single-wrapper #content article h1.entry-title,
+#page-wrapper #content article h1.entry-title {
+  font-family: "ingra-condensed", Arial, "sans-serif";
+  font-weight: 200;
+  font-size: 3.5rem; }
+
+#single-wrapper #content article .updated-image:first-of-type,
+#page-wrapper #content article .updated-image:first-of-type {
+  display: none; }
+
+#single-wrapper #content article .updated-image:first-of-type + em,
+#page-wrapper #content article .updated-image:first-of-type + em {
+  display: none; }
+
+#single-wrapper #content article .entry-header,
+#page-wrapper #content article .entry-header {
+  padding-top: 1em; }
+
+#single-wrapper #content article .entry-meta,
+#page-wrapper #content article .entry-meta {
+  padding-bottom: 1em; }
 
 #wrapper-footer {
   background-color: #000; }

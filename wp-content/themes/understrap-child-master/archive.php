@@ -45,7 +45,7 @@ $the_query = new WP_Query(array(
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<div class="row">
+		<div class="row pt-4">
 
 			<main class="col site-main" id="main">
 
@@ -54,22 +54,22 @@ $the_query = new WP_Query(array(
 						<?php if ( $paged < 2 && $is_discipline_archive ) : ?>
 							<header class="page-header row">
 								<h1 class=" col page-title text-center pb-4"> <?php single_cat_title() ?> </h1>
-						<?php endif; ?>
+							</header><!-- .page-header -->
 
-						<?php if ( !$is_discipline_archive ) : ?>
-							<header class="page-header row w-75 mx-auto">
+						<?php elseif ( !$is_discipline_archive ) : ?>
+							<header class="page-header row w-md-75 mx-auto">
 								<h2 class="col page-title pb-4 sidelines"> <?php single_cat_title() ?> </h2>
-						<?php endif; ?>
+							</header><!-- .page-header -->
 
-						<?php if ( $paged < 2 && !$is_discipline_archive ) : ?>
+						<?php elseif ( $paged < 2 && !$is_discipline_archive ) : ?>
 							<header class="page-header row">
 								<div class="col">
 									<div class="row justify-content-center">
 										<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
 									</div>
 								</div>
-						<?php endif; ?>
 						</header><!-- .page-header -->
+						<?php endif; ?>
 
 					<?php
 						$count = 1;

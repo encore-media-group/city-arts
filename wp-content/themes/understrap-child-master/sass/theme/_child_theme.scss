@@ -119,11 +119,14 @@ h1, h2, h3 {
   border-bottom: solid 1px $gray-light;
 }
 
+#single-wrapper,
+#page-wrapper,
 #archive-wrapper,
 #wrapper-index,
 #search-wrapper,
-#writer-wrapper {
-  padding-top: 7em;
+#writer-wrapper,
+#single-enhanced-wrapper {
+  padding-top: 5rem;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
@@ -202,10 +205,19 @@ span.category-label {
       }
 
       h1.entry-title,
-      span.the-first-letter{
+      span.the-first-letter {
         font-family: $headings-font-family;
         font-weight: $font-weight-normal;
         font-size: $display1-size;
+      }
+      span.byline {
+        display: block;
+      }
+
+      blockquote {
+        font-family: $card-meta-font-family;
+        font-size: $blockquote-font-size;
+        font-weight: $font-weight-medium;
       }
     }
   }
@@ -213,7 +225,6 @@ span.category-label {
 
 #single-wrapper,
 #page-wrapper {
-  padding-top: 5rem;//.8rem;
   #content {
     article {
       h1.entry-title {
