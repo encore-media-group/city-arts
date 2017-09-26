@@ -20,7 +20,6 @@
     <img
      src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     sizes="(max-width: 46em) 100vw, 2000px"
      style="max-width:2000px;height:auto;"
      class="img-fluid"
      alt="">
