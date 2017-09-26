@@ -9322,10 +9322,15 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   font-family: "ingra-condensed", Arial, "sans-serif";
   font-weight: 200; }
 
+#archive-wrapper h2.sidelines,
 #archive-wrapper h2.page-title.sidelines,
 #archive-wrapper h3.page-title.sidelines-heading-only,
+#writer-wrapper h2.sidelines,
 #writer-wrapper h2.page-title.sidelines,
-#writer-wrapper h3.page-title.sidelines-heading-only {
+#writer-wrapper h3.page-title.sidelines-heading-only,
+#single-enhanced-wrapper h2.sidelines,
+#single-enhanced-wrapper h2.page-title.sidelines,
+#single-enhanced-wrapper h3.page-title.sidelines-heading-only {
   font-family: "alternate-gothic-no-2-d";
   text-transform: uppercase; }
 

@@ -96,13 +96,18 @@ h1, h2, h3 {
     font-family: $subhead-font-family;
     font-weight: $font-weight-extra-light;
   }
+}
+
+#archive-wrapper,
+#writer-wrapper,
+#single-enhanced-wrapper {
+  h2.sidelines,
   h2.page-title.sidelines,
   h3.page-title.sidelines-heading-only {
     font-family: $sideline-heading-font-family;
     text-transform: uppercase;
   }
 }
-
 
 #writer-wrapper  {
   .writer-description {

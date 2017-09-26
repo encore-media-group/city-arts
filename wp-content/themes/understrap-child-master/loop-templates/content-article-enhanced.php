@@ -37,9 +37,12 @@
         <div class="row">
 
           <header class="entry-header col text-center">
-            <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+           <?php
+            $cat_label = get_category_label();
+            echo sprintf( '<a class="url fn n" href="%1$s"><h2 class="sidelines py-5 w-50 mx-auto">%2$s</h2></a>', $cat_label['url'], $cat_label['name'] );
+            ?>
 
-            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+            <?php the_title( '<h1 class="entry-title my-4">', '</h1>' ); ?>
             <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
           </header><!-- .entry-header -->
 
