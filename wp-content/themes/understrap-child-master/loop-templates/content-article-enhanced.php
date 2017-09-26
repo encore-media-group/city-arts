@@ -48,7 +48,7 @@
         </div>
 
         <div class="row">
-          <div class="col-12 ">
+          <div class="col-10 mx-auto ">
           <?php
             echo set_first_letter_of_post( $post );
           ?>

@@ -9421,7 +9421,13 @@ span.category-label {
 #single-enhanced-wrapper #content article blockquote {
   font-family: "ff-basic-gothic-web-pro";
   font-size: 2.25rem;
-  font-weight: 500; }
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 1140px;
+  width: 100%;
+  left: -5%;
+  position: relative;
+  margin-right: -5%; }
 
 #single-wrapper #content article h1.entry-title,
 #page-wrapper #content article h1.entry-title {

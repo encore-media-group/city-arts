@@ -217,7 +217,13 @@ span.category-label {
       blockquote {
         font-family: $card-meta-font-family;
         font-size: $blockquote-font-size;
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-bold;
+        line-height: 1.2;
+        max-width: 1140px;
+        width: 100%;
+        left: -5%;
+        position: relative;
+        margin-right: -5%;
       }
     }
   }
