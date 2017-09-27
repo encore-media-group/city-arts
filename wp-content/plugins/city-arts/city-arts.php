@@ -97,16 +97,33 @@ function insert_cover_story_shortcode() {
   $id = get_the_ID();
   $cover = get_single_issue_cover( $id );
   $a_tag = '<a href="%1$s">%2$s</a>';
+  $list_html = '<h4 class="mb-0">%1$s</h4><div class="contributors pb-1">%2$s</div>';
+  $article_list_html = '';
 
-  $html = '<div class="cover-story-image-wrapper ml-4">';
-  $html .= sprintf($a_tag, '/' . $cover['slug'], $cover['cover_src'] );
+  $articles = get_feature_issue_articles( [ $cover['slug'] ], [ $id ], 3 );
+
+  while( $articles->have_posts() ) : $articles->the_post();
+
+    $ahref = sprintf($a_tag, '/' . get_post_field( 'post_name', get_post() ), get_post_field( 'post_title', get_post() ) ) ;
+    $contributor = get_contributors_by_id( get_post_field( 'ID', get_post() ) );
+
+    $article_list_html .= sprintf( $list_html, $ahref, $contributor );
+
+  endwhile;
+  wp_reset_postdata();
+
+
+  $html = '<div class="cover-story-image-wrapper ml-sm-4">';
+  $html .= sprintf( $a_tag, '/isssue/' . $cover['slug'], $cover['cover_src'] );
   $html .= '<div class="col item-content-container p-2">';
-  $html .= '<div class="issue-title">Also from ' . sprintf($a_tag, '/' . $cover['slug'], $cover['name'] ) . '</div>';
+  $html .= '<div class="issue-title">Also from ' . sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['name'] ) . '</div>';
+  $html .= sprintf( '<div class="item-160x107">%1$s</div>', $article_list_html );
   $html .= '</div>';
   $html .= '</div>';
 
   return $html;
 }
+
 
 function get_single_issue_cover( $post_id ) {
   $cats = [];
@@ -301,29 +318,32 @@ function understrap_posted_on( $date_only = false ) {
 }
 endif;
 
+function get_contributors_by_id( $post_id) {
+  $html = '';
+  $writers = get_the_terms( $post_id, 'writer');
+
+  if( $writers ) {
+    $count = 0;
+    foreach( $writers as $writer ) {
+      if($count == 0) {
+        $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
+        '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
+      );
+      } else{
+        $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
+        '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
+        );
+
+      }
+      $count++;
+    }
+  }
+  return $html;
+}
+
 if ( ! function_exists( 'get_contributors' ) ) :
   function get_contributors(){
-    $writers = get_the_terms(get_the_ID(), 'writer');
-      $html = '';
-
-    if( $writers ) {
-      $count = 0;
-      foreach( $writers as $writer ) {
-        if($count == 0) {
-          $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
-          '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
-        );
-        } else{
-          $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
-          '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
-          );
-
-        }
-        $count++;
-      }
-    }
-
-    return $html;
+    return get_contributors_by_id( get_the_ID() );
   }
 endif;
 
@@ -354,7 +374,6 @@ function get_cover_stories( $issue_slugs = [] ) {
 
   return new WP_Query( [
     'posts_per_page' => $posts_per_page,
-    'nopaging' => true,
     'post_status'=> 'publish',
     'ignore_sticky_posts' => true,
     'tax_query' => [
@@ -367,6 +386,30 @@ function get_cover_stories( $issue_slugs = [] ) {
           'taxonomy' => 'category',
           'field'    => 'slug',
           'terms'    =>  array( 'cover-story' )
+        ]
+      ]
+    ]
+  );
+}
+
+function get_feature_issue_articles( $issue_slug = [], $ignore_posts = [], $posts_per_page = 1 ) {
+
+  return new WP_Query( [
+    'posts_per_page' => $posts_per_page,
+    'no_found_rows' => true,
+    'post__not_in' => $ignore_posts,
+    'post_status'=> 'publish',
+    'ignore_sticky_posts' => true,
+    'tax_query' => [
+      'relation' => 'AND', [
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    =>  'july-2017' //$issue_slug
+        ],
+        [
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    =>  array( 'feature' )
         ]
       ]
     ]
