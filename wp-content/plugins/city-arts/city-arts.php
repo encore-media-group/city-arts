@@ -44,6 +44,7 @@ add_filter( 'template_include', 'load_issue_template', 99 );
 //add custom city arts shortcodes
 add_shortcode( 'insert_cover_story', 'insert_cover_story_shortcode' );
 add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
+add_shortcode( 'insert_728xlandscape_ad', 'ad_728xlandscape_shortcode' );
 add_shortcode( 'insert_secondary_feature_image', 'secondary_feature_image_shortcode' );
 
 
@@ -198,7 +199,23 @@ function ad_300x250_core() {
   $html .= 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1503686755285-0\'); });';
   $html .= '</script></div></div>';
   return $html;
+}
 
+function ad_728xlandscape_shortcode() {
+  $html = '<div class="row no-gutters"><div class="col pb-3 text-center"><span style="font-size:.5em;">ADVERTISEMENT</span>';
+  $html .= '<div class=" mx-auto " style="max-width:728px;height:90px;">%1$s</div></div></div>';
+  return sprintf($html, ad_728xlandscape_shortcode_core() );
+}
+
+function ad_728xlandscape_shortcode_core() {
+//style=\'height:90px; width:728px;\'
+  $html = '<!-- /21626118154/cityarts_leaderboards -->';
+  $html .= '<div id=\'div-gpt-ad-1506555168055-0\' >';
+  $html .= '<script>googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1506555168055-0\'); });</script>';
+  $html .= '</div>';
+
+
+  return $html;
 }
 
 function build_img_tag( $image ) {

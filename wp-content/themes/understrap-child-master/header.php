@@ -31,15 +31,19 @@ $container = get_theme_mod( 'understrap_container_type' );
 	</script>
 
 	<script>
-	  googletag.cmd.push(function() {
-	    googletag.defineSlot('/21626118154/cityarts_mediumrectangle', [300, 250], 'div-gpt-ad-1503686755285-0').addService(googletag.pubads());
-	    googletag.defineSlot('/21626118154/cityarts_leaderboards', [728, 90], 'div-gpt-ad-1503686755285-1').addService(googletag.pubads());
-	    googletag.pubads().enableSingleRequest();
-	    googletag.pubads().collapseEmptyDivs();
-	    googletag.enableServices();
-	  });
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21626118154/cityarts_leaderboards', [[728, 90], [320, 50]], 'div-gpt-ad-1506555168055-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
 	</script>
 	<!-- end google ad script -->
+
+
+
+
+
+
 </head>
 
 <body <?php body_class(); ?>>
