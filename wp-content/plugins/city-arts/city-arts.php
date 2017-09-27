@@ -92,6 +92,25 @@ function get_disciplines() {
     );
 }
 
+
+
+add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
+function ad_300x250_shortcode() {
+  $html = '<div class="ad_300x250_sc_container float-right ml-4">' . ad_300x250_core() . "</div>";
+  return $html;
+}
+
+function ad_300x250_core() {
+  $html = '<div class="ad-300x250 mx-auto my-auto">';
+  $html .= '<!-- /21626118154/cityarts_mediumrectangle -->';
+  $html .= '<div id=\'div-gpt-ad-1503686755285-0\' style=\'height:250px; width:300px;\'>';
+  $html .= '<script>';
+  $html .= 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1503686755285-0\'); });';
+  $html .= '</script></div></div>';
+  return $html;
+
+}
+
 // special function to store oft used category ids from slugs
 function get_cached_cat_id_by_slug( $slug ) {
   $cache_key = $slug . "_id";

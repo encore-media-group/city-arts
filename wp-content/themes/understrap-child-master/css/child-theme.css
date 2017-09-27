@@ -9308,7 +9308,8 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   max-width: 540px; }
 
 .ad-300x250 {
-  padding: 25px; }
+  padding: 25px;
+  max-width: 350px; }
 
 @media (max-width: 991px) {
   .ad-300x250 {

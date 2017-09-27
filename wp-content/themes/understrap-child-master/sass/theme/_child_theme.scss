@@ -76,7 +76,9 @@ h1, h2, h3 {
 
 .ad-300x250 {
   padding: 25px;
+  max-width: 350px;
 }
+
 @include media-breakpoint-down(md) {
   .ad-300x250  {
     padding: 0;

@@ -5,12 +5,6 @@
  * @package understrap
  */
 
+return ad_300x250_core();
 ?>
-<div class="ad-300x250 mx-auto my-auto">
-  <!-- /21626118154/cityarts_mediumrectangle -->
-  <div id='div-gpt-ad-1503686755285-0' style='height:250px; width:300px;'>
-  <script>
-  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1503686755285-0'); });
-  </script>
-  </div>
-</div>
+
