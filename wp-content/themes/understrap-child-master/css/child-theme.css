@@ -9439,6 +9439,13 @@ span.category-label {
     font-weight: 500;
     text-transform: uppercase; }
 
+#single-enhanced-wrapper #content article .item-540x360-in-post {
+  max-width: 540px; }
+  #single-enhanced-wrapper #content article .item-540x360-in-post .caption {
+    font-family: "ff-basic-gothic-web-pro";
+    color: #a18967;
+    font-weight: 300; }
+
 #single-wrapper #content article h1.entry-title,
 #page-wrapper #content article h1.entry-title {
   font-family: "ingra-condensed", Arial, "sans-serif";

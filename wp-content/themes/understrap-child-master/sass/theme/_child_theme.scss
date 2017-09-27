@@ -236,7 +236,14 @@ span.category-label {
           font-size: $card-meta-font-size-less-small;
           font-weight: $font-weight-medium;
           text-transform: uppercase;
-
+        }
+      }
+      .item-540x360-in-post {
+        max-width: 540px;
+        .caption {
+          font-family: $card-meta-font-family;
+          color: $orange;
+          font-weight: $font-weight-light;
         }
       }
     }

@@ -43,6 +43,11 @@ add_action( 'pre_get_posts', 'wpsites_query' );
 //load child template for issue instead of the default archive page
 add_filter( 'template_include', 'load_issue_template', 99 );
 
+//add custom city arts shortcodes
+add_shortcode( 'insert_cover_story', 'insert_cover_story_shortcode' );
+add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
+add_shortcode( 'insert_secondary_feature_image', 'secondary_feature_image_shortcode' );
+
 
 
 function ca_enqueue_scripts_and_styles() {
@@ -92,7 +97,6 @@ function get_disciplines() {
     );
 }
 
-add_shortcode( 'insert_cover_story', 'insert_cover_story_shortcode' );
 function insert_cover_story_shortcode() {
   $id = get_the_ID();
   $cover = get_single_issue_cover( $id );
@@ -124,6 +128,28 @@ function insert_cover_story_shortcode() {
   return $html;
 }
 
+
+function secondary_feature_image_shortcode() {
+    $id = get_the_ID();
+    $image = get_field('secondary_feature_image', $id);
+    $size = 'ca-540x360';
+    $cover_image = [];
+    $output = '';
+    $wrapper = '<div class="item-540x360-in-post pl-4 pb-4 pt-2 float-right">%1$s<div class="caption p-2">%2$s</div></div>';
+
+    if( $image ) {
+      $caption = $image['caption']; // image caption
+      $description = $image['description']; // image description
+      $cover_image['src'] = wp_get_attachment_image_url( $image['id'], $size );
+      $cover_image['srcset'] = wp_get_attachment_image_srcset( $image['id'], $size );
+      $cover_image['class'] = '';
+      $cover_image['sizes'] = '(max-width: 46em) 100vw, 540px';
+      $cover_image['alt'] = '';
+
+      $output = sprintf( $wrapper, build_img_tag( $cover_image ) , $caption . " " . $description );
+    }
+  return $output;
+}
 
 function get_single_issue_cover( $post_id ) {
   $cats = [];
@@ -163,7 +189,6 @@ function get_single_issue_cover( $post_id ) {
 }
 
 
-add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
 function ad_300x250_shortcode() {
   $html = '<div class="ad_300x250_sc_container float-right ml-4">' . ad_300x250_core() . "</div>";
   return $html;
@@ -194,9 +219,9 @@ function build_img_tag( $image ) {
     $img_tag,
     esc_url( $image['src'] ),
     esc_attr( $image['srcset'] ),
-    $image['class'],
-    $image['sizes'],
-    $image['alt']);
+    esc_attr( $image['class'] ),
+    esc_attr( $image['sizes'] ),
+    esc_attr( $image['alt'] ) );
 }
 
 // special function to store oft used category ids from slugs
@@ -374,6 +399,7 @@ function get_cover_stories( $issue_slugs = [] ) {
 
   return new WP_Query( [
     'posts_per_page' => $posts_per_page,
+    'no_found_rows' => true,
     'post_status'=> 'publish',
     'ignore_sticky_posts' => true,
     'tax_query' => [
