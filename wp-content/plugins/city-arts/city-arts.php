@@ -16,8 +16,6 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 
-
-
 /* register this in the admin menu */
 add_action( 'admin_menu', 'city_arts_website_menu' );
 
@@ -117,7 +115,7 @@ function insert_cover_story_shortcode() {
   wp_reset_postdata();
 
 
-  $html = '<div class="cover-story-image-wrapper ml-sm-4">';
+  $html = '<div class="cover-story-image-wrapper ml-md-4">';
   $html .= sprintf( $a_tag, '/isssue/' . $cover['slug'], $cover['cover_src'] );
   $html .= '<div class="col item-content-container p-2">';
   $html .= '<div class="issue-title">Also from ' . sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['name'] ) . '</div>';
@@ -135,16 +133,14 @@ function secondary_feature_image_shortcode() {
     $size = 'ca-540x360';
     $cover_image = [];
     $output = '';
-    $wrapper = '<div class="item-540x360-in-post pl-4 pb-4 pt-2 float-right">%1$s<div class="caption p-2">%2$s</div></div>';
+    $wrapper = '<div class="item-540x360-in-post pl-lg-4 pb-lg-4 pt-2 float-lg-right mx-auto">%1$s<div class="caption p-2">%2$s</div></div>';
 
     if( $image ) {
       $caption = $image['caption']; // image caption
       $description = $image['description']; // image description
       $cover_image['src'] = wp_get_attachment_image_url( $image['id'], $size );
       $cover_image['srcset'] = wp_get_attachment_image_srcset( $image['id'], $size );
-      $cover_image['class'] = '';
       $cover_image['sizes'] = '(max-width: 46em) 100vw, 540px';
-      $cover_image['alt'] = '';
 
       $output = sprintf( $wrapper, build_img_tag( $cover_image ) , $caption . " " . $description );
     }
@@ -207,21 +203,36 @@ function ad_300x250_core() {
 
 function build_img_tag( $image ) {
 
-  $img_tag = '<img
-    src="%1$s"
-    srcset="%2$s"
-    class="img-fluid %3$s"
-    sizes="%4$s"
-    style="max-width: 100%%; height:auto;"
-    alt="%5$s">';
+  $output = '';
 
-  return sprintf(
-    $img_tag,
-    esc_url( $image['src'] ),
-    esc_attr( $image['srcset'] ),
-    esc_attr( $image['class'] ),
-    esc_attr( $image['sizes'] ),
-    esc_attr( $image['alt'] ) );
+  if( $image ) {
+
+    $srcset = ( isset( $image['srcset'] )) ? $image['srcset'] : ' ';
+    $class = ( isset( $image['class'] )) ? $image['class'] : ' ';
+    $sizes = ( isset( $image['sizes'] )) ? $image['sizes'] : '';
+    $style = ( isset( $image['style'] )) ? $image['style'] : ' max-width: 100%; height:auto; ';
+    $alt = ( isset( $image['alt'] )) ? $image['alt'] : '';
+
+    $img_tag = '<img
+      src="%1$s"
+      srcset="%2$s"
+      class="img-fluid %3$s"
+      sizes="%4$s"
+      style="%5$s"
+      alt="%6$s">';
+
+    $output = sprintf(
+      $img_tag,
+      esc_url( $image['src'] ),
+      esc_attr( $srcset ),
+      esc_attr( $class ),
+      esc_attr( $sizes ),
+      esc_attr( $style ),
+      esc_attr( $alt )
+    );
+  }
+
+ return $output;
 }
 
 // special function to store oft used category ids from slugs

@@ -7,26 +7,26 @@
 
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
+  $thumbnail_description = get_post($thumbnail_id)->post_content;
 
-  $image_attachment_metadata = wp_get_attachment_metadata($thumbnail_id);
+  $hero_image['src'] = wp_get_attachment_image_url( $thumbnail_id, 'ca-2000x1333' );
+  $hero_image['srcset'] = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-2000x1333' );
+  $hero_image['style'] = ' max-width:2000px;height:auto; ';
 
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-2000x1333' );
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-2000x1333' );
-
+  $feature_image = build_img_tag( $hero_image );
 ?>
 <div class="px-0 container-fluid" id="content" tabindex="-1">
   <div class="row mx-auto item-2000x1333-width">
     <div class="col px-0">
-    <img
-     src="<?php echo esc_url( $img_src ); ?>"
-     srcset="<?php echo esc_attr( $img_srcset ); ?>"
-     style="max-width:2000px;height:auto;"
-     class="img-fluid"
-     alt="">
-   </div>
- </div><!-- end row -->
+      <?= $feature_image ?>
+    </div>
+    <div class="caption p-2">
+      <?php echo $thumbnail_caption ?>
+      <?php echo $thumbnail_description ?>
+    </div>
+  </div><!-- end row -->
 
-  <div><?php echo $thumbnail_caption ?></div>
+
 </div>
 <main class="site-main" id="main">
   <div class="container" id="content" tabindex="-1">

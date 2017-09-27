@@ -9403,6 +9403,11 @@ span.category-label {
   background-color: #000;
   color: #fff; }
 
+#single-enhanced-wrapper #content .caption {
+  font-family: "ff-basic-gothic-web-pro";
+  color: #a18967;
+  font-weight: 300; }
+
 #single-enhanced-wrapper #content article span.the-first-letter {
   display: inline-block;
   float: left;
@@ -9441,10 +9446,6 @@ span.category-label {
 
 #single-enhanced-wrapper #content article .item-540x360-in-post {
   max-width: 540px; }
-  #single-enhanced-wrapper #content article .item-540x360-in-post .caption {
-    font-family: "ff-basic-gothic-web-pro";
-    color: #a18967;
-    font-weight: 300; }
 
 #single-wrapper #content article h1.entry-title,
 #page-wrapper #content article h1.entry-title {

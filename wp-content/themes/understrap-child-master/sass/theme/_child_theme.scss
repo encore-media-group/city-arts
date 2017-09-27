@@ -153,7 +153,7 @@ h1, h2, h3 {
 .item-730x487-width {
   max-width: 730px;
 }
-.item-2000x1333-width{
+.item-2000x1333-width {
   max-width: 2000px;
 }
 
@@ -197,6 +197,12 @@ span.category-label {
 
 #single-enhanced-wrapper {
   #content {
+    .caption {
+        font-family: $card-meta-font-family;
+        color: $orange;
+        font-weight: $font-weight-light;
+    }
+
     article {
       span.the-first-letter {
         display: inline-block;
@@ -216,6 +222,8 @@ span.category-label {
       span.byline {
         display: block;
       }
+
+
 
       blockquote {
         font-family: $card-meta-font-family;
@@ -240,11 +248,6 @@ span.category-label {
       }
       .item-540x360-in-post {
         max-width: 540px;
-        .caption {
-          font-family: $card-meta-font-family;
-          color: $orange;
-          font-weight: $font-weight-light;
-        }
       }
     }
   }
