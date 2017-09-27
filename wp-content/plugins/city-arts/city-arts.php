@@ -186,7 +186,7 @@ function get_single_issue_cover( $post_id ) {
 
 
 function ad_300x250_shortcode() {
-  $html = '<div class="ad_300x250_sc_container float-right ml-4">' . ad_300x250_core() . "</div>";
+  $html = '<div class="ad_300x250_sc_container float-md-right ml-md-4">' . ad_300x250_core() . "</div>";
   return $html;
 }
 

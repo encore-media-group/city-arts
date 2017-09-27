@@ -79,7 +79,7 @@ h1, h2, h3 {
   max-width: 350px;
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-between(md,lg) {
   .ad-300x250  {
     padding: 0;
   }
@@ -235,6 +235,12 @@ span.category-label {
         left: -5%;
         position: relative;
         margin-right: -5%;
+      }
+      @include media-breakpoint-down(sm) {
+        blockquote  {
+          left: 0;
+          margin-right: 0;
+        }
       }
 
       .cover-story-image-wrapper {
