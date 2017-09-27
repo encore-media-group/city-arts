@@ -55,26 +55,7 @@ $issue_query_slugs[] = $archive_slug;
 $issue_query_slugs[] = $cover_slot_b;
 $issue_query_slugs[] = $cover_slot_c;
 
-$cover_story_query =  new WP_Query(array(
-    'posts_per_page' => 3,
-    'nopaging' => true,
-    'post_status'=> 'publish',
-    'ignore_sticky_posts' => true,
-    'tax_query' => [
-			'relation' => 'AND',
-				[
-	        'taxonomy' => 'category',
-	        'field'    => 'slug',
-	        'terms'    =>  $issue_query_slugs,
-				],
-	    	[
-	        'taxonomy' => 'category',
-	        'field'    => 'slug',
-	        'terms'    =>  array( 'cover-story' )
-				]
-     ],
-));
-
+$cover_story_query =  get_cover_stories( $issue_query_slugs );
 
 $issue_page_content = array_fill_keys( ['cover_slot_a', 'cover_slot_b', 'cover_slot_c'] , [ 'posts' => [], 'cats' => [] ] );
 

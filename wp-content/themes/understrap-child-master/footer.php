@@ -50,10 +50,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="col-12 col-sm-auto">
 				<h2>FOLLOW</h2>
 				<ul class="social-list">
-					<li class="pr-2"><a href="https://twitter.com/City_Arts" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
-					<li class="px-2"><a href="https://www.facebook.com/cityartsmagazine/" target="_blank"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
-					<li class="px-2"><a href="https://www.instagram.com/city_arts_magazine" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
-					<li class="px-2"><a href="https://soundcloud.com/cityartsmagazine" target="_blank"><i class="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a></li>
+					<li class="pr-2"><a href="https://twitter.com/City_Arts" rel="noopener"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
+					<li class="px-2"><a href="https://www.facebook.com/cityartsmagazine/" rel="noopener"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
+					<li class="px-2"><a href="https://www.instagram.com/city_arts_magazine" rel="noopener"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+					<li class="px-2"><a href="https://soundcloud.com/cityartsmagazine" rel="noopener"><i class="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a></li>
 
 				</ul>
 

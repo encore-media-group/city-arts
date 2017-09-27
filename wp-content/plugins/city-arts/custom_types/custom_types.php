@@ -274,8 +274,7 @@ function populate_article_format_tax(){
   $default_articles = array(
     array( 'slug' => 'article-current', 'name' => 'Article Current', 'description' => '', 'parent' => 0) ,
     array( 'slug' => 'article-enhanced', 'name' => 'Article Enhanced', 'description' => '', 'parent' => 0) ,
-    array( 'slug' => 'article-past', 'name' => 'Article Past', 'description' => '', 'parent' => 0),
-    array( 'slug' => 'article-simple', 'name' => 'Article Simple', 'description' => '', 'parent' => 0)
+    array( 'slug' => 'article-past', 'name' => 'Article Past', 'description' => '', 'parent' => 0)
   );
 
   foreach($default_articles as $article) {

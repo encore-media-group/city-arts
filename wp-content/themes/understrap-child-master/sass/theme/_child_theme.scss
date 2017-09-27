@@ -140,7 +140,8 @@ h1, h2, h3 {
 .item-540x360-vertical    .item-content-container,
 .item-540x360-horizontal  .item-content-container,
 .item-730x487-vertical    .item-content-container,
-.item-730x487-horizontal  .item-content-container {
+.item-730x487-horizontal  .item-content-container,
+.cover-story-image-wrapper .item-content-container {
   background-color: $gray-lightest;
 }
 .see-it-this-week {
@@ -226,6 +227,17 @@ span.category-label {
         left: -5%;
         position: relative;
         margin-right: -5%;
+      }
+
+      .cover-story-image-wrapper {
+        float: right;
+        .issue-title {
+          font-family: $card-meta-font-family;
+          font-size: $card-meta-font-size-less-small;
+          font-weight: $font-weight-medium;
+          text-transform: uppercase;
+
+        }
       }
     }
   }

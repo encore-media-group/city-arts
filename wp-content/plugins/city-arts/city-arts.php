@@ -92,6 +92,58 @@ function get_disciplines() {
     );
 }
 
+add_shortcode( 'insert_cover_story', 'insert_cover_story_shortcode' );
+function insert_cover_story_shortcode() {
+  $id = get_the_ID();
+  $cover = get_single_issue_cover( $id );
+  $a_tag = '<a href="%1$s">%2$s</a>';
+
+  $html = '<div class="cover-story-image-wrapper ml-4">';
+  $html .= sprintf($a_tag, '/' . $cover['slug'], $cover['cover_src'] );
+  $html .= '<div class="col item-content-container p-2">';
+  $html .= '<div class="issue-title">Also from ' . sprintf($a_tag, '/' . $cover['slug'], $cover['name'] ) . '</div>';
+  $html .= '</div>';
+  $html .= '</div>';
+
+  return $html;
+}
+
+function get_single_issue_cover( $post_id ) {
+  $cats = [];
+  $cover_image = [];
+
+  $post_cats = wp_get_post_categories( $post_id );
+  $issue_parent_cat_id = get_cached_cat_id_by_slug( 'issue' );
+
+  foreach ($post_cats as $cat) :
+    if( cat_is_ancestor_of( $issue_parent_cat_id, $cat ) ) :
+      $c = get_category( $cat );
+      $cats = ['slug'=> ($c->slug), 'name'=> ($c->name) ];
+      break 1;
+    endif;
+  endforeach;
+
+  $issue_name = $cats['name'];
+  $cover_story = get_cover_stories( $cats['slug'] );
+
+  while( $cover_story->have_posts() ) : $cover_story->the_post();
+    $image = get_field('cover_image');
+    $size = 'ca-350x454';
+
+    if( $image ) {
+      $cover_image['src'] = wp_get_attachment_image_url( $image['id'], $size );
+      $cover_image['srcset'] = wp_get_attachment_image_srcset( $image['id'], $size );
+      $cover_image['class'] = 'cover-story-image';
+      $cover_image['sizes'] = '(max-width: 46em) 100vw, 231px';
+      $cover_image['alt'] = $issue_name;
+    }
+
+  endwhile;
+  wp_reset_postdata();
+
+  return ['name'=> $issue_name,'slug'=> $cats['slug'], 'cover_src' => build_img_tag($cover_image) ];
+
+}
 
 
 add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
@@ -109,6 +161,25 @@ function ad_300x250_core() {
   $html .= '</script></div></div>';
   return $html;
 
+}
+
+function build_img_tag( $image ) {
+
+  $img_tag = '<img
+    src="%1$s"
+    srcset="%2$s"
+    class="img-fluid %3$s"
+    sizes="%4$s"
+    style="max-width: 100%%; height:auto;"
+    alt="%5$s">';
+
+  return sprintf(
+    $img_tag,
+    esc_url( $image['src'] ),
+    esc_attr( $image['srcset'] ),
+    $image['class'],
+    $image['sizes'],
+    $image['alt']);
 }
 
 // special function to store oft used category ids from slugs
@@ -278,6 +349,29 @@ function load_issue_template( $template ) {
  return $template;
 }
 
+function get_cover_stories( $issue_slugs = [] ) {
+  $posts_per_page = ( sizeof( $issue_slugs ) > 0 ) ? sizeof( $issue_slugs ) : 1;
+
+  return new WP_Query( [
+    'posts_per_page' => $posts_per_page,
+    'nopaging' => true,
+    'post_status'=> 'publish',
+    'ignore_sticky_posts' => true,
+    'tax_query' => [
+      'relation' => 'AND', [
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    =>  $issue_slugs
+        ],
+        [
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    =>  array( 'cover-story' )
+        ]
+      ]
+    ]
+  );
+}
 
 
 function issue_display_posts( $the_posts, $args = array() ) {
@@ -393,7 +487,7 @@ function get_category_label() {
 
   endif;
 
-return [ 'url' => $url, 'name' => $name];
+return [ 'url' => $url, 'name' => $name ];
 }
 
 
