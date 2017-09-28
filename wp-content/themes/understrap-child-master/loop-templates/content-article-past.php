@@ -5,9 +5,6 @@
  * @package understrap
  */
 
-
-  $container   = get_theme_mod( 'understrap_container_type' );
-
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
@@ -29,7 +26,7 @@ if( $img_width < $img_height ) {
 //echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
 
 ?>
-<div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+<div class="px-md-0 container" id="content" tabindex="-1">
 
 <?php if( $img_src ) : ?>
   <style type="text/css">
@@ -38,68 +35,57 @@ if( $img_width < $img_height ) {
     }
   </style>
 <?php endif; ?>
-    <div class="row">
+  <div class="row">
+    <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
 
-      <main class="site-main" id="main">
+      <div class="row">
 
-        <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
+        <header class="entry-header col-9">
+          <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
 
-          <div class="row">
+          <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+          <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
+        </header><!-- .entry-header -->
 
-            <header class="entry-header col-9">
-              <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+      </div>
 
-              <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-              <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
-            </header><!-- .entry-header -->
+      <div class="row">
+        <div class="col-12 col-md-7 col-lg-8 ">
+          <img
+           src="<?php echo esc_url( $img_src ); ?>"
+           srcset="<?php echo esc_attr( $img_srcset ); ?>"
+           sizes="(max-width: 46em) 100vw, 730px"
+           style="max-width:100%;height:auto;"
+           class="img-fluid new-image"
+           alt="">
 
-          </div>
+          <div><?php echo $thumbnail_caption ?></div>
+          <?php the_content(); ?>
+        </div>
+        <div class="col-12 col-md-5 col-lg-4">
+          <div class="entry-content">
 
-          <div class="row">
-            <div class="col-12 col-md-7 col-lg-8 ">
-              <img
-               src="<?php echo esc_url( $img_src ); ?>"
-               srcset="<?php echo esc_attr( $img_srcset ); ?>"
-               sizes="(max-width: 46em) 100vw, 730px"
-               style="max-width:100%;height:auto;"
-               class="img-fluid new-image"
-               alt="">
-
-              <div><?php echo $thumbnail_caption ?></div>
-              <?php the_content(); ?>
-            </div>
-            <div class="col-12 col-md-5 col-lg-4">
-              <div class="entry-content">
-
-                <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
-                  <div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
-                    <?php dynamic_sidebar( 'article-right-1' ); ?>
-                  </div><!-- #primary-sidebar -->
-                <?php endif; ?>
+            <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
+              <div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
+                <?php dynamic_sidebar( 'article-right-1' ); ?>
+              </div><!-- #primary-sidebar -->
+            <?php endif; ?>
 
 
-              <?php
-              wp_link_pages( array(
-                'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
-                'after'  => '</div>',
-              ) );
-              ?>
-              </div><!-- .entry-content -->
-            </div>
-          </div><!-- row -->
-          <footer class="entry-footer">
+          <?php
+          wp_link_pages( array(
+            'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
+            'after'  => '</div>',
+          ) );
+          ?>
+          </div><!-- .entry-content -->
+        </div>
+      </div><!-- row -->
+      <footer class="entry-footer">
 
-          <?php understrap_entry_footer(); ?>
+      <?php understrap_entry_footer(); ?>
 
-          </footer><!-- .entry-footer -->
-        </article><!-- #post-## -->
-      </main><!-- #main -->
-
-
-
-
-
-
-    </div><!-- #primary -->
+      </footer><!-- .entry-footer -->
+    </article><!-- #post-## -->
   </div><!-- .row -->
 </div><!-- Container end -->
