@@ -143,12 +143,12 @@ $this_issue_query = new WP_Query(array(
   <main class="site-main" id="main">
 		<?php if ( have_posts() ) : ?>
 			<header class="page-header">
-				<h1 class="page-title text-center py-4"> <?php single_cat_title() ?> </h1>
+				<h1 class="page-title text-center py-2 py-sm-4"> <?php single_cat_title() ?> </h1>
 			</header><!-- .page-header -->
 		<?php endif; ?>
 
    	<div class="container mb-4" id="content" tabindex="-1">
-      <div class="row pt-4">
+      <div class="rrow pt-sm-4 pt-2">
         <div class="col-12 px-0 px-sm col-md" id="primary">
           <div class="row mx-0">
 							<?php

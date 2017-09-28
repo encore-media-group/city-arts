@@ -88,6 +88,9 @@ h1, h2, h3 {
 #archive-wrapper {
   h1.page-title {
     font-size: $display1-size;
+    @include media-breakpoint-down(sm) {
+      font-size: $display3-size;
+    }
   }
 
 }
@@ -127,7 +130,8 @@ h1, h2, h3 {
 #wrapper-index,
 #search-wrapper,
 #writer-wrapper,
-#single-enhanced-wrapper {
+#single-enhanced-wrapper,
+#error-404-wrapper {
   padding-top: 5rem;
   padding-left: 0;
   padding-right: 0;

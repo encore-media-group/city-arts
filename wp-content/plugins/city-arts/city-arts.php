@@ -204,7 +204,7 @@ function ad_300x250_core() {
 
 function ad_728xlandscape_shortcode() {
   $html = '<div class="row no-gutters"><div class="col pb-3 text-center"><span style="font-size:.5em;">ADVERTISEMENT</span>';
-  $html .= '<div class=" mx-auto " style="max-width:728px;height:90px;">%1$s</div></div></div>';
+  $html .= '<div class=" mx-auto " style="max-width:728px;max-height:90px;">%1$s</div></div></div>';
   return sprintf($html, ad_728xlandscape_shortcode_core() );
 }
 
@@ -420,6 +420,12 @@ function load_issue_template( $template ) {
   }
 
  return $template;
+}
+
+function get_current_issue_link() {
+  // build link to the current issue for this momth
+  $html = '/issue/%1$s';
+  return sprintf($html,  strtolower( ( new DateTime() )->format('F-Y') ));
 }
 
 function get_cover_stories( $issue_slugs = [] ) {

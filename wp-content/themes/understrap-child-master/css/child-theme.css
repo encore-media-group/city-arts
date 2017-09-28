@@ -9317,6 +9317,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 #archive-wrapper h1.page-title {
   font-size: 6rem; }
+  @media (max-width: 767px) {
+    #archive-wrapper h1.page-title {
+      font-size: 4.5rem; } }
 
 #archive-wrapper h1.page-title,
 #writer-wrapper h1.page-title {
@@ -9347,7 +9350,8 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 #wrapper-index,
 #search-wrapper,
 #writer-wrapper,
-#single-enhanced-wrapper {
+#single-enhanced-wrapper,
+#error-404-wrapper {
   padding-top: 5rem;
   padding-left: 0;
   padding-right: 0;

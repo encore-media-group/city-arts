@@ -30,27 +30,28 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="col-12 col-sm-auto">
 				<h2>MAGAZINE</h2>
 				<ul>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
-					<li><a href="">See it this week</a></li>
+					<li><a href="<?= get_current_issue_link() ?>">This Month’s Issue</a></li>
+					<li><a href="/issue">Archives</a></li>
+					<li><a href="/subscribe">Subscribe</a></li>
+					<li><a href="/subscribe">Magazine Locator</a></li>
+					<li><a href="/advertise">Advertise</a></li>
+					<li><a href="/advertise">Ad Specifications</a></li>
 				</ul>
 			</div>
 			<div class="col-12 col-sm-auto">
 				<h2>ABOUT</h2>
 				<ul>
-					<li><a href="">Contact</a></li>
-					<li><a href="">Jobs</a></li>
-					<li><a href="">Terms &amp; Conditinos</a></li>
-					<li><a href="">Privcay Policy</a></li>
+					<li><a href="/about">Masthead</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li><a href="/jobs">Jobs</a></li>
+					<li><a href="/terms-of-use">Terms &amp; Conditions</a></li>
+					<li><a href="/privacy">Privcay Policy</a></li>
 				</ul>
 			</div>
 			<div class="col-12 col-sm-auto">
 				<h2>FOLLOW</h2>
 				<ul class="social-list">
-					<li class="pr-2"><a href="https://twitter.com/City_Arts" rel="noopener"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
+					<li class="pr-2"><a href="https://twitter.com/city_arts" rel="noopener"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
 					<li class="px-2"><a href="https://www.facebook.com/cityartsmagazine/" rel="noopener"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
 					<li class="px-2"><a href="https://www.instagram.com/city_arts_magazine" rel="noopener"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
 					<li class="px-2"><a href="https://soundcloud.com/cityartsmagazine" rel="noopener"><i class="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a></li>
