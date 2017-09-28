@@ -14,9 +14,6 @@ get_header();
 $container   = get_theme_mod( 'understrap_container_type' );
 $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
- $queried_object = get_queried_object();
- var_dump( $queried_object );
-
 $archive_slug =  get_queried_object()->slug;
 
 $is_discipline_archive = in_array($archive_slug, get_disciplines() ) ?: false;
