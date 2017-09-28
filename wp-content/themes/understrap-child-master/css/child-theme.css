@@ -9403,11 +9403,6 @@ span.category-label {
   background-color: #000;
   color: #fff; }
 
-@media (max-width: 767px) {
-  #single-enhanced-wrapper blockquote {
-    left: 0;
-    margin-right: 0; } }
-
 #single-enhanced-wrapper #content .caption {
   font-family: "ff-basic-gothic-web-pro";
   color: #a18967;
@@ -9440,6 +9435,10 @@ span.category-label {
   left: -5%;
   position: relative;
   margin-right: -5%; }
+  @media (max-width: 767px) {
+    #single-enhanced-wrapper #content article blockquote {
+      left: 0;
+      margin-right: 0; } }
 
 #single-enhanced-wrapper #content article .cover-story-image-wrapper {
   float: right; }
@@ -9452,6 +9451,15 @@ span.category-label {
 #single-enhanced-wrapper #content article .item-540x360-in-post {
   max-width: 540px; }
 
+/*
+@include media-breakpoint-down(sm) {
+  #single-enhanced-wrapper {
+    blockquote {
+      left: 0;
+      margin-right: 0;
+    }
+  }
+}*/
 #single-wrapper #content article h1.entry-title,
 #page-wrapper #content article h1.entry-title {
   font-family: "ingra-condensed", Arial, "sans-serif";

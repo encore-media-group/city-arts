@@ -194,9 +194,10 @@ function ad_300x250_shortcode() {
 function ad_300x250_core() {
   $html = '<div class="ad-300x250 mx-auto my-auto">';
   $html .= '<!-- /21626118154/cityarts_mediumrectangle -->';
-  $html .= '<div id=\'div-gpt-ad-1503686755285-0\' style=\'height:250px; width:300px;\'>';
+ // $html .= '<div id=\'div-gpt-ad-1503686755285-0\' style=\'height:250px; width:300px;\'>';
+  $html .= '<div id=\'div-gpt-ad-1506555798490-1\' style=\'height:250px; width:300px;\'>';
   $html .= '<script>';
-  $html .= 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1503686755285-0\'); });';
+  $html .= 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1506555798490-1\'); });';
   $html .= '</script></div></div>';
   return $html;
 }
@@ -210,10 +211,9 @@ function ad_728xlandscape_shortcode() {
 function ad_728xlandscape_shortcode_core() {
 //style=\'height:90px; width:728px;\'
   $html = '<!-- /21626118154/cityarts_leaderboards -->';
-  $html .= '<div id=\'div-gpt-ad-1506555168055-0\' >';
-  $html .= '<script>googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1506555168055-0\'); });</script>';
+  $html .= '<div id=\'div-gpt-ad-1506555798490-0\' >';
+  $html .= '<script>googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1506555798490-0\'); });</script>';
   $html .= '</div>';
-
 
   return $html;
 }

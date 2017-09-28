@@ -195,14 +195,6 @@ span.category-label {
   color: $white;
 }
 
-@include media-breakpoint-down(sm) {
-  #single-enhanced-wrapper {
-    blockquote {
-      left: 0;
-      margin-right: 0;
-    }
-  }
-}
 
 #single-enhanced-wrapper {
   #content {
@@ -244,6 +236,10 @@ span.category-label {
         left: -5%;
         position: relative;
         margin-right: -5%;
+        @include media-breakpoint-down(sm) {
+          left: 0;
+          margin-right: 0;
+        }
       }
 
       .cover-story-image-wrapper {
@@ -261,7 +257,15 @@ span.category-label {
     }
   }
 }
-
+/*
+@include media-breakpoint-down(sm) {
+  #single-enhanced-wrapper {
+    blockquote {
+      left: 0;
+      margin-right: 0;
+    }
+  }
+}*/
 #single-wrapper,
 #page-wrapper {
   #content {
