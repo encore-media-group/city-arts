@@ -9657,9 +9657,11 @@ Further adapted for CA 9/2017
   #mc_embed_signup-footer .clear {
     display: block;
     width: 100%; }
-  #mc_embed_signup .button,
-  #mc_embed_signup-footer .button {
+  #mc_embed_signup .button {
     width: 100%;
+    margin: 0; }
+  #mc_embed_signup-footer .button {
+    width: auto;
     margin: 0; } }
 
 .social-list li {

@@ -498,10 +498,17 @@ Further adapted for CA 9/2017
       width: 100%;
     }
   }
-  #mc_embed_signup,
+  #mc_embed_signup {
+    .button {
+      width: 100%;
+      margin:0;
+    }
+  }
+
   #mc_embed_signup-footer {
     .button {
-      width: 100%; margin:0;
+      width: auto;
+      margin:0;
     }
   }
 }
