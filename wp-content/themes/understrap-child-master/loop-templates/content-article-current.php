@@ -29,15 +29,8 @@ if( $img_width < $img_height ) {
 //echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
 
 ?>
-<div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-<?php if( $img_src ) : ?>
-  <style type="text/css">
-    img[src*="<?php echo basename($img_src) ?>"]:not(.new-image) {
-      display: none;
-    }
-  </style>
-<?php endif; ?>
+<div class="px-0 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
     <div class="row">
 
       <main class="site-main" id="main">
@@ -62,10 +55,10 @@ if( $img_width < $img_height ) {
                srcset="<?php echo esc_attr( $img_srcset ); ?>"
                sizes="(max-width: 46em) 100vw, 730px"
                style="max-width:100%;height:auto;"
-               class="img-fluid new-image"
+               class="img-fluid"
                alt="">
 
-              <div><?php echo $thumbnail_caption ?></div>
+              <div class="caption"><?php echo $thumbnail_caption ?></div>
               <?php the_content(); ?>
             </div>
             <div class="col-12 col-md-5 col-lg-4">
