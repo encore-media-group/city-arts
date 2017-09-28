@@ -356,9 +356,12 @@ function understrap_posted_on( $date_only = false ) {
     esc_attr( get_the_modified_date('c') ),
     esc_html( get_the_modified_date('l, F jS, Y') )
   );
+
+  $time_slug = '/' . esc_html( get_the_date('Y/m') );
+
   $posted_on = sprintf(
     esc_html_x( '%s', 'post date', 'understrap' ),
-    '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+    '<a href="' . esc_url( $time_slug ) . '" rel="bookmark">' . $time_string . '</a>'
   );
   if ( !$date_only ) {
     $byline = get_contributors();
