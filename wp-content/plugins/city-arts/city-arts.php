@@ -117,7 +117,7 @@ function insert_cover_story_shortcode() {
 
 
   $html = '<div class="cover-story-image-wrapper ml-md-4">';
-  $html .= sprintf( $a_tag, '/isssue/' . $cover['slug'], $cover['cover_src'] );
+  $html .= sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['cover_src'] );
   $html .= '<div class="col item-content-container p-2">';
   $html .= '<div class="issue-title">Also from ' . sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['name'] ) . '</div>';
   $html .= sprintf( '<div class="item-160x107">%1$s</div>', $article_list_html );
