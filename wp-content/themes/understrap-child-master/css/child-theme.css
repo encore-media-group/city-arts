@@ -9606,7 +9606,9 @@ Further adapted for CA 9/2017
   cursor: pointer; }
 
 #mc_embed_signup div#mce-responses,
-#mc_embed_signup-footer div#mce-responses {
+#mc_embed_signup div#mce-responses-footer,
+#mc_embed_signup-footer div#mce-responses,
+#mc_embed_signup-footer div#mce-responses-footer {
   float: left;
   top: -1.4em;
   padding: 0em .5em 0em .5em;
@@ -9626,11 +9628,15 @@ Further adapted for CA 9/2017
   width: 80%; }
 
 #mc_embed_signup #mce-error-response,
-#mc_embed_signup-footer #mce-error-response {
+#mc_embed_signup #mce-error-response-footer,
+#mc_embed_signup-footer #mce-error-response,
+#mc_embed_signup-footer #mce-error-response-footer {
   display: none; }
 
 #mc_embed_signup #mce-success-response,
-#mc_embed_signup-footer #mce-success-response {
+#mc_embed_signup #mce-success-response-footer,
+#mc_embed_signup-footer #mce-success-response,
+#mc_embed_signup-footer #mce-success-response-footer {
   color: #529214;
   display: none; }
 

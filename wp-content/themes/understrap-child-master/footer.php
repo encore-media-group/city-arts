@@ -34,9 +34,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 								</ul>
 							</div> <!-- .mc-field-group -->
 
-							<div id="mce-responses" class="clear">
-								<div class="response" id="mce-error-response" style="display:none"></div>
-								<div class="response" id="mce-success-response" style="display:none"></div>
+							<div id="mce-responses-footer" class="clear">
+								<div class="response" id="mce-error-response-footer" style="display:none"></div>
+								<div class="response" id="mce-success-response-footer" style="display:none"></div>
 							</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 
 							<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_21f8fede41bd5e2c87aa9504b_7d8b6778a7" tabindex="-1" value=""></div>

@@ -366,28 +366,28 @@ Further adapted for CA 9/2017
 */
 
 #mc_embed_signup,
-  #mc_embed_signup-footer {
-    width: 100%;
-    display: inline-block;
-    margin: 0 auto;
-    input.email {
-      max-width: 100% !important;
-    }
-    #mc-embedded-subscribe {
-      max-width: 350px;
-    }
-
-    button,
-    #mc-embedded-subscribe,
-    #mc-embedded-subscribe-footer,
-      {
-      background-color: $red;
-      border-radius: 33px;
-      -webkit-border-radius: 33px;
-      -moz-border-radius: 33px;
-      color: $white;
-    }
+#mc_embed_signup-footer {
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  input.email {
+    max-width: 100% !important;
   }
+  #mc-embedded-subscribe {
+    max-width: 350px;
+  }
+
+  button,
+  #mc-embedded-subscribe,
+  #mc-embedded-subscribe-footer,
+    {
+    background-color: $red;
+    border-radius: 33px;
+    -webkit-border-radius: 33px;
+    -moz-border-radius: 33px;
+    color: $white;
+  }
+}
 
 
 .mc-field-group {
@@ -445,7 +445,8 @@ Further adapted for CA 9/2017
 }
 #mc_embed_signup,
 #mc_embed_signup-footer {
-  div#mce-responses {
+  div#mce-responses,
+  div#mce-responses-footer {
     float:left; top:-1.4em; padding:0em .5em 0em .5em; overflow:hidden; width:90%;margin: 0 5%; clear: both;
   }
 }
@@ -457,13 +458,15 @@ Further adapted for CA 9/2017
 }
 #mc_embed_signup,
 #mc_embed_signup-footer {
-  #mce-error-response {
+  #mce-error-response,
+  #mce-error-response-footer {
     display:none;
   }
 }
 #mc_embed_signup,
 #mc_embed_signup-footer {
-  #mce-success-response {
+  #mce-success-response,
+  #mce-success-response-footer {
     color:#529214; display:none;
   }
 }
@@ -489,10 +492,6 @@ Further adapted for CA 9/2017
     }
   }
 }
-
-
-
-
 
 .social-list {
   li {
