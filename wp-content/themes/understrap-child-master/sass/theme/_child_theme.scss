@@ -412,7 +412,15 @@ Further adapted for CA 9/2017
     vertical-align:top;
   }
 }
-//#mc_embed_signup label {display:block; font-size:16px; padding-bottom:10px; font-weight:bold;}
+#mc_embed_signup,
+#mc_embed_signup-footer {
+  label {
+  vertical-align: super;
+  //  display:block;
+  //  font-size:16px;
+  //  padding-bottom:10px;
+  //  font-weight:bold;
+  }
 
 #mc_embed_signup,
 #mc_embed_signup-footer {
@@ -432,8 +440,7 @@ Further adapted for CA 9/2017
   padding:0 18px;
   display: inline-block;
   margin: 0;
-  transition: all 0.23s
-  ease-in-out 0s;
+  transition: all 0.23s ease-in-out 0s;
 }
 
 #mc_embed_signup,

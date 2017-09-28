@@ -49,7 +49,7 @@ $recent_posts_see_it_this_week = new WP_Query(
           </div>
           <div class="row mx-0 pt-4 justify-content-between item-730x487-width">
             <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-              <div class="col-xl-6 mb-4 mb-md-0">
+              <div class="col-12  col-lg-6 mb-4 mb-md-0">
                 <?php get_template_part( 'item-templates/item', '160x107' ); ?>
               </div>
             <?php endwhile;

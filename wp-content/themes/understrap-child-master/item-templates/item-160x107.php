@@ -15,7 +15,7 @@ $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-160x107' );
 
 $show_category_label = isset($show_category_label) ? $show_category_label : true ;
 $show_thumbnails = isset($show_thumbnails) ? $show_thumbnails : true;
-$item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
+$item_css = isset($item_css) ? $item_css : '';
 
 ?>
   <div class="row pb-2 pb-xl-0 px-lg-0 <? echo $item_css ?> item-160x107">

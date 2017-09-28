@@ -237,7 +237,7 @@ $this_issue_query = new WP_Query(array(
 							$args_for_sidebar = [
 							'query_vars' => [
 									[ 'var' =>'show_category_label', 'val' => false ],
-									[ 'var' =>'item_css', 'val' => 'text-center' ],
+									[ 'var' =>'item_css', 'val' => ' text-center ' ],
 									[ 'var' =>'show_thumbnails', 'val' => false ]
 								],
 							'template' => [ 'path' => 'item-templates/item', 'file'=>'160x107' ]
