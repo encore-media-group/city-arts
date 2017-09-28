@@ -199,6 +199,12 @@ span.category-label {
   color: $white;
 }
 
+.cover-story-350-wrapper {
+  max-width: 350px;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+  }
+}
 
 #single-enhanced-wrapper {
   #content {

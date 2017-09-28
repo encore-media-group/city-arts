@@ -161,7 +161,7 @@ $this_issue_query = new WP_Query(array(
 	     	</div>
 	 			<div class="col-12 col-md-5 col-lg-4 mt-4 mt-md-0	">
 	 				<div class="row mx-md-auto">
-	 					<div class="col px-0 px-sm" style="max-width: 350px;">
+	 					<div class="col px-md-0 px-sm cover-story-350-wrapper">
 		 					<?php
 	          	$args = [
 	          		'template' => [ 'path' => 'item-templates/item', 'file'=>'display-cover-story-350x454' ]
