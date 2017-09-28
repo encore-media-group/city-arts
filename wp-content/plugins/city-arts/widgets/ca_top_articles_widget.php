@@ -30,7 +30,7 @@ class ca_top_articles_widget extends WP_Widget {
     $post_id = $current_post ? $current_post->ID : null;
 
     $recent_posts = new WP_Query(array(
-        'posts_per_page' => 10,
+        'posts_per_page' => 4,
      //   'offset' => 10,
         'post_status'    => 'publish',
         'post__not_in' => array($post_id),

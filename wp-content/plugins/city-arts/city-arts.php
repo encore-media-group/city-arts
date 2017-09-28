@@ -418,6 +418,11 @@ function load_issue_template( $template ) {
       if ( '' != $new_template ) {
         return $new_template;
       }
+    } elseif (is_category( get_cached_cat_id_by_slug('issue') ) && !cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
+      $new_template = locate_template( array( 'archive-issue-covers.php' ) );
+      if ( '' != $new_template ) {
+        return $new_template;
+      }
     }
   }
 
@@ -466,7 +471,7 @@ function get_feature_issue_articles( $issue_slug = [], $ignore_posts = [], $post
       'relation' => 'AND', [
           'taxonomy' => 'category',
           'field'    => 'slug',
-          'terms'    =>  'july-2017' //$issue_slug
+          'terms'    =>  $issue_slug
         ],
         [
           'taxonomy' => 'category',
