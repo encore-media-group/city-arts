@@ -12,7 +12,7 @@ get_header();
 
 <?php
 
-$page_title = '';
+$page_title = 'The Covers';
 
 
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
