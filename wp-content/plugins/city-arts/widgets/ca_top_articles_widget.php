@@ -26,9 +26,19 @@ class ca_top_articles_widget extends WP_Widget {
     echo '<div class="row "><div class="col-12 px-lg-3 "><h2 class="sidelines sidebar">' . $title . '</h2></div></div>';
     echo $args['after_title'];
 
+    $current_post = get_queried_object();
+    $post_id = $current_post ? $current_post->ID : null;
+
     $recent_posts = new WP_Query(array(
-        'posts_per_page' => 4, 'offset' => 10,
-          'meta_query' => array(array('key' => '_thumbnail_id' ))));
+        'posts_per_page' => 10,
+     //   'offset' => 10,
+        'post_status'    => 'publish',
+        'post__not_in' => array($post_id),
+        'orderby'        => 'date',
+        'post_status'    => 'publish',
+    //    'meta_query' => array(array('key' => '_thumbnail_id' ))
+      )
+    );
 
     $row_num  = 1;
 
