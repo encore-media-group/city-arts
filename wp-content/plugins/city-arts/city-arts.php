@@ -50,7 +50,7 @@ add_shortcode( 'insert_secondary_feature_image', 'secondary_feature_image_shortc
 
 
 function ca_enqueue_scripts_and_styles() {
-  wp_enqueue_style( 'better-simple-slideshow-js', '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css');
+//  wp_enqueue_style( 'mailchimpcss', '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css');
 }
 
 function city_arts_website_menu(){
