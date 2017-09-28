@@ -53,7 +53,7 @@ $the_query = new WP_Query(array(
 						$count = 1;
             while( $the_query->have_posts() ) : $the_query->the_post();
 
-							echo '<div class="col--2 col-md-3 mb-3">';
+							echo '<div class="col-12 col-sm-6 col-md-3 mb-3">';
 							echo insert_cover_story_shortcode();
 							echo '</div>';
 
@@ -63,7 +63,7 @@ $the_query = new WP_Query(array(
 						 		echo '<div class="row">';
 							endif;
 						 	if ($count >= 4 && $count % 4 == 0) :
-						 		echo '<div class="m-100"></div>';
+						 	//	echo '<div class="m-100"></div>';
 						 	endif;
 
 							$count++;
