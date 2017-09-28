@@ -9407,6 +9407,12 @@ span.category-label {
   background-color: #000;
   color: #fff; }
 
+.cover-story-350-wrapper {
+  max-width: 350px; }
+  @media (max-width: 991px) {
+    .cover-story-350-wrapper {
+      max-width: 100%; } }
+
 #single-enhanced-wrapper #content .caption {
   font-family: "ff-basic-gothic-web-pro";
   color: #a18967;
@@ -9455,15 +9461,11 @@ span.category-label {
 #single-enhanced-wrapper #content article .item-540x360-in-post {
   max-width: 540px; }
 
-/*
-@include media-breakpoint-down(sm) {
-  #single-enhanced-wrapper {
-    blockquote {
-      left: 0;
-      margin-right: 0;
-    }
-  }
-}*/
+@media (max-width: 767px) {
+  #single-enhanced-wrapper blockquote {
+    left: 0;
+    margin-right: 0; } }
+
 #single-wrapper #content article h1.entry-title,
 #page-wrapper #content article h1.entry-title {
   font-family: "ingra-condensed", Arial, "sans-serif";
@@ -9565,7 +9567,6 @@ Further adapted for CA 9/2017
 .mc-field-group {
   display: inline-block; }
 
-/* positions input field horizontally */
 #mc_embed_signup input.email,
 #mc_embed_signup-footer input.email {
   border: 1px solid #ABB0B2;
@@ -9582,11 +9583,14 @@ Further adapted for CA 9/2017
   width: 350px;
   vertical-align: top; }
 
+#mc_embed_signup label,
+#mc_embed_signup-footer label {
+  vertical-align: super; }
+
 #mc_embed_signup .clear,
 #mc_embed_signup-footer .clear {
   display: inline-block; }
 
-/* positions button horizontally in line with input */
 #mc-embedded-subscribe,
 #mc-embedded-subscribe-footer {
   font-size: 13px;
@@ -9597,8 +9601,7 @@ Further adapted for CA 9/2017
   line-height: 32px;
   padding: 0 18px;
   display: inline-block;
-  margin: 0;
-  transition: all 0.23s ease-in-out 0s; }
+  margin: 0; }
 
 #mc_embed_signup .button:hover,
 #mc_embed_signup-footer .button:hover {
