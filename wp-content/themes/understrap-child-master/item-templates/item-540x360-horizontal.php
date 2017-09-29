@@ -18,14 +18,15 @@
 ?>
 <div class="col px-sm-0 item-540x360-horizontal">
   <div class="row no-gutters">
-    <div class="col-12 col-lg-auto">
+    <div class="col-12 col-xl-6">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
-       sizes="(max-width: 46em) 100vw, 540px"
       class="img-fluid"
       style="max-width: 100%;height:auto;"
       alt="">
     </div>
+    <?php //       sizes="(max-width: 46em) 100vw, 540px"
+    ?>
 
     <div class="col-12 col-lg item-content-container p-4">
       <?php if( $flag_from_magazine ):?>
