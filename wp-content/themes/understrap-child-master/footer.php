@@ -26,11 +26,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 				    <div id="mc_embed_signup_scroll">
 							<div class="mc-field-group input-group">
 								<ul>
-									<li><input class="mr-2" type="checkbox" value="2" name="group[1][2]" id="mce-group[1]-1-1"><label class="mb-0" for="mce-group[1]-1-1">City Arts Events</label></li>
-									<li><input class="mr-2" type="checkbox" value="1" name="group[1][1]" id="mce-group[1]-1-0"><label  class="mb-0" for="mce-group[1]-1-0">New Issue Alert</label></li>
-									<li><input class="mr-2" type="checkbox" value="8" name="group[1][8]" id="mce-group[1]-1-3"><label  class="mb-0" for="mce-group[1]-1-3">See It This Week</label></li>
-									<li><input class="mr-2" type="checkbox" value="16" name="group[1][16]" id="mce-group[1]-1-4"><label  class="mb-0" for="mce-group[1]-1-4">Weekend Reads</label></li>
-									<li><input class="mr-2" type="checkbox" value="4" name="group[1][4]" id="mce-group[1]-1-2"><label  class="mb-0" for="mce-group[1]-1-2">Partner Offers</label></li>
+									<li><label class="mb-0" for="mce-group[1]-1-1"><input checked class="mr-2" type="checkbox" value="2" name="group[1][2]" id="mce-group[1]-1-1">City Arts Events</label></li>
+									<li><label class="mb-0" for="mce-group[1]-1-0"><input checked class="mr-2" type="checkbox" value="1" name="group[1][1]" id="mce-group[1]-1-0">New Issue Alert</label></li>
+									<li><label class="mb-0" for="mce-group[1]-1-3"><input checked class="mr-2" type="checkbox" value="8" name="group[1][8]" id="mce-group[1]-1-3">See It This Week</label></li>
+									<li><label class="mb-0" for="mce-group[1]-1-4"><input checked class="mr-2" type="checkbox" value="16" name="group[1][16]" id="mce-group[1]-1-4">Weekend Reads</label></li>
+									<li><label class="mb-0" for="mce-group[1]-1-2"><input checked class="mr-2" type="checkbox" value="4" name="group[1][4]" id="mce-group[1]-1-2">Partner Offers</label></li>
 								</ul>
 							</div> <!-- .mc-field-group -->
 

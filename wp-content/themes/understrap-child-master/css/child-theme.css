@@ -9616,7 +9616,19 @@ Further adapted for CA 9/2017
 
 #mc_embed_signup label,
 #mc_embed_signup-footer label {
-  vertical-align: super; }
+  padding-left: 15px;
+  text-indent: -15px; }
+
+#mc_embed_signup input[type='checkbox'],
+#mc_embed_signup-footer input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden; }
 
 #mc_embed_signup .clear,
 #mc_embed_signup-footer .clear {
