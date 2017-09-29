@@ -9386,7 +9386,7 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .homepage-sidebar,
 .ad-container,
 .ad-300x250,
-.item-540x360-vertical .item-content-container,
+.item-540x360-vertical .item-content-container > .inner-item-wrapper,
 .item-540x360-horizontal .item-content-container,
 .item-730x487-vertical .item-content-container,
 .item-730x487-horizontal .item-content-container,
