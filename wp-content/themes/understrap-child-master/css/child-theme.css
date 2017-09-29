@@ -9263,11 +9263,12 @@ h1.navbar-brand a:hover {
     color: #fff;
     left: 0;
     z-index: 1;
-    width: 280px;
+    width: 250px;
     /*example + never use min-width with this solution */
     height: 100%; }
     #wrapper-navbar nav #navbarNavDropdown .navbar-nav {
-      padding: 0.3rem 1.5rem; }
+      padding: 0.3rem 1.5rem;
+      width: 250px; }
     #wrapper-navbar nav #navbarNavDropdown .nav-link {
       color: #fff;
       font-family: "ff-basic-gothic-web-pro";

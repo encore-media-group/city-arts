@@ -6,6 +6,8 @@
   width: 100%;
   border-bottom: 1px solid $brand-inverse;
 
+  $nav-bar-slider-width: 250px;
+
   nav {
     .navbar-toggler-icon {
       background-color: $black;
@@ -17,11 +19,13 @@
       color: $white;
       left: 0;
       z-index: 1;
-      width: 280px; /*example + never use min-width with this solution */
+      width:  $nav-bar-slider-width; /*example + never use min-width with this solution */
       height: 100%;
 
       .navbar-nav  {
         padding: 0.3rem 1.5rem;
+        width:  $nav-bar-slider-width;
+
       }
      .nav-link  {
       color: $white;
