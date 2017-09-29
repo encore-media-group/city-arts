@@ -16,7 +16,7 @@
 
 ?>
 <div class="  <? echo $item_css ?> item-540x360-vertical">
-  <div class="row">
+  <div class="row pb-md pb-4">
     <div class="col">
       <div class="row">
         <div class="col-12">
