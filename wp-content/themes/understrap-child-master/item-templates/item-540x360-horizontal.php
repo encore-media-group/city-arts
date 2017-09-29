@@ -18,7 +18,7 @@
 ?>
 <div class="col px-sm-0 item-540x360-horizontal">
   <div class="row no-gutters">
-    <div class="col-12 col-xl-6">
+    <div class="col-12 col-lg-6">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
       class="img-fluid"
