@@ -9386,11 +9386,13 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .homepage-sidebar,
 .ad-container,
 .ad-300x250,
-.item-540x360-vertical .item-content-container > .inner-item-wrapper,
 .item-540x360-horizontal .item-content-container,
 .item-730x487-vertical .item-content-container,
 .item-730x487-horizontal .item-content-container,
 .cover-story-image-wrapper .item-content-container {
+  background-color: #f6f3f0; }
+
+.item-540x360-vertical .inner-item-wrapper {
   background-color: #f6f3f0; }
 
 .see-it-this-week .item-730x487-vertical .item-content-container {

@@ -26,14 +26,15 @@
           class="img-fluid"
           style="max-width: 100%;height:auto;"
           alt="">
-        </div>
-        <div class="col-12 py-0 item-content-container">
           <div class="inner-item-wrapper p-4">
           <div><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
           <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>
           <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
           <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
         </div>
+        <!--<div class="col-12 py-0 item-content-container">
+
+        </div>-->
         </div>
       </div>
     </div>
