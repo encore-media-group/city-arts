@@ -9248,8 +9248,10 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
+.wrapper {
+  padding: 0; }
+
 #wrapper-navbar {
-  position: fixed;
   z-index: 9999900000;
   background-color: #fff;
   width: 100%;
@@ -9282,6 +9284,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 .author {
   text-transform: uppercase; }
+
+#searchform .search-box {
+  color: #000; }
 
 .social-handle {
   font-size: 0.875rem;
@@ -9378,10 +9383,10 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 #writer-wrapper,
 #single-enhanced-wrapper,
 #error-404-wrapper {
-  padding-top: 5rem;
+  /*  padding-top: 5rem;
   padding-left: 0;
   padding-right: 0;
-  padding-bottom: 0; }
+  padding-bottom: 0; */ }
 
 .homepage-sidebar,
 .ad-container,

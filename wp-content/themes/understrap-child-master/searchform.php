@@ -10,7 +10,7 @@
   	<!--<label class="assistive-text" for="s"><?php esc_html_e( 'Search', 'understrap' ); ?></label>-->
   	<div class="input-group">
   		<input
-      value="<?php echo get_search_query(); ?>" class="field form-control" id="s" name="s" type="text"
+      value="<?php echo get_search_query(); ?>" class="field form-control search-box" id="s" name="s" type="text"
   			placeholder="<?php esc_attr_e( 'Search &hellip;', 'understrap' ); ?>">
   		<span class="input-group-btn">
   			<input class="submit btn btn-primary" id="searchsubmit" name="submit" type="submit"

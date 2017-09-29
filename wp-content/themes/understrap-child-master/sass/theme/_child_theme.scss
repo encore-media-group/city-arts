@@ -1,6 +1,8 @@
 
+.wrapper {
+  padding: 0;
+}
 #wrapper-navbar {
-  position: fixed;
   z-index: 9999900000;
   background-color: $white;
   width: 100%;
@@ -49,6 +51,11 @@ h1, h2, h3 {
   text-transform: uppercase;
 }
 
+#searchform {
+  .search-box {
+    color: $black;
+  }
+}
 .social-handle {
   font-size: $font-size-sm;
   font-family: $card-meta-font-family;
@@ -168,10 +175,10 @@ h1, h2, h3 {
 #writer-wrapper,
 #single-enhanced-wrapper,
 #error-404-wrapper {
-  padding-top: 5rem;
+/*  padding-top: 5rem;
   padding-left: 0;
   padding-right: 0;
-  padding-bottom: 0;
+  padding-bottom: 0; */
 }
 
 .homepage-sidebar,

@@ -13,7 +13,7 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 <div class="wrapper" id="search-wrapper">
 
-	<div class="container">
+	<div class="container mt-4">
 		<div class="row mb-4">
 			<div class="col">
 				<?php echo get_search_form(); ?>
@@ -35,10 +35,6 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 			<main class="site-main" id="main">
 				<?php if ( have_posts() ) : ?>
-
-
-
-
 
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
