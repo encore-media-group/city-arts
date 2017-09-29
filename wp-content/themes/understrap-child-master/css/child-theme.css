@@ -9356,6 +9356,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 #writer-wrapper h1.page-title {
   font-family: "ingra-condensed", Arial, "sans-serif";
   font-weight: 200; }
+  #archive-wrapper h1.page-title.discipline-title,
+  #writer-wrapper h1.page-title.discipline-title {
+    font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif"; }
 
 #archive-wrapper h2.sidelines,
 #archive-wrapper h2.page-title.sidelines,

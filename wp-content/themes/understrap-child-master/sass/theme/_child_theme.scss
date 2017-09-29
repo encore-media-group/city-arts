@@ -143,6 +143,9 @@ h1, h2, h3 {
   h1.page-title {
     font-family: $subhead-font-family;
     font-weight: $font-weight-extra-light;
+    &.discipline-title {
+      font-family: $headings-font-family;
+    }
   }
 }
 

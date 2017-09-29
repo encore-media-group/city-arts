@@ -53,7 +53,7 @@ $the_query = new WP_Query(array(
 
 						<?php if ( $paged < 2 && $is_discipline_archive ) : ?>
 							<header class="page-header row">
-								<h1 class=" col page-title text-center pb-4"> <?php single_cat_title() ?> </h1>
+								<h1 class=" col page-title discipline-title text-center pb-3"> <?php single_cat_title() ?> </h1>
 							</header><!-- .page-header -->
 
 						<?php elseif ( !$is_discipline_archive ) : ?>
