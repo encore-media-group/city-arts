@@ -138,7 +138,7 @@ class AdminController {
         else:
             /*
             First Check The Single License */
-            $response = wp_remote_get('https://responsive.menu?' . http_build_query(
+            $response = wp_remote_get('https://responsive.menu/?' . http_build_query(
                     [
                         'edd_action'=> 'activate_license',
                         'license' 	=> $license_key,
@@ -158,7 +158,7 @@ class AdminController {
             if(!isset($response->success) || !$response->success):
                 /*
                 Now Check The Multi License */
-                $response = wp_remote_get('https://responsive.menu?' . http_build_query(
+                $response = wp_remote_get('https://responsive.menu/?' . http_build_query(
                         [
                             'edd_action'=> 'activate_license',
                             'license' 	=> $license_key,

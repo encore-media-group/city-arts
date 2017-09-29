@@ -60,12 +60,13 @@
                     <a href='https://responsive.menu/docs/basic-setup/font-icons/' target='_blank'>here</a>.
                 </div>
             </td>
+
             <td>
                 <table id='font-icon-container'>
                     <tr>
-                        <td>Menu Item ID</td>
-                        <td>Icon</td>
-                        <td>Type</td>
+                        <td style="width: 400px;">Menu Item</td>
+                        <td style="width: 200px;">Icon</td>
+                        <td style="width: 250px;">Type</td>
                         <td></td>
                     </tr>
                     {% set icons = options.menu_font_icons|json_decode %}
@@ -74,8 +75,17 @@
                         {% for icon in icon_list %}
                             {% if icon.type %}
                                 <tr>
-                                    <td><input type='text' class='form-control' value='{{ icon.id }}' name='menu[menu_font_icons][id][]' placeholder='32' /></td>
-                                    <td><input type='text' class='form-control' value='{{ icon.icon|escape }}' name='menu[menu_font_icons][icon][]' placeholder='fa-cog' /></td>
+                                    <td>
+                                        <select class='selectpicker show-tick' name='menu[menu_font_icons][id][]'>
+                                            <option value="">Select Menu Item</option>
+                                            {% for item in menu_items(options) %}
+                                                <option value='{{ item.ID }}' {% if icon.id == item.ID %}selected='selected'{% endif %}>{{ item.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type='text' class='form-control' value='{{ icon.icon|escape }}' name='menu[menu_font_icons][icon][]' placeholder='fa-cog' />
+                                    </td>
                                     <td>
                                         <select class='selectpicker show-tick' name='menu[menu_font_icons][type][]'>
                                             <option value='font-awesome' {% if icon.type == 'font-awesome' %}selected='selected'{% endif %}>FontAwesome</option>
@@ -89,8 +99,17 @@
                         {% endfor %}
                     {% endif %}
                     <tr>
-                        <td><input type='text' class='form-control' name='menu[menu_font_icons][id][]' placeholder='32' /></td>
-                        <td><input type='text' class='form-control' name='menu[menu_font_icons][icon][]' placeholder='cog' /></td>
+                        <td>
+                            <select class='selectpicker show-tick' name='menu[menu_font_icons][id][]'>
+                                <option value="">Select Menu Item</option>
+                                {% for item in menu_items(options) %}
+                                    <option value='{{ item.ID }}'>{{ item.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type='text' class='form-control' name='menu[menu_font_icons][icon][]' placeholder='cog' />
+                        </td>
                         <td>
                             <select class='selectpicker show-tick' name='menu[menu_font_icons][type][]'>
                                 <option value='' selected='selected'>Please Select</option>
@@ -184,6 +203,7 @@
         {{ macros.row('menu_appear_from', 'Appear From', 'select', options, errors, '', '', 'side', '', 'This determines which side the menu slides in from.') }}
         {{ macros.row('animation_type', 'Type', 'select', options, errors, '', 'semi-pro', 'animation') }}
         {{ macros.row('page_wrapper', 'Push Wrapper', 'input', options, errors, '', '', 'animation', '', 'Only needed if you are using the push animation above.') }}
+        {{ macros.row('enable_touch_gestures', 'Enable Touch Gestures', 'checkbox', options, errors, '', 'pro', '', '', 'This will enable swiping in and out to open and close the menu.') }}
         {{ macros.row('menu_close_on_body_click', 'Close on Body Clicks', 'checkbox', options, errors) }}
         {{ macros.row('menu_close_on_link_click', 'Close on Link Clicks', 'checkbox', options, errors) }}
     </table>
@@ -231,6 +251,14 @@
 </div>
 
 <div class='panel panel-default'>
+    <div class='panel-body'>Keyboard Shortcuts<small>Menu</small></div>
+    <table class='table table-bordered table-hover'>
+        {{ macros.row('keyboard_shortcut_close_menu', 'Close Menu', 'selectize', options, errors, 'keyboard-shortcuts', 'pro') }}
+        {{ macros.row('keyboard_shortcut_open_menu', 'Open Menu', 'selectize', options, errors, 'keyboard-shortcuts', 'pro') }}
+    </table>
+</div>
+
+<div class='panel panel-default'>
     <div class='panel-body'>Page Overlay<small>Menu</small></div>
     <table class='table table-bordered table-hover'>
         {{ macros.row('menu_overlay', 'Enable', 'checkbox', options, errors, '', 'pro') }}
@@ -241,20 +269,22 @@
 <div class='panel panel-default'>
     <div class='panel-body'>Depth<small>Menu</small></div>
     <table class='table table-bordered table-hover'>
-        {{ macros.row('menu_depth', 'Depth', 'select', options, errors, '', '', 'depth') }}
-        {{ macros.row('menu_depth_0', 'Depth Level Zero', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
-        {{ macros.row('menu_depth_1', 'Depth Level One', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
-        {{ macros.row('menu_depth_2', 'Depth Level Two', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
-        {{ macros.row('menu_depth_3', 'Depth Level Three', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
-        {{ macros.row('menu_depth_4', 'Depth Level Four', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
-        {{ macros.row('menu_depth_5', 'Depth Level Five', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
+        {{ macros.row('menu_depth', 'Depth', 'select', options, errors, '', '', 'depth', '', 'This determines how many levels deep your sub-menus will go.') }}
+        {{ macros.row('menu_depth_side', 'Depth Padding Side', 'select', options, errors, '', '', 'left_right') }}
+        {{ macros.row('menu_depth_0', 'Depth Level Zero Padding', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
+        {{ macros.row('menu_depth_1', 'Depth Level One Padding', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
+        {{ macros.row('menu_depth_2', 'Depth Level Two Padding', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
+        {{ macros.row('menu_depth_3', 'Depth Level Three Padding', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
+        {{ macros.row('menu_depth_4', 'Depth Level Four Padding', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
+        {{ macros.row('menu_depth_5', 'Depth Level Five Padding', 'input', options, errors, 'has-unit', 'semi-pro', '', 'percentage') }}
     </table>
 </div>
 
 <div class='panel panel-default'>
     <div class='panel-body'>Advanced<small>Menu</small></div>
     <table class='table table-bordered table-hover'>
-        {{ macros.row('menu_disable_scrolling', 'Disable Background Scrolling', 'checkbox', options, errors, '', 'pro') }}
-        {{ macros.row('theme_location_menu', 'Theme Location Menu', 'select', options, errors, '', '', 'custom', '', '', '', location_menus) }}
+        {{ macros.row('menu_disable_scrolling', 'Disable Background Scrolling', 'checkbox', options, errors, '', 'pro', '', '', 'Please ensure your theme follows WordPress theme development guidelines for this to work. Specifically that the html tag includes the language_attributes() function call.') }}
+        {{ macros.row('show_menu_on_page_load', 'Show Menu on Page Load', 'checkbox', options, errors, '', 'pro') }}
+        {{ macros.row('theme_location_menu', 'Theme Location Menu', 'select', options, errors, '', '', 'custom', '', '', '', location_menus, 'Please note that this will overwrite the <a class="scroll-to-option" href="#responsive-menu-pro-menu-to-use">Menu to Use</a> option.') }}
     </table>
 </div>

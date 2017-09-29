@@ -14,7 +14,11 @@ class UpdateOptionsTask {
         'menu_title_link',
         'menu_additional_content',
         'menu_search_box_text',
-        'header_bar_logo_link'
+        'header_bar_title',
+        'header_bar_logo',
+        'header_bar_logo_link',
+        'header_bar_logo_alt',
+        'header_bar_html_content'
     ];
 
     public function run(OptionsCollection $options, View $view) {

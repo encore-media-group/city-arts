@@ -51,7 +51,7 @@
     <textarea class='form-control' id='responsive-menu-pro-{{ name|replace({'_': '-'}) }}' name='menu[{{ name }}]'>{{ value }}</textarea>
 {% endmacro %}
 
-{% macro row(name, title, type, options, errors, class='', pro='', select_type='', unit_type='', sub_title='', unit='', choices=[], example='') %}
+{% macro row(name, title, type, options, errors, class='', pro='', select_type='', unit_type='', sub_title='', unit='', choices=[], sub_sub_title='') %}
     {% import _self as macros %}
     <tr{% if errors[name] %} class='danger'{% endif %}>
         <td class='well col-md-3'>
@@ -59,8 +59,8 @@
             {% if sub_title %}
                 <div class='sub-text'>{{ sub_title|raw }}</div>
             {% endif %}
-            {% if example %}
-                <div class='example'>{{ example|raw }}</div>
+            {% if sub_sub_title %}
+                <div class='sub_sub_title'><br />{{ sub_sub_title|raw }}</div>
             {% endif %}
         </td>
         <td{% if pro %} class='{{ pro }}'{% endif %}>
@@ -92,7 +92,7 @@
             {% elseif type == 'textarea' %}
                 {{ macros.textarea(name, options[name], class) }}
             {% elseif type == 'selectize' %}
-                {{ macros.selectize(name, options[name]) }}
+                {{ macros.selectize(name, options[name], class) }}
             {% elseif type == 'select' %}
                 {% if select_type == 'side' %}
                     {% set choices = {

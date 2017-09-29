@@ -4,7 +4,7 @@ Donate link: https://responsive.menu/donate
 Tags: responsive, menu, responsive menu, mobile menu, wordpress responsive menu, wp responsive menu, tablet menu, mobile, tablet, 3 lines, 3 line, three line, three lines
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 3.1.4
+Stable tag: 3.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,7 +119,30 @@ To view our whole FAQ, please go to https://responsive.menu/faq/
 
 == Changelog ==
 
-= 3.1.4 (2nd June 2017) =
+= 3.1.7 (22nd September 2017) =
+* **Requires PHP 5.4**
+* Added depth padding side option
+* Enabled touch gestures - Pro Only
+* Fixed fade animation hiding the single menu bug - Pro Only
+
+= 3.1.6 (28th July 2017) =
+* **Requires PHP 5.4**
+* Added option to turn sub-menu descriptions on
+* Added more translatable options to PolyLang and WPML
+
+= 3.1.5 (22nd July 2017) =
+* **Requires PHP 5.4**
+* Added ability to use description in menu items
+* Added option for button open title
+* Added ability to have the menu automatically opened on page load - Pro Only
+* Added ability to use keyboard shortcuts to close the menu - Pro Only
+* Added ability to use keyboard shortcuts to open the menu - Pro Only
+* Added ability to disable plugins FontAwesome and BootStrap scripts in case you want to load your own - Pro Only
+* Improve selection of menu items by menu item drop-down selection rather than by ID - Pro Only
+* Fixed bug with 3Dx animation and hover colours - Pro Only
+* Optimised twig imports to only include what is needed.
+
+= 3.1.4 (10th June 2017) =
 * **Requires PHP 5.4**
 * Added CSRF protection using nonces in admin
 * Updated wpdb method to use replace() instead of update() to protect from migration issues

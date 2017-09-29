@@ -4,13 +4,17 @@
 
 <button id="responsive-menu-pro-button"
         class="responsive-menu-pro-button responsive-menu-pro-{{ options.button_click_animation }}
+        {% if options.show_menu_on_page_load %} is-active {% endif %}
         {% if options.button_title_position == 'left' or options.button_title_position == 'right' %} responsive-menu-pro-accessible{% endif %}"
         type="button"
         aria-label="Menu">
 
     {% if options.button_title_position == 'top' or options.button_title_position == 'left' and options.button_title %}
         <span class="responsive-menu-pro-label responsive-menu-pro-label-{{ options.button_title_position }}">
-            {{ options.button_title|translate('button_title') }}
+            <span class="responsive-menu-pro-button-text">{{ options.button_title|translate('button_title') }}</span>
+            {% if options.button_title_open %}
+                <span class="responsive-menu-pro-button-text-open">{{ options.button_title_open|translate('button_title_open') }}</span>
+            {% endif %}
         </span>
     {% endif %}
 
@@ -20,7 +24,10 @@
 
     {% if options.button_title_position == 'bottom' or options.button_title_position == 'right' and options.button_title %}
         <span class="responsive-menu-pro-label responsive-menu-pro-label-{{ options.button_title_position }}">
-            {{ options.button_title|translate('button_title') }}
+            <span class="responsive-menu-pro-button-text">{{ options.button_title|translate('button_title') }}</span>
+            {% if options.button_title_open %}
+                <span class="responsive-menu-pro-button-text-open">{{ options.button_title_open|translate('button_title_open') }}</span>
+            {% endif %}
         </span>
     {% endif %}
 </button>

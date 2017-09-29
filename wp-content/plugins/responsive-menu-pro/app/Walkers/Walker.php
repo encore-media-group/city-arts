@@ -44,13 +44,13 @@ class Walker extends \Walker_Nav_Menu {
         $output .= '<li' . $id . $class_names .'>';
 
         $atts = array();
-        $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-        $atts['target'] = ! empty( $item->target )     ? $item->target     : '';
-        $atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
-        $atts['href']   = ! empty( $item->url )        ? $item->url        : '';
-        $atts['class']   = 'responsive-menu-pro-item-link';
+        $atts['title'] = !empty($item->attr_title) ? $item->attr_title : '';
+        $atts['target'] = !empty($item->target) ? $item->target : '';
+        $atts['rel'] = !empty($item->xfn) ? $item->xfn : '';
+        $atts['href'] = !empty($item->url) ? $item->url : '';
+        $atts['class'] = 'responsive-menu-pro-item-link';
 
-        $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth );
+        $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
 
         $attributes = '';
         foreach ( $atts as $attr => $value ) {
@@ -91,6 +91,10 @@ class Walker extends \Walker_Nav_Menu {
         $item_output = '<a'. $attributes .'>' . $font_icon;
         $item_output .= $title;
         $item_output .= $initial_arrow;
+
+        if(isset($item->description) && $item->description && $this->options['submenu_descriptions_on'])
+            $item_output .= '<span class="responsive-menu-pro-item-description">' . $item->description . '</span>';
+
         $item_output .= '</a>';
 
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);

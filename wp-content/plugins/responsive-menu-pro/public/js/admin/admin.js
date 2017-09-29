@@ -49,12 +49,13 @@ jQuery(function($) {
         form.attr('target', '');
     });
 
-    $(document).on('click', '.validation-error', function(e) {
+    $(document).on('click', '.scroll-to-option', function(e) {
         e.preventDefault();
         var id_to_scroll_to = $(this).attr('href');
         var parent_panel_id = $(id_to_scroll_to).parents('.tab-pane').attr('id');
         var parent_tab = $('a[href="#' + parent_panel_id + '"]').parent('li');
 
+        $('tr').removeClass('option-highlight');
         $('ul.nav-tabs li').removeClass('active');
         parent_tab.addClass('active');
 
@@ -67,6 +68,8 @@ jQuery(function($) {
         $('html, body').animate({
             scrollTop: $(id_to_scroll_to).offset().top - 50
         }, 1000);
+
+        $(id_to_scroll_to).closest('tr').addClass('option-highlight');
     });
 
     $(document).on('click', '.nav-tabs li a', function() {
@@ -123,6 +126,40 @@ jQuery(function($) {
             {
                 value:'mouseover',
                 text:'Hover'
+            }
+        ]
+    });
+
+    $('.keyboard-shortcuts').selectize({
+        plugins: ['remove_button'],
+        options: [
+            {
+                value:27,
+                text:'Esc'
+            },
+            {
+                value:13,
+                text:'Enter'
+            },
+            {
+                value:32,
+                text:'Space'
+            },
+            {
+                value:37,
+                text:'Left'
+            },
+            {
+                value:38,
+                text:'Up'
+            },
+            {
+                value:39,
+                text:'Right'
+            },
+            {
+                value:40,
+                text:'Down'
             }
         ]
     });
