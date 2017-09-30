@@ -259,7 +259,17 @@ $this_issue_query = new WP_Query(array(
 					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Artwork</h2>
-								<?php issue_display_posts( $issue_page_content['artwork']['posts'], $args_for_sidebar ); ?>
+								<?php
+								$args_for_sidebar = [
+								'query_vars' => [
+										[ 'var' =>'show_category_label', 'val' => false ],
+										[ 'var' =>'item_css', 'val' => ' text-center ' ],
+										[ 'var' =>'show_thumbnails', 'val' => true ]
+									],
+								'template' => [ 'path' => 'item-templates/item', 'file'=>'160x107-vertical' ]
+								];
+
+								issue_display_posts( $issue_page_content['artwork']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
 				</div>
