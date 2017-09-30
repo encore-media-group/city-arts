@@ -15,6 +15,8 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_250_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
+include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
+
 
 /* register this in the admin menu */
 add_action( 'admin_menu', 'city_arts_website_menu' );
@@ -22,6 +24,7 @@ add_action( 'admin_menu', 'city_arts_website_menu' );
 /* register custom types */
 add_action( 'init', 'cptui_register_my_taxes' );
 add_action( 'init', 'cptui_register_my_taxes_writer' );
+add_action( 'init', 'register_ca_custom_menus' );
 add_action( 'widgets_init', 'register_acf_field_group');
 add_action( 'widgets_init', 'ca_load_widgets' );
 add_action( 'widgets_init', 'ca_register_sidebars' );

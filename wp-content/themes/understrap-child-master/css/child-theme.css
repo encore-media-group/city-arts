@@ -9268,16 +9268,19 @@ h1.navbar-brand a:hover {
     z-index: 1;
     width: 250px;
     /*example + never use min-width with this solution */
-    height: 100%; }
+    height: 1000px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; }
     #wrapper-navbar nav #navbarNavDropdown a {
       color: #fff; }
     #wrapper-navbar nav #navbarNavDropdown .navbar-nav {
-      padding: 0.3rem 1.5rem;
-      width: 250px; }
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+      width: 224px; }
     #wrapper-navbar nav #navbarNavDropdown .nav-link {
       font-family: "alda", "Helvetica Neue", Arial, sans-serif;
       font-size: 1.25rem;
-      padding: .3rem .3rem; }
+      padding: .1rem 0; }
     #wrapper-navbar nav #navbarNavDropdown .menu-cover-image .title a {
       font-family: "ff-basic-gothic-web-pro";
       font-size: 0.7em;

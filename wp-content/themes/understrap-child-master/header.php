@@ -85,21 +85,29 @@ $current_cover = get_current_issue_image();
 				<div class="row">
 					<div class="col">
 					<?php
-						$menu_cover_section = '<div class="menu-cover-image">%1$s<div class="title">%2$s</div></div>';
+						$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
 						$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
 						$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
+
+						$sub_menu = wp_nav_menu( array(
+							'theme_location' => 'sidebar-submenu',
+							'menu_class'      => 'sidebar-submenu-nav navbar-nav',
+							'menu_id' => 'sidebar-submenu',
+							'echo' => false
+							)
+						);
 
 					//The WordPress Menu goes here
 					wp_nav_menu(
 						array(
 							'theme_location'  => 'primary',
-							'container_class' => 'collapse navbar-collapse',
+							'container_class' => 'collapse navbar-collapse px-4',
 							'container_id'    => 'navbarNavDropdown',
 							'menu_class'      => 'navbar-nav',
 							'fallback_cb'     => '',
 							'menu_id'         => 'main-menu',
 							'walker'          => new WP_Bootstrap_Navwalker(),
-							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s ' . $menu_cover_section . ' </ul>',
+							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu . 	get_search_form(false) ,
 
 						)
 					); ?>

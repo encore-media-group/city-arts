@@ -16,6 +16,7 @@
     .navbar-toggler-icon {
       background-color: $black;
     }
+
     #navbarNavDropdown {
       position: fixed;
       top: 5.4rem;
@@ -24,20 +25,23 @@
       left: 0;
       z-index: 1;
       width:  $nav-bar-slider-width; /*example + never use min-width with this solution */
-      height: 100%;
+      height: 1000px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
 
       a {
         color: $white;
       }
 
       .navbar-nav  {
-        padding: 0.3rem 1.5rem;
-        width:  $nav-bar-slider-width;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        width:  ($nav-bar-slider-width - 26px); //offset the pl-4 on the parent
       }
      .nav-link  {
         font-family: $font-family-sans-serif;
         font-size: $font-size-h5;
-        padding: .3rem .3rem;
+        padding: .1rem 0;
      }
      .menu-cover-image {
       .title a {
