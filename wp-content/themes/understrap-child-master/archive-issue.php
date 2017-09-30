@@ -12,9 +12,8 @@ get_header();
 
 <?php
 //example: july-2017
-//first issue july 2008
 $archive_slug =  get_queried_object()->slug;
-$used_ids = [];
+
 $issue_page_sections = [
 	'editors-note',
 	'lifestyle',
@@ -30,25 +29,26 @@ $issue_page_sections = [
 
 $issue_page_content = array_fill_keys( $issue_page_sections, [ 'posts' => [], 'cats' => [] ] );
 
-$date = explode( "-", $archive_slug );
-$nmonth = date( 'm', strtotime( $date[0] ) );
-$full_date = "1/" . $nmonth . "/" . $date[1];
-
-$issue_date =  date('d/m/Y', strtotime($full_date));
 $date_now = new DateTime();
+$date = explode( "-", $archive_slug );
 
-$issue_year_month = date('Y-m', strtotime($full_date));
+$full_date_string = "1/" . date( 'm', strtotime( $date[0] ) ) . "/" . $date[1];
+$issue_date = date_create_from_format('d/m/Y', $full_date_string);
+
+$issue_date_string =  date('d/m/Y', strtotime( $full_date_string )); //the date of the issue being requested.
+$issue_year_month = date('Y-m', strtotime($full_date_string));
 $date_now_year_month = $date_now->format('Y-m');
 
-//to do note: need to makd this work for the entire month
+
+//to do note: need to make this work for the entire month
 if ( $issue_year_month == $date_now_year_month ) {
 	//echo 'build slugs for past two issues.';
-  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date)));
-	$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-} elseif( $issue_date < $date_now)  {
+  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date_string)));
+	$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date_string)));
+} elseif( $issue_date_string < $date_now)  {
   //echo 'build prior and following month';
-  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date)));
-	$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date)));
+  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date_string)));
+	$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date_string)));
 }
 
 $issue_query_slugs[] = $archive_slug;
@@ -105,7 +105,6 @@ $this_issue_query = new WP_Query(array(
 		foreach( $issue_page_sections as $section ) :
 			if( in_category( $issue_page_content[ $section ]['cats'] ) ) :
 				$issue_page_content[ $section ]['posts'][] = map_post_obj_and_slug( get_post(), $section );
-				$used_ids[] = $post->ID;
 			endif;
 		endforeach;
 	endwhile;
@@ -136,19 +135,18 @@ $this_issue_query = new WP_Query(array(
  		$issue_page_content['feature']['posts']
  	);
 	uasort($issue_page_content["news-notes"]["posts"], "compare_by_post_date");
-
 ?>
 
 <div class="wrapper" id="archive-wrapper">
   <main class="site-main" id="main">
 		<?php if ( have_posts() ) : ?>
 			<header class="page-header">
-				<h1 class="page-title text-center py-2 py-sm-4"> <?php single_cat_title() ?> </h1>
+				<h1 class="page-title text-center py-2 py-sm-4 m-0"> <?php single_cat_title() ?> </h1>
 			</header><!-- .page-header -->
 		<?php endif; ?>
 
    	<div class="container mb-4" id="content" tabindex="-1">
-      <div class="row pt-sm-4 pt-2">
+      <div class="row">
         <div class="col-12 px-0 px-sm col-md" id="primary">
           <div class="row mx-0">
 							<?php
@@ -295,6 +293,29 @@ $this_issue_query = new WP_Query(array(
 					<div class="row d-flex justify-content-between">
 						<?php issue_display_posts( $issue_page_content['review']['posts'], $args ) ?>
 					</div>
+				</div>
+			</div>
+		</div><!--container-->
+		<div class="container mb-4">
+			<div class="row">
+				<div class="col-12">
+					<?php $nav_links = get_prev_next_issue_slugs( $issue_date ) ; ?>
+						<nav aria-label="...">
+						  <ul class="pagination justify-content-center">
+						    <li class="page-item">
+						      <a class="page-link" href="/issue/<?= $nav_links['previous']['slug'] ?>" tabindex="-1"><?= $nav_links['previous']['name'] ?></a>
+						    </li>
+						    <li class="page-item active">
+						      <a class="page-link" href="/issue/<?= $nav_links['current']['slug'] ?>" tabindex="-1"><?= $nav_links['current']['name'] ?></a>
+						    </li>
+						    <?php
+						    if( count($nav_links['next']) > 0 ): ?>
+						    <li class="page-item">
+						      <a class="page-link" href="/issue/<?= $nav_links['next']['slug'] ?>" tabindex="-1"><?= $nav_links['next']['name'] ?></a>
+						    </li>
+						  <?php endif; ?>
+						  </ul>
+						</nav>
 				</div>
 			</div>
 		</div><!--container-->

@@ -9248,7 +9248,7 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
-.wrapper {
+.wrapper:not(#wrapper-footer) {
   padding: 0; }
 
 #wrapper-navbar {
@@ -9350,7 +9350,7 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   font-size: 6rem; }
   @media (max-width: 767px) {
     #archive-wrapper h1.page-title {
-      font-size: 4.5rem; } }
+      font-size: 3.5rem; } }
 
 #archive-wrapper h1.page-title,
 #writer-wrapper h1.page-title {
@@ -9377,19 +9377,6 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 #responsive-menu-pro-header {
   border-bottom: solid 1px #ece7e1; }
-
-#single-wrapper,
-#page-wrapper,
-#archive-wrapper,
-#wrapper-index,
-#search-wrapper,
-#writer-wrapper,
-#single-enhanced-wrapper,
-#error-404-wrapper {
-  /*  padding-top: 5rem;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0; */ }
 
 .homepage-sidebar,
 .ad-container,

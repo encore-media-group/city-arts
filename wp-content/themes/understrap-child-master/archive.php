@@ -50,16 +50,11 @@ $the_query = new WP_Query(array(
 			<main class="col site-main" id="main">
 
 				<?php if ( have_posts() ) : ?>
-
+						<!-- .page-header -->
 						<?php if ( $paged < 2 && $is_discipline_archive ) : ?>
 							<header class="page-header row">
 								<h1 class=" col page-title discipline-title text-center pb-3"> <?php single_cat_title() ?> </h1>
-							</header><!-- .page-header -->
-
-						<?php elseif ( !$is_discipline_archive ) : ?>
-							<header class="page-header row w-md-75 mx-auto">
-								<h2 class="col page-title pb-4 sidelines"> <?php single_cat_title() ?> </h2>
-							</header><!-- .page-header -->
+							</header>
 
 						<?php elseif ( $paged < 2 && !$is_discipline_archive ) : ?>
 							<header class="page-header row">
@@ -69,6 +64,10 @@ $the_query = new WP_Query(array(
 									</div>
 								</div>
 						</header><!-- .page-header -->
+						<?php else: ?> <!-- page greater than 2 -->
+							<header class="page-header row w-md-75 mx-auto">
+								<h2 class="col page-title pb-4 sidelines"> <?php single_cat_title() ?> </h2>
+							</header>
 						<?php endif; ?>
 
 					<?php

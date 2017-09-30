@@ -96,6 +96,30 @@ function get_disciplines() {
     );
 }
 
+function get_prev_next_issue_slugs( $date_to_use = '' ) {
+  //assumes $date_to_use is a valid date object
+  $current_date = new DateTime();
+  $date_to_use = ( !empty( $date_to_use ) ) ? $date_to_use : $current_date ;
+  $date_to_use_string = $date_to_use->format('m/d/Y');
+  $next = [];
+
+  if ( $current_date->format('Y-m') !== $date_to_use->format('Y-m') ):
+    $next =  make_slugs( $date_to_use_string, "+1" );
+  endif;
+
+  return [ 'current' => make_slugs( $date_to_use_string ), 'previous' => make_slugs( $date_to_use_string, "-1" )  , 'next' => $next ];
+}
+
+function make_slugs( $date_to_build, $direction = ''  ) {
+
+  $date_to_build = !empty( $direction ) ? sprintf('%1$s months %2$s', $direction, $date_to_build ) : $date_to_build;
+
+  $the_date = strtotime( $date_to_build ) ;
+  $the_slug = strtolower( date("F-Y", $the_date ) );
+  $the_name = date("F Y", $the_date );
+  return ['slug' => $the_slug, 'name' => $the_name ];
+}
+
 function insert_cover_story_shortcode() {
   $id = get_the_ID();
   $cover = get_single_issue_cover( $id );

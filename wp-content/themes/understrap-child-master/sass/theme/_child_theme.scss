@@ -1,6 +1,8 @@
 
 .wrapper {
-  padding: 0;
+  &:not(#wrapper-footer) {
+    padding: 0;
+  }
 }
 #wrapper-navbar {
   z-index: 9999900000;
@@ -133,7 +135,7 @@ h1, h2, h3 {
   h1.page-title {
     font-size: $display1-size;
     @include media-breakpoint-down(sm) {
-      font-size: $display3-size;
+      font-size: $display4-size;
     }
   }
 }
@@ -170,24 +172,9 @@ h1, h2, h3 {
   border-bottom: solid 1px $gray-light;
 }
 
-#single-wrapper,
-#page-wrapper,
-#archive-wrapper,
-#wrapper-index,
-#search-wrapper,
-#writer-wrapper,
-#single-enhanced-wrapper,
-#error-404-wrapper {
-/*  padding-top: 5rem;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0; */
-}
-
 .homepage-sidebar,
 .ad-container,
 .ad-300x250,
-//.item-540x360-vertical    .item-content-container > .inner-item-wrapper,
 .item-540x360-horizontal  .item-content-container,
 .item-730x487-vertical    .item-content-container,
 .item-730x487-horizontal  .item-content-container,
