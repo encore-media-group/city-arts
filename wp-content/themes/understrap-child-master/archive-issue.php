@@ -29,27 +29,20 @@ $issue_page_sections = [
 
 $issue_page_content = array_fill_keys( $issue_page_sections, [ 'posts' => [], 'cats' => [] ] );
 
-$date_now = new DateTime();
 $date = explode( "-", $archive_slug );
 
 $full_date_string = "1/" . date( 'm', strtotime( $date[0] ) ) . "/" . $date[1];
 $issue_date = date_create_from_format('d/m/Y', $full_date_string);
 
-$issue_date_string =  date('d/m/Y', strtotime( $full_date_string )); //the date of the issue being requested.
-$issue_year_month = date('Y-m', strtotime($full_date_string));
-$date_now_year_month = $date_now->format('Y-m');
+$nav_links = get_prev_next_issue_slugs( $issue_date ) ;
 
-
-//to do note: need to make this work for the entire month
-if ( $issue_year_month == $date_now_year_month ) {
-	//echo 'build slugs for past two issues.';
-  $cover_slot_b = strtolower(date("F-Y", strtotime("-2 months " . $issue_date_string)));
-	$cover_slot_c = strtolower(date("F-Y", strtotime("-1 months " . $issue_date_string)));
-} elseif( $issue_date_string < $date_now)  {
-  //echo 'build prior and following month';
-  $cover_slot_b = strtolower(date("F-Y", strtotime("-1 months " . $issue_date_string)));
-	$cover_slot_c = strtolower(date("F-Y", strtotime("+1 months " . $issue_date_string)));
-}
+if( count($nav_links['next']) > 0 ):
+	$cover_slot_b = $nav_links['previous']['slug'];
+	$cover_slot_c = $nav_links['next']['slug'];
+else:
+	$cover_slot_b = $nav_links['previous-2']['slug'];
+	$cover_slot_c = $nav_links['previous']['slug'];
+endif;
 
 $issue_query_slugs[] = $archive_slug;
 $issue_query_slugs[] = $cover_slot_b;
@@ -309,7 +302,6 @@ $this_issue_query = new WP_Query(array(
 		<div class="container mb-4">
 			<div class="row">
 				<div class="col-12">
-					<?php $nav_links = get_prev_next_issue_slugs( $issue_date ) ; ?>
 						<nav aria-label="...">
 						  <ul class="pagination justify-content-center">
 						    <li class="page-item">

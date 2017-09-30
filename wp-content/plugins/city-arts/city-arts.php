@@ -107,7 +107,11 @@ function get_prev_next_issue_slugs( $date_to_use = '' ) {
     $next =  make_slugs( $date_to_use_string, "+1" );
   endif;
 
-  return [ 'current' => make_slugs( $date_to_use_string ), 'previous' => make_slugs( $date_to_use_string, "-1" )  , 'next' => $next ];
+  return [
+    'current' => make_slugs( $date_to_use_string ),
+    'previous-2' => make_slugs( $date_to_use_string, "-2" ) ,
+    'previous' => make_slugs( $date_to_use_string, "-1" ) ,
+    'next' => $next ];
 }
 
 function make_slugs( $date_to_build, $direction = ''  ) {
