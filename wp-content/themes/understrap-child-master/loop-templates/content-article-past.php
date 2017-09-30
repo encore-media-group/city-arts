@@ -71,20 +71,10 @@ if( $img_width < $img_height ) {
               </div><!-- #primary-sidebar -->
             <?php endif; ?>
 
-
-          <?php
-          wp_link_pages( array(
-            'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
-            'after'  => '</div>',
-          ) );
-          ?>
           </div><!-- .entry-content -->
         </div>
       </div><!-- row -->
       <footer class="entry-footer">
-
-      <?php understrap_entry_footer(); ?>
-
       </footer><!-- .entry-footer -->
     </article><!-- #post-## -->
   </div><!-- .row -->

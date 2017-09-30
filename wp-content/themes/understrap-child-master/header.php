@@ -50,13 +50,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="hfeed site" id="page">
 
 <!-- ******************* The Navbar Area ******************* -->
-	<div class="wrapper-fluid wrapper-navbar fixed-top" id="wrapper-navbar">
+	<div class="wrapper-fluid wrapper-navbar sticky-top" id="wrapper-navbar">
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
 		'understrap' ); ?></a>
 
 			<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="row justify-content-center">
 					<div class='col-auto px-0'>
 						<button class="hamburger hamburger--spin" type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

@@ -52,15 +52,6 @@
 
             </div>
           </div><!-- row -->
-          <footer class="entry-footer">
-              <?php
-              wp_link_pages( array(
-                'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
-                'after'  => '</div>',
-              ) );
-              ?>
-              <br>
-          </footer><!-- .entry-footer -->
         </article><!-- #post-## -->
     </div>
   </div>
