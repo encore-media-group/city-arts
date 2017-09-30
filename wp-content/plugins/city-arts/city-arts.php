@@ -457,10 +457,35 @@ function load_issue_template( $template ) {
  return $template;
 }
 
+function get_current_issue_slug() {
+  return strtolower( ( new DateTime() )->format('F-Y') );
+}
+
 function get_current_issue_link() {
   // build link to the current issue for this momth
   $html = '/issue/%1$s';
-  return sprintf($html,  strtolower( ( new DateTime() )->format('F-Y') ));
+  return sprintf($html,  get_current_issue_slug() );
+}
+
+function get_current_issue_image() {
+  $current_issue_slug = get_current_issue_slug();
+  $current_cover_story_post_obj = get_cover_story( $current_issue_slug );
+  $current_cover_story_post_id = $current_cover_story_post_obj->ID;
+
+  return build_154x200_vertical( $current_issue_slug, $current_cover_story_post_id);
+}
+
+
+function get_cover_story ( $issue_slug ) {
+  $cover_stories = get_cover_stories( [$issue_slug] );
+
+  $post = '';
+  while( $cover_stories->have_posts() ) : $cover_stories->the_post();
+    $post = get_post();
+  endwhile;
+  wp_reset_postdata();
+
+  return $post;
 }
 
 function get_cover_stories( $issue_slugs = [] ) {
@@ -521,6 +546,7 @@ function issue_display_posts( $the_posts, $args = array() ) {
 }
 
 function issue_display_post( $the_post, $args = array() ) {
+
   if( !empty( $the_post ) ) :
     global $post;
     $post = $the_post['the_post'];
@@ -547,6 +573,7 @@ function issue_display_post( $the_post, $args = array() ) {
     wp_reset_postdata();
   endif;
 }
+
 
 function map_post_obj_and_slug($the_post, $the_slug) {
   return [
@@ -629,6 +656,42 @@ return [ 'url' => $url, 'name' => $name ];
 }
 
 
+function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) {
 
+  $image = get_field('cover_image',  $issue_post_id);
+
+  $issue_name = !empty($issue_slug) ? get_cat_name( get_cached_cat_id_by_slug( $issue_slug ) ) : '';
+
+  $size = 'ca-350x454';
+
+  $a_tag = '<a href="/issue/%1$s">%2$s</a>';
+
+  if( $image ) {
+    $img_tag = build_img_tag([
+      'src' => wp_get_attachment_image_url( $image['id'], $size ),
+      'srcset' => wp_get_attachment_image_srcset( $image['id'], $size ),
+      'sizes' => '(max-width: 46em) 100vw, 231px',
+      'style' => 'max-width: 160px; height:auto; ',
+      ]);
+
+    $img_section = sprintf($a_tag, $issue_slug, $img_tag );
+  }
+
+  $dir_icon_string_template = '<i class="fa fa-arrow-%1$s fa-1 arrow-%1$s" aria-hidden="true"></i>';
+  $dir_icon_string = sprintf( $dir_icon_string_template, $direction );
+
+  $final = '%1$s%2$s%3$s'; //left name right
+  $html = '';
+
+  if( $direction == 'left' ) :
+    $html .= sprintf( $final, $dir_icon_string, $issue_name, '' );
+  elseif( $direction == 'right' ) :
+    $html .= sprintf( $final, '', $issue_name, $dir_icon_string );
+  else:
+    $html .= $issue_name;
+  endif;
+
+return sprintf($a_tag, $issue_slug, $html ) . $img_section;
+}
 
 

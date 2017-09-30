@@ -8,6 +8,9 @@
  */
 
 $container = get_theme_mod( 'understrap_container_type' );
+
+$current_cover_image = get_current_issue_image();
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -56,7 +59,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		'understrap' ); ?></a>
 
 			<div class="container">
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="row justify-content-center">
 					<div class='col-auto px-0'>
 						<button class="hamburger hamburger--spin" type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +82,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				    $navMenuCont.animate({'width':'toggle'}, 350);
 				  });
 				</script>
-
+				<div class="row">
+					<div class="col">
 				<!-- The WordPress Menu goes here -->
 				<?php wp_nav_menu(
 					array(
@@ -90,8 +94,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 						'fallback_cb'     => '',
 						'menu_id'         => 'main-menu',
 						'walker'          => new WP_Bootstrap_Navwalker(),
+						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s <div class="menu-cover-image">' . $current_cover_image . '</div> </ul>',
+
 					)
 				); ?>
+
+			</div></div>
 
 				</nav><!-- .site-navigation -->
 

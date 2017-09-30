@@ -9439,6 +9439,12 @@ span.category-label {
     .cover-story-350-wrapper {
       max-width: 100%; } }
 
+.arrow-left {
+  padding-right: 5px; }
+
+.arrow-right {
+  padding-left: 5px; }
+
 #single-enhanced-wrapper #content .caption {
   font-family: "ff-basic-gothic-web-pro";
   color: #a18967;

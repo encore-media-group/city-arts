@@ -23,7 +23,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<!-- Begin MailChimp Signup Form -->
 				<div id="mc_embed_signup-footer">
 					<form action="//encoremediagroup.us4.list-manage.com/subscribe/post?u=21f8fede41bd5e2c87aa9504b&amp;id=7d8b6778a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-				    <div id="mc_embed_signup_scroll">
+				    <!--div id="mc_embed_signup_scroll"-->
 							<div class="mc-field-group input-group">
 								<ul>
 									<li><label class="mb-0" for="mce-group[1]-1-1"><input checked class="mr-2" type="checkbox" value="2" name="group[1][2]" id="mce-group[1]-1-1">City Arts Events</label></li>
@@ -43,7 +43,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 							<div class="clear"><input type="submit" value="SIGN UP" name="subscribe" id="mc-embedded-subscribe-footer" class="button"></div>
 
-							</div> <!-- #mc_embed_signup_scroll -->
+							<!--/div--> <!-- #mc_embed_signup_scroll -->
 					</form>
 				</div> <!-- #mc_embed_signup -->
 
