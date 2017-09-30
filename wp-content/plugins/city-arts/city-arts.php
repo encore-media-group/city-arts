@@ -666,6 +666,8 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
 
   $a_tag = '<a href="/issue/%1$s">%2$s</a>';
 
+  $img_section = '';
+
   if( $image ) {
     $img_tag = build_img_tag([
       'src' => wp_get_attachment_image_url( $image['id'], $size ),
@@ -691,7 +693,12 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
     $html .= $issue_name;
   endif;
 
-return sprintf($a_tag, $issue_slug, $html ) . $img_section;
+
+  return [
+    'link' => sprintf($a_tag, $issue_slug, $html ),
+    'image' => $img_section
+  ];
+
 }
 
 

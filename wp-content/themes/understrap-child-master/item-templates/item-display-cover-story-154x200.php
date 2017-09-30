@@ -12,5 +12,6 @@
   $issue_post_id = isset($post_id) ? $post_id : get_the_ID();
 
   if( $issue_slug ) {
-    echo build_154x200_vertical( $issue_slug, $issue_post_id, $direction );
+    $cover = build_154x200_vertical( $issue_slug, $issue_post_id, $direction );
+    echo $cover['link'] . $cover['image'];
   }

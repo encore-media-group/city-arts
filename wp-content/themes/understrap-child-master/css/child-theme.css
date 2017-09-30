@@ -9255,12 +9255,13 @@ h1.navbar-brand a:hover {
   z-index: 9999900000;
   background-color: #fff;
   width: 100%;
-  border-bottom: 1px solid #d9d0c2; }
+  border-bottom: 1px solid #d9d0c2;
+  box-shadow: 4px 0 6px 1px rgba(0, 0, 0, 0.1); }
   #wrapper-navbar nav .navbar-toggler-icon {
     background-color: #000; }
   #wrapper-navbar nav #navbarNavDropdown {
     position: fixed;
-    top: 4.8rem;
+    top: 5.4rem;
     background-color: #000;
     color: #fff;
     left: 0;
@@ -9268,13 +9269,23 @@ h1.navbar-brand a:hover {
     width: 250px;
     /*example + never use min-width with this solution */
     height: 100%; }
+    #wrapper-navbar nav #navbarNavDropdown a {
+      color: #fff; }
     #wrapper-navbar nav #navbarNavDropdown .navbar-nav {
       padding: 0.3rem 1.5rem;
       width: 250px; }
     #wrapper-navbar nav #navbarNavDropdown .nav-link {
-      color: #fff;
+      font-family: "alda", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.25rem;
+      padding: .3rem .3rem; }
+    #wrapper-navbar nav #navbarNavDropdown .menu-cover-image .title a {
       font-family: "ff-basic-gothic-web-pro";
+      font-size: 0.7em;
+      font-weight: bold;
+      padding: .3rem .3rem;
       text-transform: uppercase; }
+    #wrapper-navbar nav #navbarNavDropdown .menu-bottom-section {
+      border-bottom: 3px solid #fff; }
 
 h1.sidebar, h2.sidebar, h3.sidebar {
   font-family: "alternate-gothic-no-2-d";
@@ -9374,9 +9385,6 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 
 #writer-wrapper .writer-description {
   font-size: 1.25rem; }
-
-#responsive-menu-pro-header {
-  border-bottom: solid 1px #ece7e1; }
 
 .homepage-sidebar,
 .ad-container,

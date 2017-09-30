@@ -9,7 +9,7 @@
   background-color: $white;
   width: 100%;
   border-bottom: 1px solid $brand-inverse;
-
+  box-shadow: 4px 0 6px 1px rgba(0,0,0,0.1);
   $nav-bar-slider-width: 250px;
 
   nav {
@@ -18,7 +18,7 @@
     }
     #navbarNavDropdown {
       position: fixed;
-      top: 4.8rem;
+      top: 5.4rem;
       background-color: $black;
       color: $white;
       left: 0;
@@ -26,15 +26,30 @@
       width:  $nav-bar-slider-width; /*example + never use min-width with this solution */
       height: 100%;
 
+      a {
+        color: $white;
+      }
+
       .navbar-nav  {
         padding: 0.3rem 1.5rem;
         width:  $nav-bar-slider-width;
-
       }
      .nav-link  {
-      color: $white;
-      font-family: $card-meta-font-family;
-      text-transform: uppercase;
+        font-family: $font-family-sans-serif;
+        font-size: $font-size-h5;
+        padding: .3rem .3rem;
+     }
+     .menu-cover-image {
+      .title a {
+        font-family: $card-meta-font-family;
+        font-size: $card-meta-font-size-small;
+        font-weight: bold;
+        padding: .3rem .3rem;
+        text-transform: uppercase;
+      }
+     }
+     .menu-bottom-section {
+      border-bottom: 3px solid $white;
      }
     }
   }
@@ -168,9 +183,6 @@ h1, h2, h3 {
   }
 }
 
-#responsive-menu-pro-header {
-  border-bottom: solid 1px $gray-light;
-}
 
 .homepage-sidebar,
 .ad-container,

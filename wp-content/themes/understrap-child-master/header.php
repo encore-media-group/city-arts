@@ -9,7 +9,7 @@
 
 $container = get_theme_mod( 'understrap_container_type' );
 
-$current_cover_image = get_current_issue_image();
+$current_cover = get_current_issue_image();
 
 ?>
 <!DOCTYPE html>
@@ -69,7 +69,7 @@ $current_cover_image = get_current_issue_image();
 						</button>
 
 					</div>
-					<div class='col-auto mx-auto'>
+					<div class='col-auto mx-auto my-auto'>
 						<a class="navbar-brand"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" width="180" id="cityarts-header-logo"></a>
 					</div>
 				</div><!-- end row -->
@@ -84,26 +84,28 @@ $current_cover_image = get_current_issue_image();
 				</script>
 				<div class="row">
 					<div class="col">
-				<!-- The WordPress Menu goes here -->
-				<?php wp_nav_menu(
-					array(
-						'theme_location'  => 'primary',
-						'container_class' => 'collapse navbar-collapse',
-						'container_id'    => 'navbarNavDropdown',
-						'menu_class'      => 'navbar-nav',
-						'fallback_cb'     => '',
-						'menu_id'         => 'main-menu',
-						'walker'          => new WP_Bootstrap_Navwalker(),
-						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s <div class="menu-cover-image">' . $current_cover_image . '</div> </ul>',
+					<?php
+						$menu_cover_section = '<div class="menu-cover-image">%1$s<div class="title">%2$s</div></div>';
+						$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
+						$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
 
-					)
-				); ?>
+					//The WordPress Menu goes here
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'primary',
+							'container_class' => 'collapse navbar-collapse',
+							'container_id'    => 'navbarNavDropdown',
+							'menu_class'      => 'navbar-nav',
+							'fallback_cb'     => '',
+							'menu_id'         => 'main-menu',
+							'walker'          => new WP_Bootstrap_Navwalker(),
+							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s ' . $menu_cover_section . ' </ul>',
 
-			</div></div>
+						)
+					); ?>
 
-				</nav><!-- .site-navigation -->
-
-			</div><!-- .container -->
-
-
+					</div>
+				</div>
+			</nav><!-- .site-navigation -->
+		</div><!-- .container -->
 	</div><!-- .wrapper-navbar end -->
