@@ -221,6 +221,7 @@ $this_issue_query = new WP_Query(array(
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
 					<?php echo get_template_part( 'item-templates/item', 'ad-300x250' ); ?>
+					<?php if( count( $issue_page_content['editors-note']['posts'] ) > 0 ): ?>
 					<div class="row">
 						<div class="col">
 							<h2 class="sidelines sidebar">Editor's Note</h2>
@@ -237,18 +238,24 @@ $this_issue_query = new WP_Query(array(
 						?>
 						</div>
 					</div>
+					<? endif;?>
+					<?php if( count( $issue_page_content['poetry']['posts'] ) > 0 ): ?>
 					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Poetry</h2>
 								<?php issue_display_posts( $issue_page_content['poetry']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
+					<? endif;?>
+					<?php if( count( $issue_page_content['epilogue']['posts'] ) > 0 ): ?>
 					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Epilogue</h2>
 								<?php issue_display_posts( $issue_page_content['epilogue']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
+					<? endif; ?>
+					<?php if( count( $issue_page_content['artwork']['posts'] ) > 0 ): ?>
 					<div class="row mt-4">
 						<div class="col">
 							<h2 class="sidelines sidebar">Artwork</h2>
@@ -261,10 +268,10 @@ $this_issue_query = new WP_Query(array(
 									],
 								'template' => [ 'path' => 'item-templates/item', 'file'=>'160x107-vertical' ]
 								];
-
 								issue_display_posts( $issue_page_content['artwork']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
+					<? endif; ?>
 				</div>
 			</div>
 		</div><!--container-->
