@@ -32,12 +32,14 @@ $item_css = isset($item_css) ? $item_css : '';
 
     <?php if ( $show_thumbnails ) : ?>
     <div class="col-12 mt-4">
+      <a href="<?php the_permalink() ?>" rel="bookmark">
       <img src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
        sizes="(max-width: 10em) 100vw, 600px"
        class="img-fluid"
        style="max-width: 100%;height:auto;"
-       alt=""><!-- height: 107px; width: 160px;  -->
+       alt="">
+     </a>
     </div>
   <?php endif; ?>
   </div>
