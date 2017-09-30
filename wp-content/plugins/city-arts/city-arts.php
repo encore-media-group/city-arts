@@ -32,6 +32,8 @@ add_action( 'widgets_init', 'ca_register_sidebars' );
 /* enqueue any scripts or css required by the city arts plugin */
 add_action( 'wp_enqueue_scripts', 'ca_enqueue_scripts_and_styles' );
 
+add_filter('wp_nav_menu_items', 'add_search_form', 10, 2);
+
 /* register eveything else */
 add_action( 'after_setup_theme', 'ca_add_image_sizes' );
 
@@ -97,6 +99,18 @@ function get_disciplines() {
     'food-design',
     'food-style'
     );
+}
+
+
+
+function add_search_form($items, $args) {
+
+  if( $args->theme_location == 'sidebar-submenu' ){
+    $items .= '<li class="menu-item">'
+          .  get_search_form(false)
+          . '</li>';
+  }
+  return $items;
 }
 
 function get_prev_next_issue_slugs( $date_to_use = '' ) {

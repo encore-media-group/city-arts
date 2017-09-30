@@ -9260,6 +9260,7 @@ h1.navbar-brand a:hover {
   #wrapper-navbar nav .navbar-toggler-icon {
     background-color: #000; }
   #wrapper-navbar nav #navbarNavDropdown {
+    transition: all 0.23s;
     position: fixed;
     top: 5.4rem;
     background-color: #000;

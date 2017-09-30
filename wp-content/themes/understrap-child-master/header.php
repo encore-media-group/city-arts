@@ -79,7 +79,7 @@ $current_cover = get_current_issue_image();
 				  $hamburger.on("click", function(e) {
 				    $hamburger.toggleClass("is-active");
 				    $navMenuCont = jQuery(jQuery(this).data('target'));
-				    $navMenuCont.animate({'width':'toggle'}, 350);
+				    $navMenuCont.animate({'width':'toggle'}, 250);
 				  });
 				</script>
 				<div class="row">
@@ -107,10 +107,19 @@ $current_cover = get_current_issue_image();
 							'fallback_cb'     => '',
 							'menu_id'         => 'main-menu',
 							'walker'          => new WP_Bootstrap_Navwalker(),
-							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu . 	get_search_form(false) ,
+							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu 	/*. get_search_form(false)*/ ,
 
 						)
-					); ?>
+					);
+
+
+
+
+
+
+
+
+					?>
 
 					</div>
 				</div>
