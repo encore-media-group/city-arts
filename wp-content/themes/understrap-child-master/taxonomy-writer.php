@@ -71,7 +71,10 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 									while ( have_posts() ) : the_post();
 									?>
 									<div class="row mb-4">
-										<?php get_template_part( 'item-templates/item', '320x213' ); ?>
+										<?php
+											set_query_var( 'show_byline_date', true );
+											get_template_part( 'item-templates/item', '320x213' );
+										?>
 									</div>
 									<?php
 									endwhile;
