@@ -239,7 +239,6 @@ function ad_300x250_shortcode() {
 function ad_300x250_core() {
   $html = '<div class="ad-300x250 mx-auto my-auto">';
   $html .= '<!-- /21626118154/cityarts_mediumrectangle -->';
- // $html .= '<div id=\'div-gpt-ad-1503686755285-0\' style=\'height:250px; width:300px;\'>';
   $html .= '<div id=\'div-gpt-ad-1506555798490-1\' style=\'height:250px; width:300px;\'>';
   $html .= '<script>';
   $html .= 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1506555798490-1\'); });';
@@ -487,6 +486,9 @@ function get_current_issue_link() {
 function get_current_issue_image() {
   $current_issue_slug = get_current_issue_slug();
   $current_cover_story_post_obj = get_cover_story( $current_issue_slug );
+
+  if( ! $current_cover_story_post_obj ) : return; endif;
+
   $current_cover_story_post_id = $current_cover_story_post_obj->ID;
 
   return build_154x200_vertical( $current_issue_slug, $current_cover_story_post_id);
