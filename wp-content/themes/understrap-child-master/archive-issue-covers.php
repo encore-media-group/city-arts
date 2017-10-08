@@ -80,7 +80,7 @@ $the_query = new WP_Query(array(
 	<div class="row justify-content-center">
 		<div class="col-auto">
 		<!-- The pagination component -->
-		<?php understrap_pagination(); ?>
+		<?php understrap_pagination( $the_query ); ?>
 		</div>
 	</div>
 </divi>
