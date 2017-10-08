@@ -12,7 +12,7 @@ get_header();
 
 <?php
 
-$page_title = 'The Covers';
+$page_title = 'Archives';
 
 
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
@@ -20,7 +20,6 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 $the_query = new WP_Query(array(
     'posts_per_page' => 16,
-  //  'meta_query' => array( array('key' => '_thumbnail_id' ) ),
     'paged' => $paged,
     'tax_query' => [
             [
@@ -54,7 +53,7 @@ $the_query = new WP_Query(array(
             while( $the_query->have_posts() ) : $the_query->the_post();
 
 							echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">';
-							echo insert_cover_story_shortcode();
+							echo insert_cover_story_shortcode(false);
 							echo '</div>';
 
 							if ($count == 8 ):
@@ -62,9 +61,6 @@ $the_query = new WP_Query(array(
 				 				get_template_part( 'item-templates/item', 'landscape-ad' );
 						 		echo '<div class="row">';
 							endif;
-						 	if ($count >= 4 && $count % 4 == 0) :
-						 	//	echo '<div class="m-100"></div>';
-						 	endif;
 
 							$count++;
 						endwhile;

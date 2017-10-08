@@ -142,34 +142,42 @@ function make_slugs( $date_to_build, $direction = ''  ) {
   return ['slug' => $the_slug, 'name' => $the_name ];
 }
 
-function insert_cover_story_shortcode() {
+
+function insert_cover_story_shortcode( $show_article_list = true ) {
   $id = get_the_ID();
   $cover = get_single_issue_cover( $id );
   $a_tag = '<a href="%1$s">%2$s</a>';
-  $list_html = '<h4 class="mb-0">%1$s</h4><div class="contributors pb-1">%2$s</div>';
-  $article_list_html = '';
+  $cover_articles_html = '';
 
-  $articles = get_feature_issue_articles( [ $cover['slug'] ], [ $id ], 3 );
+  if( $show_article_list ):
+    $list_html = '<h4 class="mb-0">%1$s</h4><div class="contributors pb-1">%2$s</div>';
+    $article_list_html = '';
 
-  while( $articles->have_posts() ) : $articles->the_post();
+    $articles = get_feature_issue_articles( [ $cover['slug'] ], [ $id ], 3 );
 
-    $ahref = sprintf($a_tag, '/' . get_post_field( 'post_name', get_post() ), get_post_field( 'post_title', get_post() ) ) ;
-    $contributor = get_contributors_by_id( get_post_field( 'ID', get_post() ) );
+    while( $articles->have_posts() ) : $articles->the_post();
 
-    $article_list_html .= sprintf( $list_html, $ahref, $contributor );
+      $ahref = sprintf($a_tag, '/' . get_post_field( 'post_name', get_post() ), get_post_field( 'post_title', get_post() ) ) ;
+      $contributor = get_contributors_by_id( get_post_field( 'ID', get_post() ) );
 
-  endwhile;
-  wp_reset_postdata();
+      $article_list_html .= sprintf( $list_html, $ahref, $contributor );
+
+    endwhile;
+    wp_reset_postdata();
+
+    $cover_articles_html = '<div class="col item-content-container p-2">';
+    $cover_articles_html .= '<div class="issue-title">Also from ' . sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['name'] ) . '</div>';
+    $cover_articles_html .= sprintf( '<div class="item-160x107">%1$s</div>', $article_list_html );
+    $cover_articles_html .= '</div>';
+
+  endif;
+
+  $cover_image = '<div class="cover-story-image-wrapper ml-md-4">';
+  $cover_image .= sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['cover_src'] );
+  $cover_image .= '%1$s</div>';
 
 
-  $html = '<div class="cover-story-image-wrapper ml-md-4">';
-  $html .= sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['cover_src'] );
-  $html .= '<div class="col item-content-container p-2">';
-  $html .= '<div class="issue-title">Also from ' . sprintf( $a_tag, '/issue/' . $cover['slug'], $cover['name'] ) . '</div>';
-  $html .= sprintf( '<div class="item-160x107">%1$s</div>', $article_list_html );
-  $html .= '</div>';
-  $html .= '</div>';
-
+  $html = sprintf( $cover_image, $cover_articles_html );
   return $html;
 }
 

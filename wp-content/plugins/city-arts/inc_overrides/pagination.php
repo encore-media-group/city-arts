@@ -17,8 +17,13 @@ function understrap_pagination( $wp_query_local = null ) {
 		return;
 	}
 
-//	global $wp_query;
-	$query = $wp_query_local;
+	if( $wp_query_local !== null ):
+			$query = $wp_query_local;
+	else:
+			global $wp_query;
+			$query = $wp_query;
+	endif;
+
 	/** Stop execution if there's only 1 page */
 	if ( $query->max_num_pages <= 1 ) {
 		return;
