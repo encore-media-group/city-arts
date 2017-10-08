@@ -9367,6 +9367,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
     #archive-wrapper h1.page-title {
       font-size: 3.5rem; } }
 
+#archive-wrapper:not(.discipline-page) .category-label {
+  display: none; }
+
 #archive-wrapper h1.page-title,
 #writer-wrapper h1.page-title {
   font-family: "ingra-condensed", Arial, "sans-serif";

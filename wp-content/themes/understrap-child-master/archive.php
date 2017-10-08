@@ -18,6 +18,8 @@ $archive_slug =  get_queried_object()->slug;
 
 $is_discipline_archive = in_array($archive_slug, get_disciplines() ) ?: false;
 
+$is_discipline_archive_class = ( $is_discipline_archive ) ? ' discipline-page ' : '' ;
+
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 $offset = -1;
@@ -54,7 +56,7 @@ $the_query = new WP_Query(array(
 
 ?>
 
-<div class="wrapper" id="archive-wrapper">
+<div class="wrapper <?= $is_discipline_archive_class ?> " id="archive-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
@@ -134,7 +136,7 @@ $the_query = new WP_Query(array(
 
 </div><!-- Container end -->
 
-<divi class="container">
+<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-auto">
 		<!-- The pagination component -->
