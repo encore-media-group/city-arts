@@ -17,8 +17,6 @@
 
   		<?php get_template_part( 'loop-templates/content', 'article-current' ); ?>
 
-  		<?php // understrap_post_nav(); ?>
-
   	<?php endwhile; // end of the loop.
     ?>
 

@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col mx-3 mt-4 mail-wrapper text-center current">
     <h2 class="sidebar">Current</h2>
-    <h6>an interative calendar</h4>
+    <h6 class="current-text">an interactive calendar</h4>
     <div class="row">
       <div class="col-12 col-lg-10 mx-auto">
         <a href="">
@@ -36,7 +36,7 @@
     </div>
   </div>
 </div>
-<div class="row mx-0 inverse-color text-center py-2 current-footer">
+<div class="row mx-0 inverse-color text-center py-2 current-text">
   <div class="col">
     plug in - go out
   </div>

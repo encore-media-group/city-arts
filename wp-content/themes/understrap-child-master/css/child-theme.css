@@ -9438,8 +9438,9 @@ span.category-label {
 .current .current-icons {
   max-width: 10rem; }
 
-.current-footer {
-  font-family: "ff-basic-gothic-web-pro"; }
+.current-text {
+  font-family: "ff-basic-gothic-web-pro";
+  font-weight: 300; }
 
 .inverse-color {
   background-color: #000;
