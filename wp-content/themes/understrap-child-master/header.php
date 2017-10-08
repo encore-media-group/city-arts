@@ -70,7 +70,7 @@ $current_cover = get_current_issue_image();
 
 					</div>
 					<div class='col-auto mx-auto my-auto'>
-						<a class="navbar-brand"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" width="180" id="cityarts-header-logo"></a>
+						<a class="navbar-brand my-0"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" width="180" id="cityarts-header-logo"></a>
 					</div>
 				</div><!-- end row -->
 
