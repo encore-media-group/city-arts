@@ -16,6 +16,7 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
+include( plugin_dir_path( __FILE__ ) . 'inc_overrides/pagination.php');
 
 
 /* register this in the admin menu */
