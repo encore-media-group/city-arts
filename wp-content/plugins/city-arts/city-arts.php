@@ -556,6 +556,30 @@ function get_feature_issue_articles( $issue_slug = [], $ignore_posts = [], $post
   );
 }
 
+function get_related_articles( $post_id = null ) {
+
+  $genre_cat = get_category_by_slug('genre');
+  $genre_cat_id = $genre_cat->term_id;
+
+  $categories = get_the_category( $post_id );
+
+  $category_ids = array();
+  if ( $categories ) {
+      foreach ( $categories as $individual_category ) {
+        if( ($individual_category->term_id) == $genre_cat_id) {
+          $category_ids[] = $individual_category->term_id;
+        }
+      }
+    }
+
+  return new WP_Query([
+    'posts_per_page' => 6,
+    'offset' => 0,
+    'category__in' => $category_ids,
+    'post__not_in' => array( $post_id ),
+    'ignore_sticky_posts' => 1
+    ]);
+}
 
 function issue_display_posts( $the_posts, $args = array() ) {
   if( is_array( $the_posts ) ) :

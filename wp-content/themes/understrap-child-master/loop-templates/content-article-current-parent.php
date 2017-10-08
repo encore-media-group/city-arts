@@ -28,49 +28,8 @@
 
   	<!-- RELATED ARTICLES -->
     <div class="container mb-4">
-        <div class="row">
-          <div class="col-12">
-            <h3 class="sidelines sidebar py-4">RELATED ARTICLES</h3>
-            <div class="row px-4">
-            <?php
-            $genre_cat = get_category_by_slug('genre');
-  		      $genre_cat_id = $genre_cat->term_id;
-
-  		      $categories = get_the_category($post->ID);
-  		      $category_ids = array();
-  		      if ( $categories ) {
-  		          foreach ( $categories as $individual_category ) {
-  		            if( ($individual_category->term_id) == $genre_cat_id) {
-  		              $category_ids[] = $individual_category->term_id;
-  		            }
-  		          }
-  		        }
-
-  		      $recent_posts_medium_small = new WP_Query(array(
-  		        'posts_per_page' => 6,
-  		        'offset' => 0,
-  		        'category__in' => $category_ids,
-  		        'post__not_in' => array($post->ID),
-  		        'ignore_sticky_posts' => 1,
-  		        'meta_query' => array(array('key' => '_thumbnail_id' ))
-  		        )
-  		      );
-            $count = 0;
-
-            while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post();
-            	$count++;
-            ?>
-              <div class="col-lg-4 mb-2">
-                <?php get_template_part( 'item-templates/item', '160x107' ); ?>
-              </div>
-              <?php if($count == 3) { echo '<div class="w-100"></div>'; } ?>
-            <?php endwhile;
-              wp_reset_postdata();
-              $count = 0;
-            ?>
-            </div>
-          </div>
-        </div>
+      <?php set_query_var ('post_id', $post->ID ); ?>
+      <?php get_template_part( 'item-templates/item', 'related-articles' ); ?>
   	</div><!-- RELATED ARTICLES END -->
   </main>
 </div><!-- Wrapper end -->

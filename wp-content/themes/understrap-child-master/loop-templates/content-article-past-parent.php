@@ -14,65 +14,16 @@
   		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
   	</div>
   	<?php while ( have_posts() ) : the_post(); ?>
-
   		<?php get_template_part( 'loop-templates/content', 'article-past' ); ?>
-
-  		<?php // understrap_post_nav(); ?>
-
-  	<?php endwhile; // end of the loop.
-    ?>
-
+  	<?php endwhile;?>
   	<div class="container-fluid ad-container">
-  		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+  		<?= ad_728xlandscape_shortcode(); ?>
   	</div>
 
-  	<!-- RELATED ARTICLES -->
     <div class="container mb-4">
-        <div class="row">
-          <div class="col-12">
-            <h3 class="sidelines sidebar py-4">RELATED ARTICLES</h3>
-            <div class="row">
-            <?php
-            $genre_cat = get_category_by_slug('genre');
-  		      $genre_cat_id = $genre_cat->term_id;
-
-  		      $categories = get_the_category($post->ID);
-  		      $category_ids = array();
-  		      if ( $categories ) {
-  		          foreach ( $categories as $individual_category ) {
-  		            if( ($individual_category->term_id) == $genre_cat_id) {
-  		              $category_ids[] = $individual_category->term_id;
-  		            }
-  		          }
-  		        }
-
-  		      $recent_posts_medium_small = new WP_Query(array(
-  		        'posts_per_page' => 6,
-  		        'offset' => 0,
-  		        'category__in' => $category_ids,
-  		        'post__not_in' => array($post->ID),
-  		        'ignore_sticky_posts' => 1,
-  		        'meta_query' => array(array('key' => '_thumbnail_id' ))
-  		        )
-  		      );
-            $count = 0;
-
-            while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post();
-            	$count++;
-            ?>
-              <div class="col-12 col-lg-6 mb-4">
-                <?php get_template_part( 'item-templates/item', '255x170-horizontal' ); ?>
-              </div>
-              <?php //if($count == 3) { echo '<div class="w-100"></div>'; }
-              ?>
-            <?php endwhile;
-              wp_reset_postdata();
-              $count = 0;
-            ?>
-            </div>
-          </div>
-        </div>
-  	</div><!-- RELATED ARTICLES END -->
+      <?php set_query_var ('post_id', $post->ID ); ?>
+      <?php get_template_part( 'item-templates/item', 'related-articles' ); ?>
+  	</div>
   </main>
 </div><!-- Wrapper end -->
 

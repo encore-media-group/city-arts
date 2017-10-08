@@ -1,6 +1,6 @@
 <?php
 /**
- * Single item 255x170 template.
+ * Single item 255x170 Horizontal template.
  *
  * @package understrap
  */
@@ -16,7 +16,7 @@
   $show_excerpt = isset( $show_excerpt ) ? $show_excerpt : false ;
 
 ?>
-  <!-- item 255x170 -->
+  <!-- item 255x170 Horizontal-->
   <div class="row item-255x170 text-left">
     <div class="col-12 col-sm-auto col-lg-6">
       <a href="<?php the_permalink() ?>" rel="bookmark">
