@@ -31,7 +31,7 @@
         <div class="row">
           <div class="col-12">
             <h3 class="sidelines sidebar py-4">RELATED ARTICLES</h3>
-            <div class="row px-4">
+            <div class="row">
             <?php
             $genre_cat = get_category_by_slug('genre');
   		      $genre_cat_id = $genre_cat->term_id;
@@ -60,10 +60,11 @@
             while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post();
             	$count++;
             ?>
-              <div class="col-lg-4 mb-2">
-                <?php get_template_part( 'item-templates/item', '160x107' ); ?>
+              <div class="col-12 col-lg-6 mb-4">
+                <?php get_template_part( 'item-templates/item', '255x170-horizontal' ); ?>
               </div>
-              <?php if($count == 3) { echo '<div class="w-100"></div>'; } ?>
+              <?php //if($count == 3) { echo '<div class="w-100"></div>'; }
+              ?>
             <?php endwhile;
               wp_reset_postdata();
               $count = 0;
