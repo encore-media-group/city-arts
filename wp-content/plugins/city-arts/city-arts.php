@@ -10,7 +10,6 @@ Author URI: http://factorybeltproductions.org
 */
 
 /* include required files */
-include( plugin_dir_path( __FILE__ ) . 'includes/google-ads.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_250_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_600_ad_widget.php');
@@ -19,6 +18,7 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
 include( plugin_dir_path( __FILE__ ) . 'inc_overrides/pagination.php');
+include( plugin_dir_path( __FILE__ ) . 'includes/google-ads.php');
 
 
 /* register this in the admin menu */

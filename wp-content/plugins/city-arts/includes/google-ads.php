@@ -1,4 +1,3 @@
-
 <?php
 /*
   all things required to build google ads
