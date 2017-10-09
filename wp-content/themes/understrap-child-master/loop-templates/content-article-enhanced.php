@@ -41,6 +41,9 @@
               ?>
 
               <?php the_title( '<h1 class="entry-title my-4">', '</h1>' ); ?>
+              <?php if ( has_excerpt() ) : ?>
+                <h3 class="entry-excerpt my-2"><?= $post->post_excerpt; ?></h3>
+              <?php endif; ?>
               <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
             </header><!-- .entry-header -->
           </div>

@@ -305,6 +305,13 @@ span.category-label {
       font-weight: $font-weight-normal;
       font-size: $display1-size;
     }
+
+    h3.entry-excerpt {
+      font-family: $headings-font-family;
+      font-weight: $font-weight-medium;
+    //  font-size: $display1-size;
+    }
+
     span.byline {
       display: block;
     }

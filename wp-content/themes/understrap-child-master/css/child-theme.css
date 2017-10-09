@@ -9480,6 +9480,10 @@ span.category-label {
   font-weight: 300;
   font-size: 6rem; }
 
+#single-enhanced-wrapper article h3.entry-excerpt {
+  font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+  font-weight: 500; }
+
 #single-enhanced-wrapper article span.byline {
   display: block; }
 
