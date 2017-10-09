@@ -90,7 +90,7 @@ endwhile;
 wp_reset_postdata();
 
 $remaining_articles = new WP_Query([
-  'posts_per_page' => 10,
+  'posts_per_page' => 20,
   'orderby' => 'modified',
   'no_found_rows' => true,
   'post__not_in' => $used_ids,
