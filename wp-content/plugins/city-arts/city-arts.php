@@ -143,7 +143,10 @@ function make_slugs( $date_to_build, $direction = ''  ) {
 }
 
 
-function insert_cover_story_shortcode( $show_article_list = true ) {
+function insert_cover_story_shortcode( $atts ) {
+
+  $show_article_list = isset( $atts['show_article_list'] ) ? $atts['show_article_list'] : true;
+
   $id = get_the_ID();
   $cover = get_single_issue_cover( $id );
   $a_tag = '<a href="%1$s">%2$s</a>';

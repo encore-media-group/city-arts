@@ -53,7 +53,7 @@ $the_query = new WP_Query(array(
             while( $the_query->have_posts() ) : $the_query->the_post();
 
 							echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">';
-							echo insert_cover_story_shortcode(false);
+							echo insert_cover_story_shortcode( [ 'show_article_list' => false ] );
 							echo '</div>';
 
 							if ($count == 8 ):
