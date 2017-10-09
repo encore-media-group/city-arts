@@ -8,6 +8,7 @@
 
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
+  $thumbnail_description = get_post($thumbnail_id)->post_content;
 
   $image_attachment_metadata = wp_get_attachment_metadata($thumbnail_id);
   $img_width = isset($image_attachment_metadata['width']) ? $image_attachment_metadata['width'] : 0;
@@ -53,7 +54,11 @@ if( $img_width < $img_height ) {
            class="img-fluid"
            alt="">
 
-          <div class="caption"><?php echo $thumbnail_caption ?></div>
+          <div class="caption p-2">
+            <?php echo $thumbnail_caption ?>
+            <?php echo $thumbnail_description ?>
+          </div>
+
           <?php the_content(); ?>
         </div>
         <div class="col-12 col-md-5 col-lg-4">

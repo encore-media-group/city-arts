@@ -9461,12 +9461,12 @@ span.category-label {
 .arrow-right {
   padding-left: 5px; }
 
-#single-enhanced-wrapper #content .caption {
+.caption {
   font-family: "ff-basic-gothic-web-pro";
   color: #a18967;
   font-weight: 300; }
 
-#single-enhanced-wrapper #content article span.the-first-letter {
+#single-enhanced-wrapper article span.the-first-letter {
   display: inline-block;
   float: left;
   margin-top: 2.5rem;
@@ -9474,16 +9474,16 @@ span.category-label {
   padding-bottom: 2rem;
   line-height: 1rem; }
 
-#single-enhanced-wrapper #content article h1.entry-title,
-#single-enhanced-wrapper #content article span.the-first-letter {
+#single-enhanced-wrapper article h1.entry-title,
+#single-enhanced-wrapper article span.the-first-letter {
   font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
   font-weight: 300;
   font-size: 6rem; }
 
-#single-enhanced-wrapper #content article span.byline {
+#single-enhanced-wrapper article span.byline {
   display: block; }
 
-#single-enhanced-wrapper #content article blockquote {
+#single-enhanced-wrapper article blockquote {
   font-family: "ff-basic-gothic-web-pro";
   font-size: 2.25rem;
   font-weight: 700;
@@ -9494,19 +9494,19 @@ span.category-label {
   position: relative;
   margin-right: -5%; }
   @media (max-width: 767px) {
-    #single-enhanced-wrapper #content article blockquote {
+    #single-enhanced-wrapper article blockquote {
       left: 0;
       margin-right: 0; } }
 
-#single-enhanced-wrapper #content article .cover-story-image-wrapper {
+#single-enhanced-wrapper article .cover-story-image-wrapper {
   float: right; }
-  #single-enhanced-wrapper #content article .cover-story-image-wrapper .issue-title {
+  #single-enhanced-wrapper article .cover-story-image-wrapper .issue-title {
     font-family: "ff-basic-gothic-web-pro";
     font-size: 0.9em;
     font-weight: 500;
     text-transform: uppercase; }
 
-#single-enhanced-wrapper #content article .item-540x360-in-post {
+#single-enhanced-wrapper article .item-540x360-in-post {
   max-width: 540px; }
 
 @media (max-width: 767px) {

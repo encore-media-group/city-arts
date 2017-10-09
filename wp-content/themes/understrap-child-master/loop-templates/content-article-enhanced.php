@@ -15,7 +15,7 @@
 
   $feature_image = build_img_tag( $hero_image );
 ?>
-<div class="px-0 container-fluid" id="content" tabindex="-1">
+<div class="container-fluid px-0" tabindex="-1">
   <div class="row mx-auto item-2000x1333-width">
     <div class="col px-0">
       <?= $feature_image ?>
