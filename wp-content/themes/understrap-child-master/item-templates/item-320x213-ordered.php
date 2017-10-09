@@ -19,17 +19,26 @@
 
   $col_1_class = "";
   $col_2_class = "";
+  $show_rows_class = "";
 
   if ( $show_thumbnails ) :
     $col_1_class = " my-auto ";
     $col_2_class = " offset-2 py-3 ";
   endif;
+ if ( $show_numbers ) :
+    $show_rows_class = " pl-0 pr-2 ";
+  endif;
+
 ?>
 
-  <div class="col pl-0 pr-2 item-320x213  item-320x213-ordered">
+  <div class="col <?= $show_rows_class ?> item-320x213  item-320x213-ordered">
     <div class="row py-2">
-      <div class="col-2 px-2 text-center <?php echo $col_1_class ?>"><h3><?echo $row_num ?>.</h3></div>
-      <?if ( $show_thumbnails ) : ?>
+      <?php if ( $show_numbers ) : ?>
+      <div class="col-2 px-2 text-center <?= $col_1_class ?>">
+          <h3><?= $row_num ?>.</h3>
+      </div>
+      <?php endif; ?>
+      <?php if ( $show_thumbnails ) : ?>
       <div class="col pr-2 pl-0">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"

@@ -65,7 +65,7 @@ class ca_top_articles_widget extends WP_Widget {
     $defaults = array(
       'title' => __( 'Top Stories', 'ca_widget_domain' ),
       'show_images_checkbox' => 'off',
-      'show_numbers_checkbox' => 'on'
+      'show_numbers_checkbox' => 'off'
       );
 
     $instance = wp_parse_args( ( array ) $instance, $defaults );
@@ -103,8 +103,8 @@ class ca_top_articles_widget extends WP_Widget {
     $instance = array();
     $instance = $old_instance;
 
-    $instance[ 'show_images_checkbox' ] = $new_instance[ 'show_images_checkbox' ];
     $instance[ 'show_numbers_checkbox' ] = $new_instance[ 'show_numbers_checkbox' ];
+    $instance[ 'show_images_checkbox' ] = $new_instance[ 'show_images_checkbox' ];
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
     return $instance;
