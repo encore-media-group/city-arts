@@ -34,7 +34,7 @@
         <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
           <div class="row">
 
-            <header class="entry-header col text-center">
+            <header class="entry-header col text-center mb-4">
              <?php
               $cat_label = get_category_label();
               echo sprintf( '<a class="url fn n" href="%1$s"><h2 class="sidelines py-5 w-50 mx-auto">%2$s</h2></a>', $cat_label['url'], $cat_label['name'] );
@@ -42,7 +42,7 @@
 
               <?php the_title( '<h1 class="entry-title my-4">', '</h1>' ); ?>
               <?php if ( has_excerpt() ) : ?>
-                <h3 class="entry-excerpt my-2"><?= $post->post_excerpt; ?></h3>
+                <h3 class="entry-excerpt my-2 w-75 mx-auto"><?= $post->post_excerpt; ?></h3>
               <?php endif; ?>
               <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
             </header><!-- .entry-header -->
