@@ -12,6 +12,7 @@ Author URI: http://factorybeltproductions.org
 /* include required files */
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_top_articles_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_250_ad_widget.php');
+include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_600_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
@@ -50,6 +51,7 @@ add_filter( 'template_include', 'load_issue_template', 99 );
 //add custom city arts shortcodes
 add_shortcode( 'insert_cover_story', 'insert_cover_story_shortcode' );
 add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
+add_shortcode( 'insert_300x600_ad', 'ad_300x600_shortcode' );
 add_shortcode( 'insert_728xlandscape_ad', 'ad_728xlandscape_shortcode' );
 add_shortcode( 'insert_secondary_feature_image', 'secondary_feature_image_shortcode' );
 
@@ -258,6 +260,21 @@ function ad_300x250_core() {
   return $html;
 }
 
+function ad_300x600_shortcode() {
+  $html = '<div class="ad_300x600_sc_container float-md-right ml-md-4">' . ad_300x600_core() . "</div>";
+  return $html;
+}
+
+function ad_300x600_core() {
+  $html = '<div class="ad-300x600 mx-auto my-auto">';
+  $html .= '<!-- /21626118154/cityarts_halfpage -->';
+  $html .= '<div id=\'div-gpt-ad-1507525983729-0\' style=\'height:600px; width:300px;\'>';
+  $html .= '<script>';
+  $html .= 'googletag.cmd.push(function() { googletag.display(\'div-gpt-ad-1507525983729-0\'); });';
+  $html .= '</script></div></div>';
+  return $html;
+}
+
 function ad_728xlandscape_shortcode() {
   $html = '<div class="row no-gutters"><div class="col pb-3 text-center"><span style="font-size:.5em;">ADVERTISEMENT</span>';
   $html .= '<div class=" mx-auto " style="max-width:728px;max-height:90px;">%1$s</div></div></div>';
@@ -347,6 +364,7 @@ function ca_register_sidebars() {
 function ca_load_widgets() {
   register_widget( 'ca_top_articles_widget' );
   register_widget( 'ca_300_x_250_ad_widget' );
+  register_widget( 'ca_300_x_600_ad_widget' );
   register_widget( 'ca_mailchimp_widget' );
   register_widget( 'ca_current_widget' );
 }

@@ -33,13 +33,19 @@ $current_cover = get_current_issue_image();
 		googletag.cmd = googletag.cmd || [];
 
 		googletag.cmd.push(function() {
-			var mapLeader = googletag.sizeMapping().
+			var leaderboard_mapLeader = googletag.sizeMapping().
 		  	addSize([640, 480], [728, 90]).
 		  	addSize([0, 0], [320, 50]).
 		  	build();
 
-		googletag.defineSlot('/21626118154/cityarts_leaderboards', [[728, 90], [320, 50]], 'div-gpt-ad-1506555798490-0').defineSizeMapping(mapLeader).addService(googletag.pubads());
+			var halfpage_mapLeader = googletag.sizeMapping().
+		  	addSize([640, 480], [300, 600]).
+		  	addSize([0, 0], [300, 250]).
+		  	build();
+
+		googletag.defineSlot('/21626118154/cityarts_leaderboards', [[728, 90], [320, 50]], 'div-gpt-ad-1506555798490-0').defineSizeMapping(leaderboard_mapLeader).addService(googletag.pubads());
 		googletag.defineSlot('/21626118154/cityarts_mediumrectangle', [300, 250], 'div-gpt-ad-1506555798490-1').addService(googletag.pubads());
+		googletag.defineSlot('/21626118154/cityarts_halfpage', [[300, 250], [300, 600]], 'div-gpt-ad-1507525983729-0').defineSizeMapping(halfpage_mapLeader).addService(googletag.pubads());
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 		});
