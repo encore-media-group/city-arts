@@ -37,7 +37,7 @@
             <header class="entry-header col text-center mb-4">
              <?php
               $cat_label = get_category_label();
-              echo sprintf( '<a class="url fn n" href="%1$s"><h2 class="sidelines py-5 w-50 mx-auto">%2$s</h2></a>', $cat_label['url'], $cat_label['name'] );
+              echo sprintf( '<a class="url fn n" href="%1$s"><h2 class="sidelines mt-5 mb-4  w-50 mx-auto">%2$s</h2></a>', $cat_label['url'], $cat_label['name'] );
               ?>
 
               <?php the_title( '<h1 class="entry-title my-4">', '</h1>' ); ?>
