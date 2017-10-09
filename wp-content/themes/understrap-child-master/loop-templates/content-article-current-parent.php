@@ -11,7 +11,7 @@
 <div class="wrapper" id="single-wrapper">
   <main class="site-main" id="main">
   	<div class="container-fluid ad-container">
-  		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+  		<?= ad_728xlandscape_shortcode(); ?>
   	</div>
   	<?php while ( have_posts() ) : the_post(); ?>
 
@@ -21,7 +21,7 @@
     ?>
 
   	<div class="container-fluid ad-container">
-  		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+  		<?= ad_728xlandscape_bottom_shortcode(); ?>
   	</div>
 
   	<!-- RELATED ARTICLES -->

@@ -43,7 +43,9 @@ $current_cover = get_current_issue_image();
 		  	addSize([0, 0], [300, 250]).
 		  	build();
 
-		googletag.defineSlot('/21626118154/cityarts_leaderboards', [[728, 90], [320, 50]], 'div-gpt-ad-1506555798490-0').defineSizeMapping(leaderboard_mapLeader).addService(googletag.pubads());
+    googletag.defineSlot('/21626118154/cityarts_leaderboards_bt', [[728, 90], [320, 50]], 'div-gpt-ad-1507566484755-1').defineSizeMapping(leaderboard_mapLeader).addService(googletag.pubads());
+    googletag.defineSlot('/21626118154/cityarts_leaderboards', [[728, 90], [320, 50]], 'div-gpt-ad-1507566484755-2').defineSizeMapping(leaderboard_mapLeader).addService(googletag.pubads());
+
 		googletag.defineSlot('/21626118154/cityarts_mediumrectangle', [300, 250], 'div-gpt-ad-1506555798490-1').addService(googletag.pubads());
 		googletag.defineSlot('/21626118154/cityarts_halfpage', [[300, 250], [300, 600]], 'div-gpt-ad-1507525983729-0').defineSizeMapping(halfpage_mapLeader).addService(googletag.pubads());
 		googletag.pubads().enableSingleRequest();

@@ -58,7 +58,7 @@ $the_query = new WP_Query(array(
 
 							if ($count == 8 ):
 						 		echo '</div><!-- end row -->';
-				 				get_template_part( 'item-templates/item', 'landscape-ad' );
+				 				echo ad_728xlandscape_shortcode();
 						 		echo '<div class="row">';
 							endif;
 

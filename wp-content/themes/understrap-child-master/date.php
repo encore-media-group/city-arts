@@ -51,7 +51,7 @@ endif;
 							elseif ($count == 3 && $paged < 2  ):
 						 		get_template_part( 'item-templates/item', '320x213' );
 						 		echo '</div><!-- end row -->';
-				 				get_template_part( 'item-templates/item', 'landscape-ad' );
+				 				echo ad_728xlandscape_shortcode();
 						 		echo '<div class="row">';
 							else:
 						?>

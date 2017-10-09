@@ -99,7 +99,7 @@ $the_query = new WP_Query(array(
 								elseif ($count == 3  ):
 						 			get_template_part( 'item-templates/item', '320x213' );
 						 			echo '</div><!-- end row -->';
-				 					get_template_part( 'item-templates/item', 'landscape-ad' );
+				 					echo ad_728xlandscape_shortcode();
 						 			echo '<div class="row">';
 						 		elseif( $count <= 15 ): ?>
 									<div class="col-12 col-sm-6 col-lg-3">

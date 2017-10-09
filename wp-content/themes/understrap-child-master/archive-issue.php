@@ -188,7 +188,7 @@ $this_issue_query = new WP_Query(array(
 		<div class="container-fluid ad-container mb-4">
 		  <div class="row no-gutters">
 		    <div class="col-xl-12 py-2 text-center">
-		      <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+		      <?= ad_728xlandscape_shortcode(); ?>
 		    </div>
 		  </div>
 		</div><!-- container -->

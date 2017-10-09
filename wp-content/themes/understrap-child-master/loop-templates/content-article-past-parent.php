@@ -11,13 +11,13 @@
 <div class="wrapper" id="single-wrapper">
   <main class="site-main" id="main">
   	<div class="container-fluid ad-container">
-  		<?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+  		<?= ad_728xlandscape_shortcode(); ?>
   	</div>
   	<?php while ( have_posts() ) : the_post(); ?>
   		<?php get_template_part( 'loop-templates/content', 'article-past' ); ?>
   	<?php endwhile;?>
   	<div class="container-fluid ad-container">
-  		<?= ad_728xlandscape_shortcode(); ?>
+  		<?= ad_728xlandscape_bottom_shortcode(); ?>
   	</div>
 
     <div class="container mb-4">

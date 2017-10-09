@@ -8,7 +8,23 @@
 $cat_idObj = get_term_by( 'slug', 'homepage-feature', 'category' );
 $catquery = new WP_Query( 'cat=' . ($cat_idObj->term_id)  . '&posts_per_page=1' );
 
-$recent_posts = new WP_Query(array('posts_per_page' => 2,'meta_query' => array(array('key' => '_thumbnail_id' ))));
+
+//$recent_posts = new WP_Query(array('posts_per_page' => 2,'meta_query' => array(array('key' => '_thumbnail_id' ))));
+
+$recent_posts = new WP_Query( [
+    'posts_per_page' => 10,
+    'no_found_rows' => true,
+    'post_status'=> 'publish',
+    'ignore_sticky_posts' => true,
+    'tax_query' => [
+      'relation' => 'AND', [
+          'taxonomy' => 'hp',
+          'field'    => 'slug',
+          'terms'    =>  'a_slot'
+        ]
+      ]
+    ]
+  );
 
 $recent_posts_medium = new WP_Query(array('posts_per_page' => 1, 'offset' => 13, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
 
@@ -69,7 +85,7 @@ $recent_posts_see_it_this_week = new WP_Query(
     <div class="container-fluid ad-container mb-4">
       <div class="row no-gutters">
         <div class="col-xl-12 py-2 text-center">
-          <?php get_template_part( 'item-templates/item', 'landscape-ad' ); ?>
+          <?= ad_728xlandscape_shortcode(); ?>
         </div>
       </div>
     </div>
