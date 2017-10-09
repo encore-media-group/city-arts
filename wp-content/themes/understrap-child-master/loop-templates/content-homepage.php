@@ -5,17 +5,14 @@
  * @package understrap
  */
 
-$cat_idObj = get_term_by( 'slug', 'homepage-feature', 'category' );
-$catquery = new WP_Query( 'cat=' . ($cat_idObj->term_id)  . '&posts_per_page=1' );
+$articles = [];
+$used_ids = [];
 
-
-//$recent_posts = new WP_Query(array('posts_per_page' => 2,'meta_query' => array(array('key' => '_thumbnail_id' ))));
-
-$recent_posts = new WP_Query( [
-    'posts_per_page' => 10,
+$slot_a = new WP_Query( [
+    'posts_per_page' => 1,
     'no_found_rows' => true,
     'post_status'=> 'publish',
-    'ignore_sticky_posts' => true,
+    'orderby' => 'modified',
     'tax_query' => [
       'relation' => 'AND', [
           'taxonomy' => 'hp',
@@ -23,33 +20,87 @@ $recent_posts = new WP_Query( [
           'terms'    =>  'a_slot'
         ]
       ]
-    ]
-  );
+    ]);
 
-$recent_posts_medium = new WP_Query(array('posts_per_page' => 1, 'offset' => 13, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+while( $slot_a->have_posts() ) : $slot_a->the_post();
+  $used_ids[] = $post->ID;
+  $articles['slot_a'] = get_post();
+endwhile;
+wp_reset_query();
 
-$recent_posts_medium_small = new WP_Query(array('posts_per_page' => 2, 'offset' => 4, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+$slot_b = new WP_Query( [
+    'posts_per_page' => 1,
+    'no_found_rows' => true,
+    'post_status'=> 'publish',
+    'orderby' => 'modified',
+    'tax_query' => [
+      'relation' => 'AND', [
+          'taxonomy' => 'hp',
+          'field'    => 'slug',
+          'terms'    =>  'b_slot'
+        ]
+      ]
+    ]);
 
-$recent_posts_medium_small_bottom = new WP_Query(array('posts_per_page' => 4, 'offset' => 6, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+while( $slot_b->have_posts() ) : $slot_b->the_post();
+  $used_ids[] = $post->ID;
+  $articles['slot_b'] = get_post();
+endwhile;
+wp_reset_query();
 
-$recent_posts_medium_horiztonal = new WP_Query(array('posts_per_page' => 1, 'offset' => 12, 'meta_query' => array(array('key' => '_thumbnail_id' ))));
+$slot_c= new WP_Query( [
+    'posts_per_page' => 3,
+    'no_found_rows' => true,
+    'post_status'=> 'publish',
+    'orderby' => 'rand',
+    'tax_query' => [
+      'relation' => 'AND', [
+          'taxonomy' => 'hp',
+          'field'    => 'slug',
+          'terms'    =>  'c_slot'
+        ]
+      ]
+    ]);
 
-$recent_posts_see_it_this_week = new WP_Query(
-    array(
+while( $slot_c->have_posts() ) : $slot_b->the_post();
+  $used_ids[] = $post->ID;
+  $articles['slot_c'] = get_post();
+endwhile;
+wp_reset_postdata();
+
+$see_it_this_week = new WP_Query([
       'posts_per_page' => 1,
-      'offset' => 0,
-      'meta_query' => array(array('key' => '_thumbnail_id' )),
+      'orderby' => 'modified',
+      'no_found_rows' => true,
+      'post_status'=> 'publish',
+      'post__not_in' => $used_ids,
       'tax_query' => [
             [
                 'taxonomy' => 'category',
                 'field'    => 'slug',
-                'terms'    =>  array( 'see-it-this-week' ),
+                'terms'    =>  ['see-it-this-week'],
             ],
         ],
-      )
-    );
+      ]);
+
+while( $see_it_this_week->have_posts() ) : $see_it_this_week->the_post();
+  $used_ids[] = $post->ID;
+  $articles['see_it_this_week'][] = get_post();
+endwhile;
+wp_reset_postdata();
+
+$remaining_articles = new WP_Query([
+  'posts_per_page' => 12,
+  'orderby' => 'modified',
+  'no_found_rows' => true,
+  'post__not_in' => $used_ids,
+  'post_status'=> 'publish',
+  ]);
+wp_reset_postdata();
 
 ?>
+
+
 <div class="wrapper pb-0" id="page-wrapper">
   <main class="site-main" id="main">
     <div class="container mb-4" id="content" tabindex="-1">
@@ -57,19 +108,27 @@ $recent_posts_see_it_this_week = new WP_Query(
         <div class="col-12 col-md-7 col-lg-8 px-lg-0" id="primary">
           <div class="row mx-0">
             <?php
-              while( $catquery->have_posts() ) : $catquery->the_post();
-                get_template_part( 'item-templates/item', '730x487-vertical' );
-              endwhile;
+            if( array_key_exists('slot_a', $articles )):
+              global $post;
+              $post = $articles['slot_a'];
+              setup_postdata( $post );
+              get_template_part( 'item-templates/item', '730x487-vertical' );
               wp_reset_postdata();
+            endif;
             ?>
           </div>
           <div class="row mx-0 pt-4 justify-content-between item-730x487-width">
-            <?php  while( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-              <div class="col-12  col-lg-6 mb-4 mb-md-0">
+            <?php
+
+            //show posts 1 & 2
+            while( $remaining_articles->have_posts() && $remaining_articles->current_post < 1 ) : $remaining_articles->the_post();
+            ?>
+              <div class="col-12 col-lg-6 mb-4 mb-md-0">
                 <?php get_template_part( 'item-templates/item', '160x107' ); ?>
               </div>
-            <?php endwhile;
-              wp_reset_postdata();
+            <?php
+            endwhile;
+            $remaining_articles->rewind_posts();
             ?>
           </div>
         </div>
@@ -93,13 +152,20 @@ $recent_posts_see_it_this_week = new WP_Query(
       <div class="row">
         <div class="col-12 col-lg-6">
           <div class="row">
-          <?php while( $recent_posts_medium_small->have_posts() ) : $recent_posts_medium_small->the_post(); ?>
+          <?php
+            //show posts 3 & 4
+            $remaining_articles->current_post = 1;
+            while( $remaining_articles->have_posts() && $remaining_articles->current_post < 3) : $remaining_articles->the_post();
+            ?>
             <div class="col-sm-6">
-              <?php set_query_var( 'show_excerpt', true ); ?>
-              <?php  get_template_part( 'item-templates/item', '255x170' ); ?>
+              <?php
+                set_query_var( 'show_excerpt', true );
+                get_template_part( 'item-templates/item', '255x170' );
+              ?>
              </div>
-          <?php endwhile;
-            wp_reset_postdata();
+          <?php
+           endwhile;
+           $remaining_articles->rewind_posts();
           ?>
           </div>
           <div class="row">
@@ -110,31 +176,49 @@ $recent_posts_see_it_this_week = new WP_Query(
         </div>
         <div class="col-12 col-lg-6">
           <?php
-          while( $recent_posts_medium->have_posts() ) : $recent_posts_medium->the_post();
+          if( array_key_exists('slot_b', $articles )):
+            global $post;
+            $post = $articles['slot_b'];
+            setup_postdata( $post );
             get_template_part( 'item-templates/item', '540x360-vertical' );
-          endwhile;
-          wp_reset_postdata();
+            wp_reset_postdata();
+          endif;
           ?>
         </div>
       </div>
     </div>
     <div class="container mb-4">
       <div class="row d-flex justify-content-between">
-        <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
-          <?php set_query_var( 'show_excerpt', false ); ?>
-          <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-4 mb-md-0"><?php  get_template_part( 'item-templates/item', '255x170' ); ?></div>
-        <?php endwhile;
-          wp_reset_postdata();
+        <?php
+          //show posts 5, 6, 7, 8
+            $remaining_articles->current_post = 3;
+            while( $remaining_articles->have_posts() && $remaining_articles->current_post < 7 ) : $remaining_articles->the_post();
+        ?>
+              <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-4 mb-md-0">
+                <?php
+                  set_query_var( 'show_excerpt', false );
+                  get_template_part( 'item-templates/item', '255x170' );
+                ?>
+              </div>
+        <?php
+            endwhile;
+            $remaining_articles->rewind_posts();
         ?>
       </div>
     </div>
     <div class="container mb-4">
       <div class="row">
         <?php
-          while( $recent_posts_medium_horiztonal->have_posts() ) : $recent_posts_medium_horiztonal->the_post();
-            get_template_part( 'item-templates/item', '540x360-horizontal' );
-          endwhile;
-          wp_reset_postdata();
+          if( array_key_exists('slot_c', $articles )):
+            $posts = $articles['slot_c'];
+            foreach ( $posts as $local_post ):
+              global $post;
+              $post = $local_post;
+              setup_postdata( $post );
+              get_template_part( 'item-templates/item', '540x360-horizontal' );
+              wp_reset_postdata();
+            endforeach;
+          endif;
         ?>
       </div>
     </div>
@@ -146,11 +230,14 @@ $recent_posts_see_it_this_week = new WP_Query(
         <div class="col-12 col-md">
           <div class="row pt-4 see-it-this-week ">
             <?php
-              while( $recent_posts_see_it_this_week->have_posts() ) : $recent_posts_see_it_this_week->the_post();
+              if( array_key_exists('see-it-this-week', $articles )):
+                global $post;
+                $post = $articles['see-it-this-week'];
+                setup_postdata( $post );
                 set_query_var( 'alt_version', true );
                 get_template_part( 'item-templates/item', '730x487-vertical' );
-              endwhile;
-              wp_reset_postdata();
+                wp_reset_postdata();
+              endif;
             ?>
           </div>
         </div>
@@ -158,10 +245,20 @@ $recent_posts_see_it_this_week = new WP_Query(
     </div>
     <div class="container mb-4">
       <div class="row d-flex justify-content-between">
-        <?php while( $recent_posts_medium_small_bottom->have_posts() ) : $recent_posts_medium_small_bottom->the_post(); ?>
-          <?php set_query_var( 'show_excerpt', false ); ?>
-          <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-4 mb-md-0"><?php  get_template_part( 'item-templates/item', '255x170' ); ?></div>
-        <?php endwhile;
+        <?php
+          //show posts 7, 8, 9, 10
+            $remaining_articles->current_post = 7;
+            while( $remaining_articles->have_posts() && $remaining_articles->current_post < 11 ) : $remaining_articles->the_post();
+            ?>
+
+            <div class="col-12 col-sm-6 pl-sm-0 col-lg-3 mb-4 mb-md-0">
+              <?php
+                set_query_var( 'show_excerpt', false );
+                get_template_part( 'item-templates/item', '255x170' );
+              ?>
+          </div>
+        <?php
+          endwhile;
           wp_reset_postdata();
         ?>
       </div>

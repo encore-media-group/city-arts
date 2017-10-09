@@ -1,5 +1,20 @@
 <?php
 
+function create_private_homepage_tax() {
+    register_taxonomy(
+        'hp',
+        'post',
+        array(
+            'label' => __( 'Placement' ),
+            'public' => false,
+            'rewrite' => false,
+            'hierarchical' => true,
+            'query_var' => false,
+            'show_ui' => true
+        )
+    );
+}
+
 function cptui_register_my_taxes_writer() {
 
   /**
@@ -259,9 +274,6 @@ acf_add_local_field_group(array (
   'description' => '',
 ));
 
-
-
-
 acf_add_local_field_group(array (
   'key' => 'group_59cbf002eb226',
   'title' => 'Article Enchanced',
@@ -312,13 +324,6 @@ acf_add_local_field_group(array (
 
 
   endif;
-
-
-
-
-
-
-
 }
 
 function populate_article_format_tax(){
@@ -341,6 +346,30 @@ function populate_article_format_tax(){
   }
 }
 
+function populate_default_taxonomies(){
+
+  $default_taxs = array(
+    array( 'slug' => 'article-current', 'tax' => 'article_format', 'name' => 'Article Current', 'description' => '', 'parent' => 0) ,
+    array( 'slug' => 'article-enhanced', 'tax' => 'article_format', 'name' => 'Article Enhanced', 'description' => '', 'parent' => 0),
+    array( 'slug' => 'article-past', 'tax' => 'article_format', 'name' => 'Article Past', 'description' => '', 'parent' => 0),
+    array( 'slug' => 'a_slot', 'tax' => 'hp', 'name' => 'Slot A', 'description' => '', 'parent' => 0),
+    array( 'slug' => 'b_slot', 'tax' => 'hp', 'name' => 'Slot B', 'description' => '', 'parent' => 0),
+    array( 'slug' => 'c_slot', 'tax' => 'hp', 'name' => 'Slot C', 'description' => '', 'parent' => 0),
+
+
+  );
+
+  foreach($default_taxs as $tax) {
+
+    if(term_exists( $tax['slug'] ) == 0 ) {
+      echo "creating new entry for " . $tax['slug'] . "<br>" ;
+      wp_insert_term( $tax['name'], $tax['tax'], $tax );
+    }
+    else {
+      echo "already exists: " .  $tax['slug'] . "<br>" ;
+    }
+  }
+}
 
 
 

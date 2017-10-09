@@ -28,6 +28,7 @@ add_action( 'admin_menu', 'city_arts_website_menu' );
 add_action( 'init', 'cptui_register_my_taxes' );
 add_action( 'init', 'cptui_register_my_taxes_writer' );
 add_action( 'init', 'register_ca_custom_menus' );
+add_action( 'init', 'create_private_homepage_tax' );
 add_action( 'widgets_init', 'register_acf_field_group');
 add_action( 'widgets_init', 'ca_load_widgets' );
 add_action( 'widgets_init', 'ca_register_sidebars' );
@@ -57,24 +58,6 @@ add_shortcode( 'insert_728xlandscape_ad', 'ad_728xlandscape_shortcode' );
 add_shortcode( 'insert_728xlandscape_bottom_ad', 'ad_728xlandscape_bottom_shortcode' );
 add_shortcode( 'insert_secondary_feature_image', 'secondary_feature_image_shortcode' );
 
-
-add_action( 'init', 'create_private_homepage_tax' );
-
-function create_private_homepage_tax() {
-    register_taxonomy(
-        'hp',
-        'post',
-        array(
-            'label' => __( 'Placement' ),
-            'public' => false,
-            'rewrite' => false,
-            'hierarchical' => true,
-            'query_var' => false,
-            'show_ui' => true
-        )
-    );
-}
-
 function ca_enqueue_scripts_and_styles() {
 //  wp_enqueue_style( 'mailchimpcss', '//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css');
 }
@@ -95,14 +78,14 @@ function city_arts_admin_page() {
   // Check whether the button has been pressed AND also check the nonce
   if (isset($_POST['set_tax_button']) && check_admin_referer('set_tax_button_button_clicked')) {
    // the button has been pressed AND we've passed the security check
-   populate_article_format_tax();
+   populate_default_taxonomies();
   }
 
   echo '<form action="options-general.php?page=city-arts-plugin" method="post">';
 
   wp_nonce_field('set_tax_button_button_clicked');
   echo '<input type="hidden" value="true" name="set_tax_button" />';
-  submit_button('Set Default Taxonomy');
+  submit_button('Set Default Taxonomy Values');
   echo '</form>';
 
   echo '</div>';
