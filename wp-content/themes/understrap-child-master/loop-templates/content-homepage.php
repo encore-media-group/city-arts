@@ -62,7 +62,7 @@ $slot_c= new WP_Query( [
       ]
     ]);
 
-while( $slot_c->have_posts() ) : $slot_b->the_post();
+while( $slot_c->have_posts() ) : $slot_c->the_post();
   $used_ids[] = $post->ID;
   $articles['slot_c'] = get_post();
 endwhile;
