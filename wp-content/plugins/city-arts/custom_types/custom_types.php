@@ -80,7 +80,7 @@ function register_acf_field_group() {
           'id' => '',
         ),
         'return_format' => 'array',
-        'preview_size' => 'full',
+        'preview_size' => 'thumbnail',
         'library' => 'all',
         'min_width' => '',
         'min_height' => '',
