@@ -48,7 +48,7 @@ while( $slot_b->have_posts() ) : $slot_b->the_post();
 endwhile;
 wp_reset_query();
 
-$slot_c= new WP_Query( [
+$slot_c = new WP_Query( [
     'posts_per_page' => 3,
     'no_found_rows' => true,
     'post_status'=> 'publish',
@@ -62,7 +62,7 @@ $slot_c= new WP_Query( [
       ]
     ]);
 
-while( $slot_c->have_posts() ) : $slot_c->the_post();
+while( $slot_c->have_posts() && $slot_c->current_post < 1 ) : $slot_c->the_post();
   $used_ids[] = $post->ID;
   $articles['slot_c'] = get_post();
 endwhile;
@@ -85,12 +85,12 @@ $see_it_this_week = new WP_Query([
 
 while( $see_it_this_week->have_posts() ) : $see_it_this_week->the_post();
   $used_ids[] = $post->ID;
-  $articles['see_it_this_week'][] = get_post();
+  $articles['see_it_this_week'] = get_post();
 endwhile;
 wp_reset_postdata();
 
 $remaining_articles = new WP_Query([
-  'posts_per_page' => 12,
+  'posts_per_page' => 10,
   'orderby' => 'modified',
   'no_found_rows' => true,
   'post__not_in' => $used_ids,
@@ -210,14 +210,11 @@ wp_reset_postdata();
       <div class="row">
         <?php
           if( array_key_exists('slot_c', $articles )):
-            $posts = $articles['slot_c'];
-            foreach ( $posts as $local_post ):
-              global $post;
-              $post = $local_post;
-              setup_postdata( $post );
-              get_template_part( 'item-templates/item', '540x360-horizontal' );
-              wp_reset_postdata();
-            endforeach;
+            global $post;
+            $post = $articles['slot_c'];
+            setup_postdata( $post );
+            get_template_part( 'item-templates/item', '540x360-horizontal' );
+            wp_reset_postdata();
           endif;
         ?>
       </div>
@@ -230,9 +227,9 @@ wp_reset_postdata();
         <div class="col-12 col-md">
           <div class="row pt-4 see-it-this-week ">
             <?php
-              if( array_key_exists('see-it-this-week', $articles )):
+              if( array_key_exists('see_it_this_week', $articles )):
                 global $post;
-                $post = $articles['see-it-this-week'];
+                $post = $articles['see_it_this_week'];
                 setup_postdata( $post );
                 set_query_var( 'alt_version', true );
                 get_template_part( 'item-templates/item', '730x487-vertical' );
