@@ -19,10 +19,10 @@
   <div class="row mx-auto item-2000x1333-width">
     <div class="col px-0">
       <?= $feature_image ?>
-    </div>
-    <div class="caption p-2">
-      <?php echo $thumbnail_caption ?>
-      <?php echo $thumbnail_description ?>
+      <div class="caption p-2">
+        <?php echo $thumbnail_caption ?>
+        <?php echo $thumbnail_description ?>
+      </div>
     </div>
   </div><!-- end row -->
 
