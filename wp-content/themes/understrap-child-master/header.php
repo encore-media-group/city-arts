@@ -77,7 +77,7 @@ $current_cover = get_current_issue_image();
 
 					</div>
 					<div class='col-auto mx-auto my-auto'>
-						<a class="navbar-brand my-0"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
+						<a class="navbar-brand my-0"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img width="200px" src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 					</div>
 				</div><!-- end row -->
 
@@ -90,7 +90,7 @@ $current_cover = get_current_issue_image();
 			  });
 
 				jQuery(window).scroll(function() {
-				  if (jQuery(document).scrollTop() > 50) {
+				  if (jQuery(document).scrollTop() > 2) {
 				    jQuery('#wrapper-navbar').addClass('shrink');
 				  } else {
 				    jQuery('#wrapper-navbar').removeClass('shrink');
@@ -122,17 +122,10 @@ $current_cover = get_current_issue_image();
 						'fallback_cb'     => '',
 						'menu_id'         => 'main-menu',
 						'walker'          => new WP_Bootstrap_Navwalker(),
-						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu 	/*. get_search_form(false)*/ ,
+						'items_wrap' => ' [X] <ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu 	/*. get_search_form(false)*/ ,
 
 					)
 				);
-
-
-
-
-
-
-
 
 				?>
 
