@@ -333,7 +333,6 @@ function ca_add_image_sizes() {
   add_image_size( 'ca-730xauto', 730);
   add_image_size( 'ca-540x360', 540, 360, true );
   add_image_size( 'ca-350x454', 350, 454, true );
-  add_image_size( 'ca-175x227', 175, 227, true );
   add_image_size( 'ca-320x213', 320, 213, true );
   add_image_size( 'ca-255x170', 255, 170, true );
   add_image_size( 'ca-160x107', 160, 107, true );
@@ -349,7 +348,6 @@ function wpshout_custom_sizes( $sizes ) {
         'ca-730xauto' => __( 'ca-730xauto' ),
         'ca-540x360' => __( 'ca-540x360' ),
         'ca-350x454' => __( 'ca-350x454' ),
-        'ca-175x227' => __( 'ca-175x227' ),
         'ca-320x213' => __( 'ca-320x213' ),
         'ca-255x170' => __( 'ca-255x170' ),
         'ca-160x107' => __( 'ca-160x107' ),

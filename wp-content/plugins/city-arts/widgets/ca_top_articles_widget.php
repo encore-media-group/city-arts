@@ -15,9 +15,12 @@ class ca_top_articles_widget extends WP_Widget {
 
   // Creating widget front-end
   public function widget( $args, $instance ) {
+
     $title = apply_filters( 'widget_title', $instance['title'] );
+    $post_show_count = isset( $instance['post_show_count'] ) ? $instance['post_show_count'] : 0;
     $show_images_checkbox = isset( $instance[ 'show_images_checkbox' ] ) ? true : false;
     $show_numbers_checkbox = isset( $instance[ 'show_numbers_checkbox' ] ) ? true : false;
+    $center_text_checkbox = isset( $instance[ 'center_text_checkbox' ] ) ? true : false;
 
     echo $args['before_widget'];
     if ( ! empty( $title ) )
@@ -30,13 +33,11 @@ class ca_top_articles_widget extends WP_Widget {
     $post_id = $current_post ? $current_post->ID : null;
 
     $recent_posts = new WP_Query(array(
-        'posts_per_page' => 4,
-     //   'offset' => 10,
-        'post_status'    => 'publish',
+        'posts_per_page' => $post_show_count,
+        'no_found_rows' => true,
         'post__not_in' => array($post_id),
-        'orderby'        => 'date',
+        'orderby'        => 'modified',
         'post_status'    => 'publish',
-    //    'meta_query' => array(array('key' => '_thumbnail_id' ))
       )
     );
 
@@ -47,14 +48,17 @@ class ca_top_articles_widget extends WP_Widget {
         set_query_var( 'row_num', $row_num );
         set_query_var( 'show_numbers' , $show_numbers_checkbox);
         set_query_var( 'show_thumbnails' , $show_images_checkbox);
+        set_query_var( 'center_text' , $center_text_checkbox);
         get_template_part( 'item-templates/item', '320x213-ordered' );
       echo __('</div>');
        $row_num++;
     endwhile;
 
     unset($row_num);
+    unset($post_show_count);
     unset($show_images_checkbox);
     unset($show_numbers_checkbox);
+    unset($center_text_checkbox);
     wp_reset_postdata();
 
     echo $args['after_widget'];
@@ -65,11 +69,15 @@ class ca_top_articles_widget extends WP_Widget {
     $defaults = array(
       'title' => __( 'Top Stories', 'ca_widget_domain' ),
       'show_images_checkbox' => 'off',
-      'show_numbers_checkbox' => 'off'
+      'show_numbers_checkbox' => 'off',
+      'post_show_count' => 0,
+      'center_text_checkbox' => 'off'
       );
 
     $instance = wp_parse_args( ( array ) $instance, $defaults );
     $title = $instance[ 'title' ];
+    $post_show_count = $instance['post_show_count'];
+
 
     ?>
       <p>
@@ -80,6 +88,14 @@ class ca_top_articles_widget extends WP_Widget {
         type="text"
         value="<?php echo esc_attr( $title ); ?>" />
       </p>
+      <p>
+        <label for="<?php echo $this->get_field_id( 'post_show_count' ); ?>"><?php _e( '# Posts:' ); ?></label>
+        <input class="widefat"
+        id="<?php echo $this->get_field_id( 'post_show_count' ); ?>"
+        name="<?php echo $this->get_field_name( 'post_show_count' ); ?>"
+        type="text"
+        value="<?php echo esc_attr( $post_show_count ); ?>" />
+      </p
       <p>
         <input
           class="checkbox"
@@ -96,6 +112,14 @@ class ca_top_articles_widget extends WP_Widget {
           name="<?php echo $this->get_field_name( 'show_images_checkbox' ); ?>" />
         <label for="<?php echo $this->get_field_id( 'show_images_checkbox' ); ?>">Show Article Thumbnail?</label>
       </p>
+      <p>
+        <input
+          class="checkbox"
+          type="checkbox" <?php checked( $instance[ 'center_text_checkbox' ], 'on' ); ?>
+          id="<?php echo $this->get_field_id( 'center_text_checkbox' ); ?>"
+          name="<?php echo $this->get_field_name( 'center_text_checkbox' ); ?>" />
+        <label for="<?php echo $this->get_field_id( 'center_text_checkbox' ); ?>">Center Text?</label>
+      </p>
     <?php
   }
 
@@ -105,7 +129,10 @@ class ca_top_articles_widget extends WP_Widget {
 
     $instance[ 'show_numbers_checkbox' ] = $new_instance[ 'show_numbers_checkbox' ];
     $instance[ 'show_images_checkbox' ] = $new_instance[ 'show_images_checkbox' ];
-    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $instance[ 'center_text_checkbox' ] = $new_instance[ 'center_text_checkbox' ];
+
+    $instance[ 'post_show_count' ] = $new_instance[ 'post_show_count' ];
+    $instance[ 'title' ] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
     return $instance;
   }
