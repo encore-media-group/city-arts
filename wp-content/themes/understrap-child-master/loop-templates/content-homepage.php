@@ -26,7 +26,7 @@ while( $slot_a->have_posts() ) : $slot_a->the_post();
   $used_ids[] = $post->ID;
   $articles['slot_a'] = get_post();
 endwhile;
-wp_reset_query();
+wp_reset_postdata();
 
 $slot_b = new WP_Query( [
     'posts_per_page' => 1,
@@ -46,7 +46,7 @@ while( $slot_b->have_posts() ) : $slot_b->the_post();
   $used_ids[] = $post->ID;
   $articles['slot_b'] = get_post();
 endwhile;
-wp_reset_query();
+wp_reset_postdata();
 
 $slot_c = new WP_Query( [
     'posts_per_page' => 3,
