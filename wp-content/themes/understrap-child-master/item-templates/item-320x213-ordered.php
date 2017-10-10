@@ -18,15 +18,18 @@
   $show_thumbnails = isset($show_thumbnails) ? $show_thumbnails : false;
   $center_text = isset($center_text) ? $center_text : false;
 
+  $col_0_class = '';
   $col_1_class = '';
   $col_2_class = ' px-0 ';
 
   if( $show_thumbnails ) :
-    $col_1_class = " my-auto ";
-    $col_2_class .= " offset-2 py-3 ";
+    $col_0_class = 'pl-0 pr-2 ';
+    $col_1_class = ' my-auto ';
+    $col_2_class .= ' offset-2 py-3 ';
   endif;
 
   if( !$show_numbers ): //i.e. hide numbers..
+    $col_0_class = '';
     $col_1_class .= ' hidden-xs-up';
     $col_2_class = '';
   endif;
@@ -36,12 +39,12 @@
   endif;
 ?>
 
-  <div class="col pl-0 pr-2 item-320x213  item-320x213-ordered">
+  <div class="col <?= $col_0_class ?> item-320x213  item-320x213-ordered">
     <div class="row py-2">
 
-      <div class="col-2 px-2 text-center <?php echo $col_1_class ?>"><h3><?echo $row_num ?>.</h3></div>
+      <div class="col-2 px-2 text-center <?= $col_1_class ?>"><h3><?echo $row_num ?>.</h3></div>
       <?if ( $show_thumbnails ) : ?>
-      <div class="col pr-2 pl-0">
+      <div class="col <?= $col_0_class ?> ">
         <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 320px"
