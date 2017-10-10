@@ -9248,6 +9248,9 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
+#page {
+  padding-top: 5em; }
+
 .wrapper:not(#wrapper-footer) {
   padding: 0; }
 
@@ -9255,8 +9258,7 @@ h1.navbar-brand a:hover {
   z-index: 9999900000;
   background-color: #fff;
   width: 100%;
-  border-bottom: 1px solid #d9d0c2;
-  box-shadow: 4px 0 6px 1px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1); }
   #wrapper-navbar nav .navbar-toggler-icon {
     background-color: #000; }
   #wrapper-navbar nav #navbarNavDropdown {

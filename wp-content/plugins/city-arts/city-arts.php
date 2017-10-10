@@ -330,7 +330,7 @@ function ca_add_image_sizes() {
   add_image_size( 'ca-2000x1333', 2000, 1333, true );
   add_image_size( 'ca-1140-760', 1140, 760, true );
   add_image_size( 'ca-730-487', 730, 487, true);
-  add_image_size( 'ca-730xauto', 730);
+  add_image_size( 'ca-730xauto', 730, 9999, true);
   add_image_size( 'ca-540x360', 540, 360, true );
   add_image_size( 'ca-350x454', 350, 454, true );
   add_image_size( 'ca-320x213', 320, 213, true );

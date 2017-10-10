@@ -61,13 +61,12 @@ $current_cover = get_current_issue_image();
 <div class="hfeed site" id="page">
 
 <!-- ******************* The Navbar Area ******************* -->
-	<div class="wrapper-fluid wrapper-navbar sticky-top" id="wrapper-navbar">
+	<div class="wrapper-fluid wrapper-navbar fixed-top" id="wrapper-navbar">
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
 		'understrap' ); ?></a>
 
-			<div class="container">
-				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<nav class="container navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="row justify-content-center">
 					<div class='col-auto px-0'>
 						<button class="hamburger hamburger--spin" type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,44 +81,43 @@ $current_cover = get_current_issue_image();
 					</div>
 				</div><!-- end row -->
 
-				<script type="text/javascript">
-				var $hamburger = jQuery(".hamburger");
-				  $hamburger.on("click", function(e) {
-				    $hamburger.toggleClass("is-active");
-				    $navMenuCont = jQuery(jQuery(this).data('target'));
-				    $navMenuCont.animate({'width':'toggle'}, 250);
-				  });
-				</script>
-				<div class="row">
-					<div class="col">
-					<?php
-						$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
-						$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
-						$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
+			<script type="text/javascript">
+			var $hamburger = jQuery(".hamburger");
+			  $hamburger.on("click", function(e) {
+			    $hamburger.toggleClass("is-active");
+			    $navMenuCont = jQuery(jQuery(this).data('target'));
+			    $navMenuCont.animate({'width':'toggle'}, 250);
+			  });
+			</script>
+			<div class="row">
+				<div class="col">
+				<?php
+					$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
+					$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
+					$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
 
-						$sub_menu = wp_nav_menu( array(
-							'theme_location' => 'sidebar-submenu',
-							'menu_class'      => 'sidebar-submenu-nav navbar-nav',
-							'menu_id' => 'sidebar-submenu',
-							'echo' => false
-							)
-						);
-
-					//The WordPress Menu goes here
-					wp_nav_menu(
-						array(
-							'theme_location'  => 'primary',
-							'container_class' => 'collapse navbar-collapse px-4',
-							'container_id'    => 'navbarNavDropdown',
-							'menu_class'      => 'navbar-nav',
-							'fallback_cb'     => '',
-							'menu_id'         => 'main-menu',
-							'walker'          => new WP_Bootstrap_Navwalker(),
-							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu 	/*. get_search_form(false)*/ ,
-
+					$sub_menu = wp_nav_menu( array(
+						'theme_location' => 'sidebar-submenu',
+						'menu_class'      => 'sidebar-submenu-nav navbar-nav',
+						'menu_id' => 'sidebar-submenu',
+						'echo' => false
 						)
 					);
 
+				//The WordPress Menu goes here
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'primary',
+						'container_class' => 'collapse navbar-collapse px-4',
+						'container_id'    => 'navbarNavDropdown',
+						'menu_class'      => 'navbar-nav',
+						'fallback_cb'     => '',
+						'menu_id'         => 'main-menu',
+						'walker'          => new WP_Bootstrap_Navwalker(),
+						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu 	/*. get_search_form(false)*/ ,
+
+					)
+				);
 
 
 
@@ -127,10 +125,10 @@ $current_cover = get_current_issue_image();
 
 
 
-					?>
 
-					</div>
+				?>
+
 				</div>
-			</nav><!-- .site-navigation -->
-		</div><!-- .container -->
+			</div>
+		</nav><!-- .site-navigation -->
 	</div><!-- .wrapper-navbar end -->

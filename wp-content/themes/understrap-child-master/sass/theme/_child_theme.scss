@@ -1,4 +1,7 @@
 
+#page {
+  padding-top: 5em;
+}
 .wrapper {
   &:not(#wrapper-footer) {
     padding: 0;
@@ -8,8 +11,7 @@
   z-index: 9999900000;
   background-color: $white;
   width: 100%;
-  border-bottom: 1px solid $brand-inverse;
-  box-shadow: 4px 0 6px 1px rgba(0,0,0,0.1);
+  box-shadow: 0 0 6px 1px rgba(0,0,0,.1);
 
   $nav-bar-slider-width: 250px;
 
