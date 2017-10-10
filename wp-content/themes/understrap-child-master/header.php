@@ -68,7 +68,7 @@ $current_cover = get_current_issue_image();
 
 			<nav class="container navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="row justify-content-center">
-					<div class='col-auto px-0'>
+					<div class='col-auto pl-3'>
 						<button class="hamburger hamburger--spin" type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="hamburger-box">
 							<span class="hamburger-inner"></span>
@@ -77,7 +77,7 @@ $current_cover = get_current_issue_image();
 
 					</div>
 					<div class='col-auto mx-auto my-auto'>
-						<a class="navbar-brand my-0"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" width="180" id="cityarts-header-logo"></a>
+						<a class="navbar-brand my-0"  rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 					</div>
 				</div><!-- end row -->
 
@@ -88,6 +88,14 @@ $current_cover = get_current_issue_image();
 			    $navMenuCont = jQuery(jQuery(this).data('target'));
 			    $navMenuCont.animate({'width':'toggle'}, 250);
 			  });
+
+				jQuery(window).scroll(function() {
+				  if (jQuery(document).scrollTop() > 50) {
+				    jQuery('#wrapper-navbar').addClass('shrink');
+				  } else {
+				    jQuery('#wrapper-navbar').removeClass('shrink');
+				  }
+				});
 			</script>
 			<div class="row">
 				<div class="col">

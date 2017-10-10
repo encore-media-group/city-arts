@@ -1,7 +1,10 @@
 
+
+
 #page {
   padding-top: 5em;
 }
+
 .wrapper {
   &:not(#wrapper-footer) {
     padding: 0;
@@ -11,18 +14,48 @@
   z-index: 9999900000;
   background-color: $white;
   width: 100%;
+  height: 5rem;
   box-shadow: 0 0 6px 1px rgba(0,0,0,.1);
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s;
 
   $nav-bar-slider-width: 250px;
 
-  nav {
+  #cityarts-header-logo {
+    width: 10rem;
+  }
 
-  .navbar-toggler-icon {
+  &.shrink {
+    height: 4rem;
+
+    nav {
+
+      padding-top: 0;
+
+      #cityarts-header-logo {
+          width: 8.5rem;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -ms-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s;
+        }
+      }
+    }
+
+    nav {
+
+    padding-bottom: 0;
+
+    .navbar-toggler-icon {
       background-color: $black;
     }
 
     #navbarNavDropdown {
-  transition: all 0.23s;// ease-in-out 0s;
+      transition: all 0.23s;// ease-in-out 0s;
       position: fixed;
       top: 5.4rem;
       background-color: $black;
@@ -61,8 +94,8 @@
       border-bottom: 3px solid $white;
      }
     }
+    }
   }
-}
 
 h1, h2, h3 {
   &.sidebar {
@@ -615,9 +648,3 @@ Further adapted for CA 9/2017
     display: inline;
   }
 }
-
-
-
-
-
-

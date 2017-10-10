@@ -9258,40 +9258,61 @@ h1.navbar-brand a:hover {
   z-index: 9999900000;
   background-color: #fff;
   width: 100%;
-  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1); }
-  #wrapper-navbar nav .navbar-toggler-icon {
-    background-color: #000; }
-  #wrapper-navbar nav #navbarNavDropdown {
-    transition: all 0.23s;
-    position: fixed;
-    top: 5.4rem;
-    background-color: #000;
-    color: #fff;
-    left: 0;
-    z-index: 1;
-    width: 250px;
-    /*example + never use min-width with this solution */
-    height: 1000px;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; }
-    #wrapper-navbar nav #navbarNavDropdown a {
-      color: #fff; }
-    #wrapper-navbar nav #navbarNavDropdown .navbar-nav {
-      padding-top: 0.3rem;
-      padding-bottom: 0.3rem;
-      width: 224px; }
-    #wrapper-navbar nav #navbarNavDropdown .nav-link {
-      font-family: "alda", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.25rem;
-      padding: .1rem 0; }
-    #wrapper-navbar nav #navbarNavDropdown .menu-cover-image .title a {
-      font-family: "ff-basic-gothic-web-pro";
-      font-size: 0.7em;
-      font-weight: bold;
-      padding: .3rem .3rem;
-      text-transform: uppercase; }
-    #wrapper-navbar nav #navbarNavDropdown .menu-bottom-section {
-      border-bottom: 3px solid #fff; }
+  height: 5rem;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s; }
+  #wrapper-navbar #cityarts-header-logo {
+    width: 10rem; }
+  #wrapper-navbar.shrink {
+    height: 4rem; }
+    #wrapper-navbar.shrink nav {
+      padding-top: 0; }
+      #wrapper-navbar.shrink nav #cityarts-header-logo {
+        width: 8.5rem;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s; }
+  #wrapper-navbar nav {
+    padding-bottom: 0; }
+    #wrapper-navbar nav .navbar-toggler-icon {
+      background-color: #000; }
+    #wrapper-navbar nav #navbarNavDropdown {
+      transition: all 0.23s;
+      position: fixed;
+      top: 5.4rem;
+      background-color: #000;
+      color: #fff;
+      left: 0;
+      z-index: 1;
+      width: 250px;
+      /*example + never use min-width with this solution */
+      height: 1000px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch; }
+      #wrapper-navbar nav #navbarNavDropdown a {
+        color: #fff; }
+      #wrapper-navbar nav #navbarNavDropdown .navbar-nav {
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        width: 224px; }
+      #wrapper-navbar nav #navbarNavDropdown .nav-link {
+        font-family: "alda", "Helvetica Neue", Arial, sans-serif;
+        font-size: 1.25rem;
+        padding: .1rem 0; }
+      #wrapper-navbar nav #navbarNavDropdown .menu-cover-image .title a {
+        font-family: "ff-basic-gothic-web-pro";
+        font-size: 0.7em;
+        font-weight: bold;
+        padding: .3rem .3rem;
+        text-transform: uppercase; }
+      #wrapper-navbar nav #navbarNavDropdown .menu-bottom-section {
+        border-bottom: 3px solid #fff; }
 
 h1.sidebar, h2.sidebar, h3.sidebar {
   font-family: "alternate-gothic-no-2-d";
@@ -9758,18 +9779,18 @@ Further adapted for CA 9/2017
     opacity: 0.7; }
 
 .hamburger-box {
-  width: 40px;
-  height: 24px;
+  width: 24px;
+  height: 15px;
   display: inline-block;
   position: relative; }
 
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: -2px; }
+  margin-top: -1.5px; }
   .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 40px;
-    height: 4px;
+    width: 24px;
+    height: 3px;
     background-color: #000;
     border-radius: 4px;
     position: absolute;
@@ -9780,9 +9801,9 @@ Further adapted for CA 9/2017
     content: "";
     display: block; }
   .hamburger-inner::before {
-    top: -10px; }
+    top: -6px; }
   .hamburger-inner::after {
-    bottom: -10px; }
+    bottom: -6px; }
 
 /*
    * Spin
