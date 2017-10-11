@@ -87,8 +87,7 @@ $current_cover = get_current_issue_image();
 				<div class="search-input-wrapper">
 					<form>
 				    <div class="input-group">
-				      <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
-				      <span class="input-group-addon" id="basic-addon1">Search</span>
+				      <?= get_search_form(false); ?>
 				    </div>
 				  </form>
 				</div>
@@ -113,14 +112,11 @@ $current_cover = get_current_issue_image();
 
 			var $search_button = jQuery(".search-nav-button");
 
-			$search_button.on("click", function() {
-			  jQuery( ".search-input-wrapper" ).slideToggle( "fast", function() {
-			    console.log('done');
-			  });
-			});
-
-
-
+				$search_button.on("click", function() {
+				  jQuery( ".search-input-wrapper" ).slideToggle( "fast", function() {
+				    console.log('done');
+				  });
+				});
 			</script>
 			<div class="row">
 				<div class="col">
@@ -147,7 +143,7 @@ $current_cover = get_current_issue_image();
 						'fallback_cb'     => '',
 						'menu_id'         => 'main-menu',
 						'walker'          => new WP_Bootstrap_Navwalker(),
-						'items_wrap' => ' [X] <ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu 	/*. get_search_form(false)*/ ,
+						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
 
 					)
 				);
