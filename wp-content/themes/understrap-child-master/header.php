@@ -68,7 +68,7 @@ $current_cover = get_current_issue_image();
 
 			<nav class="container navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="row justify-content-center">
-					<div class='col-auto pl-3'>
+					<div class='col-3 pl-3'>
 						<button class="hamburger hamburger--spin " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="hamburger-box">
 							<span class="hamburger-inner"></span>
@@ -80,8 +80,8 @@ $current_cover = get_current_issue_image();
 						<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 					</div>
 
-					<div class='col-auto pr-3'>
-						<div class="search-nav-button" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
+					<div class='col-3 pr-3'>
+						<div class="search-nav-button float-right" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
 					</div>
 				</div><!-- end row -->
 				<div class="search-input-wrapper">
