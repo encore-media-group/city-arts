@@ -9266,6 +9266,7 @@ h1.navbar-brand a:hover {
   -ms-transition: height 0.5s;
   transition: height 0.5s ease; }
   #wrapper-navbar #cityarts-header-logo {
+    width: 10rem;
     -webkit-transition: width 0.7s;
     -moz-transition: width 0.7s;
     -ms-transition: width 0.7s;
@@ -9284,10 +9285,28 @@ h1.navbar-brand a:hover {
     -o-transition: padding-top 0.8s ease;
     -ms-transition: padding-top 0.8s;
     transition: padding-top 0.8s ease; }
+    #wrapper-navbar nav .hamburger {
+      outline: none; }
     #wrapper-navbar nav .navbar-toggler-icon {
       background-color: #000; }
     #wrapper-navbar nav .navbar-brand {
-      padding-top: .5rem; }
+      padding-top: .5rem;
+      margin: 0; }
+    #wrapper-navbar nav .search-nav-button {
+      padding: 1.25rem 0;
+      width: 4em;
+      height: 4rem;
+      text-align: center; }
+      #wrapper-navbar nav .search-nav-button:hover {
+        color: #ed302f; }
+    #wrapper-navbar nav .search-input-wrapper {
+      display: none; }
+      #wrapper-navbar nav .search-input-wrapper input[type=text] {
+        width: 100%;
+        height: 2.5rem;
+        color: #000;
+        border: 2px solid #000;
+        font-family: "alda", "Helvetica Neue", Arial, sans-serif; }
     #wrapper-navbar nav #navbarNavDropdown {
       transition: all 0.2s;
       position: fixed;
