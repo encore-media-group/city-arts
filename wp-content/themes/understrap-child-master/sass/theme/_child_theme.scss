@@ -68,8 +68,6 @@
 
     .search-nav-button {
       padding: 1.25rem 0;
-     // width: 4em;
-     // height: 4rem;
       text-align: center;
 
       &:hover {
@@ -291,6 +289,12 @@ h1, h2, h3 {
   .item-730x487-vertical .item-content-container {
     background-color: $light-pink;
   }
+}
+
+
+.item-730x487-horizontal,
+.item-730x487-vertical {
+  min-width: 100%;
 }
 
 .item-730x487-width {

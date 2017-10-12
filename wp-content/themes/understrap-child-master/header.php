@@ -53,7 +53,32 @@ $current_cover = get_current_issue_image();
 		});
 	</script>
 	<!-- end google ad script -->
+	<script type="text/javascript">
+		jQuery(function() {
+			var $hamburger = jQuery(".hamburger");
+		  $hamburger.on("click", function(e) {
+		    $hamburger.toggleClass("is-active");
+		    $navMenuCont = jQuery(jQuery(this).data('target'));
+		    $navMenuCont.animate({'width':'toggle'}, 250);
+		  });
 
+			var $wrappeNavbar = jQuery('#wrapper-navbar');
+			jQuery(window).scroll(function() {
+			  if (jQuery(document).scrollTop() > 2) {
+			    $wrappeNavbar.addClass('shrink');
+			  } else {
+			    $wrappeNavbar.removeClass('shrink');
+			  }
+			});
+
+			var $search_button = jQuery(".search-nav-button");
+			$search_button.on("click", function() {
+			  jQuery( ".search-input-wrapper" ).slideToggle( "fast", function() {
+			    console.log('done');
+			  });
+					});
+			});
+	</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -66,58 +91,30 @@ $current_cover = get_current_issue_image();
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
 		'understrap' ); ?></a>
 
-			<nav class="container navbar navbar-expand-md navbar-dark bg-dark">
-				<div class="row justify-content-center">
-					<div class='col-3 pl-3'>
-						<button class="hamburger hamburger--spin " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="hamburger-box">
-							<span class="hamburger-inner"></span>
-							</span>
-						</button>
+		<nav class="container navbar navbar-expand-md navbar-dark bg-dark">
+			<div class="row">
+				<div class='col-3 '>
+					<button class="hamburger hamburger--spin " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+						</span>
+					</button>
 
-					</div>
-					<div class='col-auto mx-auto my-auto'>
-						<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
-					</div>
-
-					<div class='col-3 pr-3'>
-						<div class="search-nav-button float-right" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
-					</div>
-				</div><!-- end row -->
-				<div class="search-input-wrapper">
-					<form>
-				    <div class="input-group">
-				      <?= get_search_form(false); ?>
-				    </div>
-				  </form>
+				</div>
+				<div class='col text-center'>
+					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 				</div>
 
+				<div class='col-3 '>
+					<div class="search-nav-button float-right" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
+				</div>
+			</div><!-- end row -->
+			<div class="row search-input-wrapper">
+				<div class="col-12">
+			      <?= get_search_form(false); ?>
+			   </div>
+			</div>
 
-			<script type="text/javascript">
-			var $hamburger = jQuery(".hamburger");
-
-			  $hamburger.on("click", function(e) {
-			    $hamburger.toggleClass("is-active");
-			    $navMenuCont = jQuery(jQuery(this).data('target'));
-			    $navMenuCont.animate({'width':'toggle'}, 250);
-			  });
-
-				jQuery(window).scroll(function() {
-				  if (jQuery(document).scrollTop() > 2) {
-				    jQuery('#wrapper-navbar').addClass('shrink');
-				  } else {
-				    jQuery('#wrapper-navbar').removeClass('shrink');
-				  }
-				});
-
-			var $search_button = jQuery(".search-nav-button");
-
-				$search_button.on("click", function() {
-				  jQuery( ".search-input-wrapper" ).slideToggle( "fast", function() {
-				    console.log('done');
-				  });
-				});
-			</script>
 			<div class="row">
 				<div class="col">
 				<?php
