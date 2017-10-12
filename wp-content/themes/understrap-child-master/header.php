@@ -27,6 +27,8 @@ $current_cover = get_current_issue_image();
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
 	<?php wp_head(); ?>
 	<!-- google ad script -->
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/slideout.min.js"></script>
+
 	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 	<script>
 		var googletag = googletag || {};
@@ -58,8 +60,6 @@ $current_cover = get_current_issue_image();
 			var $hamburger = jQuery(".hamburger");
 		  $hamburger.on("click", function(e) {
 		    $hamburger.toggleClass("is-active");
-		    $navMenuCont = jQuery(jQuery(this).data('target'));
-		    $navMenuCont.animate({'width':'toggle'}, 250);
 		  });
 
 			var $wrappeNavbar = jQuery('#wrapper-navbar');
@@ -76,25 +76,101 @@ $current_cover = get_current_issue_image();
 			  jQuery( ".search-input-wrapper" ).slideToggle( "fast", function() {
 			    console.log('done');
 			  });
-					});
 			});
+		});
 	</script>
+	<script type="text/javascript">
+		jQuery(function() {
+      var slideout = new Slideout({
+        'panel': document.getElementById('page'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'tolerance': 70
+      });
+
+      // Toggle button
+      document.querySelector('.toggle-button').addEventListener('click', function() {
+        slideout.toggle();
+      });
+
+      var fixed = document.querySelector('.fixed');
+
+			slideout.on('translate', function(translated) {
+			  fixed.style.transform = 'translateX(' + translated + 'px)';
+			});
+
+			slideout.on('beforeopen', function () {
+			  fixed.style.transition = 'transform 300ms ease';
+			  fixed.style.transform = 'translateX(256px)';
+			});
+
+			slideout.on('beforeclose', function () {
+			  fixed.style.transition = 'transform 300ms ease';
+			  fixed.style.transform = 'translateX(0px)';
+			});
+
+			slideout.on('open', function () {
+			  fixed.style.transition = '';
+			});
+
+			slideout.on('close', function () {
+			  fixed.style.transition = '';
+			});
+
+
+    });
+</script>
 </head>
 
 <body <?php body_class(); ?>>
 
-<div class="hfeed site" id="page">
+<!-- the menu -->
+<div id="menu" class="container">
+	<div class="row">
+		<div class="col">
+		<?php
+			$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
+			$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
+			$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
 
-<!-- ******************* The Navbar Area ******************* -->
-	<div class="wrapper-fluid wrapper-navbar fixed-top" id="wrapper-navbar">
+			$sub_menu = wp_nav_menu( array(
+				'theme_location' => 'sidebar-submenu',
+				'menu_class'      => 'sidebar-submenu-nav navbar-nav',
+				'menu_id' => 'sidebar-submenu',
+				'echo' => false
+				)
+			);
+
+		//The WordPress Menu goes here
+		wp_nav_menu(
+			array(
+				'theme_location'  => 'primary',
+				'container_class' => 'px-4',
+				'container_id'    => 'navbarNavDropdown',
+				'menu_class'      => 'navbar-nav',
+				'fallback_cb'     => '',
+				'menu_id'         => 'main-menu',
+				'walker'          => new WP_Bootstrap_Navwalker(),
+				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
+
+			)
+		);
+
+		?>
+		</div>
+	</div>
+</div><!-- end of the menu -->
+
+	<!--start of the nav-->
+	<div class="wrapper-fluid wrapper-navbar fixed" id="wrapper-navbar">
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
 		'understrap' ); ?></a>
 
-		<nav class="container navbar navbar-expand-md navbar-dark bg-dark">
+		<nav  class="container navbar">
 			<div class="row">
 				<div class='col-3 '>
-					<button class="hamburger hamburger--spin " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<button class="hamburger hamburger--spin toggle-button " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
 						</span>
@@ -102,7 +178,7 @@ $current_cover = get_current_issue_image();
 
 				</div>
 				<div class='col text-center'>
-					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="/wp-content/themes/understrap-child-master/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
+					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="<?= get_stylesheet_directory_uri() ?>/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 				</div>
 
 				<div class='col-3 '>
@@ -115,39 +191,10 @@ $current_cover = get_current_issue_image();
 			   </div>
 			</div>
 
-			<div class="row">
-				<div class="col">
-				<?php
-					$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
-					$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
-					$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
-
-					$sub_menu = wp_nav_menu( array(
-						'theme_location' => 'sidebar-submenu',
-						'menu_class'      => 'sidebar-submenu-nav navbar-nav',
-						'menu_id' => 'sidebar-submenu',
-						'echo' => false
-						)
-					);
-
-				//The WordPress Menu goes here
-				wp_nav_menu(
-					array(
-						'theme_location'  => 'primary',
-						'container_class' => 'collapse navbar-collapse px-4',
-						'container_id'    => 'navbarNavDropdown',
-						'menu_class'      => 'navbar-nav',
-						'fallback_cb'     => '',
-						'menu_id'         => 'main-menu',
-						'walker'          => new WP_Bootstrap_Navwalker(),
-						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
-
-					)
-				);
-
-				?>
-
-				</div>
-			</div>
 		</nav><!-- .site-navigation -->
 	</div><!-- .wrapper-navbar end -->
+<div class="hfeed site" id="page">
+
+
+
+
