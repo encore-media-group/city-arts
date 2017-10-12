@@ -19,7 +19,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="row px-3 d-flex justify-content-around">
 				<div class="col-12 col-sm-auto">
 					<h2>NEWSLETTERS</h2>
-
 					<!-- Begin MailChimp Signup Form -->
 					<div id="mc_embed_signup-footer">
 						<form action="//encoremediagroup.us4.list-manage.com/subscribe/post?u=21f8fede41bd5e2c87aa9504b&amp;id=7d8b6778a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -46,7 +45,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 								<!--/div--> <!-- #mc_embed_signup_scroll -->
 						</form>
 					</div> <!-- #mc_embed_signup -->
-
 				</div>
 				<div class="col-12 col-sm-auto">
 					<h2>MAGAZINE</h2>
@@ -76,9 +74,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<li class="px-2"><a href="https://www.facebook.com/cityartsmagazine/" rel="noopener"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
 						<li class="px-2"><a href="https://www.instagram.com/city_arts_magazine" rel="noopener"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
 						<li class="px-2"><a href="https://soundcloud.com/cityartsmagazine" rel="noopener"><i class="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a></li>
-
 					</ul>
-
 				</div>
 			</div>
 
@@ -98,14 +94,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div><!--col end -->
 
 			</div><!-- row end -->
-
 		</div><!-- container end -->
 
 	</div><!-- wrapper end -->
 
 </div><!-- #page -->
 
-<?php wp_footer(); ?>
+<?php
+// wp_footer();
+?>
 
 </body>
 

@@ -75,14 +75,14 @@ endif;
 
 </div><!-- Container end -->
 
-<divi class="container">
+<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-auto">
 		<!-- The pagination component -->
 		<?php understrap_pagination(); ?>
 		</div>
 	</div>
-</divi>
+</div>
 
 </div><!-- Wrapper end -->
 

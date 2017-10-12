@@ -120,32 +120,26 @@ $the_query = new WP_Query(array(
 							$count++;
 						endwhile;
 						wp_reset_postdata();
-						echo "</div><!-- end row -->";
-
-					else :
-						get_template_part( 'loop-templates/content', 'none' );
 					endif;
 					?>
 
 				</div><!--row-->
 			</main><!-- #main -->
 
-		</div><!-- #primary -->
+		</div> <!-- .row -->
 
-	</div> <!-- .row -->
+	</div><!-- Container end -->
 
-</div><!-- Container end -->
-
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-auto">
-		<!-- The pagination component -->
-		<?php
-		understrap_pagination( $the_query );
-		?>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-auto">
+			<!-- The pagination component -->
+			<?php
+			understrap_pagination( $the_query );
+			?>
+			</div>
 		</div>
 	</div>
-</divi>
 
 </div><!-- Wrapper end -->
 

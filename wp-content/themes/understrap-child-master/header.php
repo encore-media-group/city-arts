@@ -88,7 +88,7 @@ $current_cover = get_current_issue_image();
         'tolerance': 70
       });
 
-      jQuery('.slideout-menu').show();
+      jQuery('.slideout-menu').removeAttr('style');
 
       // Toggle button
       document.querySelector('.toggle-button').addEventListener('click', function() {
@@ -123,45 +123,44 @@ $current_cover = get_current_issue_image();
     });
 </script>
 </head>
-
 <body <?php body_class(); ?>>
 
-<!-- the menu -->
-<div id="menu" class="container" style="display:none;">
-	<div class="row">
-		<div class="col pt-4">
-		<?php
-			$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
-			$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
-			$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
+	<!-- the menu -->
+	<div id="menu" class="container" style="display:none;">
+		<div class="row">
+			<div class="col pt-4">
+			<?php
+				$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
+				$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
+				$menu_cover_section .= '<div class="menu-bottom-section my-3"></div>';
 
-			$sub_menu = wp_nav_menu( array(
-				'theme_location' => 'sidebar-submenu',
-				'menu_class'      => 'sidebar-submenu-nav navbar-nav',
-				'menu_id' => 'sidebar-submenu',
-				'echo' => false
+				$sub_menu = wp_nav_menu( array(
+					'theme_location' => 'sidebar-submenu',
+					'menu_class'      => 'sidebar-submenu-nav navbar-nav',
+					'menu_id' => 'sidebar-submenu',
+					'echo' => false
+					)
+				);
+
+			//The WordPress Menu goes here
+			wp_nav_menu(
+				array(
+					'theme_location'  => 'primary',
+					'container_class' => 'px-4',
+					'container_id'    => 'navbarNavDropdown',
+					'menu_class'      => 'navbar-nav',
+					'fallback_cb'     => '',
+					'menu_id'         => 'main-menu',
+					'walker'          => new WP_Bootstrap_Navwalker(),
+					'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
+
 				)
 			);
 
-		//The WordPress Menu goes here
-		wp_nav_menu(
-			array(
-				'theme_location'  => 'primary',
-				'container_class' => 'px-4',
-				'container_id'    => 'navbarNavDropdown',
-				'menu_class'      => 'navbar-nav',
-				'fallback_cb'     => '',
-				'menu_id'         => 'main-menu',
-				'walker'          => new WP_Bootstrap_Navwalker(),
-				'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
-
-			)
-		);
-
-		?>
+			?>
+			</div>
 		</div>
-	</div>
-</div><!-- end of the menu -->
+	</div><!-- end of the menu -->
 
 	<!--start of the nav-->
 	<div class="wrapper-fluid wrapper-navbar fixed" id="wrapper-navbar">
@@ -195,7 +194,7 @@ $current_cover = get_current_issue_image();
 
 		</nav><!-- .site-navigation -->
 	</div><!-- .wrapper-navbar end -->
-<div class="hfeed site" id="page">
+	<div class="hfeed site" id="page">
 
 
 

@@ -76,14 +76,14 @@ $the_query = new WP_Query(array(
 
 </div><!-- Container end -->
 
-<divi class="container">
+<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-auto">
 		<!-- The pagination component -->
 		<?php understrap_pagination( $the_query ); ?>
 		</div>
 	</div>
-</divi>
+</div>
 
 </div><!-- Wrapper end -->
 
