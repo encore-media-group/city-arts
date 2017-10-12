@@ -108,13 +108,15 @@ function get_disciplines() {
 
 
 function add_search_form($items, $args) {
-
+/*
   if( $args->theme_location == 'sidebar-submenu' ){
     $items .= '<li class="menu-item">'
           .  get_search_form(false)
           . '</li>';
   }
+  */
   return $items;
+
 }
 
 function get_prev_next_issue_slugs( $date_to_use = '' ) {

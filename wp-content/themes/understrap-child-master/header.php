@@ -129,7 +129,7 @@ $current_cover = get_current_issue_image();
 <!-- the menu -->
 <div id="menu" class="container" style="display:none;">
 	<div class="row">
-		<div class="col">
+		<div class="col pt-4">
 		<?php
 			$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
 			$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
