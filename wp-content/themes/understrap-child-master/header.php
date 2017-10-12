@@ -88,6 +88,8 @@ $current_cover = get_current_issue_image();
         'tolerance': 70
       });
 
+      jQuery('.slideout-menu').show();
+
       // Toggle button
       document.querySelector('.toggle-button').addEventListener('click', function() {
         slideout.toggle();
@@ -125,7 +127,7 @@ $current_cover = get_current_issue_image();
 <body <?php body_class(); ?>>
 
 <!-- the menu -->
-<div id="menu" class="container">
+<div id="menu" class="container" style="display:none;">
 	<div class="row">
 		<div class="col">
 		<?php
