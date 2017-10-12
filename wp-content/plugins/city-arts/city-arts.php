@@ -202,6 +202,7 @@ function secondary_feature_image_shortcode() {
       $cover_image['src'] = wp_get_attachment_image_url( $image['id'], $size );
       $cover_image['srcset'] = wp_get_attachment_image_srcset( $image['id'], $size );
       $cover_image['sizes'] = '(max-width: 46em) 100vw, 540px';
+      $cover_image['style'] = 'max-width: 100%;height: auto;';
 
       $output = sprintf( $wrapper, build_img_tag( $cover_image ) , $caption . " " . $description );
     }
@@ -235,6 +236,7 @@ function get_single_issue_cover( $post_id ) {
       $cover_image['srcset'] = wp_get_attachment_image_srcset( $image['id'], $size );
       $cover_image['class'] = 'cover-story-image';
       $cover_image['sizes'] = '(max-width: 46em) 100vw, 231px';
+      $cover_image['style'] = 'max-width: 231px; height:auto;';
       $cover_image['alt'] = $issue_name;
     }
 
@@ -255,7 +257,7 @@ function build_img_tag( $image ) {
     $srcset = ( isset( $image['srcset'] )) ? $image['srcset'] : ' ';
     $class = ( isset( $image['class'] )) ? $image['class'] : ' ';
     $sizes = ( isset( $image['sizes'] )) ? $image['sizes'] : '';
-    $style = ( isset( $image['style'] )) ? $image['style'] : ' max-width: 100%; height:auto; ';
+    $style = ( isset( $image['style'] )) ? $image['style'] : ' ';
     $alt = ( isset( $image['alt'] )) ? $image['alt'] : '';
 
     $img_tag = '<img
