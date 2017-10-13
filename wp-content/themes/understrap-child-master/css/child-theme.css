@@ -9273,16 +9273,16 @@ h1.navbar-brand a:hover {
     -ms-transition: width 0.7s;
     -o-transition: width 0.7s;
     transition: width 0.7s ease; }
-    #wrapper-navbar #cityarts-header-logo.fixed {
-      position: fixed;
-      backface-visibility: hidden;
-      z-index: 2; }
-    #wrapper-navbar #cityarts-header-logo.shrink {
-      height: 3.5rem; }
-      #wrapper-navbar #cityarts-header-logo.shrink nav {
-        padding-top: 0; }
-        #wrapper-navbar #cityarts-header-logo.shrink nav #cityarts-header-logo {
-          width: 8.8rem; }
+  #wrapper-navbar.fixed {
+    position: fixed;
+    backface-visibility: hidden;
+    z-index: 2; }
+  #wrapper-navbar.shrink {
+    height: 3.5rem; }
+    #wrapper-navbar.shrink nav {
+      padding-top: 0; }
+      #wrapper-navbar.shrink nav #cityarts-header-logo {
+        width: 8.8rem; }
   #wrapper-navbar nav {
     padding-bottom: 0;
     -webkit-transition: padding-top 0.8s ease;

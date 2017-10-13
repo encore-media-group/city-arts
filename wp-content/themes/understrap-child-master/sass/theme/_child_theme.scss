@@ -30,22 +30,21 @@
     -ms-transition: width 0.7s;
     -o-transition: width 0.7s;
     transition: width 0.7s ease;
+  }
+  &.fixed {
+    position: fixed;
+    backface-visibility: hidden;
+    z-index: 2;
+  }
 
-    &.fixed {
-      position: fixed;
-      backface-visibility: hidden;
-      z-index: 2;
-    }
+  &.shrink {
+    height: 3.5rem;
 
-    &.shrink {
-      height: 3.5rem;
+    nav {
+      padding-top: 0;
 
-      nav {
-        padding-top: 0;
-
-        #cityarts-header-logo {
-            width: 8.8rem;
-        }
+      #cityarts-header-logo {
+          width: 8.8rem;
       }
     }
   }

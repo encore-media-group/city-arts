@@ -170,7 +170,7 @@ $current_cover = get_current_issue_image();
 
 		<nav  class="container navbar">
 			<div class="row">
-				<div class='col-3 '>
+				<div class="col-3 px-sm-0">
 					<button class="hamburger hamburger--spin toggle-button " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
