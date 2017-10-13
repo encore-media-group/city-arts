@@ -73,7 +73,9 @@ $the_query = new WP_Query(array(
 
 						<?php elseif ( $paged < 2 && !$is_discipline_archive ) : ?>
 							<header class="page-header row">
-								<h2 class="col-12 page-title pb-4 sidelines"> <?php single_cat_title() ?> </h2>
+								<div class="col-12">
+									<h2 class="page-title pb-4 sidelines"> <?php single_cat_title() ?> </h2>
+								</div>
 								<div class="col-12">
 									<div class="row justify-content-center">
 										<?php the_archive_description( '<div class="col-12 col-lg-10 pb-4 taxonomy-description">', '</div>' ); ?>
