@@ -331,15 +331,29 @@ function ca_load_widgets() {
 }
 
 function ca_add_image_sizes() {
-  add_image_size( 'ca-2000x1333', 2000, 1333, true );
-  add_image_size( 'ca-1140-760', 1140, 760, true );
-  add_image_size( 'ca-730-487', 730, 487, true);
+
   add_image_size( 'ca-730xauto', 730, 9999, true);
-  add_image_size( 'ca-540x360', 540, 360, true );
   add_image_size( 'ca-350x454', 350, 454, true );
+  add_image_size( 'ca-2000x1333', 2000, 1333, true );
+
+  add_image_size( 'ca-1140-760', 1140, 760, true );
+  add_image_size( 'ca-1140-760', 1140, 974, ['center', 'top']);
+
+  add_image_size( 'ca-730-487', 730, 487, true);
+
+  add_image_size( 'ca-540x360', 540, 360, true );
+  add_image_size( 'ca-540x720', 540, 720, ['center', 'top']);
+
   add_image_size( 'ca-320x213', 320, 213, true );
+  add_image_size( 'ca-320x426', 320, 426, ['center', 'top']);
+
   add_image_size( 'ca-255x170', 255, 170, true );
+  add_image_size( 'ca-255x340', 255, 340, ['center', 'top']);
+
+
   add_image_size( 'ca-160x107', 160, 107, true );
+  add_image_size( 'ca-160x208', 160, 208, ['center', 'top']);
+
 }
 
 
@@ -437,7 +451,7 @@ endif;
 /* increase the number of posts on the archive pages */
 function wpsites_query( $query ) {
 if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
- //       $query->set( 'posts_per_page', 12 );
+        $query->set( 'posts_per_page', 12 );
     }
 }
 

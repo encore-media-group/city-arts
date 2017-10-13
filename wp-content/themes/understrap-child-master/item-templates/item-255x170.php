@@ -13,12 +13,33 @@
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-255x170' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-255x170' );
 
+
+  $image_attachment_metadata = wp_get_attachment_metadata($thumbnail_id);
+  $img_width = isset($image_attachment_metadata['width']) ? $image_attachment_metadata['width'] : 0;
+  $img_height = isset($image_attachment_metadata['height']) ? $image_attachment_metadata['height'] : 0;
+
+  $img_orientation = 'landscape';
+
+if( $img_width < $img_height ) {
+  $img_orientation = 'portrait';
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-255x240' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-255x340' );
+} else {
+  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-255x170' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-255x170' );
+}
+
+
+
+
+
   $show_excerpt = isset( $show_excerpt ) ? $show_excerpt : false ;
 
 ?>
   <!-- item 255x170 -->
   <div class="row item-255x170 text-center">
-    <div class="col-12">
+    <div class="col-12" style="overflow: hidden;
+    max-height: 170px;">
       <img
        src="<?php echo esc_url( $img_src ); ?>"
        srcset="<?php echo esc_attr( $img_srcset ); ?>"
