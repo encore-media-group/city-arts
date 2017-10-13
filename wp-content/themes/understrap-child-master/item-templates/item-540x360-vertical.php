@@ -12,17 +12,21 @@
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-540x360' );
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-540x360' );
 
-  $item_css = isset($item_css) ? $item_css : ' col ';
+  $item_css = isset($item_css) ? $item_css : ' col px-0 px-sm-3 ';
 
 ?>
 <div class="  <? echo $item_css ?> item-540x360-vertical">
   <div class="row pb-md pb-4">
-    <div class="col">
+    <div class="col px-0">
       <div class="row">
         <div class="col-12">
           <img src="<?php echo esc_url( $img_src ); ?>"
            srcset="<?php echo esc_attr( $img_srcset ); ?>"
-           sizes="(max-width: 46em) 100vw, 540px"
+           sizes="
+           (max-width:577px) 730px,
+           (max-width:768px) 1024px,
+           (min-width:769px) 540px,
+           540px"
           class="img-fluid"
           style="max-width: 100%;height:auto;"
           alt="">
