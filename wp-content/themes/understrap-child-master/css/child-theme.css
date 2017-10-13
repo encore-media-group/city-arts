@@ -9573,6 +9573,9 @@ span.category-label {
     left: 0;
     margin-right: 0; } }
 
+.article-content p {
+  font-size: 1.25rem; }
+
 #single-wrapper #content article h1.entry-title,
 #page-wrapper #content article h1.entry-title {
   font-family: "ingra-condensed", Arial, "sans-serif";
