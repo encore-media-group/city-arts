@@ -32,59 +32,56 @@ $the_query = new WP_Query(array(
 ));
 
 ?>
-
 <div class="wrapper" id="archive-wrapper">
+  <main class="site-main" id="main">
+    <div class="container" id="content" tabindex="-1"><!-- top container -->
+  		  <div class="row pt-4">
+  			   <div class="col">
+      				<?php if ( have_posts() ) : ?>
+      					<header class="row page-header  w-md-75 mx-auto">
+      						<h2 class="col page-title pb-4 sidelines"> <?= $page_title; ?> </h2>
+      					</header><!-- .page-header -->
+      				<? endif; ?>
+  					 <div class="row">
+  					   <?php
+    						$count = 1;
+                while( $the_query->have_posts() ) : $the_query->the_post();
 
-	<div class="container" id="content" tabindex="-1">
+    							echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">';
+    							echo insert_cover_story_shortcode( [ 'show_article_list' => false ] );
+    							echo '</div>';
 
-		<div class="row pt-4">
-
-			<main class="col site-main" id="main">
-
-				<?php if ( have_posts() ) : ?>
-					<header class="page-header row w-md-75 mx-auto">
-						<h2 class="col page-title pb-4 sidelines"> <?= $page_title; ?> </h2>
-					</header><!-- .page-header -->
-				<? endif; ?>
-
-					<div class="row">
-					<?php
-						$count = 1;
-            while( $the_query->have_posts() ) : $the_query->the_post();
-
-							echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">';
-							echo insert_cover_story_shortcode( [ 'show_article_list' => false ] );
-							echo '</div>';
-
-							if ($count == 8 ):
-						 		echo '</div><!-- end row -->';
-				 				echo ad_728xlandscape_shortcode();
-						 		echo '<div class="row">';
+  							if ($count == 8 ): ?>
+              </div><!-- end row -->
+            </div><!--col-->
+          </div><!--row-->
+        </div><!--top container-->
+    <div class="container-fluid ad-container">
+        <?php echo ad_728xlandscape_shortcode(); ?>
+    </div>
+    <div class="container">
+      <div class="row pt-4">
+        <div class="col">
+          <div class="row">
+            <?php
 							endif;
-
 							$count++;
 						endwhile;
 						wp_reset_postdata();
 					?>
-					</div><!-- end row -->
-				</div><!--row-->
-			</main><!-- #main -->
-
-		</div><!-- #primary -->
-
-	</div> <!-- .row -->
-
-</div><!-- Container end -->
-
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-auto">
-		<!-- The pagination component -->
-		<?php understrap_pagination( $the_query ); ?>
-		</div>
-	</div>
-</div>
-
+					</div><!-- row -->
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container -->
+    <div class="container">
+    	<div class="row justify-content-center">
+    		<div class="col-auto">
+      		<!-- The pagination component -->
+      		<?php understrap_pagination( $the_query ); ?>
+    		</div>
+    	</div>
+    </div>
+  </main>
 </div><!-- Wrapper end -->
 
 <?php get_footer(); ?>
