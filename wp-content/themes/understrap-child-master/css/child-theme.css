@@ -9273,16 +9273,16 @@ h1.navbar-brand a:hover {
     -ms-transition: width 0.7s;
     -o-transition: width 0.7s;
     transition: width 0.7s ease; }
-  #wrapper-navbar.fixed {
-    position: fixed;
-    backface-visibility: hidden;
-    z-index: 2; }
-  #wrapper-navbar.shrink {
-    height: 3.5rem; }
-    #wrapper-navbar.shrink nav {
-      padding-top: 0; }
-      #wrapper-navbar.shrink nav #cityarts-header-logo {
-        width: 8.8rem; }
+    #wrapper-navbar #cityarts-header-logo.fixed {
+      position: fixed;
+      backface-visibility: hidden;
+      z-index: 2; }
+    #wrapper-navbar #cityarts-header-logo.shrink {
+      height: 3.5rem; }
+      #wrapper-navbar #cityarts-header-logo.shrink nav {
+        padding-top: 0; }
+        #wrapper-navbar #cityarts-header-logo.shrink nav #cityarts-header-logo {
+          width: 8.8rem; }
   #wrapper-navbar nav {
     padding-bottom: 0;
     -webkit-transition: padding-top 0.8s ease;
@@ -9310,45 +9310,37 @@ h1.navbar-brand a:hover {
         color: #000;
         border: 2px solid #000;
         font-family: "alda", "Helvetica Neue", Arial, sans-serif; }
-    #wrapper-navbar nav #navbarNavDropdown {
-      /*     transition: all 0.2s;// ease-in-out 0s;
-      position: fixed;
-      top: 0;
-      background-color: $black;
-      color: $white;
-      left: 0;
-      z-index: 1;
-      width:  $nav-bar-slider-width; //example + never use min-width with this solution
-      height: 1000px;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-*/ }
-      #wrapper-navbar nav #navbarNavDropdown a {
-        color: #fff; }
-      #wrapper-navbar nav #navbarNavDropdown .navbar-nav {
-        padding-top: 0.3rem;
-        padding-bottom: 0.3rem;
-        width: 224px; }
-      #wrapper-navbar nav #navbarNavDropdown .nav-link {
-        font-family: "alda", "Helvetica Neue", Arial, sans-serif;
-        font-size: 1.25rem;
-        padding: .1rem 0; }
-      #wrapper-navbar nav #navbarNavDropdown .menu-cover-image .title a {
-        font-family: "ff-basic-gothic-web-pro";
-        font-size: 0.7em;
-        font-weight: bold;
-        padding: .3rem .3rem;
-        text-transform: uppercase; }
-      #wrapper-navbar nav #navbarNavDropdown .menu-bottom-section {
-        border-bottom: 3px solid #fff; }
+
+#navbarNavDropdown a {
+  color: #fff; }
+
+#navbarNavDropdown .nav-link {
+  font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0; }
+
+#navbarNavDropdown .sidebar-submenu-nav a {
+  font-family: "ingra-condensed", Arial, "sans-serif";
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4; }
+
+#navbarNavDropdown .menu-cover-image .title a {
+  font-family: "ff-basic-gothic-web-pro";
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: .3rem .3rem;
+  text-transform: uppercase; }
+
+#navbarNavDropdown .menu-bottom-section {
+  border-bottom: 3px solid #fff; }
 
 h1.sidebar, h2.sidebar, h3.sidebar {
   font-family: "alternate-gothic-no-2-d";
   font-weight: 700;
   font-size: 2rem;
-  text-transform: uppercase; }
-
-.author {
   text-transform: uppercase; }
 
 #searchform .search-box {
@@ -9370,6 +9362,9 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   font-size: 1rem; }
   .contributors .by {
     font-weight: 300; }
+
+.author {
+  text-transform: uppercase; }
 
 .item-160x107 h3, .item-160x107 h4,
 .item-255x170 h3,
@@ -9448,15 +9443,10 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .ad-container,
 .ad-300x250,
 .item-540x360-horizontal .item-content-container,
+.item-540x360-vertical .inner-item-wrapper,
 .item-730x487-vertical .item-content-container,
 .item-730x487-horizontal .item-content-container,
 .cover-story-image-wrapper .item-content-container {
-  background-color: #f6f3f0; }
-
-.item-540x360-vertical .inner-item-wrapper {
-  background-color: #f6f3f0; }
-
-.item-540x360-vertical .inner-item-wrapper {
   background-color: #f6f3f0; }
 
 .see-it-this-week .item-730x487-vertical .item-content-container {

@@ -17,7 +17,6 @@
   box-shadow: 0 0 4px 0px rgba(0,0,0,.1);
   $nav-bar-slider-width: 250px;
 
-
   -webkit-transition:height 0.5s ease;
   -moz-transition:height 0.5s ease;
   -o-transition:height 0.5s ease;
@@ -31,25 +30,25 @@
     -ms-transition: width 0.7s;
     -o-transition: width 0.7s;
     transition: width 0.7s ease;
-  }
-  &.fixed {
-    position: fixed;
-    backface-visibility: hidden;
-    z-index: 2;
-  }
 
-  &.shrink {
-     height: 3.5rem;
+    &.fixed {
+      position: fixed;
+      backface-visibility: hidden;
+      z-index: 2;
+    }
 
-    nav {
-      padding-top: 0;
+    &.shrink {
+      height: 3.5rem;
 
-      #cityarts-header-logo {
-          width: 8.8rem;
+      nav {
+        padding-top: 0;
+
+        #cityarts-header-logo {
+            width: 8.8rem;
+        }
       }
     }
   }
-
   nav {
 
     padding-bottom: 0;
@@ -62,16 +61,13 @@
     .hamburger {
       outline: none;
     }
-
     .navbar-toggler-icon {
       background-color: $black;
     }
-
     .navbar-brand {
       padding-top: .5rem;
       margin: 0;
     }
-
     .search-nav-button {
       padding: 1rem 0;
       text-align: center;
@@ -80,7 +76,6 @@
         color: $red;
       }
     }
-
     .search-input-wrapper {
       display: none;
 
@@ -92,48 +87,43 @@
         font-family: $font-family-sans-serif;
       }
     }
+  }
+}
 
+#navbarNavDropdown {
 
-    #navbarNavDropdown {
- /*     transition: all 0.2s;// ease-in-out 0s;
-      position: fixed;
-      top: 0;
-      background-color: $black;
-      color: $white;
-      left: 0;
-      z-index: 1;
-      width:  $nav-bar-slider-width; //example + never use min-width with this solution
-      height: 1000px;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
-*/
-      a {
-        color: $white;
-      }
+  a {
+    color: $white;
+  }
 
-      .navbar-nav  {
-        padding-top: 0.3rem;
-        padding-bottom: 0.3rem;
-        width:  ($nav-bar-slider-width - 26px); //offset the pl-4 on the parent
-      }
-      .nav-link  {
-        font-family: $font-family-sans-serif;
-        font-size: $font-size-h5;
-        padding: .1rem 0;
-      }
-      .menu-cover-image {
-        .title a {
-        font-family: $card-meta-font-family;
-        font-size: $card-meta-font-size-small;
-        font-weight: bold;
-        padding: .3rem .3rem;
-        text-transform: uppercase;
-        }
-      }
-      .menu-bottom-section {
-        border-bottom: 3px solid $white;
-      }
+  .nav-link  {
+    font-family: $headings-font-family;
+    font-size: $font-size-h4;
+    font-weight: $font-weight-medium;
+    line-height: 1.5;
+    padding: 0;
+  }
+  .sidebar-submenu-nav {
+    a {
+      font-family: $subhead-font-family;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+      line-height: 1.4;
     }
+  }
+
+
+  .menu-cover-image {
+    .title a {
+    font-family: $card-meta-font-family;
+    font-size: $card-meta-font-size-small;
+    font-weight: bold;
+    padding: .3rem .3rem;
+    text-transform: uppercase;
+    }
+  }
+  .menu-bottom-section {
+    border-bottom: 3px solid $white;
   }
 }
 
@@ -146,9 +136,6 @@ h1, h2, h3 {
   }
 }
 
-.author {
-  text-transform: uppercase;
-}
 
 #searchform {
   .search-box {
@@ -177,6 +164,9 @@ h1, h2, h3 {
   .by {
     font-weight: $font-weight-normal;
   }
+}
+.author {
+  text-transform: uppercase;
 }
 
 .item-160x107,
@@ -275,20 +265,11 @@ h1, h2, h3 {
 .ad-container,
 .ad-300x250,
 .item-540x360-horizontal  .item-content-container,
+.item-540x360-vertical  .inner-item-wrapper,
 .item-730x487-vertical    .item-content-container,
 .item-730x487-horizontal  .item-content-container,
 .cover-story-image-wrapper .item-content-container {
   background-color: $gray-lightest;
-}
-
-.item-540x360-vertical  .inner-item-wrapper {
- background-color: $gray-lightest;
-
-}
-.item-540x360-vertical  {
-  .inner-item-wrapper {
- background-color: $gray-lightest;
-  }
 }
 
 .see-it-this-week {
@@ -390,7 +371,6 @@ span.category-label {
     h3.entry-excerpt {
       font-family: $headings-font-family;
       font-weight: $font-weight-medium;
-    //  font-size: $display1-size;
     }
 
     span.byline {
@@ -495,8 +475,8 @@ span.category-label {
 }
 
 .sidelines {
-    overflow: hidden;
-    text-align: center;
+  overflow: hidden;
+  text-align: center;
 }
 
 .sidelines:before,
@@ -585,17 +565,12 @@ Further adapted for CA 9/2017
 #mc_embed_signup,
 #mc_embed_signup-footer {
   label {
-    padding-left: 15px;
+  padding-left: 15px;
   text-indent: -15px;
-//    vertical-align: super;
-  //  display:block;
-  //  font-size:16px;
-  //  padding-bottom:10px;
-  //  font-weight:bold;
   }
 
   input[type='checkbox'] {
-      width: 13px;
+  width: 13px;
   height: 13px;
   padding: 0;
   margin:0;

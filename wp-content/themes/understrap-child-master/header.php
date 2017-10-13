@@ -128,7 +128,7 @@ $current_cover = get_current_issue_image();
 	<!-- the menu -->
 	<div id="menu" class="container" style="display:none;">
 		<div class="row">
-			<div class="col pt-4">
+			<div class="col pt-4 pb-5">
 			<?php
 				$menu_cover_section = '<div class="menu-cover-image mt-4">%1$s<div class="title">%2$s</div></div>';
 				$menu_cover_section = sprintf($menu_cover_section, $current_cover['image'], $current_cover['link'] );
@@ -178,11 +178,11 @@ $current_cover = get_current_issue_image();
 					</button>
 
 				</div>
-				<div class='col text-center'>
+				<div class="col text-center">
 					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="<?= get_stylesheet_directory_uri() ?>/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 				</div>
 
-				<div class='col-3 '>
+				<div class="col-3">
 					<div class="search-nav-button float-right" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
 				</div>
 			</div><!-- end row -->
