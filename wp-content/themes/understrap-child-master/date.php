@@ -26,35 +26,39 @@ endif;
 ?>
 
 <div class="wrapper" id="archive-wrapper">
-
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
-
-		<div class="row pt-4">
-
-			<main class="col site-main" id="main">
-
-				<?php if ( have_posts() ) : ?>
-					<header class="page-header row w-md-75 mx-auto">
-						<h2 class="col page-title pb-4 sidelines"> <?= $page_title; ?> </h2>
-					</header><!-- .page-header -->
-				<? endif; ?>
-
+	<main  class="site-main" id="main">
+		<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+			<div class="row pt-4">
+				<div class="col">
+						<?php if ( have_posts() ) : ?>
+							<header class="page-header row w-md-75 mx-auto">
+								<h2 class="col page-title pb-4 sidelines"> <?= $page_title; ?> </h2>
+							</header><!-- .page-header -->
+						<? endif; ?>
+						<div class="row">
+							<?php
+							$count = 1;
+	            while( have_posts() ) : the_post();
+								if ( $count == 1 && $paged < 2  ) :
+							 		get_template_part( 'item-templates/item', '730x487-horizontal' );
+							 		echo '</div><!-- end row --><div class="row pt-4">';
+								elseif ($count == 2 && $paged < 2  ):
+							 		get_template_part( 'item-templates/item', '320x213' );
+								elseif ($count == 3 && $paged < 2  ):
+							 		get_template_part( 'item-templates/item', '320x213' );
+							 		echo '</div><!-- end row -->';
+								 	?>
+				</div><!--col-->
+			</div><!--row-->
+		</div><!--container-->
+	 	<div class="container-fluid ad-container">
+			<?php echo ad_728xlandscape_shortcode(); ?>
+		</div>
+	 	<div class="container">
+	 		<div class="row pt-4">
+				<div class="col">
 					<div class="row">
-					<?php
-						$count = 1;
-            while( have_posts() ) : the_post();
-							if ( $count == 1 && $paged < 2  ) :
-						 		get_template_part( 'item-templates/item', '730x487-horizontal' );
-						 		echo '</div><!-- end row --><div class="row pt-4">';
-							elseif ($count == 2 && $paged < 2  ):
-						 		get_template_part( 'item-templates/item', '320x213' );
-							elseif ($count == 3 && $paged < 2  ):
-						 		get_template_part( 'item-templates/item', '320x213' );
-						 		echo '</div><!-- end row -->';
-				 				echo ad_728xlandscape_shortcode();
-						 		echo '<div class="row">';
-							else:
-						?>
+					 	<?php else: ?>
 							<div class="col-12 col-sm-6 col-lg-3">
 								<?php get_template_part( 'item-templates/item', '255x170' ); ?>
 							</div>
@@ -65,25 +69,19 @@ endif;
 						endwhile;
 						wp_reset_postdata();
 					?>
-					</div><!-- end row -->
-				</div><!--row-->
-			</main><!-- #main -->
-
-		</div><!-- #primary -->
-
-	</div> <!-- .row -->
-
-</div><!-- Container end -->
-
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-auto">
-		<!-- The pagination component -->
-		<?php understrap_pagination(); ?>
+					</div><!-- row -->
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container -->
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-auto">
+				<!-- The pagination component -->
+				<?php understrap_pagination(); ?>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-
+	</main><!-- #main -->
 </div><!-- Wrapper end -->
 
 <?php get_footer(); ?>
