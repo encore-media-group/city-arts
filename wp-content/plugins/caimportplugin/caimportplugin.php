@@ -56,7 +56,7 @@ function cityarts_import_admin_page() {
   //clean up functions - do last
 
     //THESE CANN ALL BE RUN AT ONCE
-///*
+/*
       remove_current_categories('city_neighborhood');
       remove_current_categories('venue_amenity');
       remove_current_categories('ad_groups');
@@ -79,10 +79,10 @@ function cityarts_import_admin_page() {
 
       reset_category_parent( 'style', 'lifestyle' );
       reset_category_parent( 'around-town', 'feature' );
-//*/
+*/
 
 
-/*
+///*
       reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
       reset_category_parent( 'poetry', '', 'Poetry' );// create category
 
@@ -125,7 +125,7 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'creative-writing', 'poetry');
       reset_category_parent( 'food', 'lifestyle');
       reset_category_parent( 'sponsored', '');
-    */
+ //   */
 
     // one_time_migrate_Features_to_feature();
     // delete_category('features');
