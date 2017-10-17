@@ -388,7 +388,7 @@ function update_post_relationship($new_wp_id, $new_wp_contributor_id) {
 /* not used anymore, we use a taxonomy instead.
 function sync_posts_to_writers() {
   global $wpdb;
-  $table = "tmp_article_export_10_17_2017";
+  $table = "tmp_article_export_10_16_2017";
   $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
   $count = 0;
       if ($myrows) {
@@ -417,7 +417,7 @@ function set_writers() {
   0. create temporary writer class
   1. pull from author post table and create new taxonomy
   2. associate those with the posts by running this query:
-  update tmp_author_post tap,  tmp_article_export_10_17_2017 tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid
+  update tmp_author_post tap,  tmp_article_export_10_16_2017 tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid
 
   3. rename writer to contributor
 */
@@ -484,7 +484,7 @@ function connect_posts_to_new_writers() {
 
   /* does the article import table have a wordpress id? */
   global $wpdb;
-  $table = "tmp_article_export_10_17_2017";
+  $table = "tmp_article_export_10_16_2017";
 
   $wpdb->query("update tmp_author_post tap,  ". $table . " tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid");
 
@@ -596,7 +596,7 @@ function set_articles($post_type) {
   global $wpdb;
 
 // RESET FOR ARTICLE OR FOR POST
-  $table = "tmp_article_export_10_17_2017";
+  $table = "tmp_article_export_10_16_2017";
  // $table = "tmp_page_export_7_10_2017";
   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_type=" . $post_type);
   $count = 0;
@@ -673,7 +673,7 @@ function set_issues() {
   $cover_story_cat_id = $cover_story_cat_id_obj->term_id;
 
   $issue_table = "tmp_issues_export_9_8_2017";
-  $article_table = "tmp_article_export_10_17_2017";
+  $article_table = "tmp_article_export_10_16_2017";
 
   $query =  "select  tae.nid,  tae.new_wp_id, tie.field_featured_article_target_id, replace( replace( replace(tie.wp_ready_postname, 'issues-', ''), 'seattle-', ''), 'tacoma-', '') `postnameclean` from " . $issue_table . " tie LEFT OUTER JOIN " . $article_table . " tae on tae.nid = tie.field_featured_article_target_id";
 
@@ -792,7 +792,7 @@ function set_features_to_issues() {
   tie.new_wp_category_id, tae.new_wp_id
   from field_revision_field_features fff
   left outer join tmp_issues_export_9_8_2017 tie on tie.nid = fff.entity_id
-  left outer join tmp_article_export_10_17_2017 tae on tae.nid = fff.field_features_target_id";
+  left outer join tmp_article_export_10_16_2017 tae on tae.nid = fff.field_features_target_id";
 
 //  $sql = "select * from tmp_attach_features_to_issues";
   echo $sql;
@@ -818,7 +818,7 @@ function set_features_to_issues() {
 function set_excerpts() {
   global $wpdb;
 
-  $table = "tmp_article_export_10_17_2017";
+  $table = "tmp_article_export_10_16_2017";
   $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
   $count = 0;
 
@@ -960,7 +960,7 @@ function set_wp_post_id_of_new_secondary_cats($my_cat_id, $tid) {
 function set_connection_between_posts_and_categories(){
 /*
   first, run this query in production to update the join table with wp posts:
-  Update tmp_genre_to_post_map_7_9_2017 gpm, tmp_article_export_10_17_2017 ae
+  Update tmp_genre_to_post_map_7_9_2017 gpm, tmp_article_export_10_16_2017 ae
     set gpm.wp_post_id = ae.new_wp_id
     where gpm.nid = ae.nid
 
