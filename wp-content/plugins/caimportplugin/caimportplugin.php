@@ -33,14 +33,15 @@ function cityarts_import_admin_page() {
    // the button has been pressed AND we've passed the security check
   //OLDset_contributors(); //do 1
   //set_articles('article'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-  set_writers();
-  //set_articles('pages'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
+  //set_writers();
+  set_articles('page'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
 
   //set_issues();
   //set_features_to_issues();
 
-  // !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
-  //sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
+  //OLD !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
+  //OLD sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
+
   //set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
@@ -599,7 +600,7 @@ function set_articles($post_type) {
 
 // RESET FOR ARTICLE OR FOR POST
   $table = "tmp_article_export_10_16_2017";
- // $table = "tmp_page_export_7_10_2017";
+  $table = "tmp_page_export_10_16_2017";
   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_type='" . $post_type . "'");
   $count = 0;
       if ($myrows) {
