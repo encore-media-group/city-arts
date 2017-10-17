@@ -419,14 +419,14 @@ function set_writers() {
   0. create temporary writer class
   1. pull from author post table and create new taxonomy
   2. associate those with the posts by running this query:
-  update tmp_author_post tap,  tmp_article_export_10_16_2017 tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid
+  update tmp_authors_10_17_17 tap,  tmp_article_export_10_16_2017 tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid
 
   3. rename writer to contributor
 */
 
 /* get the authors */
   global $wpdb;
-  $myrows = $wpdb->get_results( "SELECT * FROM tmp_author_post");
+  $myrows = $wpdb->get_results( "SELECT * FROM tmp_authors_10_17_17");
 
   if ($myrows) {
     foreach ( $myrows as $myrow ) {
@@ -475,7 +475,7 @@ function insert_writer( $writer, $drupal_id ) {
 function update_writer_with_cat_id( $cat_id, $drupal_id ) {
   if( !empty($cat_id) && !empty($drupal_id) ) {
     global $wpdb;
-    $wpdb->query('UPDATE tmp_author_post SET new_cat_id = ' . $cat_id .  ' WHERE nid = ' . $drupal_id);
+    $wpdb->query('UPDATE tmp_authors_10_17_17 SET new_cat_id = ' . $cat_id .  ' WHERE nid = ' . $drupal_id);
     echo 'success on insert of drupal_id: ' . $drupal_id . ' and wp_post_id' . $cat_id .'<br>';
   } else {
     echo 'error on insert of drupal_id: ' . $drupal_id . "<br>";
@@ -488,7 +488,7 @@ function connect_posts_to_new_writers() {
   global $wpdb;
   $table = "tmp_article_export_10_16_2017";
 
-  $wpdb->query("update tmp_author_post tap,  ". $table . " tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid");
+  $wpdb->query("update tmp_authors_10_17_17 tap,  ". $table . " tae set  tae.new_wp_writer_cat_id = tap.new_cat_id where  tae.field_author_target_id = tap.nid");
 
   $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
 
@@ -535,7 +535,7 @@ function set_contributors() {
   */
   /*
   global $wpdb;
-  $myrows = $wpdb->get_results( "SELECT * FROM tmp_author_post");
+  $myrows = $wpdb->get_results( "SELECT * FROM tmp_authors_10_17_17");
 
       if ($myrows) {
         foreach ( $myrows as $myrow )
@@ -584,7 +584,7 @@ function set_contributors() {
             //update body with correct content
             wp_update_post(array('ID' => $post_id, 'post_content' => $post_content));
 
-            $wpdb->query('UPDATE tmp_author_post SET new_wp_id = ' . $post_id .  ' WHERE nid = ' . $drupal_id);
+            $wpdb->query('UPDATE tmp_authors_10_17_17 SET new_wp_id = ' . $post_id .  ' WHERE nid = ' . $drupal_id);
             echo 'success on insert of drupal_id: ' . $drupal_id . ' and wp_post_id' . $post_id .'<br>';
           } else {
             echo 'error on insert of drupal_id: ' . $drupal_id . "<br>";
