@@ -45,11 +45,15 @@ function cityarts_import_admin_page() {
   //set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
-  set_excerpts(); //do 8 (this sets the short and long excerpts)
-  //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
+  //set_excerpts(); //do 8 (this sets the short and long excerpts)
+
+  // THIS CAN BE DONE ONCE THE IMAGES ARE MOVED OVER...
+  //sync_wp_post_id_to_image_inline_images(); (this is now an async task, do not run this function)
   //update_image_urls_in_posts(); // do 9
+
+
   //clean up functions - do last
-  /*
+
     //THESE CANN ALL BE RUN AT ONCE
 
       remove_current_categories('city_neighborhood');
@@ -75,7 +79,7 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'style', 'lifestyle' );
       reset_category_parent( 'around-town', 'feature' );
 
-      */
+
 
 /*
       reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
