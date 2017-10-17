@@ -43,8 +43,8 @@ function cityarts_import_admin_page() {
   //OLD sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
 
   //set_top_categories(); //do 4
-  set_secondary_categories(); //do 5
-  //set_parent_child_category_relationship(); //do 6
+  //set_secondary_categories(); //do 5
+  set_parent_child_category_relationship(); //do 6
   //set_excerpts(); //do 8 (this sets the short and long excerpts)
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
