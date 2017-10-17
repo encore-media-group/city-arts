@@ -675,7 +675,7 @@ function set_issues() {
   $cover_story_cat_id_obj = get_category_by_slug('cover-story');
   $cover_story_cat_id = $cover_story_cat_id_obj->term_id;
 
-  $issue_table = "tmp_issues_export_10_16_2017";
+  $issue_table = "tmp_issue_export_10_16_2017";
   $article_table = "tmp_article_export_10_16_2017";
 
   $query =  "select  tae.nid,  tae.new_wp_id, tie.field_featured_article_target_id, replace( replace( replace(tie.wp_ready_postname, 'issues-', ''), 'seattle-', ''), 'tacoma-', '') `postnameclean` from " . $issue_table . " tie LEFT OUTER JOIN " . $article_table . " tae on tae.nid = tie.field_featured_article_target_id";
@@ -794,7 +794,7 @@ function set_features_to_issues() {
   $sql = "select fff.entity_id, fff.field_features_target_id, fff.delta,
   tie.new_wp_category_id, tae.new_wp_id
   from field_revision_field_features fff
-  left outer join tmp_issues_export_10_16_2017 tie on tie.nid = fff.entity_id
+  left outer join tmp_issue_export_10_16_2017 tie on tie.nid = fff.entity_id
   left outer join tmp_article_export_10_16_2017 tae on tae.nid = fff.field_features_target_id";
 
 //  $sql = "select * from tmp_attach_features_to_issues";
