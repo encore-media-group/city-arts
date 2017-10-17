@@ -26,7 +26,7 @@ add_action( 'admin_menu', 'city_arts_website_menu' );
 
 /* register custom types */
 add_action( 'init', 'cptui_register_my_taxes' );
-add_action( 'init', 'cptui_register_my_taxes_writer' );
+//add_action( 'init', 'cptui_register_my_taxes_writer' );
 add_action( 'init', 'cptui_register_my_taxes_contributor' );
 
 
@@ -424,7 +424,7 @@ endif;
 
 function get_contributors_by_id( $post_id) {
   $html = '';
-  $writers = get_the_terms( $post_id, 'writer');
+  $writers = get_the_terms( $post_id, 'contributor');
 
   if( $writers ) {
     $count = 0;

@@ -36,13 +36,13 @@ function cityarts_import_admin_page() {
   //set_writers();
   //set_articles('page'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
 
-  set_issues();
-  set_features_to_issues();
+  //set_issues();
+//set_features_to_issues();
 
   //OLD !!!! before you run sync, you have to run an update sql statement against the article table with the post id for that author.
   //OLD sync_posts_to_writers();//do 3 NOTE: are you using the correct ACF value?? make sure you are!!!!
 
-  //set_top_categories(); //do 4
+  set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
   //set_excerpts(); //do 8 (this sets the short and long excerpts)
