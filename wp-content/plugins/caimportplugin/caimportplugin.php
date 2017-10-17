@@ -82,7 +82,7 @@ function cityarts_import_admin_page() {
 */
 
 
-///*
+/*
       reset_category_parent( 'creative-nonfiction', '', 'Creative Non-Fiction' );// create category
       reset_category_parent( 'poetry', '', 'Poetry' );// create category
 
@@ -125,14 +125,14 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'creative-writing', 'poetry');
       reset_category_parent( 'food', 'lifestyle');
       reset_category_parent( 'sponsored', '');
- //   */
+    */
 
-    // one_time_migrate_Features_to_feature();
-    // delete_category('features');
-    // shift_genre_bender();
-    // delete_category('genre-bender-2015');
-    // delete_category('genre-bender-2016');
-    // delete_category('genre-bender-2017');
+     one_time_migrate_Features_to_feature();
+     delete_category('features');
+     shift_genre_bender();
+     delete_category('genre-bender-2015');
+     delete_category('genre-bender-2016');
+     delete_category('genre-bender-2017');
 
     /*
     HOW TO IMPORT AND ATTACH IMAGES
