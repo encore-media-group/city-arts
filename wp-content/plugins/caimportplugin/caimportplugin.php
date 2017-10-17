@@ -126,14 +126,14 @@ function cityarts_import_admin_page() {
       reset_category_parent( 'food', 'lifestyle');
       reset_category_parent( 'sponsored', '');
     */
-
+/*
      one_time_migrate_Features_to_feature();
      delete_category('features');
      shift_genre_bender();
      delete_category('genre-bender-2015');
      delete_category('genre-bender-2016');
      delete_category('genre-bender-2017');
-
+*/
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -366,58 +366,7 @@ function sync_single_image_wp_post_id_to_image_inline_images($myrow){
   }
   return $output;
 }
-/* not used anymore, we use a taxonomy instead.
-function update_post_relationship($new_wp_id, $new_wp_contributor_id) {
-  //this really only needs to be run once.
-  $article_relationship = get_field( 'relationship', $new_wp_id );
-  $contributor_relationship = get_field( 'relationship', $new_wp_contributor_id );
 
-  $contributor_post = get_post($new_wp_contributor_id);
-  $article_post = get_post($new_wp_id);
-
-  if( !is_array($article_relationship) ):
-    $article_relationship = array();
-  endif;
-
-  if( !is_array($contributor_relationship) ):
-    $contributor_relationship = array();
-  endif;
-
-  array_push( $article_relationship, $contributor_post );
-  array_push( $contributor_relationship, $article_post );
-
-  update_field( 'field_5960730a4bb42', $article_relationship, $new_wp_id );
-  update_field( 'field_5960730a4bb42', $contributor_relationship, $new_wp_contributor_id );
-
-  echo "updating -> ";
-}
-*/
-/* not used anymore, we use a taxonomy instead.
-function sync_posts_to_writers() {
-  global $wpdb;
-  $table = "tmp_article_export_10_16_2017";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
-  $count = 0;
-      if ($myrows) {
-        foreach ( $myrows as $myrow )
-        {
-          $count++;
-          echo "# " . $count . " - ";
-          $new_wp_id = $myrow->new_wp_id;
-          $new_wp_contributor_id = $myrow->new_wp_contributor_id;
-          if($new_wp_contributor_id > 0) {
-            update_post_relationship($new_wp_id, $new_wp_contributor_id);
-          }
-          else { "not updating -> ";
-            echo 'new_wp_id: ' . $new_wp_id . " - " . $new_wp_contributor_id . "<br>";
-          }
-        }
-      }
-
-  //update contributor post with list of articles
-
-}
-*/
 function set_writers() {
 /* this is a new version of importing writers (that needs to be renmaed to contributors that makes them a taxonomy vs. a post
   .5 add new column to artist table that captures the taxonomoy id
@@ -518,87 +467,7 @@ function connect_posts_to_new_writers() {
   }
 
 }
-/* not used anymore, we use a taxonomy instead.
-function set_contributors() {
 
-  /*
-  this feature has a dependcy on using the pro version of Advanced Custom Fields.
-  1. Create a new post type of "contributor" -> there will be a version of this for inclusion in functions.php so that it's trackable and maintainable via code vs. plugin
-  2. Create a new field group called "Relationship" of Field Type "Relationship"
-  2.1  note, i will eventualy include this definition as a function in functions.php. it'll be faster and trackable via git as well
-  3. The rest of the settings are up to you, but i usually leave them as is.
-  4. export authors via mysql into table
-  5. import them using the this function. :)
-  6. run import articles function
-  7. run function to then update the table with the correct relationships.
-  8. this does the following--> it gets a list of authors from the tmp_author table, then loops through them and for each one
-  queries the join table to get the drupal post id, then, it looks up the wp_post_id from the tmp_articles table and updates the
-  meta table
-  ****
-  so for the contrinbutor wp_post_id -> update that meta_value for key "relationship" by adding the article wp_post_ids
-  ****
-  */
-  /*
-  global $wpdb;
-  $myrows = $wpdb->get_results( "SELECT * FROM tmp_authors_10_17_17");
-
-      if ($myrows) {
-        foreach ( $myrows as $myrow )
-        {
-          $drupal_id = $myrow->nid;
-          $post_title = wp_strip_all_tags($myrow->post_title);
-          $post_slug = slug($myrow->wp_ready_postname);
-          $post_date = $myrow->post_date;
-          $post_date_modified = $myrow->post_modified;
-          $post_content = $myrow->body_value;
-          $guid = 'http://71672.com/uncategorized/' . $post_slug;
-          //$post_category = [$writer_cat_id];
-
-          $array_to_insert = array(
-              'ID' => 0,
-              'comment_status'  =>  'closed',
-              'ping_status'   =>  'closed',
-              'post_author'   =>  1,
-              'guid' => $guid,
-              'post_date' => $post_date,
-              'post_date_gmt' => $post_date,
-              'post_modified' => $post_date_modified,
-              'post_modified_gmt' => $post_date_modified,
-              'post_category' => $post_category,
-              'post_title'    =>  $post_title,
-              'post_name'   =>  $post_slug,
-              'post_status'   =>  'publish',
-              'post_content' => 'temp content', //we do this as some post have empty content..you can't create a post with empty content, but you can update it to be empty.
-              'filter' => true,
-              'post_type'   =>  'contributor'
-            );
-
-        echo '<pre>' . var_dump($array_to_insert) . '</pre>';
-        echo "<p>";
-        //add_filter( 'wp_insert_post_empty_content', '__return_false', 100 );
-        $post_id = wp_insert_post($array_to_insert, true);
-
-        if (is_wp_error($post_id)) {
-          $errors = $post_id->get_error_messages();
-          foreach ($errors as $error) {
-            echo $error . "<br>";
-          }
-          echo "<p>";
-        } else {
-          if(!empty($post_id)){
-            //update body with correct content
-            wp_update_post(array('ID' => $post_id, 'post_content' => $post_content));
-
-            $wpdb->query('UPDATE tmp_authors_10_17_17 SET new_wp_id = ' . $post_id .  ' WHERE nid = ' . $drupal_id);
-            echo 'success on insert of drupal_id: ' . $drupal_id . ' and wp_post_id' . $post_id .'<br>';
-          } else {
-            echo 'error on insert of drupal_id: ' . $drupal_id . "<br>";
-          }
-        }
-      }
-    }
-}
-*/
 function set_articles($post_type) {
   global $wpdb;
 

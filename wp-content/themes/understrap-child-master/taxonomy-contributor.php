@@ -20,7 +20,6 @@ $term_id = $queried_object->term_id;
 
 $taxonomy_term = $taxonomy . '_' . $term_id;
 ?>
-
 <div class="wrapper" id="writer-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
