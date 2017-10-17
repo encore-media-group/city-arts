@@ -32,8 +32,10 @@ function cityarts_import_admin_page() {
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
   //OLDset_contributors(); //do 1
-  set_articles('article'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
-  //set_writers();
+  //set_articles('article'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
+  set_writers();
+  //set_articles('pages'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
+
   //set_issues();
   //set_features_to_issues();
 
@@ -501,7 +503,7 @@ function connect_posts_to_new_writers() {
 
       if( $new_wp_writer_cat_id > 0 ) {
 
-        wp_set_object_terms(  $new_wp_id , array( (int)$new_wp_writer_cat_id ), 'writer' , false );
+        wp_set_object_terms(  $new_wp_id , array( (int)$new_wp_writer_cat_id ), 'contributor' , false );
 
       } else {
         echo "not updating -> ";
