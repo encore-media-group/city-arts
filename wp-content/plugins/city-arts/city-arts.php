@@ -27,6 +27,8 @@ add_action( 'admin_menu', 'city_arts_website_menu' );
 /* register custom types */
 add_action( 'init', 'cptui_register_my_taxes' );
 add_action( 'init', 'cptui_register_my_taxes_writer' );
+add_action( 'init', 'cptui_register_my_taxes_contributor' );
+
 add_action( 'init', 'register_ca_custom_menus' );
 add_action( 'init', 'create_private_homepage_tax' );
 add_action( 'widgets_init', 'register_acf_field_group');

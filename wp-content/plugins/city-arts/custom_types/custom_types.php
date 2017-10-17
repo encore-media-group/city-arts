@@ -44,6 +44,35 @@ function cptui_register_my_taxes_writer() {
   );
   register_taxonomy( "writer", array( "post" ), $args );
 }
+function cptui_register_my_taxes_contributor() {
+
+  /**
+   * Taxonomy: Contributor.
+   */
+
+  $labels = array(
+    "name" => __( "Contributors", "understrap-child" ),
+    "singular_name" => __( "Contributor", "understrap-child" ),
+  );
+
+  $args = array(
+    "label" => __( "Contributors", "understrap-child" ),
+    "labels" => $labels,
+    "public" => true,
+    "hierarchical" => false,
+    "label" => "Contributors",
+    "show_ui" => true,
+    "show_in_menu" => true,
+    "show_in_nav_menus" => true,
+    "query_var" => true,
+    "rewrite" => array( 'slug' => 'contributor', 'with_front' => true, ),
+    "show_admin_column" => true,
+    "show_in_rest" => false,
+    "rest_base" => "",
+    "show_in_quick_edit" => true,
+  );
+  register_taxonomy( "contributor", array( "post" ), $args );
+}
 
 function cptui_register_my_taxes() {
   /**
@@ -188,13 +217,13 @@ function register_acf_field_group() {
     'description' => '',
   ));
 
-acf_add_local_field_group(array (
-  'key' => 'group_59c8aa677f994',
-  'title' => 'Writer Metadata',
-  'fields' => array (
+  acf_add_local_field_group(array (
+    'key' => 'group_59c8aa677f994',
+    'title' => 'Writer Metadata',
+    'fields' => array (
     array (
       'key' => 'field_59c8aa83fd64c',
-      'label' => 'writer image',
+      'label' => 'contributor image',
       'name' => 'writer_image',
       'type' => 'image',
       'instructions' => '',
@@ -263,52 +292,11 @@ acf_add_local_field_group(array (
         'value' => 'writer',
       ),
     ),
-  ),
-  'menu_order' => 0,
-  'position' => 'normal',
-  'style' => 'default',
-  'label_placement' => 'top',
-  'instruction_placement' => 'label',
-  'hide_on_screen' => '',
-  'active' => 1,
-  'description' => '',
-));
-
-acf_add_local_field_group(array (
-  'key' => 'group_59cbf002eb226',
-  'title' => 'Article Enchanced',
-  'fields' => array (
-    array (
-      'key' => 'field_59cbf02b11265',
-      'label' => 'Secondary Feature Image',
-      'name' => 'secondary_feature_image',
-      'type' => 'image',
-      'instructions' => '',
-      'required' => 0,
-      'conditional_logic' => 0,
-      'wrapper' => array (
-        'width' => '',
-        'class' => '',
-        'id' => '',
-      ),
-      'return_format' => 'array',
-      'preview_size' => 'ca-540x360',
-      'library' => 'all',
-      'min_width' => 540,
-      'min_height' => '',
-      'min_size' => '',
-      'max_width' => '',
-      'max_height' => '',
-      'max_size' => '',
-      'mime_types' => '',
-    ),
-  ),
-  'location' => array (
     array (
       array (
-        'param' => 'post_taxonomy',
+        'param' => 'taxonomy',
         'operator' => '==',
-        'value' => 'article_format:article-enhanced',
+        'value' => 'contributor',
       ),
     ),
   ),
@@ -320,7 +308,56 @@ acf_add_local_field_group(array (
   'hide_on_screen' => '',
   'active' => 1,
   'description' => '',
-));
+  ));
+
+
+  acf_add_local_field_group(array (
+    'key' => 'group_59cbf002eb226',
+    'title' => 'Article Enchanced',
+    'fields' => array (
+      array (
+        'key' => 'field_59cbf02b11265',
+        'label' => 'Secondary Feature Image',
+        'name' => 'secondary_feature_image',
+        'type' => 'image',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array (
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'return_format' => 'array',
+        'preview_size' => 'ca-540x360',
+        'library' => 'all',
+        'min_width' => 540,
+        'min_height' => '',
+        'min_size' => '',
+        'max_width' => '',
+        'max_height' => '',
+        'max_size' => '',
+        'mime_types' => '',
+      ),
+    ),
+    'location' => array (
+      array (
+        array (
+          'param' => 'post_taxonomy',
+          'operator' => '==',
+          'value' => 'article_format:article-enhanced',
+        ),
+      ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => 1,
+    'description' => '',
+  ));
 
 
   endif;
