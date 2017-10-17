@@ -32,7 +32,7 @@ function cityarts_import_admin_page() {
   if (isset($_POST['import_button']) && check_admin_referer('import_button_clicked')) {
    // the button has been pressed AND we've passed the security check
   //OLDset_contributors(); //do 1
-  set_articles('post'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
+  set_articles('article'); //do 2 NOTE: ADD ADDITION OF PAGES- TODO
   //set_writers();
   //set_issues();
   //set_features_to_issues();
