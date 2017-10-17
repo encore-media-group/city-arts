@@ -821,7 +821,7 @@ function set_excerpts() {
   global $wpdb;
 
   $table = "tmp_article_export_10_16_2017";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
+  $myrows = $wpdb->get_results( "SELECT new_wp_id, field_long_teaser_value, field_short_teaser_value FROM " . $table . " where field_long_teaser_value is not null or field_short_teaser_value is not null");
   $count = 0;
 
   if ($myrows) {
@@ -834,7 +834,7 @@ function set_excerpts() {
 
       $array_to_update = array(
               'ID' => $post_id,
-              'post_excerpt' => $post_excerpt
+              'post_excerpt' => wp_strip_all_tags($post_excerpt)
               );
       echo "<pre>" . var_dump($array_to_update) . "</pre>";
 
@@ -849,7 +849,7 @@ function set_excerpts() {
       }
 
       //update custom property
-      import_meta_content( $post_id, 'post_short_teaser', $post_short_teaser );
+      import_meta_content( $post_id, 'post_short_teaser', wp_strip_all_tags($post_short_teaser) );
 
      }
   }
