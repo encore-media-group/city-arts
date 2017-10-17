@@ -219,7 +219,7 @@ function register_acf_field_group() {
 
   acf_add_local_field_group(array (
     'key' => 'group_59c8aa677f994',
-    'title' => 'Writer Metadata',
+    'title' => 'Contributor Metadata',
     'fields' => array (
     array (
       'key' => 'field_59c8aa83fd64c',
