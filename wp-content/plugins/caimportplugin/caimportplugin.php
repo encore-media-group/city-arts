@@ -45,7 +45,6 @@ function cityarts_import_admin_page() {
   //set_top_categories(); //do 4
   //set_secondary_categories(); //do 5
   //set_parent_child_category_relationship(); //do 6
-  //import pages by calling set_articles and update to be "pages" //do 7
   //set_excerpts(); //do 8 (this sets the short and long excerpts)
   //sync_wp_post_id_to_image_inline_images(); (this is now an asyn task, do not run this function)
   //update_image_urls_in_posts(); // do 9
