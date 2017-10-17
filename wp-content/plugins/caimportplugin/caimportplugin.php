@@ -598,7 +598,7 @@ function set_articles($post_type) {
 // RESET FOR ARTICLE OR FOR POST
   $table = "tmp_article_export_10_16_2017";
  // $table = "tmp_page_export_7_10_2017";
-  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_type=" . $post_type);
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_type='" . $post_type . "'");
   $count = 0;
       if ($myrows) {
         foreach ( $myrows as $myrow )
