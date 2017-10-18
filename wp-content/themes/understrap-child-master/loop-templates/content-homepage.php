@@ -221,7 +221,7 @@ wp_reset_postdata();
     </div>
     <div class="container mb-4 ">
       <div class="row">
-        <div class="col-9 col-sm-10 col-md-4 mx-auto mr-md-4 py-md-4 px-md-3" style="min-height: 100%;">
+        <div class="col-9 col-sm-10 col-12 col-md-4 mx-auto mr-md-4 py-md-4 px-md-3" style="min-height: 100%;">
            <?php get_template_part( 'item-templates/item', 'current' ); ?>
         </div>
         <div class="col-12 col-md">

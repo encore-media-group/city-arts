@@ -414,7 +414,19 @@ span.category-label {
       margin-right: 0;
     }
   }
+
 }
+
+@media (max-width: 350px) {
+  .ad-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ad-300x250 {
+    padding: 10px;
+  }
+}
+
 
 .article-content {
   p {
