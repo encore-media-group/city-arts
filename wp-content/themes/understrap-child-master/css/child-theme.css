@@ -9251,7 +9251,7 @@ h1.navbar-brand a:hover {
 #page {
   padding-top: 4rem; }
 
-.wrapper:not(#wrapper-footer), .wrapper:not(#error-404-wrapper) {
+.wrapper:not(#wrapper-footer) {
   padding: 0; }
 
 #wrapper-navbar {
