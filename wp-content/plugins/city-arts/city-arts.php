@@ -462,8 +462,6 @@ if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
 
 function load_issue_template( $template ) {
   if (is_category() && !is_feed()) {
-
-//    if (is_category( get_cached_cat_id_by_slug('issue') ) || cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
     //cat path
     if ( cat_is_ancestor_of( get_cached_cat_id_by_slug('issue') , get_query_var('cat'))) {
       $new_template = locate_template( array( 'archive-issue.php' ) );
@@ -489,7 +487,7 @@ function load_issue_template( $template ) {
       }
     }
     else {
-      $new_template = locate_template( array( 'archive-contributor.php' ) );
+      $new_template = locate_template( array( 'archive.php' ) );
       if ( '' != $new_template ) {
         return $new_template;
       }
