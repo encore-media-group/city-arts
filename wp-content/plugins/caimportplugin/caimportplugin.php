@@ -50,7 +50,7 @@ function cityarts_import_admin_page() {
 
   // THIS CAN BE DONE ONCE THE IMAGES ARE MOVED OVER...
   //sync_wp_post_id_to_image_inline_images(); (this is now an async task, do not run this function)
-  //update_image_urls_in_posts(); // do 9
+  update_image_urls_in_posts(); // do 9
 
 
   //clean up functions - do last
@@ -143,7 +143,7 @@ function cityarts_import_admin_page() {
       - run query to export slideshow
       - run query to export inline
       - then, import those two tables into the production enviroment
-      - then run synce_wp_post_id_to_image() which wil update the tables we imported with the related wp_id
+      - then run sync_wp_post_id_to_image() which wil update the tables we imported with the related wp_id
       - then do the import and attachment of those imagesavealpha(image, saveflag)
 
     */
@@ -190,7 +190,11 @@ function update_image_urls_in_posts() {
 
 function get_all_wp_posts() {
   global $wpdb;
-  $table = "wpsa_posts";
+  //CHANGE TABLE NAME BASED ON WHERE YOU ARE AT.
+
+//  $table = "wpsa_posts";
+  $table = "wpga_posts";
+
   $myrows = $wpdb->get_results( "SELECT * FROM " . $table . " where post_content !='' and post_status = 'publish'");// and id=18989");
   // limit 0, 5000000");
   return $myrows;
