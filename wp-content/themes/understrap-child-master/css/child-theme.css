@@ -9359,7 +9359,8 @@ h1.sidebar, h2.sidebar, h3.sidebar {
 .contributors {
   font-family: "ff-basic-gothic-web-pro";
   font-weight: 500;
-  font-size: 1rem; }
+  font-size: 1rem;
+  display: inline-block; }
   .contributors .by {
     font-weight: 300; }
 
@@ -9530,7 +9531,7 @@ span.category-label {
   font-weight: 500; }
 
 #single-enhanced-wrapper article span.byline {
-  display: block; }
+  display: inline-block; }
 
 #single-enhanced-wrapper article blockquote {
   font-family: "ff-basic-gothic-web-pro";

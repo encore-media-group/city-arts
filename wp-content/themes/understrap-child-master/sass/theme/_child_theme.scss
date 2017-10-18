@@ -159,7 +159,7 @@ h1, h2, h3 {
   font-family: $card-meta-font-family;
   font-weight: $font-weight-medium;
   font-size: $font-size-h6;
-
+  display: inline-block;
   .by {
     font-weight: $font-weight-normal;
   }
@@ -373,7 +373,7 @@ span.category-label {
     }
 
     span.byline {
-      display: block;
+      display: inline-block;
     }
 
     blockquote {
