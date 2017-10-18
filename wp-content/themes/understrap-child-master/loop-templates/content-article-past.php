@@ -35,6 +35,7 @@ if( $img_width < $img_height ) {
     img[src*="<?php echo basename($img_original_src) ?>"]:not(.new-image) {
       display: none;
     }
+    .article-content > img:first-of-type { display: none; }
   </style>
 <?php endif; ?>
   <div class="row">
