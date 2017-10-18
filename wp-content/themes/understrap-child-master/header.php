@@ -15,6 +15,16 @@ $current_cover = get_current_issue_image();
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3120102-3"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-3120102-3');
+	</script>
+	<!--end GA -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +84,6 @@ $current_cover = get_current_issue_image();
 			var $search_button = jQuery(".search-nav-button");
 			$search_button.on("click", function() {
 			  jQuery( ".search-input-wrapper" ).slideToggle( "fast", function() {
-			    console.log('done');
 			  });
 			});
 		});
