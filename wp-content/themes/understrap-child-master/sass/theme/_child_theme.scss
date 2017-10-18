@@ -349,6 +349,10 @@ span.category-label {
     font-weight: $font-weight-light;
 }
 
+span.byline {
+  display: inline-block;
+}
+
 #single-enhanced-wrapper {
   article {
     span.the-first-letter {
@@ -370,10 +374,6 @@ span.category-label {
     h3.entry-excerpt {
       font-family: $headings-font-family;
       font-weight: $font-weight-medium;
-    }
-
-    span.byline {
-      display: inline-block;
     }
 
     blockquote {
@@ -441,14 +441,6 @@ span.category-label {
         font-family: $subhead-font-family;
         font-weight: $font-weight-extra-light;
         font-size: $display4-size;
-      }
-
-      .updated-image:first-of-type {
-      //  display: none;
-      }
-
-      .updated-image:first-of-type + em {
-      //  display: none;
       }
 
       .entry-header {

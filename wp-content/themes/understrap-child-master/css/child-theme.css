@@ -9512,6 +9512,9 @@ span.category-label {
   color: #a18967;
   font-weight: 300; }
 
+span.byline {
+  display: inline-block; }
+
 #single-enhanced-wrapper article span.the-first-letter {
   display: inline-block;
   float: left;
@@ -9529,9 +9532,6 @@ span.category-label {
 #single-enhanced-wrapper article h3.entry-excerpt {
   font-family: "kepler-std-display", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
   font-weight: 500; }
-
-#single-enhanced-wrapper article span.byline {
-  display: inline-block; }
 
 #single-enhanced-wrapper article blockquote {
   font-family: "ff-basic-gothic-web-pro";
