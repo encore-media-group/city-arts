@@ -17,7 +17,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<div class="row px-3 d-flex justify-content-around">
-				<div class="col-12 col-sm-auto">
+				<div class="col-12 col-sm-auto mb-4">
 					<h2>NEWSLETTERS</h2>
 					<!-- Begin MailChimp Signup Form -->
 					<div id="mc_embed_signup-footer">
