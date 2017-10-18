@@ -9248,7 +9248,8 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
-#page {
+#page,
+#error-404-wrapper {
   padding-top: 4rem; }
 
 .wrapper:not(#wrapper-footer) {
