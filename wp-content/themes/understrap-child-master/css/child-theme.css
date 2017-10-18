@@ -9248,11 +9248,10 @@ h1.navbar-brand a:hover {
 .gallery-caption {
   display: block; }
 
-#page,
-#error-404-wrapper {
+#page {
   padding-top: 4rem; }
 
-.wrapper:not(#wrapper-footer) {
+.wrapper:not(#wrapper-footer), .wrapper:not(#error-404-wrapper) {
   padding: 0; }
 
 #wrapper-navbar {

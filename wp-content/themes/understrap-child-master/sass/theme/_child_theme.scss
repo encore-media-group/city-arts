@@ -1,10 +1,10 @@
-#page,
-#error-404-wrapper {
+#page {
   padding-top: 4rem;
 }
 
 .wrapper {
-  &:not(#wrapper-footer) {
+  &:not(#wrapper-footer),
+  &:not(#error-404-wrapper) {
     padding: 0;
   }
 }
