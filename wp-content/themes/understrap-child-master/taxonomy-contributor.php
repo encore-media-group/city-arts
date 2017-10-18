@@ -35,8 +35,11 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 							<div class="col my-auto">
 								<?
 								$twitter_slug = get_field('writer_twitter_slug', $queried_object );
-								echo ( isset( $twitter_slug ) ) ? sprintf( '<a href="https://twitter.com/%1$s" class="social-handle"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i> @%1$s</a>', $twitter_slug ) : '';
+								if( !empty( $twitter_slug ) ) {
+									echo ( isset( $twitter_slug ) ) ? sprintf( '<a href="https://twitter.com/%1$s" class="social-handle"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i> @%1$s</a>', $twitter_slug ) : '';
+								}
 								?>
+
 							</div>
 					</header><!-- .page-header -->
 
@@ -52,9 +55,9 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 										get_template_part( 'item-templates/item', 'display-writer-profile-image' );
 									?>
 								</div>
-								<? the_archive_description( '<div class="col-12 col-md-8 pb-4 writer-description">', '</div>' ); ?>
 						<?
 							endif;
+							the_archive_description( '<div class="col-12 col-md-8 pb-4 writer-description">', '</div>' );
 						?>
 					</div><!-- end row -->
 
