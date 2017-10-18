@@ -9353,8 +9353,10 @@ h1.sidebar, h2.sidebar, h3.sidebar {
   .social-handle .fa-twitter {
     color: #00aced; }
 
-.posted-on a {
-  color: #a18967; }
+.posted-on {
+  display: inline-block; }
+  .posted-on a {
+    color: #a18967; }
 
 .contributors {
   font-family: "ff-basic-gothic-web-pro";

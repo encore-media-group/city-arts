@@ -151,10 +151,13 @@ h1, h2, h3 {
   }
 }
 
-.posted-on
+.posted-on {
+  display: inline-block;
   a {
-  color: $orange;
+    color: $orange;
+  }
 }
+
 .contributors {
   font-family: $card-meta-font-family;
   font-weight: $font-weight-medium;
