@@ -382,7 +382,7 @@ function ca_alter_query( $query )
 {
     if ( $query->is_main_query() && ( $query->is_home() || $query->is_search() || $query->is_archive() )  )
     {
-        $query->set( 'orderby', 'modified' );
+        $query->set( 'orderby', 'published' );
         $query->set( 'order', 'asc' );
     }
 }
