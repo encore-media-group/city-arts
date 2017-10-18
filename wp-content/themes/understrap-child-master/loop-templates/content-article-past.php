@@ -8,6 +8,8 @@
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
+  $img_original_src = wp_get_attachment_image_url( $thumbnail_id, 'full' );
+
   $image_attachment_metadata = wp_get_attachment_metadata($thumbnail_id);
   $img_width = isset($image_attachment_metadata['width']) ? $image_attachment_metadata['width'] : 0;
   $img_height = isset($image_attachment_metadata['height']) ? $image_attachment_metadata['height'] : 0;
@@ -28,9 +30,9 @@ if( $img_width < $img_height ) {
 ?>
 <div class="px-md-0 container" id="content" tabindex="-1">
 
-<?php if( $img_src ) : ?>
+<?php if( $img_original_src ) : ?>
   <style type="text/css">
-    img[src*="<?php echo basename($img_src) ?>"]:not(.new-image) {
+    img[src*="<?php echo basename($img_original_src) ?>"]:not(.new-image) {
       display: none;
     }
   </style>
