@@ -60,11 +60,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<div class="col-12 col-sm-auto">
 					<h2>ABOUT</h2>
 					<ul>
-						<li><a href="/about">Masthead</a></li>
+						<li><a href="/about">About</a></li>
 						<li><a href="/contact">Contact</a></li>
-						<li><a href="/jobs">Jobs</a></li>
+						<li><a href="/jobs">Careers</a></li>
 						<li><a href="/terms-of-use">Terms &amp; Conditions</a></li>
-						<li><a href="/privacy">Privcay Policy</a></li>
+						<li><a href="/privacy">Privacy Policy</a></li>
 					</ul>
 				</div>
 				<div class="col-12 col-sm-auto">
