@@ -90,7 +90,7 @@ endwhile;
 wp_reset_postdata();
 
 $remaining_articles = new WP_Query([
-  'posts_per_page' => 10,
+  'posts_per_page' => 12,
   'orderby' => 'date',
   'order' => 'desc',
   'no_found_rows' => true,
@@ -100,13 +100,11 @@ $remaining_articles = new WP_Query([
 
 wp_reset_postdata();
 
-
 while( $remaining_articles->have_posts() ) : $remaining_articles->the_post();
   $used_ids[] = $post->ID;
 endwhile;
 $remaining_articles->rewind_posts();
 wp_cache_set( 'homepage-articles', $used_ids );
-
 
 
 /*
