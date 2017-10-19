@@ -42,7 +42,7 @@ class ca_top_articles_widget extends WP_Widget {
     $recent_posts = new WP_Query(array(
         'posts_per_page' => $post_show_count,
         'no_found_rows' => true,
-        'post__not_in' =>  $used_ids,
+        'post__in' =>  [30784, 32190, 7316, 7338, 7336],
         'orderby'        => 'date',
         'order' => 'desc',
         'post_status'    => 'publish',
