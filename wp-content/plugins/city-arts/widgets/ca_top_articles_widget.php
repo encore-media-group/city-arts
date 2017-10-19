@@ -36,7 +36,8 @@ class ca_top_articles_widget extends WP_Widget {
         'posts_per_page' => $post_show_count,
         'no_found_rows' => true,
         'post__not_in' => array($post_id),
-        'orderby'        => 'modified',
+        'orderby'        => 'date',
+        'order' => 'desc',
         'post_status'    => 'publish',
       )
     );
