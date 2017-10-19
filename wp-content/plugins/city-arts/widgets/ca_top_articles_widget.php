@@ -22,7 +22,13 @@ class ca_top_articles_widget extends WP_Widget {
     $show_numbers_checkbox = isset( $instance[ 'show_numbers_checkbox' ] ) ? true : false;
     $center_text_checkbox = isset( $instance[ 'center_text_checkbox' ] ) ? true : false;
 
+    $used_ids = [];
+    if( wp_cache_get( 'homepage-articles' ) != false ) :
+      $used_ids = wp_cache_get( 'homepage-articles' );
+    endif;
+
     echo $args['before_widget'];
+
     if ( ! empty( $title ) )
     echo $args['before_title'];
 
@@ -31,11 +37,12 @@ class ca_top_articles_widget extends WP_Widget {
 
     $current_post = get_queried_object();
     $post_id = $current_post ? $current_post->ID : null;
+    $used_ids[] = $post_id;
 
     $recent_posts = new WP_Query(array(
         'posts_per_page' => $post_show_count,
         'no_found_rows' => true,
-        'post__not_in' => array($post_id),
+        'post__not_in' =>  $used_ids,
         'orderby'        => 'date',
         'order' => 'desc',
         'post_status'    => 'publish',

@@ -90,15 +90,40 @@ endwhile;
 wp_reset_postdata();
 
 $remaining_articles = new WP_Query([
-  'posts_per_page' => 20,
+  'posts_per_page' => 10,
   'orderby' => 'date',
   'order' => 'desc',
   'no_found_rows' => true,
   'post__not_in' => $used_ids,
   'post_status'=> 'publish',
   ]);
+
 wp_reset_postdata();
 
+
+while( $remaining_articles->have_posts() ) : $remaining_articles->the_post();
+  $used_ids[] = $post->ID;
+endwhile;
+$remaining_articles->rewind_posts();
+wp_cache_set( 'homepage-articles', $used_ids );
+
+
+
+/*
+function get_cached_cat_id_by_slug( $slug ) {
+  $cache_key = $slug . "_id";
+  $cat_id = wp_cache_get( $cache_key );
+
+  if ( false === $cat_id ) {
+    $cat_obj = get_category_by_slug( $slug );
+    if( $cat_obj ) {
+      $cat_id = $cat_obj->term_id;
+      wp_cache_set( $cache_key, $cat_id );
+    }
+  }
+  return $cat_id;
+}
+*/
 ?>
 
 
