@@ -108,6 +108,7 @@ function get_disciplines() {
     'film',
     'dance',
     'comedy',
+    'theatre',
     'books-talks',
     'food-design',
     'food-style'
