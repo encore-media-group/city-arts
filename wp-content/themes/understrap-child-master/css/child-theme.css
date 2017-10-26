@@ -9576,14 +9576,14 @@ span.byline {
 .article-content p {
   font-size: 1.25rem; }
 
-.entry-content a, .article-content a {
+article .article-content a, article.page .entry-content a {
   background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), linear-gradient(#a18967, #a18967);
   background-size: .05em 1px,.05em 1px,1px 1px;
   background-repeat: no-repeat,no-repeat,repeat-x;
   text-shadow: 0.03em 0 #fff, -0.03em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff, 0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff, -0.12em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff;
   background-position: 0 95%,100% 95%,0 95%; }
 
-.entry-content a:hover, .article-content a:hover {
+article .article-content a:hover, article.page .entry-content a:hover {
   text-decoration: none;
   background: #ece7e1;
   background-position: 0 0;
@@ -9602,6 +9602,11 @@ span.byline {
 #single-wrapper #content article .entry-meta,
 #page-wrapper #content article .entry-meta {
   padding-bottom: 1em; }
+
+#single-wrapper #content article h5, #single-wrapper #content article h6,
+#page-wrapper #content article h5,
+#page-wrapper #content article h6 {
+  font-family: "ff-basic-gothic-web-pro"; }
 
 #wrapper-footer {
   background-color: #000; }
