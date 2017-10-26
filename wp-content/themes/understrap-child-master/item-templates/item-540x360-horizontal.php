@@ -25,7 +25,7 @@
       style="max-width: 100%;height:auto;"
       alt="">
     </div>
-    <?php //       sizes="(max-width: 46em) 100vw, 540px"
+    <?php // sizes="(max-width: 46em) 100vw, 540px"
     ?>
 
     <div class="col-12 col-lg item-content-container p-4">
@@ -39,7 +39,7 @@
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>
       <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
       <?php if( $flag_from_magazine ):?>
-        <div>MORE FROM THIS ISSUE -></div>
+		<div class="card-span-text mt-3 small"><a href="<?= get_current_issue_link() ?>">MORE FROM THIS ISSUE <i class="fa fa-arrow-right fa-1 arrow-right" aria-hidden="true"></i></a></div>
       <?php endif; ?>
     </div>
   </div>
