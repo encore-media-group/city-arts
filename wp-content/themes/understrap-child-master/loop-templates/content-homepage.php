@@ -48,6 +48,8 @@ while( $slot_b->have_posts() ) : $slot_b->the_post();
 endwhile;
 wp_reset_postdata();
 
+$current_issue_slug = get_current_issue_slug();
+
 $slot_c = new WP_Query( [
     'posts_per_page' => 3,
     'no_found_rows' => true,
@@ -58,6 +60,12 @@ $slot_c = new WP_Query( [
           'taxonomy' => 'hp',
           'field'    => 'slug',
           'terms'    =>  'c_slot'
+        ],
+        [
+          'taxonomy' => 'category',
+          'field' => 'slug',
+          'terms' => array( $current_issue_slug ),
+          'operator' => 'IN'
         ]
       ]
     ]);
@@ -106,22 +114,6 @@ endwhile;
 $remaining_articles->rewind_posts();
 wp_cache_set( 'homepage-articles', $used_ids );
 
-
-/*
-function get_cached_cat_id_by_slug( $slug ) {
-  $cache_key = $slug . "_id";
-  $cat_id = wp_cache_get( $cache_key );
-
-  if ( false === $cat_id ) {
-    $cat_obj = get_category_by_slug( $slug );
-    if( $cat_obj ) {
-      $cat_id = $cat_obj->term_id;
-      wp_cache_set( $cache_key, $cat_id );
-    }
-  }
-  return $cat_id;
-}
-*/
 ?>
 
 
