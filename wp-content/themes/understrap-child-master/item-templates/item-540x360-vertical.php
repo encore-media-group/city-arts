@@ -17,7 +17,7 @@
 ?>
 <div class="<? echo $item_css ?> item-540x360-vertical">
   <div class="row pb-md pb-4">
-    <div class="col px-0">
+    <div class="col">
       <div class="row">
         <div class="col-12">
           <img src="<?php echo esc_url( $img_src ); ?>"
