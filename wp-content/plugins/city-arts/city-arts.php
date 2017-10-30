@@ -614,22 +614,15 @@ function get_related_articles( $post_id = null ) {
   $issue_cat_id = $issue_cat->term_id;
 
   $categories = get_the_category( $post_id );
-//var_dump($categories);
   $category_ids = [];
-  $category_slugs = [];
 
   if ( $categories ) {
       foreach ( $categories as $individual_category ) {
         if( ($individual_category->term_id) == $genre_cat_id) {
           $category_ids[] = $individual_category->term_id;
-          $category_slugs[] = $individual_category->slug;
         }
       }
     }
-
-
-
-  $orderby = array_fill_keys( get_disciplines(), 'DESC');
 
   return new WP_Query([
     'posts_per_page' => 6,
@@ -639,7 +632,7 @@ function get_related_articles( $post_id = null ) {
     'post__not_in' => array( $post_id ),
     'category__not_in' => [$issue_cat_id],
     'ignore_sticky_posts' => 1,
-    'orderby' => $orderby  //$q = new WP_Query( array( 'orderby' => array( 'title' => 'DESC', 'menu_order' => 'ASC' ) ) );
+    'orderby' => [ 'date' => 'DESC' ]
     ]);
 }
 
