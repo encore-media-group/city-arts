@@ -17,6 +17,7 @@ class ca_top_articles_widget extends WP_Widget {
   public function widget( $args, $instance ) {
 
     $title = apply_filters( 'widget_title', $instance['title'] );
+    $use_custom_articles_checkbox = isset( $instance[ 'use_custom_articles_checkbox' ] ) ? true : false;
     $post_show_count = isset( $instance['post_show_count'] ) ? $instance['post_show_count'] : 0;
     $show_images_checkbox = isset( $instance[ 'show_images_checkbox' ] ) ? true : false;
     $show_numbers_checkbox = isset( $instance[ 'show_numbers_checkbox' ] ) ? true : false;
@@ -39,15 +40,24 @@ class ca_top_articles_widget extends WP_Widget {
     $post_id = $current_post ? $current_post->ID : null;
     $used_ids[] = $post_id;
 
-    $recent_posts = new WP_Query(array(
+
+    $query = [
         'posts_per_page' => $post_show_count,
         'no_found_rows' => true,
-        'post__in' =>  [ 30709, 30712, 30784, 32190, 7316 ],
-        'orderby'        => 'post__in',
-//        'order' => 'desc', */
+        'orderby' => ['date' => 'desc'],
         'post_status'    => 'publish',
-      )
-    );
+      ];
+
+      if( $use_custom_articles_checkbox ):
+        $editor_articles = $this->get_editor_selected_posts();
+        if( count($editor_articles >= 1) ) :
+         $query['post__in'] =  $editor_articles;
+         $query['orderby'] = 'post__in';
+        endif;
+      endif;
+
+
+    $recent_posts = new WP_Query( $query );
 
     $row_num  = 1;
 
@@ -55,6 +65,7 @@ class ca_top_articles_widget extends WP_Widget {
       echo __('<div class="row px-3 mb-2">');
         set_query_var( 'row_num', $row_num );
         set_query_var( 'show_numbers' , $show_numbers_checkbox);
+        set_query_var( 'use_custom_articles' , $use_custom_articles_checkbox);
         set_query_var( 'show_thumbnails' , $show_images_checkbox);
         set_query_var( 'center_text' , $center_text_checkbox);
         get_template_part( 'item-templates/item', '320x213-ordered' );
@@ -64,6 +75,7 @@ class ca_top_articles_widget extends WP_Widget {
 
     unset($row_num);
     unset($post_show_count);
+    unset($use_custom_articles_checkbox);
     unset($show_images_checkbox);
     unset($show_numbers_checkbox);
     unset($center_text_checkbox);
@@ -76,6 +88,7 @@ class ca_top_articles_widget extends WP_Widget {
   public function form( $instance ) {
     $defaults = array(
       'title' => __( 'Top Stories', 'ca_widget_domain' ),
+      'use_custom_articles_checkbox' => 'off',
       'show_images_checkbox' => 'off',
       'show_numbers_checkbox' => 'off',
       'post_show_count' => 0,
@@ -95,6 +108,14 @@ class ca_top_articles_widget extends WP_Widget {
         name="<?php echo $this->get_field_name( 'title' ); ?>"
         type="text"
         value="<?php echo esc_attr( $title ); ?>" />
+      </p>
+      <p>
+        <input
+          class="checkbox"
+          type="checkbox" <?php checked( $instance[ 'use_custom_articles_checkbox' ], 'on' ); ?>
+          id="<?php echo $this->get_field_id( 'use_custom_articles_checkbox' ); ?>"
+          name="<?php echo $this->get_field_name( 'use_custom_articles_checkbox' ); ?>" />
+        <label for="<?php echo $this->get_field_id( 'use_custom_articles_checkbox' ); ?>">Use Editor Selected Articles?</label>
       </p>
       <p>
         <label for="<?php echo $this->get_field_id( 'post_show_count' ); ?>"><?php _e( '# Posts:' ); ?></label>
@@ -135,6 +156,7 @@ class ca_top_articles_widget extends WP_Widget {
     $instance = array();
     $instance = $old_instance;
 
+    $instance[ 'use_custom_articles_checkbox' ] = $new_instance[ 'use_custom_articles_checkbox' ];
     $instance[ 'show_numbers_checkbox' ] = $new_instance[ 'show_numbers_checkbox' ];
     $instance[ 'show_images_checkbox' ] = $new_instance[ 'show_images_checkbox' ];
     $instance[ 'center_text_checkbox' ] = $new_instance[ 'center_text_checkbox' ];
@@ -143,5 +165,9 @@ class ca_top_articles_widget extends WP_Widget {
     $instance[ 'title' ] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
     return $instance;
+  }
+
+  function get_editor_selected_posts() {
+     return get_field('featured_articles', 'option');
   }
 } // Class ca_top_articles_widget ends here

@@ -78,8 +78,8 @@ function city_arts_website_menu(){
 if( function_exists('acf_add_options_page') ) {
 
   acf_add_options_page( [
-    'page_title'  => 'Issue Settings',
-    'menu_title'  => 'Current Issue',
+    'page_title'  => 'CA Content Settings',
+    'menu_title'  => 'CA Content Settings',
     'menu_slug'   => 'current-issue-settings',
     'capability'  => 'edit_posts',
     'redirect'    => false
