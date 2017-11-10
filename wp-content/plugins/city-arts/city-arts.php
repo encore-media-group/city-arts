@@ -75,6 +75,18 @@ function city_arts_website_menu(){
   add_menu_page('City Arts', 'City Arts ', 'manage_options', 'city-arts-plugin', 'city_arts_admin_page');
 }
 
+if( function_exists('acf_add_options_page') ) {
+
+  acf_add_options_page( [
+    'page_title'  => 'CA Content Settings',
+    'menu_title'  => 'CA Content Settings',
+    'menu_slug'   => 'current-issue-settings',
+    'capability'  => 'edit_posts',
+    'redirect'    => false
+  ]);
+
+}
+
 function city_arts_admin_page() {
   if (!current_user_can('manage_options'))  {
     wp_die( __('You do not have sufficient pilchards to access this page.')    );
@@ -505,7 +517,12 @@ function load_issue_template( $template ) {
 }
 
 function get_current_issue_slug() {
-  return strtolower( ( new DateTime() )->format('F-Y') );
+  $active_issue = get_field('active_issue', 'option');
+  if( $active_issue ) :
+    return $active_issue->slug;
+  else:
+    return strtolower( ( new DateTime() )->format('F-Y') );
+  endif;
 }
 
 function get_current_issue_link() {
@@ -515,7 +532,9 @@ function get_current_issue_link() {
 }
 
 function get_current_issue_image() {
+
   $current_issue_slug = get_current_issue_slug();
+
   $current_cover_story_post_obj = get_cover_story( $current_issue_slug );
 
   if( ! $current_cover_story_post_obj ) : return; endif;
@@ -595,22 +614,15 @@ function get_related_articles( $post_id = null ) {
   $issue_cat_id = $issue_cat->term_id;
 
   $categories = get_the_category( $post_id );
-//var_dump($categories);
   $category_ids = [];
-  $category_slugs = [];
 
   if ( $categories ) {
       foreach ( $categories as $individual_category ) {
         if( ($individual_category->term_id) == $genre_cat_id) {
           $category_ids[] = $individual_category->term_id;
-          $category_slugs[] = $individual_category->slug;
         }
       }
     }
-
-
-
-  $orderby = array_fill_keys( get_disciplines(), 'DESC');
 
   return new WP_Query([
     'posts_per_page' => 6,
@@ -620,7 +632,7 @@ function get_related_articles( $post_id = null ) {
     'post__not_in' => array( $post_id ),
     'category__not_in' => [$issue_cat_id],
     'ignore_sticky_posts' => 1,
-    'orderby' => $orderby  //$q = new WP_Query( array( 'orderby' => array( 'title' => 'DESC', 'menu_order' => 'ASC' ) ) );
+    'orderby' => [ 'date' => 'DESC' ]
     ]);
 }
 
