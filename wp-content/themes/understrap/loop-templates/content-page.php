@@ -16,7 +16,7 @@
 
 	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 
-	<div class="entry-content">
+	<div class="article-content">
 
 		<?php the_content(); ?>
 
@@ -27,7 +27,7 @@
 		) );
 		?>
 
-	</div><!-- .entry-content -->
+	</div><!-- .article-content -->
 
 	<footer class="entry-footer">
 
