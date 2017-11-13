@@ -210,7 +210,10 @@ $this_issue_query = new WP_Query(array(
 					<div class="row">
 					<?php
 						$args = [
-							'query_vars' => [ [ 'var' =>'item_css', 'val' => 'col-12 mb-4' ] ],
+							'query_vars' => [
+								[ 'var' => 'item_css', 'val' => 'col-12 mb-4' ],
+								[ 'var' => 'show_byline', 'val' => true ]
+						],
 							'template' => [ 'path' => 'item-templates/item', 'file'=>'320x213' ]
 						];
 

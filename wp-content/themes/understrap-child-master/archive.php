@@ -93,8 +93,10 @@ $the_query = new WP_Query(array(
 							 			get_template_part( 'item-templates/item', '730x487-horizontal' );
 							 			echo '</div><!-- end row --><div class="row pt-4">';
 									elseif ($count == 2  ):
+										set_query_var( 'show_byline', true );
 							 			get_template_part( 'item-templates/item', '320x213' );
 									elseif ($count == 3  ):
+										set_query_var( 'show_byline', true );
 							 			get_template_part( 'item-templates/item', '320x213' );
 							 			echo '</div><!-- end row -->';
 							 	?>
