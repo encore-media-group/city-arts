@@ -39,6 +39,6 @@ $item_css = isset($item_css) ? $item_css : '';
         endif;
       ?>
       <h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
-      <div class="contributors"><?php echo get_contributors() ?></div>
+      <div class="contributors"><?php echo understrap_posted_on(); ?></div>
     </div>
   </div>
