@@ -50,7 +50,7 @@ function cityarts_import_admin_page() {
 
   // THIS CAN BE DONE ONCE THE IMAGES ARE MOVED OVER...
   //sync_wp_post_id_to_image_inline_images(); (this is now an async task, do not run this function)
-  update_image_urls_in_posts(); // do 9
+  //update_image_urls_in_posts(); // do 9
 
 
   //clean up functions - do last
@@ -134,6 +134,8 @@ function cityarts_import_admin_page() {
      delete_category('genre-bender-2016');
      delete_category('genre-bender-2017');
 */
+
+     post_launch_reset_issues();
     /*
     HOW TO IMPORT AND ATTACH IMAGES
 
@@ -1048,6 +1050,102 @@ function delete_category( $slug_to_delete) {
   echo "Impossible to delete category #$categ_ID! Make sure it exists and that it's not the default category";
 }
 }
+
+function post_launch_reset_issues() {
+  global $wpdb;
+
+  $myrows = $wpdb->get_results( "SELECT ti.nid, ti.vid, ti.issuecat, ae.new_wp_id FROM tmp_article_export_10_16_2017 ae, tmp_issuemapping ti  where ti.nid = ae.nid ");
+  foreach ( $myrows as $myrow ) {
+    $drupal_nid = $myrow->nid;
+    $drupal_vid = $myrow->vid;
+    $issue_cat =  $myrow->issuecat;
+    $new_wp_id = $myrow->new_wp_id;
+    echo var_dump($myrow) . '<br>';
+    $idObj = get_category_by_slug($issue_cat);
+    $catid = $idObj->term_id;
+    echo $catid  . '<br>';
+   $return_cat = wp_set_post_categories($new_wp_id, [$catid], true);
+   echo "returned: " . var_dump($return_cat) . "<br>";
+
+  }
+}
+
+function post_launch_reset_issues_import() {
+  $this_issue_query = new WP_Query(array(
+    'posts_per_page' => -1,
+    'nopaging' => true,
+    'ignore_sticky_posts' => true,
+    'tax_query' => [
+      'relation' => 'AND',
+        [
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    =>  'issue',
+            'include_children' => true,
+            'operator' => 'IN'
+        ]
+    ],
+  ));
+  $count = 0;
+  global $wpdb;
+
+  while( $this_issue_query->have_posts() ) : $this_issue_query->the_post();
+   // $post = $query->posts;
+    $post_categories = wp_get_post_categories( get_the_ID() );
+    $cats = array();
+
+    foreach($post_categories as $c){
+      $cat = get_category( $c );
+      $cat_par_id =  $cat->category_parent;
+
+      if (is_wp_error($cat_par_id)) {
+        $errors = $cat_par_id->get_error_messages();
+        foreach ($errors as $error) {
+          echo $error;
+        }
+      } else {
+        $category_parent = get_term( $cat_par_id, 'category' );
+
+        if(isset($category_parent->slug)) {
+          $cat_parent_slug = $category_parent->slug;
+          if($cat_parent_slug == 'issue') {
+            $count++;
+            $myrows = $wpdb->get_results( "SELECT nid, vid FROM tmp_article_export_7_9_2017 where new_wp_id = " . get_the_ID());
+            foreach ( $myrows as $myrow ) {
+              $drupal_nid = $myrow->nid;
+              $drupal_vid = $myrow->vid;
+            }
+
+            //echo "count: " . $count . ' - ';
+            //echo " id: " . get_the_ID();
+            echo get_the_ID();
+            //nid
+            echo ", " . $drupal_nid;
+            //vid
+            echo "," . $drupal_vid;
+            //echo " title: " . get_the_title();
+            //echo ' cat par: ' .  $cat_parent_slug;
+            //catslug
+            echo ', ' .  $cat->slug . "<br>";
+          }
+        }
+      }
+    }
+  endwhile;
+
+/*
+ global $wpdb;
+  $table = "tmp_genre_to_post_map_7_9_2017";
+  $myrows = $wpdb->get_results( "SELECT * FROM " . $table);
+  $count = 0;
+
+  if ($myrows) {
+    foreach ( $myrows as $myrow ){
+      }
+  }*/
+
+}
+
 /*
 This is how issues work:
 1. the cover story is also the issue page and has a secondary image for the cover.
