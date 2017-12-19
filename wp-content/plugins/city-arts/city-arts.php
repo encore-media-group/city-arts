@@ -412,7 +412,7 @@ if ( ! function_exists( 'understrap_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function understrap_posted_on( $date_only = false ) {
+function understrap_posted_on( $date_only = false, $byline_only = false ) {
   $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
   /* let's only show the published date.
   if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
@@ -436,8 +436,9 @@ function understrap_posted_on( $date_only = false ) {
     $byline = get_contributors();
     echo '<span class="byline"> ' . $byline . '</span> ';
   }
-
-  echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+  if (!$byline_only) {
+    echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+  }
 }
 endif;
 
