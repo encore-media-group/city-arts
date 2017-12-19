@@ -451,11 +451,11 @@ function get_contributors_by_id( $post_id) {
     foreach( $writers as $writer ) {
       if($count == 0) {
         $html .= sprintf(esc_html_x( '%s', 'post author', 'understrap' ),
-        '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
+        '<span class="by">by </span><span class="author vcard"><a class="url fn n" href="' . esc_url( get_term_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
       );
       } else{
         $html .= sprintf(esc_html_x( ' and %s', 'post author', 'understrap' ),
-        '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_category_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
+        '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_term_link( $writer->term_id ) ) . '">' . esc_html( $writer->name ) . '</a></span>'
         );
 
       }
