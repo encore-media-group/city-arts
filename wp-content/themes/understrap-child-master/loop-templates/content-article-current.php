@@ -58,8 +58,9 @@ if( $img_width < $img_height ) {
             <?php echo $thumbnail_caption ?>
             <?php echo $thumbnail_description ?>
           </div>
-
+			<div class="article-content">
           <?php the_content(); ?>
+			</div> <!-- .article-content -->
         </div>
         <div class="col-12 col-md-5 col-lg-4">
           <div class="entry-content">

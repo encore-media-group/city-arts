@@ -37,22 +37,23 @@
             <header class="entry-header col text-center mb-4">
              <?php
               $cat_label = get_category_label();
-              echo sprintf( '<a class="url fn n" href="%1$s"><h2 class="sidelines mt-5 mb-4  w-50 mx-auto">%2$s</h2></a>', $cat_label['url'], $cat_label['name'] );
+              echo sprintf( '<a class="url fn n" href="%1$s"><h2 class="sidelines pt-5 pb-2 w-50 mx-auto">%2$s</h2></a>', $cat_label['url'], $cat_label['name'] );
               ?>
 
               <?php the_title( '<h1 class="entry-title my-4">', '</h1>' ); ?>
               <?php if ( has_excerpt() ) : ?>
-                <h3 class="entry-excerpt my-2 w-75 mx-auto"><?= $post->post_excerpt; ?></h3>
+                <h3 class="entry-excerpt mt-2 mb-3 w-75 mx-auto"><?= $post->post_excerpt; ?></h3>
               <?php endif; ?>
-              <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
+              <div class="entry-meta contributors mb-5"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
             </header><!-- .entry-header -->
           </div>
           <div class="row">
             <div class="col-12 col-sm-10 mx-auto  ">
+            <div class="article-content">
             <?php
               echo set_first_letter_of_post( $post );
             ?>
-
+				</div> <!-- .article-content -->
             </div>
           </div><!-- row -->
         </article><!-- #post-## -->
