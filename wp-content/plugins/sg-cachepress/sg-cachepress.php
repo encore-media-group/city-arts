@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       SG Optimizer
  * Description:       This plugin will link your WordPress application with all the performance optimizations provided by SiteGround
- * Version:           3.3.2
+ * Version:           3.3.5
  * Author:            SiteGround
  * Text Domain:       sg-cachepress
  * Domain Path:       /languages
@@ -86,16 +86,14 @@ function sg_cachepress_start() {
 
  	global $sg_cachepress, $sg_cachepress_options, $sg_cachepress_environment, $sg_cachepress_memcache,
  	$sg_cachepress_admin, $sg_cachepress_supercacher;
-
-	$sg_cachepress_options        = new SG_CachePress_Options;
-	$sg_cachepress_environment    = new SG_CachePress_Environment( $sg_cachepress_options );
-	$sg_cachepress_admin    		= new SG_CachePress_Admin( $sg_cachepress_options );
-	$sg_cachepress_memcache       = new SG_CachePress_Memcache( $sg_cachepress_options, $sg_cachepress_environment );
-	$sg_cachepress_supercacher    = new SG_CachePress_Supercacher( $sg_cachepress_options, $sg_cachepress_environment );
-	$sg_cachepress                = new SG_CachePress( $sg_cachepress_options);
-        $sg_cachepress_phpversion_checker    		= new SG_CachePress_PHPVersionChecker( $sg_cachepress_options );
-        
-        $sg_cachepress_phpversion_checker->run();
+	$sg_cachepress_options				= new SG_CachePress_Options;
+	$sg_cachepress_environment			= new SG_CachePress_Environment( $sg_cachepress_options );
+	$sg_cachepress_admin				= new SG_CachePress_Admin( $sg_cachepress_options );
+	$sg_cachepress_memcache				= new SG_CachePress_Memcache( $sg_cachepress_options, $sg_cachepress_environment );
+	$sg_cachepress_supercacher			= new SG_CachePress_Supercacher( $sg_cachepress_options, $sg_cachepress_environment );
+	$sg_cachepress						= new SG_CachePress( $sg_cachepress_options);
+    $sg_cachepress_phpversion_checker	= new SG_CachePress_PHPVersionChecker( $sg_cachepress_options );
+	$sg_cachepress_phpversion_checker->run();
 	$sg_cachepress->run();
 	$sg_cachepress_admin->run();
 

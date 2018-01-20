@@ -217,7 +217,7 @@ class SG_WPEngine_PHPCompat {
                         'upgrade_to' => __( 'Upgrade to', 'sg-cachepress' ),
                         'you_running_running_on'    => __( 'Site is compatible and running on', 'sg-cachepress' ),
                         'recommended_or_higher'    => __( 'which is our recommended PHP version or higher.', 'sg-cachepress' ),
-                        'if_you_fixed_retry'    => __( 'If you have fixed the reported errors, you may <a style="cursor: pointer;"  onclick="runAction();">try to check the PHP 7.0 compatibility</a> of your Wordpress site again. ', 'sg-cachepress' ),
+                        'if_you_fixed_retry'    => __( 'If you have fixed the reported errors, you may <a style="cursor: pointer;"  onclick="runAction();">try to check the PHP 7.0 compatibility</a> of your WordPress site again. ', 'sg-cachepress' ),
                         'recommend_to_switch' => __( 'If you can\'t update to PHP 7.0 right away, we recommend that you <a style="cursor: pointer;" onclick="upgradeTo(\'5.6\');">switch to PHP 5.6</a> which is the safest and fastest version of the 5 branch.')
 		);
                                
@@ -386,7 +386,7 @@ class SG_WPEngine_PHPCompat {
         
     /**
      * 
-     * Returns the current PHP version Wordpress is running on.
+     * Returns the current PHP version WordPress is running on.
      * example (5.6, 7.0 ... etc)
      * 
      * @since 2.3.11

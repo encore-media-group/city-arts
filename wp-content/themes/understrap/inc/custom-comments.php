@@ -6,7 +6,7 @@
  */
 
 // Comments form.
-add_filter( 'comment_form_default_fields', 'bootstrap3_comment_form_fields' );
+add_filter( 'comment_form_default_fields', 'understrap_bootstrap_comment_form_fields' );
 
 /**
  * Creates the comments form.
@@ -15,13 +15,13 @@ add_filter( 'comment_form_default_fields', 'bootstrap3_comment_form_fields' );
  *
  * @return array
  */
-function bootstrap3_comment_form_fields( $fields ) {
+function understrap_bootstrap_comment_form_fields( $fields ) {
 	$commenter = wp_get_current_commenter();
 	$req       = get_option( 'require_name_email' );
 	$aria_req  = ( $req ? " aria-required='true'" : '' );
 	$html5     = current_theme_supports( 'html5', 'comment-form' ) ? 1 : 0;
 	$fields    = array(
-		'author' => '<div class="form-group comment-form-author" <label for="author">' . __( 'Name',
+		'author' => '<div class="form-group comment-form-author"><label for="author">' . __( 'Name',
 				'understrap' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
 		            '<input class="form-control" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . '></div>',
 		'email'  => '<div class="form-group comment-form-email"><label for="email">' . __( 'Email',
@@ -35,7 +35,7 @@ function bootstrap3_comment_form_fields( $fields ) {
 	return $fields;
 }
 
-add_filter( 'comment_form_defaults', 'bootstrap3_comment_form' );
+add_filter( 'comment_form_defaults', 'understrap_bootstrap_comment_form' );
 
 /**
  * Builds the form.
@@ -44,7 +44,7 @@ add_filter( 'comment_form_defaults', 'bootstrap3_comment_form' );
  *
  * @return mixed
  */
-function bootstrap3_comment_form( $args ) {
+function understrap_bootstrap_comment_form( $args ) {
 	$args['comment_field'] = '<div class="form-group comment-form-comment">
     <label for="comment">' . _x( 'Comment', 'noun', 'understrap' ) . ( ' <span class="required">*</span>' ) . '</label>
     <textarea class="form-control" id="comment" name="comment" aria-required="true" cols="45" rows="8"></textarea>

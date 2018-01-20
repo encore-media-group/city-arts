@@ -1,3 +1,63 @@
+            - ** Release 0.7.0 December 29th 2017 **
+              - Update to Bootstrap 4 Beta 3
+              - Create rigth-sidebar-check.php - Thx @Vishal-Deshpande
+              - Fixing container type customizer setting - Thx @0dp
+              - Fixing comments.php - Thx @Vishal-Deshpande
+
+            - ** Release 0.6.12 December 14th 2017 **
+              - Hotfix release
+
+            - ** Release 0.6.11 December 11th 2017 ** 
+              - Fixing WooCommerce functions
+              - Fixing sanitizing, escaping and prefix´s issues
+              - Fixing customizer settings
+              - Removing duplicate code
+              - Resort theme-settings.php
+              - Cleaning functions.php
+              - Changing licensing infos        
+
+            - ** Release 0.6.10 December 4th 2017 **
+              - Hotfix release
+
+            - ** Release 0.6.9 November 28th 2017 **
+              - Basic guideline adjustments
+              - Update prefixes
+              - Remove automatically db updates by theme
+              - Rename and streamline functions
+              - Changing WooCommerce text domain to "understrap"
+              - Disable theme-settings.php call
+              - Remove jQuery 3.2.1 slim and switch back to WP core jQuery version
+              - Update Bootstrap 4 Beta 2 to commit which fixes jQuery conflict
+
+
+            - ** Release 0.6.8 November 27th 2017 **
+              - Theme check updates
+              - Bugfix release            
+
+            - ** Release 0.6.7 November 24th 2017 **
+              - Workaround for jQuery inconsistency problem between Bootstrap Beta 2 and WordPress in noConflict mode
+              - Adding jQuery slim 3.2.1
+              - Update page.php - thx @Vishal-Deshpande
+              - Fixing colormap problem with beta 2
+              - Making navwalker function pluggable  - Thx @bruceconlon
+              - Adding WordPress title attribute - Thx @JDVirtual and @Thomas-A-Reinert 
+              - Fixing comments in _theme_variable.scss - thx @ianwyllie
+              - Adding spaces the separate "posted on" and "edited" timestamps  - Thx @bruceconlon
+              
+
+            - ** Release 0.6.6 October 23h 2017 **
+              - Update to Bootstrap 4 Beta 2
+              - Moving hamburger icon to the right by default
+              - Fixing issue #392 
+              - Gramma and typo fixes
+              - Making inc/security.php hookable
+              - Variable product ajax_add_to_cart fix
+              - Update Woocommerce 3.2.1 compatibility
+              
+
+            - ** Release 0.6.5 August 17h 2017 **
+              - Hot fix release
+
             - ** Release 0.6.4.1 August 17h 2017 **
               - Hot fix release - Rebuild new Bootstrap 4 Beta navbar markup into UnderStrap
 

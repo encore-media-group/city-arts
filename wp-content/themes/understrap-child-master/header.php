@@ -159,7 +159,7 @@ $current_cover = get_current_issue_image();
 					'menu_class'      => 'navbar-nav',
 					'fallback_cb'     => '',
 					'menu_id'         => 'main-menu',
-					'walker'          => new WP_Bootstrap_Navwalker(),
+					'walker'          => new understrap_WP_Bootstrap_Navwalker(),
 					'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
 
 				)

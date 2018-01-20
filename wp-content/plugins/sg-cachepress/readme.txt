@@ -2,7 +2,7 @@
 Contributors: Hristo Sg, danielkanchev, ivanyordanov, siteground
 Tags: nginx, caching, speed, memcache, memcached, performance, siteground, nginx, supercacher
 Requires at least: 3.0.1
-Tested up to: 4.7
+Tested up to: 4.9
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -78,6 +78,15 @@ This field allows you to exclude URLs from the cache. This means that if you nee
 Force HTTPS on/off -- enable or disable the the https redirect for your whole site and the rewriting of the resource links from http to https.
 
 == Changelog ==
+
+= Version 3.3.5 =
+* Improved cache purging. On new comments, we will purge the cache only if comment moderation is completely disabled. Otherwise it will be purged only when the post is approved.
+
+= Version 3.3.4 =
+* Minor inferface issues and bugs
+
+= Version 3.3.3 =
+* Fixed minor interface issues
 
 = Version 3.3.2 =
 * Fixed bug with disabling the Force HTTPS option

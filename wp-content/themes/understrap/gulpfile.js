@@ -1,4 +1,4 @@
-// Defining base pathes
+// Defining base paths
 var basePaths = {
     js: './js/',
     node: './node_modules/',
@@ -224,39 +224,40 @@ gulp.task('clean-source', function () {
 // Copy all needed dependency assets files from bower_component assets to themes /js, /scss and /fonts folder. Run this task after bower install or bower update
 
 ////////////////// All Bootstrap SASS  Assets /////////////////////////
-gulp.task('copy-assets', ['clean-source'], function() {
+gulp.task('copy-assets', function() {
 
 ////////////////// All Bootstrap 4 Assets /////////////////////////
-// Copy all Bootstrap JS files
-    var stream = gulp.src(basePaths.node + 'bootstrap/dist/js/**/*.js')
-       .pipe(gulp.dest(basePaths.dev + '/js/bootstrap4'));
-  
+// Copy all JS files
 
+    var stream = gulp.src(basePaths.node + 'bootstrap/dist/js/**/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/bootstrap4'));
+  
 // Copy all Bootstrap SCSS files
     gulp.src(basePaths.node + 'bootstrap/scss/**/*.scss')
-       .pipe(gulp.dest(basePaths.dev + '/sass/bootstrap4'));
+        .pipe(gulp.dest(basePaths.dev + '/sass/bootstrap4'));
+    return stream;
 
 ////////////////// End Bootstrap 4 Assets /////////////////////////
 
 // Copy all Font Awesome Fonts
-    gulp.src(basePaths.node + 'font-awesome/fonts/**/*.{ttf,woff,woff2,eof,svg}')
+    var stream = gulp.src(basePaths.node + 'font-awesome/fonts/**/*.{ttf,woff,woff2,eof,svg}')
         .pipe(gulp.dest('./fonts'));
 
 // Copy all Font Awesome SCSS files
     gulp.src(basePaths.node + 'font-awesome/scss/*.scss')
         .pipe(gulp.dest(basePaths.dev + '/sass/fontawesome'));
 
-// Copy jQuery
-    gulp.src(basePaths.node + 'jquery/dist/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
-
 // _s SCSS files
-    gulp.src(basePaths.node + 'undescores-for-npm/sass/**/*.scss')
+    gulp.src(basePaths.node + 'undescores-for-npm/sass/media/*.scss')
         .pipe(gulp.dest(basePaths.dev + '/sass/underscores'));
 
-// _s JS files
-    gulp.src(basePaths.node + 'undescores-for-npm/js/*.js')
+// _s JS files into /src/js
+    gulp.src(basePaths.node + 'undescores-for-npm/js/skip-link-focus-fix.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// _s JS files into /js
+    gulp.src(basePaths.node + 'undescores-for-npm/js/skip-link-focus-fix.js')
+        .pipe(gulp.dest(basePaths.js));
 
 // Copy Popper JS files
     gulp.src(basePaths.node + 'popper.js/dist/umd/popper.min.js')
@@ -267,29 +268,28 @@ gulp.task('copy-assets', ['clean-source'], function() {
     return stream;
 });
 
-
 // Run
 // gulp dist
-// Copies the files to the /dist folder for distributon as simple theme
+// Copies the files to the /dist folder for distribution as simple theme
 gulp.task('dist', ['clean-dist'], function() {
     gulp.src(['**/*','!bower_components','!bower_components/**','!node_modules','!node_modules/**','!src','!src/**','!dist','!dist/**','!dist-product','!dist-product/**','!sass','!sass/**','!readme.txt','!readme.md','!package.json','!gulpfile.js','!CHANGELOG.md','!.travis.yml','!jshintignore', '!codesniffer.ruleset.xml', '*'])
     .pipe(gulp.dest('dist/'))
 });
 
-// Deleting any file inside the /src folder
+// Deleting any file inside the /dist folder
 gulp.task('clean-dist', function () {
   return del(['dist/**/*',]);
 });
 
 // Run
 // gulp dist-product
-// Copies the files to the /dist-prod folder for distributon as theme with all assets
+// Copies the files to the /dist-prod folder for distribution as theme with all assets
 gulp.task('dist-product', ['clean-dist-product'], function() {
     gulp.src(['**/*','!bower_components','!bower_components/**','!node_modules','!node_modules/**','!dist','!dist/**','!dist-product','!dist-product/**', '*'])
     .pipe(gulp.dest('dist-product/'))
 });
 
-// Deleting any file inside the /src folder
+// Deleting any file inside the /dist-product folder
 gulp.task('clean-dist-product', function () {
   return del(['dist-product/**/*',]);
 });
