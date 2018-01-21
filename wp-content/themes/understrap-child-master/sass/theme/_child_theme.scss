@@ -97,11 +97,12 @@
 
   .nav-link  {
     font-family: $headings-font-family;
-    font-size: $font-size-h4;
+    font-size: $h4-font-size;
     font-weight: $font-weight-medium;
     line-height: 1.5;
     padding: 0;
   }
+
   .sidebar-submenu-nav {
     a {
       font-family: $subhead-font-family;
@@ -130,7 +131,7 @@ h1, h2, h3 {
   &.sidebar {
     font-family: $sideline-heading-font-family;
     font-weight: $font-weight-bold;
-    font-size: $font-size-h2;
+    font-size: $h2-font-size;
     text-transform: uppercase;
   }
 }
@@ -161,7 +162,7 @@ h1, h2, h3 {
 .contributors {
   font-family: $card-meta-font-family;
   font-weight: $font-weight-medium;
-  font-size: $font-size-h6;
+  font-size: $h6-font-size;
   display: inline-block;
   .by {
     font-weight: $font-weight-normal;

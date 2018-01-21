@@ -1,6 +1,6 @@
 // Defining base pathes
 var basePaths = {
-    bower: './bower_components/',
+    js: './js/',
     node: './node_modules/',
     dev: './src/'
 };
@@ -110,6 +110,9 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
     gulp.watch('./sass/**/*.scss', ['styles']);
     gulp.watch([basePaths.dev + 'js/**/*.js','js/**/*.js','!js/child-theme.js','!js/child-theme.min.js'], ['scripts']);
+
+    //Inside the watch task.
+    gulp.watch('./img/**', ['imagemin'])
 });
 
 // Run:
@@ -174,7 +177,6 @@ gulp.task('watch-bs', ['browser-sync', 'watch', 'scripts'], function () { });
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function() {
     var scripts = [
-        basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
         // Start - All BS4 stuff
         basePaths.dev + 'js/bootstrap4/bootstrap.js',
@@ -232,24 +234,26 @@ gulp.task('copy-assets', function() {
 
 // Copy jQuery
     gulp.src(basePaths.node + 'jquery/dist/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
+        .pipe(gulp.dest(basePaths.js));
 
 // _s SCSS files
     gulp.src(basePaths.node + 'undescores-for-npm/sass/**/*.scss')
         .pipe(gulp.dest(basePaths.dev + '/sass/underscores'));
 
-// _s JS files
+// _s JS files into /src/js
     gulp.src(basePaths.node + 'undescores-for-npm/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
+// _s JS files into /js
+    gulp.src(basePaths.node + 'undescores-for-npm/js/*.js')
+        .pipe(gulp.dest(basePaths.js));
 
-// Copy Tether JS files
-    gulp.src(basePaths.node + 'tether/dist/js/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
+// Copy Popper JS files
+    gulp.src(basePaths.node + 'popper.js/dist/umd/popper.min.js')
+        .pipe(gulp.dest(basePaths.js));
 
-// Copy Tether CSS files
-    gulp.src(basePaths.node + 'tether/dist/css/*.css')
-        .pipe(gulp.dest(basePaths.dev + '/css'));
+    gulp.src(basePaths.node + 'popper.js/dist/umd/popper.js')
+        .pipe(gulp.dest(basePaths.js));
 });
 
 // Run
@@ -260,7 +264,7 @@ gulp.task('dist', ['clean-dist'], function() {
     .pipe(gulp.dest('dist/'))
 });
 
-// Deleting any file inside the /src folder
+// Deleting any file inside the /dist folder
 gulp.task('clean-dist', function () {
   return del(['dist/**/*',]);
 });
@@ -273,7 +277,7 @@ gulp.task('dist-product', ['clean-dist-product'], function() {
     .pipe(gulp.dest('dist-product/'))
 });
 
-// Deleting any file inside the /src folder
+// Deleting any file inside the /dist-product folder
 gulp.task('clean-dist-product', function () {
   return del(['dist-product/**/*',]);
 });
