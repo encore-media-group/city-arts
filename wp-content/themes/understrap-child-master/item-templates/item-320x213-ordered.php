@@ -30,7 +30,7 @@
 
   if( !$show_numbers ): //i.e. hide numbers..
     $col_0_class = '';
-    $col_1_class .= ' hidden-xs-up';
+    $col_1_class .= ' d-none';
     $col_2_class = '';
   endif;
 
