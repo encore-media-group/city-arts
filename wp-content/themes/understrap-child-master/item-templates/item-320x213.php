@@ -29,18 +29,10 @@ if( $img_width < $img_height ) {
 }
 
 
-
-
-
-
-
-
-
-
-
   $item_css = isset($item_css) ? $item_css : ' col-12 col-sm ';
 
   $show_byline = isset($show_byline) ? $show_byline : false;
+  $show_byline_only = isset($show_byline_only) ? $show_byline_only : false;
   $show_byline_date = isset($show_byline_date) ? $show_byline_date : false;
 
 ?>
@@ -58,7 +50,13 @@ if( $img_width < $img_height ) {
       <div class="col mt-2 mt-lg-0">
         <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
         <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
-        <?php if( $show_byline || $show_byline_date):?>
+        <?php if( $show_byline ):?>
+          <div class="contributors ml-1"><?php echo understrap_posted_on( $show_byline_date ); ?></div>
+        <? endif; ?>
+        <?php if( $show_byline_only ):?>
+          <div class="contributors ml-1"><?php echo understrap_posted_on( false, true ); ?></div>
+        <? endif; ?>
+        <?php if( $show_byline_date):?>
           <div class="contributors ml-1"><?php echo understrap_posted_on( $show_byline_date ); ?></div>
         <? endif; ?>
 

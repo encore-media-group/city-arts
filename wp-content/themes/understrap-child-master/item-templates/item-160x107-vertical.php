@@ -10,15 +10,15 @@
 $thumbnail_id = get_post_thumbnail_id( $post->ID );
 $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
 
-$img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730-487' ); //we're using this big size because it has a flex height
-$img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
+$img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-730xauto' ); //we're using this big size because it has a flex height
+$img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730xauto' );
 
 $show_category_label = isset($show_category_label) ? $show_category_label : true ;
 $show_thumbnails = isset($show_thumbnails) ? $show_thumbnails : true;
 $item_css = isset($item_css) ? $item_css : '';
 
 ?>
-  <div class="row mb-4 px-lg-0 <? echo $item_css ?> item-160x107">
+  <div class="row pb-2 pb-xl-0 px-lg-0 <? echo $item_css ?> item-160x107">
 
     <div class="col-12">
       <?php

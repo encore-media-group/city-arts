@@ -129,7 +129,7 @@ $current_cover = get_current_issue_image();
 	  gtag('js', new Date());
 	  gtag('config', 'UA-3120102-3');
 	</script>
-	<!--end GA -->
+	<!--end GA -->	
 </head>
 <body <?php body_class(); ?>>
 
