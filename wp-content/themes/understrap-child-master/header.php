@@ -176,7 +176,7 @@ $current_cover = get_current_issue_image();
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
 		'understrap' ); ?></a>
 
-		<nav  class="container navbar">
+		<nav  class="container navbar-nav">
 			<div class="row">
 				<div class="col-3 px-sm-0">
 					<button class="hamburger hamburger--spin toggle-button " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

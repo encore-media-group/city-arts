@@ -8,9 +8,8 @@
 // Colors
 //
 // Grayscale and brand colors for use across Bootstrap.
-
 // Start with assigning color names to specific hex values.
-$white:  #ed302f !default;
+$white:  #fff !default;
 $black:  #000 !default;
 $red:    #ed302f !default; // city arts red
 $orange: #a18967 !default; // city arts bronze
@@ -29,21 +28,15 @@ $gray-lighter:              #f1ede8 !default; // city arts bronze 15%
 $gray-lightest:             #f6f3f0 !default; // city arts bronze 10%
 
 // Reassign color vars to semantic color scheme
-$brand-primary:             $black !default;
-$brand-success:             $green !default;
-$brand-info:                $teal !default;
-$brand-warning:             $orange !default;
-$brand-danger:              $red !default;
-$brand-inverse:             $gray-dark !default;
-/*
-"ff-basic-gothic-web-pro" font-weight: 300, 500
-"alternate-gothic-no-2-d" font-weight: 400
-"kepler-std-display" font-weight: 400
-"ingra-condensed" font-weight: 200
-"alda" font-weights: 300, 400
-body copy = alda; h1, h2, h3 = ingra; h4 = alternate gothic; h5, h6 = ff-basic-gothic
-special h1 = kepler
-*/
+$theme-colors: (
+	primary: 	#000,
+	success: 	#b5dcd6, // city arts green (current picky)
+	info: 		#eed6b9, // city arts khaki (current in the know)
+	warning: 	#a18967, // city arts bronze
+	danger: 	#ed302f, // city arts red
+	light: 		#333,
+	dark: 	#d9d0c2 // city arts bronze 40% //WAS inverse
+);
 
 /*city arts colors */
 $body-color: $black;
