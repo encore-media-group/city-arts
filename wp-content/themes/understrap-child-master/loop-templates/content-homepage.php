@@ -104,6 +104,14 @@ $remaining_articles = new WP_Query([
   'no_found_rows' => true,
   'post__not_in' => $used_ids,
   'post_status'=> 'publish',
+  'tax_query' => [
+        [
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    =>  ['see-it-this-week'],
+            'operator' => 'NOT IN',
+        ],
+    ],
   ]);
 
 wp_reset_postdata();

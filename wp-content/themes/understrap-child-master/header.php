@@ -203,7 +203,3 @@ $current_cover = get_current_issue_image();
 		</nav><!-- .site-navigation -->
 	</div><!-- .wrapper-navbar end -->
 	<div class="hfeed site" id="page">
-
-
-
-
