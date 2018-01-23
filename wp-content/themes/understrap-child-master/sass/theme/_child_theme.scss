@@ -90,6 +90,10 @@
         border: 2px solid $black;
         font-family: $font-family-sans-serif;
       }
+      .input-group {
+        flex-wrap: unset;
+      }
+
     }
   }
 }
@@ -141,12 +145,21 @@ h1, h2, h3 {
   }
 }
 
-
 #searchform {
-  .search-box {
+  #s.search-box {
     color: $black;
+    font-family: sans-serif;
+    border-radius: 0 !important;
+    box-shadow: none;
+  }
+  #searchsubmit {
+    font-family: sans-serif;
+    border-radius: 0 !important;
+    padding: .5rem 1rem;
+    height: 40px;
   }
 }
+
 .social-handle {
   font-size: $font-size-sm;
   font-family: $card-meta-font-family;
