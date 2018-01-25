@@ -764,7 +764,7 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
 
   $size = 'ca-350x454';
 
-  $a_tag = '<a style="white-space: nowrap;" href="/issue/%1$s">%2$s</a>';
+  $a_tag = '<a href="/issue/%1$s">%2$s</a>';
 
   $img_section = '';
 
@@ -782,7 +782,7 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
   $dir_icon_string_template = '<i class="fa fa-arrow-%1$s fa-1 arrow-%1$s" aria-hidden="true"></i>';
   $dir_icon_string = sprintf( $dir_icon_string_template, $direction );
 
-  $final = '%1$s%2$s%3$s'; //left name right
+  $final = '<span class="issue-nav">%1$s%2$s%3$s</span>'; //left name right
   $html = '';
 
   if( $direction == 'left' ) :
