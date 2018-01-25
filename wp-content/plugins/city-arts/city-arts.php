@@ -764,7 +764,7 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
 
   $size = 'ca-350x454';
 
-  $a_tag = '<a href="/issue/%1$s">%2$s</a>';
+  $a_tag = '<a style="white-space: nowrap;" href="/issue/%1$s">%2$s</a>';
 
   $img_section = '';
 
@@ -773,7 +773,7 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
       'src' => wp_get_attachment_image_url( $image['id'], $size ),
       'srcset' => wp_get_attachment_image_srcset( $image['id'], $size ),
       'sizes' => '(max-width: 46em) 100vw, 231px',
-      'style' => 'max-width: 160px; height:auto; ',
+      'style' => 'max-width: 100%; height:auto; ',
       ]);
 
     $img_section = sprintf($a_tag, $issue_slug, $img_tag );
