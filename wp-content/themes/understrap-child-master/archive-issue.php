@@ -40,8 +40,8 @@ if( count($nav_links['next']) > 0 ):
 	$cover_slot_b = $nav_links['previous']['slug'];
 	$cover_slot_c = $nav_links['next']['slug'];
 else:
-	$cover_slot_b = $nav_links['previous-2']['slug'];
-	$cover_slot_c = $nav_links['previous']['slug'];
+	$cover_slot_c = null;//$nav_links['previous-2']['slug'];
+	$cover_slot_b = $nav_links['previous']['slug'];
 endif;
 
 $issue_query_slugs[] = $archive_slug;
