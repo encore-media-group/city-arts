@@ -369,6 +369,10 @@ span.category-label {
   padding-left: 5px;
 }
 
+.issue-nav {
+  white-space: nowrap;
+}
+
 .caption {
     font-family: $card-meta-font-family;
     color: $orange;
