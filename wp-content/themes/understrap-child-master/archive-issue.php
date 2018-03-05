@@ -24,7 +24,8 @@ $issue_page_sections = [
 	'review',
 	'news-notes',
 	'preview',
-	'top_features'
+	'top_features',
+	'qa'
 ];
 
 $issue_page_content = array_fill_keys( $issue_page_sections, [ 'posts' => [], 'cats' => [] ] );
@@ -125,7 +126,8 @@ $this_issue_query = new WP_Query(array(
 	//merge remaining features into news-notes
 	$issue_page_content['news-notes']['posts']  = array_merge(
  		$issue_page_content['news-notes']['posts'],
- 		$issue_page_content['feature']['posts']
+ 		$issue_page_content['feature']['posts'],
+ 		$issue_page_content['qa']['posts']
  	);
 	uasort($issue_page_content["news-notes"]["posts"], "compare_by_post_date");
 ?>
