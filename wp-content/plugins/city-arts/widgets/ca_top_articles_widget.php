@@ -46,6 +46,7 @@ class ca_top_articles_widget extends WP_Widget {
         'no_found_rows' => true,
         'orderby' => ['date' => 'desc'],
         'post_status'    => 'publish',
+        'meta_query' => Calendar::meta_query_hide_calendar_posts(),
       ];
 
       if( $use_custom_articles_checkbox ):

@@ -5,8 +5,12 @@ jQuery( function ($) {
 	jQuery('#sg-cachepress-dynamic-cache-toggle').on('click.sg-cachepress', function(event){event.preventDefault();sg_cachepress_toggle_option('dynamic-cache');});
 	jQuery('#sg-cachepress-memcached-toggle').on('click.sg-cachepress', function(event){event.preventDefault();sg_cachepress_toggle_option('memcached');});
 	jQuery('#sg-cachepress-autoflush-cache-toggle').on('click.sg-cachepress', function(event){event.preventDefault();sg_cachepress_toggle_option('autoflush-cache');});
+
 	jQuery('#sg-cachepress-blacklist').on('click.sg-cachepress', sg_cachepress_save_blacklist);
     jQuery('#sg-cachepress-phpversion-check').on('click.sg-cachepress', sg_cachepress_phpversion_check);       
+
+	jQuery('#sg-cachepress-default-enable-cache-toggle').on('click.sg-cachepress', function(event){event.preventDefault();sg_cachepress_toggle_option('default-enable-cache');});
+	jQuery('#sg-cachepress-default-autoflush-cache-toggle').on('click.sg-cachepress', function(event){event.preventDefault();sg_cachepress_toggle_option('default-autoflush-cache');});
 });
 var sg_cachepress_toggle_in_progress = false;
 var sg_cachepress_toggle_ssl_in_progress = false;
@@ -26,7 +30,8 @@ jQuery('#sg-cachepress-ssl-toggle').on('click.sg-cachepress', function(event){
     
     var $ajaxArgs = {
             action:  'sg-cachepress-ssl-toggle',
-            objects: 'all'
+            objects: 'all',
+			nonce: jQuery(this).attr('nonce')
     };
 
     jQuery.post(ajaxurl, $ajaxArgs).done(function(data){
@@ -68,7 +73,8 @@ function sg_cachepress_toggle_option(optionName) {
     $ajaxArgs = {
             action:  'sg-cachepress-parameter-update',
             parameterName: optionName,
-            objects: 'all'
+            objects: 'all',
+			nonce: jQuery('#nonce-parameter-update').val()
     };
     jQuery.post(ajaxurl, $ajaxArgs).done(function(data){
         sg_cachepress_toggle_in_progress = false;
@@ -105,7 +111,8 @@ function sg_cachepress_save_blacklist(event) {
 	$ajaxArgs = {
 		action:  'sg-cachepress-blacklist-update',
 		blacklist: jQuery('#sg-cachepress-blacklist-textarea').val(),
-		objects: 'all'
+		objects: 'all',
+		nonce: jQuery('#nonce-blacklist-update').val()
 	};
 	jQuery(event.target).attr('disabled','disabled').attr('value', sgCachePressL10n.updating);
 	jQuery('#sg-cachepress-spinner-blacklist').show();
@@ -155,7 +162,8 @@ function sg_cachepress_purge(event) {
 	var $ajaxArgs;
 	$ajaxArgs = {
 		action:  'sg-cachepress-purge',
-		objects: 'all'
+		objects: 'all',
+		nonce: jQuery('#nonce-purge').val()
 	};
 	jQuery(event.target).attr('disabled','disabled').attr('value', sgCachePressL10n.purging);
 	jQuery('#sg-cachepress-spinner').css({'visibility': 'visible'});
@@ -194,7 +202,7 @@ function sg_cachepress_test_submit( )
 	var postUrl = jQuery("#testurl").val();
 	
 	var ajaxUrl = sgCachePressL10n.ajax_url;
-	jQuery.post(ajaxUrl,{action:'sg-cachepress-cache-test',url:postUrl},function(result){ sg_cachepress_test_result(result); });
+	jQuery.post(ajaxUrl,{action:'sg-cachepress-cache-test',url:postUrl,nonce:jQuery('#nonce-cache-test').val()},function(result){ sg_cachepress_test_result(result); });
 }
 
 

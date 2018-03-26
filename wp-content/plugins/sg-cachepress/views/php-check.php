@@ -16,7 +16,7 @@ $is_up_to_date = version_compare($current_version, $recommended_php_version, '>=
   <!-- START phpVersionChecker -->
   <div class="box sgclr" id="phpVersionCheckerContainer" style="display: none;">
     <h2><?php _e('PHP Config', 'sg-cachepress') ?></h2>
-    <p><?php _e('This tool will allow you to check if your website is compatible with the recommended by SiteGround PHP version and switch to it with a click. It is highly advisable to keep your WordPress running on the recommended PHP for best security and performance.', 'sg-cachepress') ?></p>
+    <p><?php _e('This tool will allow you to check if your website is compatible with the recommended by SiteGround PHP version and switch to it with a click. It is highly advisable to keep your WordPress running on the recommended PHP for best security and performance. Note that if you have a Multisite, changing the PHP version will affect all sites in your network.', 'sg-cachepress') ?></p>
     
      <p><?php _e('<strong>Notice:</strong> checking your site for PHP 7.0 compatibility is a time consuming process that depends on the number of active plugins you have on your site. Please, don’t close your browser until the check is completed.', 'sg-cachepress') ?></p>
    
@@ -24,7 +24,7 @@ $is_up_to_date = version_compare($current_version, $recommended_php_version, '>=
     <div class="greybox" >
       <p id="phpVersionCheckerText"><?php
         if ($is_up_to_date) {
-          echo __('Site is running on', 'sg-cachepress') . ' <strong>PHP ' .
+          echo __('You are running', 'sg-cachepress') . ' <strong>PHP ' .
           $current_version . ' ' .
           __('</strong> which is our recommended PHP version or higher.', 'sg-cachepress');
         }
@@ -92,7 +92,8 @@ $is_up_to_date = version_compare($current_version, $recommended_php_version, '>=
                  name="run" 
                  id="runButton" 
                  type="button" 
-                 class="button-primary" />   
+                 class="button-primary"
+                 nonce="<?php echo wp_create_nonce( 'sg_wpephpcompat_start_test' ); ?>"/>
 
           <input style="display: none; height: 40px; line-height: 40px; text-align: center; margin-left: 5px;"
                  name="upgradeButton"
@@ -162,5 +163,10 @@ $is_up_to_date = version_compare($current_version, $recommended_php_version, '>=
       </div>
     </div>
   <?php } ?>
-  <!-- END manualPHPVersion -->        
+  <!-- END manualPHPVersion -->
+
+  <!-- Keys -->
+  <span style="display:none;" id="nonce_check_status"><?php echo wp_create_nonce('sg_wpephpcompat_check_status'); ?></span>
+  <span style="display:none;" id="nonce_clean_up"><?php echo wp_create_nonce('sg_wpephpcompat_clean_up'); ?></span>
+  <span style="display:none;" id="nonce_change_version"><?php echo wp_create_nonce('sg_wpephpcompat_change_version'); ?></span>
 </div>

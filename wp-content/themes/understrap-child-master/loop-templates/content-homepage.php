@@ -5,21 +5,22 @@
  * @package understrap
  */
 
+$roles = ( is_user_logged_in() ) ? ['publish', 'pending', 'future', 'private'] : [];
+
 $articles = [];
 $used_ids = [];
 
 $slot_a = new WP_Query( [
     'posts_per_page' => 1,
     'no_found_rows' => true,
-    'post_status'=> 'publish',
+    'post_status' => array_merge(['publish'], $roles),
     'orderby' => 'modified',
     'tax_query' => [
-      'relation' => 'AND', [
-          'taxonomy' => 'hp',
-          'field'    => 'slug',
-          'terms'    =>  'a_slot'
-        ]
-      ]
+      'taxonomy' => 'hp',
+      'field'    => 'slug',
+      'terms'    =>  'a_slot'
+      ],
+    'meta_query' => Calendar::meta_query_hide_calendar_posts(),
     ]);
 
 while( $slot_a->have_posts() ) : $slot_a->the_post();
@@ -31,15 +32,14 @@ wp_reset_postdata();
 $slot_b = new WP_Query( [
     'posts_per_page' => 1,
     'no_found_rows' => true,
-    'post_status'=> 'publish',
+    'post_status' => array_merge(['publish'], $roles),
     'orderby' => 'modified',
     'tax_query' => [
-      'relation' => 'AND', [
           'taxonomy' => 'hp',
           'field'    => 'slug',
           'terms'    =>  'b_slot'
-        ]
-      ]
+        ],
+    'meta_query' => Calendar::meta_query_hide_calendar_posts(),
     ]);
 
 while( $slot_b->have_posts() ) : $slot_b->the_post();
@@ -53,7 +53,7 @@ $current_issue_slug = get_current_issue_slug();
 $slot_c = new WP_Query( [
     'posts_per_page' => 3,
     'no_found_rows' => true,
-    'post_status'=> 'publish',
+    'post_status' => array_merge(['publish'], $roles),
     'orderby' => 'rand',
     'tax_query' => [
       'relation' => 'AND', [
@@ -67,7 +67,8 @@ $slot_c = new WP_Query( [
           'terms' => array( $current_issue_slug ),
           'operator' => 'IN'
         ]
-      ]
+      ],
+    'meta_query' => Calendar::meta_query_hide_calendar_posts(),
     ]);
 
 while( $slot_c->have_posts() && $slot_c->current_post < 1 ) : $slot_c->the_post();
@@ -80,7 +81,7 @@ $see_it_this_week = new WP_Query([
       'posts_per_page' => 1,
       'orderby' => 'modified',
       'no_found_rows' => true,
-      'post_status'=> 'publish',
+      'post_status' => array_merge(['publish'], $roles),
       'post__not_in' => $used_ids,
       'tax_query' => [
             [
@@ -89,6 +90,7 @@ $see_it_this_week = new WP_Query([
                 'terms'    =>  ['see-it-this-week'],
             ],
         ],
+      'meta_query' => Calendar::meta_query_hide_calendar_posts(),
       ]);
 
 while( $see_it_this_week->have_posts() ) : $see_it_this_week->the_post();
@@ -103,7 +105,7 @@ $remaining_articles = new WP_Query([
   'order' => 'desc',
   'no_found_rows' => true,
   'post__not_in' => $used_ids,
-  'post_status'=> 'publish',
+  'post_status' => array_merge(['publish'], $roles),
   'tax_query' => [
         [
             'taxonomy' => 'category',
@@ -112,6 +114,7 @@ $remaining_articles = new WP_Query([
             'operator' => 'NOT IN',
         ],
     ],
+  'meta_query' => Calendar::meta_query_hide_calendar_posts(),
   ]);
 
 wp_reset_postdata();

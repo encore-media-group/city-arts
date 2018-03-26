@@ -31,7 +31,6 @@ class Redirection_Request {
 		return apply_filters( 'redirection_request_referrer', $referrer );
 	}
 
-	// Note this currently only supports IP4
 	public static function get_ip() {
 		$ip = '';
 
@@ -44,9 +43,31 @@ class Redirection_Request {
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
 
-		$ip = trim( $ip );
-		$ip = filter_var( $ip, FILTER_VALIDATE_IP ) ? $ip : '';
+		// Convert to binary
+		$ip = @inet_pton( trim( $ip ) );
+		if ( $ip !== false ) {
+			$ip = @inet_ntop( $ip );  // Convert back to string
+		}
 
-		return apply_filters( 'redirection_request_ip', $ip );
+		return apply_filters( 'redirection_request_ip', $ip ? $ip : '' );
+	}
+
+	public static function get_cookie( $cookie ) {
+		if ( isset( $_COOKIE[ $cookie ] ) ) {
+			return apply_filters( 'redirection_request_cookie', $_COOKIE[ $cookie ], $cookie );
+		}
+
+		return false;
+	}
+
+	public static function get_header( $name ) {
+		$name = 'HTTP_'.strtoupper( $name );
+		$name = str_replace( '-', '_', $name );
+
+		if ( isset( $_SERVER[ $name ] ) ) {
+			return apply_filters( 'redirection_request_header', $_SERVER[ $name ], $name );
+		}
+
+		return false;
 	}
 }

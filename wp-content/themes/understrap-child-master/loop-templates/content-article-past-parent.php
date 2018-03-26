@@ -15,15 +15,16 @@
   	</div>
   	<?php while ( have_posts() ) : the_post(); ?>
   		<?php get_template_part( 'loop-templates/content', 'article-past' ); ?>
-  	<?php endwhile;?>
+  	<?php endwhile; ?>
   	<div class="container-fluid ad-container">
   		<?= ad_728xlandscape_bottom_shortcode(); ?>
   	</div>
 
+    <!-- RELATED ARTICLES -->
     <div class="container mb-4">
       <?php set_query_var ('post_id', $post->ID ); ?>
       <?php get_template_part( 'item-templates/item', 'related-articles' ); ?>
-  	</div>
+  	</div><!-- RELATED ARTICLES END -->
   </main>
 </div><!-- Wrapper end -->
 

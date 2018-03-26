@@ -8,8 +8,6 @@
   }
 }
 
-
-
 #wrapper-navbar {
   background-color: $white;
   width: 100%;
@@ -319,6 +317,10 @@ h1, h2, h3 {
 div.card-span-text {
   font-family: $card-meta-font-family;
   font-weight: $font-weight-medium;
+}
+
+.page-template-calendar span.category-label {
+    background-color: $calendar;
 }
 
 span.category-label {
@@ -772,3 +774,8 @@ body {
   display: block;
 }
 
+/* calendar */
+.item-list-div {
+  padding-top: 75%;
+  width: 100%;
+}

@@ -19,7 +19,7 @@ include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
 include( plugin_dir_path( __FILE__ ) . 'inc_overrides/pagination.php');
 include( plugin_dir_path( __FILE__ ) . 'includes/google-ads.php');
-
+include( plugin_dir_path( __FILE__ ) . 'includes/calendar_class.php');
 
 /* register this in the admin menu */
 add_action( 'admin_menu', 'city_arts_website_menu' );
@@ -53,6 +53,35 @@ add_action( 'pre_get_posts', 'wpsites_query' );
 //load child template for issue instead of the default archive page
 add_filter( 'template_include', 'load_issue_template', 99 );
 
+/* register custom routes for calendar dates and event tag filters */
+
+//.com/calendar/music
+//.com/calendar/music/may-2018/
+//.com/calendar/may-2018/
+
+
+add_action('init', function() {
+  $months_regex = '(january|february|march|april|may|june|july|august|september|october|november|december)';
+  $disciplines_regex = get_disciplines_regex();
+
+  add_rewrite_rule( "^calendar/{$disciplines_regex}/{$months_regex}-([0-9]{4})/?$",
+    'index.php?pagename=calendar/$matches[2]-$matches[3]&cal=$matches[1]&issue-month=$matches[2]&issue-year=$matches[3]',
+    'top' );
+  add_rewrite_rule( "^calendar/{$months_regex}-([0-9]{4})/?$",
+    'index.php?pagename=calendar/$matches[1]-$matches[2]&issue-month=$matches[1]&issue-year=$matches[2]',
+    'top' );
+  add_rewrite_rule( "^calendar/{$disciplines_regex}/?$",
+    'index.php?pagename=calendar&cal=$matches[1]',
+    'top' );
+  add_rewrite_rule( "^calendar/?$",
+    'index.php?pagename=calendar/' . get_current_issue_slug(),
+    'top' );
+
+  add_rewrite_tag( '%cal%', $disciplines_regex);
+  add_rewrite_tag( '%issue-month%', $months_regex);
+  add_rewrite_tag( '%issue-year%', '([0-9]{4})');
+}, 10, 0);
+
 //add custom city arts shortcodes
 add_shortcode( 'insert_cover_story', 'insert_cover_story_shortcode' );
 add_shortcode( 'insert_300x250_ad', 'ad_300x250_shortcode' );
@@ -67,6 +96,12 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+add_action('after_setup_theme', 'wpse65653_remove_formats', 100);
+function wpse65653_remove_formats()
+{
+   remove_theme_support('post-formats');
+}
 
 function ca_enqueue_scripts_and_styles() {
 }
@@ -113,7 +148,7 @@ function city_arts_admin_page() {
 }
 
 function get_disciplines() {
-  return array(
+  return [
     'music',
     'visual-art',
     'art',
@@ -124,10 +159,12 @@ function get_disciplines() {
     'books-talks',
     'food-design',
     'food-style'
-    );
+    ];
 }
 
-
+function get_disciplines_regex() {
+  return "(" . implode("|", get_disciplines()) . ")";
+}
 
 function add_search_form($items, $args) {
 /*
@@ -478,8 +515,6 @@ if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
     }
 }
 
-
-
 function load_issue_template( $template ) {
   if (is_category() && !is_feed()) {
     //cat path
@@ -633,6 +668,7 @@ function get_related_articles( $post_id = null ) {
     'post__not_in' => array( $post_id ),
     'category__not_in' => [$issue_cat_id],
     'ignore_sticky_posts' => 1,
+    'meta_query' => Calendar::meta_query_hide_calendar_posts(),
     'orderby' => [ 'date' => 'DESC' ]
     ]);
 }
@@ -800,5 +836,3 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
   ];
 
 }
-
-

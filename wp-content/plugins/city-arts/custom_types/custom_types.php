@@ -254,31 +254,31 @@ function register_acf_field_group() {
         'append' => '',
         'maxlength' => '',
       ),
-    ),
-    'location' => array (
-      array (
+      ),
+      'location' => array (
         array (
-          'param' => 'taxonomy',
-          'operator' => '==',
-          'value' => 'writer',
+          array (
+            'param' => 'taxonomy',
+            'operator' => '==',
+            'value' => 'writer',
+          ),
+        ),
+        array (
+          array (
+            'param' => 'taxonomy',
+            'operator' => '==',
+            'value' => 'contributor',
+          ),
         ),
       ),
-      array (
-        array (
-          'param' => 'taxonomy',
-          'operator' => '==',
-          'value' => 'contributor',
-        ),
-      ),
-    ),
-    'menu_order' => 0,
-    'position' => 'normal',
-    'style' => 'default',
-    'label_placement' => 'top',
-    'instruction_placement' => 'label',
-    'hide_on_screen' => '',
-    'active' => 1,
-    'description' => '',
+      'menu_order' => 0,
+      'position' => 'normal',
+      'style' => 'default',
+      'label_placement' => 'top',
+      'instruction_placement' => 'label',
+      'hide_on_screen' => '',
+      'active' => 1,
+      'description' => '',
     ));
 
     acf_add_local_field_group(array (
@@ -376,60 +376,112 @@ function register_acf_field_group() {
       'description' => '',
     ));
 
-
-  acf_add_local_field_group(array (
-    'key' => 'group_59f7b52d9460b',
-    'title' => 'Top Article Settings',
-    'fields' => array (
-      array (
-        'key' => 'field_59f7b53c3e880',
-        'label' => 'Featured Articles',
-        'name' => 'featured_articles',
-        'type' => 'relationship',
-        'value' => NULL,
-        'instructions' => '',
-        'required' => 0,
-        'conditional_logic' => 0,
-        'wrapper' => array (
-          'width' => '',
-          'class' => '',
-          'id' => '',
-        ),
-        'post_type' => array (
-          0 => 'post',
-        ),
-        'taxonomy' => array (
-        ),
-        'filters' => array (
-          0 => 'search',
-        ),
-        'elements' => '',
-        'min' => '',
-        'max' => '',
-        'return_format' => 'id',
-      ),
-    ),
-    'location' => array (
-      array (
+    acf_add_local_field_group(array (
+      'key' => 'group_59f7b52d9460b',
+      'title' => 'Top Article Settings',
+      'fields' => array (
         array (
-          'param' => 'options_page',
-          'operator' => '==',
-          'value' => 'current-issue-settings',
+          'key' => 'field_59f7b53c3e880',
+          'label' => 'Featured Articles',
+          'name' => 'featured_articles',
+          'type' => 'relationship',
+          'value' => NULL,
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array (
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'post_type' => array (
+            0 => 'post',
+          ),
+          'taxonomy' => array (
+          ),
+          'filters' => array (
+            0 => 'search',
+          ),
+          'elements' => '',
+          'min' => '',
+          'max' => '',
+          'return_format' => 'id',
         ),
       ),
-    ),
-    'menu_order' => 0,
-    'position' => 'normal',
-    'style' => 'default',
-    'label_placement' => 'top',
-    'instruction_placement' => 'label',
-    'hide_on_screen' => '',
-    'active' => 1,
-    'description' => '',
-  ));
+      'location' => array (
+        array (
+          array (
+            'param' => 'options_page',
+            'operator' => '==',
+            'value' => 'current-issue-settings',
+          ),
+        ),
+      ),
+      'menu_order' => 0,
+      'position' => 'normal',
+      'style' => 'default',
+      'label_placement' => 'top',
+      'instruction_placement' => 'label',
+      'hide_on_screen' => '',
+      'active' => 1,
+      'description' => '',
+    ));
+
+    acf_add_local_field_group(array(
+      'key' => 'group_5ab27ed1315f7',
+      'title' => 'Calendar Settings',
+      'fields' => array(
+        array(
+          'key' => 'field_5ab27eda3539a',
+          'label' => 'Show in Calendar',
+          'name' => 'show_in_calendar',
+          'type' => 'select',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'choices' => array(
+            'no' => 'No',
+            'yes' => 'Yes',
+          ),
+          'default_value' => array(
+            0 => 'no',
+          ),
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 0,
+          'ajax' => 0,
+          'return_format' => 'value',
+          'placeholder' => '',
+        ),
+      ),
+      'location' => array(
+        array(
+          array(
+            'param' => 'post_category',
+            'operator' => '==',
+            'value' => 'category:issue',
+          ),
+        ),
+      ),
+      'menu_order' => 0,
+      'position' => 'side',
+      'style' => 'default',
+      'label_placement' => 'top',
+      'instruction_placement' => 'label',
+      'hide_on_screen' => '',
+      'active' => 1,
+      'description' => '',
+    ));
 
   endif;
 }
+
+
 
 function populate_article_format_tax(){
 

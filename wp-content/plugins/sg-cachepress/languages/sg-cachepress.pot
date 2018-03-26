@@ -30,7 +30,7 @@ msgstr ""
 
 #. Description of the plugin
 msgid ""
-"Through the settings of this plugin you can manage how your WordPress "
+"Through the settings of this plugin you can manage how your Wordpress "
 "interracts with NGINX and Memcached."
 msgstr ""
 

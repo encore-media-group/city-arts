@@ -79,11 +79,16 @@ Force HTTPS on/off -- enable or disable the the https redirect for your whole si
 
 == Changelog ==
 
-= Version 3.3.5 =
-* Improved cache purging. On new comments, we will purge the cache only if comment moderation is completely disabled. Otherwise it will be purged only when the post is approved.
-
-= Version 3.3.4 =
-* Minor inferface issues and bugs
+= Version 4.0.0 =
+* Added proper Multisite support
+* Quick optimizations - Gzip and Browser cache config settings for the Network Admin
+* Network admin can purge the cache per site 
+* Network admin can disallow Cache and HTTPS configuration pages per site
+* WPML support when Memcached is enabled
+* Cache is being purged per site and not for the entire network
+* Multiple performance & interface improvements
+* Security fixes against, additional access checks introduced
+* Fixed minor cosmetic errors in the interface
 
 = Version 3.3.3 =
 * Fixed minor interface issues
@@ -92,7 +97,7 @@ Force HTTPS on/off -- enable or disable the the https redirect for your whole si
 * Fixed bug with disabling the Force HTTPS option
 
 = Version 3.3.1 =
-* Fixed cache purge issue when CloudFlare is enabled 
+* Fixed cache purge issue when CloudFlare is enabled
 * Added logging of failed attempts in XMLRPC API.
 
 = Version 3.3.0 =
