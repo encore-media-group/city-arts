@@ -15,6 +15,7 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_250_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_600_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
+include( plugin_dir_path( __FILE__ ) . 'widgets/ca_calendar_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
 include( plugin_dir_path( __FILE__ ) . 'inc_overrides/pagination.php');
@@ -160,6 +161,18 @@ function get_disciplines() {
     'food-design',
     'food-style'
     ];
+}
+
+function get_calendar_disciplines() {
+  return [
+    ['slug'=> 'music', 'name' => 'Music'],
+    ['slug'=> 'visual-art', 'name' => 'Visual Art'],
+    ['slug'=> 'film', 'name' => 'Film'],
+    ['slug'=> 'dance', 'name' => 'Dance'],
+    ['slug'=> 'comedy', 'name' => 'Comedy'],
+    ['slug'=> 'theatre', 'name' => 'Theatre'],
+    ['slug'=> 'book-talks', 'name' => 'Books & Talks'],
+  ];
 }
 
 function get_disciplines_regex() {
@@ -387,6 +400,7 @@ function ca_load_widgets() {
   register_widget( 'ca_300_x_600_ad_widget' );
   register_widget( 'ca_mailchimp_widget' );
   register_widget( 'ca_current_widget' );
+  register_widget( 'ca_calendar_widget' );
 }
 
 function ca_add_image_sizes() {
