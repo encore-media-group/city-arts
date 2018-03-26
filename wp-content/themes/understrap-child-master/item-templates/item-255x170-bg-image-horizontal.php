@@ -27,14 +27,14 @@
     endif;
   endforeach;
 ?>
-  <!-- item 255x170 Horizontal-->
-  <div class="row item-255x170 text-left mb-4">
-    <div class="col-12 col-sm-auto col-lg-4">
-      <a href="<?php the_permalink() ?>" rel="bookmark">
-        <div class="item-list-div" style="background: url('<?= esc_url( $img_src )?>') no-repeat center center;background-size:cover;"></div>
-      </a>
-    </div>
-    <div class="col-12 col-sm mt-4 mt-sm-1 px-sm-0">
+<!-- item 255x170 Horizontal-->
+<div class="row item-255x170 text-left mb-4">
+  <div class="col-12 col-sm-auto col-lg-4">
+    <a href="<?php the_permalink() ?>" rel="bookmark">
+      <div class="item-list-div" style="background: url('<?= esc_url( $img_src )?>') no-repeat center center;background-size:cover;"></div>
+    </a>
+  </div>
+  <div class="col-12 col-sm px-sm-0 pt-2 pt-sm-0">
     <?php
       $yellow_label = '<a class="url fn n" href="%1$s"><span class="category-label align-middle text-center mb-2 px-2 py-1">%2$s</span></a>';
       echo sprintf( $yellow_label, $cat_label['url'], $cat_label['name'] );
@@ -44,5 +44,5 @@
      <?php if( $show_excerpt ) : ?>
         <div class="excerpt"><?php echo $post->post_excerpt; ?></div>
       <?php endif; ?>
-    </div>
   </div>
+</div>

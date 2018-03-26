@@ -264,7 +264,8 @@ h1, h2, h3 {
 
 #archive-wrapper,
 #writer-wrapper,
-#single-enhanced-wrapper {
+#single-enhanced-wrapper,
+#single-wrapper {
   h2.sidelines,
   h2.page-title.sidelines,
   h3.page-title.sidelines-heading-only {
@@ -321,6 +322,14 @@ div.card-span-text {
 
 .page-template-calendar span.category-label {
     background-color: $calendar;
+}
+
+.page-template-calendar .see-it-this-week  span.category-label {
+    background-color: $yellow;
+}
+
+.page-template-calendar .see-it-this-week {
+  background-color: $calendar;
 }
 
 span.category-label {
@@ -467,7 +476,7 @@ span.byline {
 }
 article .article-content, article.page .entry-content {
 	a {
-		background: linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient($orange,$orange);
+	background: linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient($orange,$orange);
 	background-size: .05em 1px,.05em 1px,1px 1px; background-repeat: no-repeat,no-repeat,repeat-x;
 	text-shadow: 0.03em 0 #fff, -0.03em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff, 0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff, -0.12em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff; background-position: 0 95%,100% 95%,0 95%;
 	}
@@ -544,7 +553,8 @@ article .article-content, article.page .entry-content {
     margin-right: -50%;
 }
 
-.mail-wrapper {
+.mail-wrapper,
+.calendar-sidebar {
   border: 3px solid $black;
   .sidebar {
     display: table;
@@ -779,3 +789,32 @@ body {
   padding-top: 75%;
   width: 100%;
 }
+
+.calendar-sidebar {
+  .listings {
+    background-color: #fff;
+  }
+  article .article-content a,
+  article.page .entry-content a,
+  a {
+    display: block;
+    text-decoration: none !important;
+    background-image: none !important;
+    background-size: unset !important;
+    background-position: unset !important;
+    background-color: $calendar !important;
+    border-bottom: 1px solid #fff !important;
+    text-shadow: none !important;
+    height: 3rem;
+    line-height: 3rem;
+
+  }
+  a:hover {
+    background-color: $white !important;
+  }
+}
+
+
+
+
+

@@ -24,7 +24,7 @@ class Calendar {
 		  	'order'	=> 'DESC',
 		    ]
 			);
-		}
+	}
 
 	public static function meta_query_hide_calendar_posts () {
 

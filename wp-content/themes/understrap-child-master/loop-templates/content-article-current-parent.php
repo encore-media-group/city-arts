@@ -7,7 +7,6 @@
 
 
 ?>
-
 <div class="wrapper" id="single-wrapper">
   <main class="site-main" id="main">
   	<div class="container-fluid ad-container">

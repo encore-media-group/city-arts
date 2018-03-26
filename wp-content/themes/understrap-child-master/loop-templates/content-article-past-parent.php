@@ -5,7 +5,6 @@
  * @package understrap
  */
 
-
 ?>
 
 <div class="wrapper" id="single-wrapper">

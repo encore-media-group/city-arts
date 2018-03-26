@@ -50,6 +50,7 @@ $the_query = new WP_Query(array(
         				'operator' => 'IN'
             ],
         ],
+    'meta_query' => Calendar::meta_query_hide_calendar_posts(),
 ));
 
 ?>

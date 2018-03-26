@@ -27,6 +27,10 @@ if( $img_width < $img_height ) {
 
 //echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
 
+
+  $show_in_calendar_field = get_field("show_in_calendar");
+  $show_in_calendar = ( $show_in_calendar_field ) ? true : false;
+
 ?>
 <div class="px-md-0 container" id="content" tabindex="-1">
 
@@ -66,7 +70,16 @@ if( $img_width < $img_height ) {
             <?php echo $thumbnail_caption ?>
             <?php //echo $thumbnail_description ?>
           </div>
-
+          <?php
+            if( $show_in_calendar ) :
+              $calendar_disciplines = get_calendar_disciplines();
+              echo '<ul class="pagination">';
+              foreach ($calendar_disciplines as $calendar_discipline) :
+                echo sprintf('<li class="page-item"><a href="/calendar/%1$s" class="page-link">%2$s</a></li>', $calendar_discipline['slug'], $calendar_discipline['name'] );
+              endforeach;
+              echo '</ul>';
+            endif;
+          ?>
           <div class="article-content">
             <?php the_content(); ?>
           </div>
