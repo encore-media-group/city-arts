@@ -79,6 +79,16 @@ Force HTTPS on/off -- enable or disable the the https redirect for your whole si
 
 == Changelog ==
 
+= Version 4.0.3 =
+* Switching recommended PHP Version to 7.1
+
+= Version 4.0.2 =
+* WPML and Memcache / Memcached bug fix
+
+= Version 4.0.1 =
+* Minor bug fixes
+* UK locale issue fixed
+
 = Version 4.0.0 =
 * Added proper Multisite support
 * Quick optimizations - Gzip and Browser cache config settings for the Network Admin

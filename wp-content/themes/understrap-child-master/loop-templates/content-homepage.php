@@ -15,11 +15,11 @@ $slot_a = new WP_Query( [
     'no_found_rows' => true,
     'post_status' => array_merge(['publish'], $roles),
     'orderby' => 'modified',
-    'tax_query' => [
+    'tax_query' => [[
       'taxonomy' => 'hp',
       'field'    => 'slug',
       'terms'    =>  'a_slot'
-      ],
+      ]],
     'meta_query' => Calendar::meta_query_hide_calendar_posts(),
     ]);
 
@@ -34,11 +34,11 @@ $slot_b = new WP_Query( [
     'no_found_rows' => true,
     'post_status' => array_merge(['publish'], $roles),
     'orderby' => 'modified',
-    'tax_query' => [
+    'tax_query' => [[
           'taxonomy' => 'hp',
           'field'    => 'slug',
           'terms'    =>  'b_slot'
-        ],
+        ]],
     'meta_query' => Calendar::meta_query_hide_calendar_posts(),
     ]);
 

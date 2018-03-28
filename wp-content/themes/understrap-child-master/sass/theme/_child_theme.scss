@@ -791,8 +791,8 @@ body {
 }
 
 .calendar-sidebar {
-  .listings {
-    background-color: #fff;
+  .pink-background {
+    background-color: $calendar;
   }
   article .article-content a,
   article.page .entry-content a,

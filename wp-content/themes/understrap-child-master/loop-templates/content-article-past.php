@@ -49,7 +49,6 @@ if( $img_width < $img_height ) {
 
         <header class="entry-header col-9">
           <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
-
           <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
           <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
         </header><!-- .entry-header -->

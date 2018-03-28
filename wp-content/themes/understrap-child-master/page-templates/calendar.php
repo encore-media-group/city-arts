@@ -34,25 +34,23 @@ then i need to get a post with:
  - disipline
 if genre, then ->
 */
-
+/*
 if( $genre_slug ) :
-	echo "we need to pull the correct post.";
 
-	global $post;
-	$post = Calendar::get_calendar_posts( 1, $cats );
-	setup_postdata( $post );
+	$genre_posts = Calendar::get_calendar_posts( 2, $cats );
 
-	get_template_part( 'loop-templates/content', 'article-past-parent' );
-
+	while( $genre_posts->have_posts() ) : $genre_posts->the_post();
+		get_template_part( 'loop-templates/content', 'article-past-parent' );
+	endwhile;
 	wp_reset_postdata();
 
-else:
+else:*/
 	while ( have_posts() ) : the_post();
 		set_query_var ('cats', $cats );
 		set_query_var ('is_calendar_archive', $is_calendar_archive );
 		get_template_part( 'loop-templates/content', 'calendar' );
 	endwhile;
-endif;
+/*endif;*/
 
 
 get_footer();
