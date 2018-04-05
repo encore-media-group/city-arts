@@ -33,7 +33,6 @@
     <div class="row">
         <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
           <div class="row">
-
             <header class="entry-header col text-center mb-4">
              <?php
               $cat_label = get_category_label();
@@ -53,10 +52,11 @@
             <?php
               echo set_first_letter_of_post( $post );
             ?>
-				</div> <!-- .article-content -->
-            </div>
-          </div><!-- row -->
-        </article><!-- #post-## -->
+				    </div> <!-- .article-content -->
+            <?php get_template_part( 'item-templates/content', 'promo' ); ?>
+          </div>
+        </div><!-- row -->
+      </article><!-- #post-## -->
     </div>
   </div>
 </main><!-- #main -->
