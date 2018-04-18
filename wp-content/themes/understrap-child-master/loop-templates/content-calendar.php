@@ -73,7 +73,7 @@ $page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title(
                   wp_reset_postdata();
                 endif;
                 ?>
-                <div class="row px-md-3">
+                <div class="row px-3 px-md-0">
                   <div class="col">
                     <?php
                     // Display Calendar Posts
