@@ -7,10 +7,12 @@
 
 
 $cats = get_query_var('cats');
+$month = get_query_var('month');
+$year = get_query_var('year');
 
 $is_calendar_archive = get_query_var('is_calendar_archive');
 
-$calendar = Calendar::get_calendar_posts( 10, $cats );
+$calendar = Calendar::get_calendar_posts( 10, $cats, $month, $year );
 
 $see_it_this_week = ( ! $is_calendar_archive) ? DataHelper::get_see_it_this_week() : null;
 

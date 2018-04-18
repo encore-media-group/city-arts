@@ -10,7 +10,16 @@ get_header();
 
 $genre_slug = get_query_var('cal');
 
-$issue_slug = ((get_query_var('issue-month')) &&  (get_query_var('issue-year'))) ? sprintf('%1$s-%2$s', get_query_var('issue-month'), get_query_var('issue-year')) : "";
+$month = get_query_var('issue-month');
+$year = get_query_var('issue-year');
+$issue_slug = (( $month ) && ( $year )) ? sprintf('%1$s-%2$s', $month, $year ) : "";
+
+$month_num = "";
+
+if( !empty($month) ) :
+	$month_obj = date_parse($month);
+	$month_num = $month_obj['month'];
+endif;
 
 $is_calendar_archive = ( $issue_slug ) ? true : false;
 
@@ -21,7 +30,7 @@ $cats = array_filter($cats);
 
 if( $genre_slug ) :
 	//genre is a singular post
-	$genre_posts = Calendar::get_calendar_posts( 1, $cats );
+	$genre_posts = Calendar::get_calendar_posts( 1, $cats, $month_num, $year );
 	$genre_posts_arr = $genre_posts->posts;
 
 	foreach ($genre_posts_arr as $genre_post) :
@@ -35,6 +44,8 @@ else:
 	if ( $is_calendar_archive ) :
 		while ( have_posts() ) : the_post();
 			set_query_var ('cats', $cats );
+			set_query_var ('year', $year );
+			set_query_var ('month', $month_num );
 			set_query_var ('is_calendar_archive', $is_calendar_archive );
 			get_template_part( 'loop-templates/content', 'calendar' );
 		endwhile;

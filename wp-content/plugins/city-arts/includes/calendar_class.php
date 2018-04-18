@@ -1,15 +1,28 @@
 <?php
 class Calendar {
 
-	public static function get_calendar_posts( $results = 10, $cats = [] ) {
+	public static function get_calendar_posts( $results = 10, $cats = [], $month = "", $year = "" ) {
 
 		$roles = DataHelper::get_roles();
+
+		if( empty($month) || empty($year) ) :
+			//only show results for the current year and month.
+			$today = getdate();
+			$month = $today['mon']; //must be a number, not name
+			$year = $today['year'];
+		endif;
 
 		return new WP_Query ([
 		    'posts_per_page' => $results,
 				'post_status' => array_merge(['publish'], $roles),
 		    'post_type' => 'post',
 		    'nopaging' => true,
+				'date_query' => [
+					[
+						'year'  => $year,
+						'month' => $month
+					],
+				],
 		    'tax_query' => [
 		    	['taxonomy' => 'category',
 					'field' => 'slug',
