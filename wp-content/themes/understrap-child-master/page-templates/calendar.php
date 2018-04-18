@@ -32,19 +32,21 @@ if( $genre_slug ) :
 
 else:
 	//this is a calendar page with a list of posts for that month
-	if ( ! $is_calendar_archive ) :
+	if ( $is_calendar_archive ) :
+		while ( have_posts() ) : the_post();
+			set_query_var ('cats', $cats );
+			set_query_var ('is_calendar_archive', $is_calendar_archive );
+			get_template_part( 'loop-templates/content', 'calendar' );
+		endwhile;
+
+	else:
 		$show_page = Calendar::get_current_calendar_page( $post );
 		while ( $show_page->have_posts() ) : $show_page->the_post();
 			set_query_var ('cats', $cats );
 			set_query_var ('is_calendar_archive', $is_calendar_archive );
 			get_template_part( 'loop-templates/content', 'calendar' );
 		endwhile;
-	else:
-		while ( have_posts() ) : the_post();
-			set_query_var ('cats', $cats );
-			set_query_var ('is_calendar_archive', $is_calendar_archive );
-			get_template_part( 'loop-templates/content', 'calendar' );
-		endwhile;
+
 	endif;
 	wp_reset_postdata();
 

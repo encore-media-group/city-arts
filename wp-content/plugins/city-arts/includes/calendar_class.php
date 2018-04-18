@@ -50,8 +50,8 @@ class Calendar {
 			'post_type'      => 'page',
 			'posts_per_page' => 1,
 			'post_parent'    => $post->ID,
-			'order'          => 'ASC',
-			'orderby'        => 'modified'
+			'order'          => 'DESC',
+			'orderby'        => 'date'
 		];
 		return new WP_Query( $args );
 	}
