@@ -36,8 +36,8 @@
   </div>
   <div class="col-12 col-sm px-sm-0 pt-2 pt-sm-0">
     <?php
-      $yellow_label = '<a class="url fn n" href="%1$s"><span class="category-label align-middle text-center mb-2 px-2 py-1">%2$s</span></a>';
-      echo sprintf( $yellow_label, $cat_label['url'], $cat_label['name'] );
+      $label = '<span class="category-label align-middle text-center mb-2 px-2 py-1">%2$s</span>';
+      echo sprintf( $label, $cat_label['url'], $cat_label['name'] );
     ?>
       <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
       <div class="contributors"> <?php echo understrap_posted_on(); ?></div>

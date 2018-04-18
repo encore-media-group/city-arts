@@ -9,6 +9,7 @@ class Calendar {
 		    'posts_per_page' => $results,
 				'post_status' => array_merge(['publish'], $roles),
 		    'post_type' => 'post',
+		    'nopaging' => true,
 		    'tax_query' => [
 		    	['taxonomy' => 'category',
 					'field' => 'slug',

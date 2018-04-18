@@ -5,16 +5,27 @@
  * @package understrap
  */
 
+$this_post = get_query_var('this_post');
 ?>
-
+<!-- past -->
 <div class="wrapper" id="single-wrapper">
   <main class="site-main" id="main">
   	<div class="container-fluid ad-container">
   		<?= ad_728xlandscape_shortcode(); ?>
   	</div>
-  	<?php while ( have_posts() ) : the_post(); ?>
-  		<?php get_template_part( 'loop-templates/content', 'article-past' ); ?>
-  	<?php endwhile; ?>
+  	<?php
+    while ( have_posts() ) : the_post();
+
+    if ( $this_post ) : //this means something other than the normal loop as loaded the page
+        global $post;
+        $post = $this_post;
+        setup_postdata( $post );
+      endif;
+      get_template_part( 'loop-templates/content', 'article-past' );
+    endwhile;
+      wp_reset_postdata();
+    ?>
+
   	<div class="container-fluid ad-container">
   		<?= ad_728xlandscape_bottom_shortcode(); ?>
   	</div>

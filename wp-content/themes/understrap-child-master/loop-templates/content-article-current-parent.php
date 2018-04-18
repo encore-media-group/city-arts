@@ -7,6 +7,7 @@
 
 
 ?>
+<!-- current -->
 <div class="wrapper" id="single-wrapper">
   <main class="site-main" id="main">
   	<div class="container-fluid ad-container">
@@ -16,8 +17,7 @@
 
   		<?php get_template_part( 'loop-templates/content', 'article-current' ); ?>
 
-  	<?php endwhile; // end of the loop.
-    ?>
+  	<?php endwhile; // end of the loop. ?>
 
   	<div class="container-fluid ad-container">
   		<?= ad_728xlandscape_bottom_shortcode(); ?>

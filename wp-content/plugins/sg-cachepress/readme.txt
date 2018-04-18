@@ -79,6 +79,12 @@ Force HTTPS on/off -- enable or disable the the https redirect for your whole si
 
 == Changelog ==
 
+= Version 4.0.5 =
+* Removed stopping of WP Rocket cache
+
+= Version 4.0.4 =
+* Minor bug fixes
+
 = Version 4.0.3 =
 * Switching recommended PHP Version to 7.1
 

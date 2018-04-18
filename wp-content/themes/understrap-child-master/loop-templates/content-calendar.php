@@ -79,7 +79,7 @@ $page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title(
                     // Display Calendar Posts
                     while( $calendar->have_posts() ) : $calendar->the_post();
                       set_query_var ('show_excerpt', true );
-                      get_template_part( 'item-templates/item', '255x170-bg-image-horizontal' );
+                      get_template_part( 'item-templates/item', 'item-255x170-calendar' );
                     endwhile;
                     wp_reset_postdata();
                     ?>
