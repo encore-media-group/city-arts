@@ -28,6 +28,7 @@
   endforeach;
 ?>
 <!-- item 255x170 Horizontal-->
+
 <div class="row item-255x170 text-left mb-4">
   <div class="col-12 col-sm-auto col-lg-4">
     <a href="<?php the_permalink() ?>" rel="bookmark">
@@ -36,7 +37,7 @@
   </div>
   <div class="col-12 col-sm px-sm-0 pt-2 pt-sm-0">
     <?php
-      $label = '<span class="category-label align-middle text-center mb-2 px-2 py-1">%2$s</span>';
+      $label = '<span class="category-label calendar-item align-middle text-center mb-2 px-2 py-1">%2$s</span>';
       echo sprintf( $label, $cat_label['url'], $cat_label['name'] );
     ?>
       <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>

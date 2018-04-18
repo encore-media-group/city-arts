@@ -20,7 +20,7 @@ $cats[] = ( is_array( term_exists( $issue_slug, "category") )) ? $issue_slug : "
 $cats = array_filter($cats);
 
 if( $genre_slug ) :
-
+	//genre is a singular post
 	$genre_posts = Calendar::get_calendar_posts( 1, $cats );
 	$genre_posts_arr = $genre_posts->posts;
 
@@ -31,17 +31,18 @@ if( $genre_slug ) :
 	wp_reset_postdata();
 
 else:
-
-	set_query_var ('cats', $cats );
-	set_query_var ('is_calendar_archive', $is_calendar_archive );
-
+	//this is a calendar page with a list of posts for that month
 	if ( ! $is_calendar_archive ) :
 		$show_page = Calendar::get_current_calendar_page( $post );
 		while ( $show_page->have_posts() ) : $show_page->the_post();
+			set_query_var ('cats', $cats );
+			set_query_var ('is_calendar_archive', $is_calendar_archive );
 			get_template_part( 'loop-templates/content', 'calendar' );
 		endwhile;
 	else:
 		while ( have_posts() ) : the_post();
+			set_query_var ('cats', $cats );
+			set_query_var ('is_calendar_archive', $is_calendar_archive );
 			get_template_part( 'loop-templates/content', 'calendar' );
 		endwhile;
 	endif;
