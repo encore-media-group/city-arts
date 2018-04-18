@@ -8,30 +8,16 @@
 
 get_header();
 
-$current_issue_slug = get_current_issue_slug();
-
 $genre_slug = get_query_var('cal');
-
-$issue_q_var = sprintf('%1$s-%2$s', get_query_var('issue-month'), get_query_var('issue-year'));
 
 $issue_slug = ((get_query_var('issue-month')) &&  (get_query_var('issue-year'))) ? sprintf('%1$s-%2$s', get_query_var('issue-month'), get_query_var('issue-year')) : "";
 
-$is_calendar_archive = ( $issue_q_var != $current_issue_slug ) ? true : false;
+$is_calendar_archive = ( $issue_slug ) ? true : false;
 
 $cats = [];
 $cats[] = ( in_array( $genre_slug, get_disciplines() )) ? $genre_slug : "";
-$cats[] = ( is_array( term_exists( $issue_slug, "category") )) ? $issue_slug : "";//$current_issue_slug;
+$cats[] = ( is_array( term_exists( $issue_slug, "category") )) ? $issue_slug : "";
 $cats = array_filter($cats);
-
-/*
-to pull the genre post;
-.com/calendar/music
-then i need to get a post with:
- - $current_issue_slug
- - $show_in_calendar
- - disipline
-if genre, then ->
-*/
 
 if( $genre_slug ) :
 
@@ -45,11 +31,22 @@ if( $genre_slug ) :
 	wp_reset_postdata();
 
 else:
-	while ( have_posts() ) : the_post();
-		set_query_var ('cats', $cats );
-		set_query_var ('is_calendar_archive', $is_calendar_archive );
-		get_template_part( 'loop-templates/content', 'calendar' );
-	endwhile;
+
+	set_query_var ('cats', $cats );
+	set_query_var ('is_calendar_archive', $is_calendar_archive );
+
+	if ( ! $is_calendar_archive ) :
+		$show_page = Calendar::get_current_calendar_page( $post );
+		while ( $show_page->have_posts() ) : $show_page->the_post();
+			get_template_part( 'loop-templates/content', 'calendar' );
+		endwhile;
+	else:
+		while ( have_posts() ) : the_post();
+			get_template_part( 'loop-templates/content', 'calendar' );
+		endwhile;
+	endif;
+	wp_reset_postdata();
+
 endif;
 
 get_footer();

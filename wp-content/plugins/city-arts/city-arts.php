@@ -74,7 +74,7 @@ add_action('init', function() {
     'index.php?pagename=calendar&cal=$matches[1]',
     'top' );
   add_rewrite_rule( "^calendar/?$",
-    'index.php?pagename=calendar/' . get_current_issue_slug(),
+    'index.php?pagename=calendar/',// . get_current_issue_slug(),
     'top' );
 
   add_rewrite_tag( '%cal%', $disciplines_regex);

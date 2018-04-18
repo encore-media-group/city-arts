@@ -40,7 +40,21 @@ class Calendar {
 	            'compare' => 'NOT EXISTS'
 	        ],
 	      ];
-		}
+	}
+
+	public static function get_current_calendar_page ( $post ){
+		$roles = DataHelper::get_roles();
+
+		$args = [
+			'post_status' => array_merge(['publish'], $roles),
+			'post_type'      => 'page',
+			'posts_per_page' => 1,
+			'post_parent'    => $post->ID,
+			'order'          => 'ASC',
+			'orderby'        => 'modified'
+		];
+		return new WP_Query( $args );
+	}
 }
 
 class DataHelper {
