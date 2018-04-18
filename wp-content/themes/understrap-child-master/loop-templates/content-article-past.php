@@ -73,7 +73,7 @@ if( $img_width < $img_height ) {
           <?php
             if( $show_in_calendar ) :
               $calendar_disciplines = get_calendar_disciplines();
-              echo '<ul class="pagination">';
+              echo '<ul class="pagination flex-wrap">';
               foreach ($calendar_disciplines as $calendar_discipline) :
                 echo sprintf('<li class="page-item"><a href="/calendar/%1$s" class="page-link">%2$s</a></li>', $calendar_discipline['slug'], $calendar_discipline['name'] );
               endforeach;
