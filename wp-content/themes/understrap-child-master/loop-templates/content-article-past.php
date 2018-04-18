@@ -25,9 +25,6 @@ if( $img_width < $img_height ) {
   $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-730-487' );
 }
 
-//echo $img_orientation . ' ' . $img_width . 'x' . $img_height . "<br>" ;
-
-
   $show_in_calendar_field = get_field("show_in_calendar");
   $show_in_calendar = ( $show_in_calendar_field ) ? true : false;
 
@@ -48,7 +45,11 @@ if( $img_width < $img_height ) {
       <div class="row">
 
         <header class="entry-header col-9">
-          <?php get_template_part( 'item-templates/item', 'category-label' ); ?>
+          <?php
+          if( ! $show_in_calendar ) :
+            get_template_part( 'item-templates/item', 'category-label' );
+          endif;
+          ?>
           <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
           <div class="entry-meta contributors"><?php understrap_posted_on(); ?></div><!-- .entry-meta -->
         </header><!-- .entry-header -->
