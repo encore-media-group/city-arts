@@ -51,7 +51,7 @@ else:
 		endwhile;
 
 	else:
-		$show_page = Calendar::get_current_calendar_page( $post );
+		$show_page = Calendar::get_calendar_page();
 		while ( $show_page->have_posts() ) : $show_page->the_post();
 			set_query_var ('cats', $cats );
 			set_query_var ('is_calendar_archive', $is_calendar_archive );

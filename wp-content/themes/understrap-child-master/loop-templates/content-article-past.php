@@ -28,6 +28,8 @@ if( $img_width < $img_height ) {
   $show_in_calendar_field = get_field("show_in_calendar");
   $show_in_calendar = ( $show_in_calendar_field ) ? true : false;
 
+  $events = get_field('events');
+  $events_html = Calendar::list_events( $events );
 ?>
 <div class="px-md-0 container" id="content" tabindex="-1">
 
@@ -82,6 +84,7 @@ if( $img_width < $img_height ) {
           ?>
           <div class="article-content">
             <?php the_content(); ?>
+            <?= $events_html ?>
           </div>
           <?php get_template_part( 'item-templates/content', 'promo' ); ?>
         </div>

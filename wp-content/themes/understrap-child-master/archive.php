@@ -50,11 +50,11 @@ $the_query = new WP_Query(array(
         				'operator' => 'IN'
             ],
         ],
+        //REMOVE THIS FOR PRODUCTION
     'meta_query' => Calendar::meta_query_hide_calendar_posts(),
 ));
 
 ?>
-
 <div class="wrapper <?= $is_discipline_archive_class ?> " id="archive-wrapper">
 	<main  class="site-main" id="main">
 		<div class="container" id="content" tabindex="-1">
