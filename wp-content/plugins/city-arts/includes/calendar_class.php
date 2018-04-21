@@ -113,7 +113,7 @@ class Calendar {
 
 			$date = new DateTime($event_date);
 
-			$output .= "<h5>" . $date->format('F d') . "</h5>";
+			$output .= "<h5>" . $event_date . "</h5>";
 			$output .= "<h3>" . $event_title . "</h3>";
 			$output .= "<p>" . $event_description . "</p>";
 			$output .= "<p>" . $tix_link . "</p>";

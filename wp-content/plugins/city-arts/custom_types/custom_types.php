@@ -482,26 +482,9 @@ acf_add_local_field_group(array(
       'collapsed' => '',
       'min' => 0,
       'max' => 0,
-      'layout' => 'table',
-      'button_label' => '',
+      'layout' => 'block',
+      'button_label' => 'Add Event',
       'sub_fields' => array(
-        array(
-          'key' => 'field_5ad915698a2fa',
-          'label' => 'Event Date',
-          'name' => 'event_date',
-          'type' => 'date_picker',
-          'instructions' => '',
-          'required' => 0,
-          'conditional_logic' => 0,
-          'wrapper' => array(
-            'width' => '',
-            'class' => '',
-            'id' => '',
-          ),
-          'display_format' => 'm d',
-          'return_format' => 'Ymd',
-          'first_day' => 1,
-        ),
         array(
           'key' => 'field_5ad916338a2fb',
           'label' => 'Event Title',
@@ -541,6 +524,44 @@ acf_add_local_field_group(array(
           'delay' => 1,
         ),
         array(
+          'key' => 'field_5ad915698a2fa',
+          'label' => 'Event Date',
+          'name' => 'event_date',
+          'type' => 'text',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '50',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+        array(
+          'key' => 'field_5adaab3d1266a',
+          'label' => 'Venue',
+          'name' => 'venue_name',
+          'type' => 'text',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '50',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+        array(
           'key' => 'field_5ad916678a2fd',
           'label' => 'Event Link',
           'name' => 'event_link',
@@ -578,25 +599,6 @@ acf_add_local_field_group(array(
           'append' => '',
           'maxlength' => '',
         ),
-        array(
-          'key' => 'field_5adaab3d1266a',
-          'label' => 'Venue',
-          'name' => 'venue_name',
-          'type' => 'text',
-          'instructions' => '',
-          'required' => 0,
-          'conditional_logic' => 0,
-          'wrapper' => array(
-            'width' => '',
-            'class' => '',
-            'id' => '',
-          ),
-          'default_value' => '',
-          'placeholder' => '',
-          'prepend' => '',
-          'append' => '',
-          'maxlength' => '',
-        ),
       ),
     ),
   ),
@@ -618,8 +620,6 @@ acf_add_local_field_group(array(
   'active' => 1,
   'description' => '',
 ));
-
-
   endif;
 }
 
