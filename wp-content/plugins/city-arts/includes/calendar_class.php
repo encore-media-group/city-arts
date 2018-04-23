@@ -111,8 +111,6 @@ class Calendar {
 
 			$tix_link = ( !empty($event_link) && !empty($event_link_text) ) ? sprintf('<a href="%1$s">%2$s</a>', $event_link, $event_link_text) : "";
 
-			$date = new DateTime($event_date);
-
 			$output .= "<h5>" . $event_date . "</h5>";
 			$output .= "<h3>" . $event_title . "</h3>";
 			$output .= "<p>" . $event_description . "</p>";
