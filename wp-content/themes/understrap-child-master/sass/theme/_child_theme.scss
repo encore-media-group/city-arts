@@ -816,9 +816,14 @@ body {
 
 /* promo */
 .promo {
-  background-color: $gray-lightest;
   font-size: 1.25rem;
   border-top: 2px solid $orange;
+  .learn-more {
+    font-family: $subhead-font-family;
+    text-decoration:none;
+    font-weight: 800;
+    color:#d01b69;
+  }
 }
 
 
