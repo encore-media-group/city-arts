@@ -790,6 +790,26 @@ body {
   width: 100%;
 }
 
+@mixin active-discipline-category( $discipline ) {
+  .category-#{$discipline} {
+    a.page-link {
+      &.#{$discipline} {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+}
+
+@include active-discipline-category ( 'music ');
+@include active-discipline-category ( 'theatre ');
+@include active-discipline-category ( 'visual-art ');
+@include active-discipline-category ( 'dance ');
+@include active-discipline-category ( 'film ');
+@include active-discipline-category ( 'comedy ');
+@include active-discipline-category ( 'food-style ');
+@include active-discipline-category ( 'books-talks ');
+
 .calendar-sidebar {
   .pink-background {
     background-color: $calendar;
