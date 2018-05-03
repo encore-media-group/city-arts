@@ -307,15 +307,13 @@ $this_issue_query = new WP_Query(array(
 					<h2 class="sidelines sidebar">Recommendations and Reviews</h2>
 					<div class="row d-flex justify-content-between">
 						<?php
-						/*
-						//UNCOMMENT OUT FOR PROD
 						$current_calendar = Calendar::get_calendar_page( [ 'issue' => $archive_slug , 'return_array' => true ] );
 
 						if($current_calendar) :
 							$cal_obj = map_post_obj_and_slug( $current_calendar, "calendar");
 							array_unshift( $issue_page_content['review']['posts'], $cal_obj );
 						endif;
-						*/
+
 						issue_display_posts( $issue_page_content['review']['posts'], $args )
 
 						?>

@@ -50,8 +50,8 @@ $the_query = new WP_Query(array(
         				'operator' => 'IN'
             ],
         ],
-        //REMOVE THIS FOR PRODUCTION
-    'meta_query' => Calendar::meta_query_hide_calendar_posts(),
+        //COMMENT THIS OUT FOR PRODUCTION
+    		//'meta_query' => Calendar::meta_query_hide_calendar_posts(),
 ));
 
 ?>
