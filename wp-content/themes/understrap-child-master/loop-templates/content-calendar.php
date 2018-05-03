@@ -44,11 +44,11 @@ $page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title(
       <div class="px-md-0 container" id="content" tabindex="-1">
         <div class="row pt-4">
           <div class="col-12">
-            <h2 class="page-title pb-4 sidelines">Calendar</h2>
+            <h2 class="page-title pb-lg-4 sidelines">Calendar</h2>
           </div>
           <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
             <div class="row">
-              <header class="entry-header col col-md-9">
+              <header class="entry-header col-12 col-lg-9">
                 <?= sprintf('<h1 class="entry-title">%1$s recommended events</h1>', $page_title ); ?>
               </header><!-- .entry-header -->
             </div>

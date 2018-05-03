@@ -9,6 +9,7 @@
 <?php
   $thumbnail_id = get_post_thumbnail_id( $post->ID );
   $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-255x170' );
+  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-255x170' );
 
   $show_excerpt = isset( $show_excerpt ) ? $show_excerpt : false ;
 
@@ -30,12 +31,22 @@
 <!-- item 255x170 Horizontal-->
 
 <div class="row item-255x170 text-left mb-4">
-  <div class="col-12 col-sm-auto col-lg-4">
+  <div class="col-12 col-sm-auto col-lg-4 px-0 mr-3 mx-md-3">
     <a href="<?php the_permalink() ?>" rel="bookmark">
-      <div class="item-list-div" style="background: url('<?= esc_url( $img_src )?>') no-repeat center center;background-size:cover;"></div>
+    <img
+       src="<?php echo esc_url( $img_src ); ?>"
+       srcset="<?php echo esc_attr( $img_srcset ); ?>"
+       sizes="
+       (max-width:577px) 730px,
+       (max-width:768px) 160px,
+       (min-width:769px) 255px,
+       255px"
+       style="max-width: 100%;height:auto;"
+       class="img-fluid"
+       alt="">
     </a>
   </div>
-  <div class="col-12 col-sm px-sm-0 pt-2 pt-sm-0">
+  <div class="col-12 col-sm px-0 pt-2 pt-sm-0">
     <?php
       $label = '<span class="category-label calendar-item align-middle text-center mb-2 px-2 py-1">%2$s</span>';
       echo sprintf( $label, $cat_label['url'], $cat_label['name'] );
