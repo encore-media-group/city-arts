@@ -56,7 +56,13 @@ $page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title(
               <div class="col-12 col-md-7 col-lg-8 ">
                 <div class="row">
                   <div class="col">
-                    <div class="item-list-div" style="background: url('<?= esc_url( $img_src )?>') no-repeat center center;background-size:cover;"></div>
+                    <img
+                       src="<?php echo esc_url( $img_src ); ?>"
+                       srcset="<?php echo esc_attr( $img_srcset ); ?>"
+                       sizes="(max-width: 46em) 100vw, 730px"
+                       style="max-width:100%;height:auto;"
+                       class="img-fluid new-image"
+                       alt="">
                     <div class="caption p-2">
                       <?php echo $thumbnail_caption ?>
                       <?php echo $thumbnail_description ?>
