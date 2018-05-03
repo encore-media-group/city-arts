@@ -95,7 +95,7 @@ $page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title(
                 </div>
               </div>
               <div class="col-12 col-md-5 col-lg-4">
-                <div class="entry-content">
+                <div class="entry-content sidebar">
                   <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
                     <div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
                       <?php dynamic_sidebar( 'article-right-1' ); ?>

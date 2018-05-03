@@ -90,14 +90,12 @@ if( $img_width < $img_height ) {
         </div>
 
         <div class="col-12 col-md-5 col-lg-4">
-          <div class="entry-content">
-
+          <div class="entry-content sidebar">
             <?php if ( is_active_sidebar( 'article-right-1' ) ) : ?>
               <div id="article-right-sidebar" class="primary-sidebar widget-area" role="complementary">
                 <?php dynamic_sidebar( 'article-right-1' ); ?>
               </div><!-- #primary-sidebar -->
             <?php endif; ?>
-
           </div><!-- .entry-content -->
         </div>
       </div><!-- row -->

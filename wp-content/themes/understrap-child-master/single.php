@@ -6,8 +6,6 @@
  */
 
 get_header();
-$container   = get_theme_mod( 'understrap_container_type' );
-$sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 // determine what article view type to display
 // the list of article formats is in the city arts plugin

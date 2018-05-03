@@ -44,11 +44,9 @@ $thumbnail_caption = get_post($thumbnail_id)->post_excerpt; ?>
 			<?php
 			$images = get_attached_media('image', $post->ID);
 
-			foreach($images as $image) {
-					echo var_dump($image);
-					?>
-			    <li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
-			<?php } ?>
+			foreach($images as $image) : ?>
+				<li><img src="<?php echo wp_get_attachment_image_src($image->ID,'medium')[0]; ?>" /></li>
+			<?php endforeach; ?>
 			</ul>
 		</div>
 		<?php
