@@ -27,15 +27,6 @@ class AC_Admin {
 	 * @since 2.0
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'set_pages' ) );
-		add_action( 'admin_menu', array( $this, 'settings_menu' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
-	}
-
-	/**
-	 * Load pages
-	 */
-	public function set_pages() {
 		$this->pages = new AC_Admin_Pages();
 
 		$this->pages
@@ -43,8 +34,16 @@ class AC_Admin {
 			->register_page( new AC_Admin_Page_Settings() )
 			->register_page( new AC_Admin_Page_Addons() )
 			->register_page( new AC_Admin_Page_Help() );
+	}
 
-		do_action( 'ac/admin_pages', $this->pages );
+	/**
+	 * Register Hooks
+	 */
+	public function register() {
+		$this->pages->register();
+
+		add_action( 'admin_menu', array( $this, 'settings_menu' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 	}
 
 	/**
@@ -82,12 +81,12 @@ class AC_Admin {
 	}
 
 	/**
-	 * @param $tab_slug
+	 * @param $slug
 	 *
 	 * @return AC_Admin_Page_Columns|AC_Admin_Page_Settings|AC_Admin_Page_Addons|false
 	 */
-	public function get_page( $tab_slug ) {
-		return $this->get_pages()->get_page( $tab_slug );
+	public function get_page( $slug ) {
+		return $this->get_pages()->get_page( $slug );
 	}
 
 	/**
@@ -95,8 +94,8 @@ class AC_Admin {
 	 *
 	 * @return false|string URL
 	 */
-	public function get_link( $tab_slug ) {
-		return $this->get_pages()->get_page( $tab_slug )->get_link();
+	public function get_link( $slug ) {
+		return $this->get_pages()->get_page( $slug )->get_link();
 	}
 
 	/**
@@ -162,7 +161,7 @@ class AC_Admin {
 	 * @since 1.0
 	 */
 	public function display() {
-		$this->get_pages()->display();
+		$this->pages->display();
 	}
 
 }

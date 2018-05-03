@@ -11,20 +11,25 @@ class AC_Admin_Page_Help extends AC_Admin_Page {
 	private $messages = array();
 
 	public function __construct() {
-
 		$this
 			->set_slug( 'help' )
 			->set_label_with_count();
+	}
 
-		// Hide page when there are no messages
-		if ( ! $this->get_message_count() ) {
-			$this->set_show_in_menu( false );
-		}
-
-		// Init and request
+	/**
+	 * Register Hooks
+	 */
+	public function register() {
 		add_action( 'admin_init', array( $this, 'init' ), 9 );
 		add_action( 'admin_init', array( $this, 'run_hooks_on_help_tab' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function show_in_menu() {
+		return $this->get_message_count() > 0;
 	}
 
 	/**
@@ -255,7 +260,7 @@ class AC_Admin_Page_Help extends AC_Admin_Page {
 	 * @return false|string
 	 */
 	private function get_documention_link( $page ) {
-		return ac_helper()->html->link( ac_get_site_url( 'documentation' ) . $page, __( 'View documentation', 'codepress-admin-columns' ) . ' &raquo;', array( 'target' => '_blank' ) );
+		return ac_helper()->html->link( ac_get_site_utm_url( 'documentation', 'documentation' ) . $page, __( 'View documentation', 'codepress-admin-columns' ) . ' &raquo;', array( 'target' => '_blank' ) );
 	}
 
 	/**

@@ -129,4 +129,8 @@ abstract class AC_Admin_Page {
 		wp_nonce_field( $action, '_ac_nonce', false );
 	}
 
+	public function register() {
+		// Register Hooks
+	}
+
 }
