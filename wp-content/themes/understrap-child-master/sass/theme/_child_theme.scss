@@ -320,11 +320,12 @@ div.card-span-text {
   font-weight: $font-weight-medium;
 }
 
-.page-template-calendar span.category-label.calendar-item {
+.page-template-calendar span.category-label.calendar-item,
+.calendar-item-label {
     background-color: $calendar;
 }
 
-.page-template-calendar .see-it-this-week  span.category-label {
+.page-template-calendar .see-it-this-week  span.category-label:not(.calendar-item-label) {
     background-color: $yellow;
 }
 
@@ -332,10 +333,13 @@ div.card-span-text {
   background-color: $calendar;
 }
 
+span.category-label:not(.calendar-item-label) {
+  background-color: $yellow;
+}
+
 span.category-label {
   display: inline-block;
   text-transform: uppercase;
-  background-color: $yellow;
   font-size: $card-meta-font-size-small;
   min-height: 2em;
   font-family: $card-meta-font-family;
