@@ -61,7 +61,6 @@ if( $img_width < $img_height ) {
     			<div class="article-content">
               <?php the_content(); ?>
     			</div> <!-- .article-content -->
-          <?php get_template_part( 'item-templates/content', 'promo' ); ?>
         </div>
         <div class="col-12 col-md-5 col-lg-4">
           <div class="entry-content">

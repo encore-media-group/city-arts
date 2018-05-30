@@ -53,7 +53,6 @@
               echo set_first_letter_of_post( $post );
             ?>
 				    </div> <!-- .article-content -->
-            <?php get_template_part( 'item-templates/content', 'promo' ); ?>
           </div>
         </div><!-- row -->
       </article><!-- #post-## -->
