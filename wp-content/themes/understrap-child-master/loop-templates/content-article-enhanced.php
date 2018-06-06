@@ -17,9 +17,9 @@
 ?>
 <div class="container-fluid px-0" tabindex="-1">
   <div class="row mx-auto item-2000x1333-width">
-    <div class="col px-0">
+    <div class="col text-center px-0">
       <?= $feature_image ?>
-      <div class="caption p-2">
+      <div class="caption text-left p-2">
         <?php echo $thumbnail_caption ?>
         <?php echo $thumbnail_description ?>
       </div>
