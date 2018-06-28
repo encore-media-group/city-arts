@@ -16,7 +16,7 @@ $calendar = Calendar::get_calendar_posts( 10, $cats, $month, $year );
 
 $see_it_this_week = ( ! $is_calendar_archive) ? DataHelper::get_see_it_this_week() : null;
 
-$page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title();
+$page_title = ( $is_calendar_archive ) ? get_the_title() . " Recommended Events" : "Recommended Events";
 ?>
 
 <div class="wrapper" id="single-wrapper">
@@ -49,7 +49,7 @@ $page_title = ( $is_calendar_archive ) ? get_the_title() . "'s" : get_the_title(
           <article <?php post_class('col'); ?> id="post-<?php the_ID(); ?>">
             <div class="row">
               <header class="entry-header col-12 col-lg-9">
-                <?= sprintf('<h1 class="entry-title">%1$s recommended events</h1>', $page_title ); ?>
+                <?= sprintf('<h1 class="entry-title">%1$s</h1>', $page_title ); ?>
               </header><!-- .entry-header -->
             </div>
             <div class="row">

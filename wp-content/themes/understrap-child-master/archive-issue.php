@@ -307,6 +307,8 @@ $this_issue_query = new WP_Query(array(
 					<h2 class="sidelines sidebar">Recommendations and Reviews</h2>
 					<div class="row d-flex justify-content-between">
 						<?php
+
+						$archive_slug = strtolower( ( new DateTime() )->format('F-Y') );
 						$current_calendar = Calendar::get_calendar_page( [ 'issue' => $archive_slug , 'return_array' => true ] );
 
 						if($current_calendar) :
