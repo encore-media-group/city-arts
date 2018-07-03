@@ -41,6 +41,8 @@ In order to work correctly, this plugin requires that your server meets the foll
 * SiteGround account
 * If you're not hosted with SiteGround this plugin WILL NOT WORK  because it relies on a specific server configuration
 
+Our plugin uses a cookie in order to function properly. It does not store personal data and is used solely for the needs of our caching system.
+
 == Installation ==
 
 = Automatic Installation =
@@ -78,6 +80,14 @@ This field allows you to exclude URLs from the cache. This means that if you nee
 Force HTTPS on/off -- enable or disable the the https redirect for your whole site and the rewriting of the resource links from http to https.
 
 == Changelog ==
+
+= Version 4.0.7 =
+* Fixed bug in the force SSL functionality in certain cases for MS
+* Added information about the cookie our plugin uses in the readme file
+
+= Version 4.0.6 =
+* Bug fixes
+* Better https enforcement in MS environment
 
 = Version 4.0.5 =
 * Removed stopping of WP Rocket cache
