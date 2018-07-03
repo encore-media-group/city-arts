@@ -85,7 +85,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<footer class="site-footer" id="colophon">
 
 						<div class="site-info text-center">
-									&copy; <?php echo date("Y"); ?>  Encore Media Group
+									&copy; <?php echo date("Y"); ?>  City Arts Media
 
 						</div><!-- .site-info -->
 
