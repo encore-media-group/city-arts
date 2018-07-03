@@ -51,7 +51,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<ul>
 						<li><a href="<?= get_current_issue_link() ?>">This Month’s Issue</a></li>
 						<li><a href="/issue">Archives</a></li>
-						<li><a href="/subscribe">Subscribe</a></li>
 						<li><a href="/subscribe">Magazine Locator</a></li>
 						<li><a href="/advertise">Advertise</a></li>
 						<li><a href="/advertise">Ad Specifications</a></li>
@@ -61,6 +60,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<h2>ABOUT</h2>
 					<ul>
 						<li><a href="/about">About</a></li>
+						<li><a href="/membership">Memeber</a></li>
 						<li><a href="/contact">Contact</a></li>
 						<li><a href="/jobs">Careers</a></li>
 						<li><a href="/terms-of-use">Terms &amp; Conditions</a></li>
