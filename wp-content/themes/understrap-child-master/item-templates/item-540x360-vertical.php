@@ -20,7 +20,8 @@
     <div class="col">
       <div class="row">
         <div class="col-12">
-          <img src="<?php echo esc_url( $img_src ); ?>"
+          <a href="<?php the_permalink() ?>">
+            <img src="<?php echo esc_url( $img_src ); ?>"
            srcset="<?php echo esc_attr( $img_srcset ); ?>"
            sizes="
            (max-width:577px) 730px,
@@ -30,6 +31,7 @@
           class="img-fluid"
           style="max-width: 100%;height:auto;"
           alt="">
+          </a>
           <div class="inner-item-wrapper p-4">
             <div><?php get_template_part( 'item-templates/item', 'category-label' ); ?></div>
             <h1><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h1>

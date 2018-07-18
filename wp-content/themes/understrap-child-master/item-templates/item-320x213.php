@@ -40,12 +40,14 @@ if( $img_width < $img_height ) {
   <div class="<? echo $item_css ?> item-320x213">
     <div class="row">
       <div class="col-12 col-lg" style="overflow: hidden;max-height: 213px;">
-        <img src="<?php echo esc_url( $img_src ); ?>"
+        <a href="<?php the_permalink() ?>">
+          <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 320px"
          class="img-fluid"
          style="max-width: 100%;height:auto;"
          alt="">
+       </a>
       </div>
       <div class="col mt-2 mt-lg-0">
         <?php get_template_part( 'item-templates/item', 'category-label' ); ?>

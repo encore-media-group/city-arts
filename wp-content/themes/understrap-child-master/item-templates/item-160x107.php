@@ -22,14 +22,16 @@ $item_css = isset($item_css) ? $item_css : '';
   <div class="row pb-2 pb-xl-0 px-lg-0 <? echo $item_css ?> item-160x107">
     <?php if ( $show_thumbnails ) : ?>
     <div class="col-12 col-sm-auto pl-0 ">
-      <img src="<?php echo esc_url( $img_src ); ?>"
-       srcset="<?php echo esc_attr( $img_srcset ); ?>"
-       sizes="
-       (max-width:577px) 730px,
-       160px"
-       class="img-fluid"
-       style="max-width: 100%;height:auto;"
-       alt=""><!-- height: 107px; width: 160px;  -->
+      <a href="<?php the_permalink() ?>">
+        <img src="<?php echo esc_url( $img_src ); ?>"
+         srcset="<?php echo esc_attr( $img_srcset ); ?>"
+         sizes="
+         (max-width:577px) 730px,
+         160px"
+         class="img-fluid"
+         style="max-width: 100%;height:auto;"
+         alt=""><!-- height: 107px; width: 160px;  -->
+       </a>
     </div>
   <?php endif; ?>
     <div class="col-12 mt-2 mt-sm col-sm pr-0 pr-sm-2 pl-0 pl-lg-3">

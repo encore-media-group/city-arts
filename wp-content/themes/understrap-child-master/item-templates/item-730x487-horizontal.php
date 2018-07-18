@@ -16,11 +16,13 @@
   <div class="col item-730x487-horizontal">
     <div class="row">
       <div class="col-12 col-md-auto px-0 item-730x487-width">
-        <img src="<?php echo esc_url( $img_src ); ?>"
+        <a href="<?php the_permalink() ?>">
+          <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
           class="img-fluid"
           style="max-width: 100%;height:auto;"
         alt="">
+        </a>
       </div>
 
       <div class="col item-content-container p-4">
