@@ -41,7 +41,9 @@ if( $img_width < $img_height ) {
   <div class="col px-0">
     <div class="row m-3 see-it-this-week">
       <div class="col-12 col-lg mb-3" style="overflow: hidden;max-height: 213px;">
-        <div class="item-list-div" style="background: url('<?= esc_url( $img_src )?>') no-repeat center center;background-size:contain;"></div>
+        <a href="<?php the_permalink() ?>">
+          <div class="item-list-div" style="background: url('<?= esc_url( $img_src )?>') no-repeat center center;background-size:contain;"></div>
+        </a>
       </div>
       <div class="col mt-3">
         <?php get_template_part( 'item-templates/item', 'category-label' ); ?>

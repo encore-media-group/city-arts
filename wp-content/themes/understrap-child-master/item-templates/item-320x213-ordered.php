@@ -45,12 +45,14 @@
       <div class="col-2 px-2 text-center <?= $col_1_class ?>"><h3><?echo $row_num ?>.</h3></div>
       <?if ( $show_thumbnails ) : ?>
       <div class="col <?= $col_0_class ?> ">
-        <img src="<?php echo esc_url( $img_src ); ?>"
+        <a href="<?php the_permalink() ?>">
+          <img src="<?php echo esc_url( $img_src ); ?>"
          srcset="<?php echo esc_attr( $img_srcset ); ?>"
          sizes="(max-width: 46em) 100vw, 320px"
          class="img-fluid"
          style="max-width: 100%;height:auto;"
          alt="">
+       </a>
       </div>
     </div>
     <div class="row">
