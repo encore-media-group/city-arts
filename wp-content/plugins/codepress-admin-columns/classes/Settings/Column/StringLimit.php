@@ -1,10 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Settings\Column;
 
-class AC_Settings_Column_StringLimit extends AC_Settings_Column {
+use AC\Settings;
+use AC\View;
+
+class StringLimit extends Settings\Column {
 
 	/**
 	 * @var string
@@ -20,7 +21,7 @@ class AC_Settings_Column_StringLimit extends AC_Settings_Column {
 		                ->set_attribute( 'data-refresh', 'column' )
 		                ->set_options( $this->get_limit_options() );
 
-		$view = new AC_View( array(
+		$view = new View( array(
 			'label'   => __( 'Text Limit', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Limit text to a certain number of characters or words', 'codepress-admin-columns' ),
 			'setting' => $setting,
@@ -45,11 +46,11 @@ class AC_Settings_Column_StringLimit extends AC_Settings_Column {
 		switch ( $this->get_string_limit() ) {
 
 			case 'character_limit' :
-				$setting[] = new AC_Settings_Column_CharacterLimit( $this->column );
+				$setting[] = new Settings\Column\CharacterLimit( $this->column );
 
 				break;
 			case 'word_limit' :
-				$setting[] = new AC_Settings_Column_WordLimit( $this->column );
+				$setting[] = new Settings\Column\WordLimit( $this->column );
 
 				break;
 		}

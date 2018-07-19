@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Admin;
 
-abstract class AC_Admin_Help {
+abstract class Help {
 
 	abstract public function get_title();
 

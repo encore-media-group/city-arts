@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Helper;
 
-class AC_Helper_Icon {
+class Icon {
 
 	public function dashicon( $args = array() ) {
 		$defaults = array(

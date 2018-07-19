@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Form;
 
-abstract class AC_Form_Element {
+abstract class Element {
 
 	/**
 	 * @var array

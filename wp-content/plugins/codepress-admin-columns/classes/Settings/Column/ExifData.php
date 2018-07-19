@@ -1,11 +1,12 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Settings\Column;
 
-class AC_Settings_Column_ExifData extends AC_Settings_Column
-	implements AC_Settings_FormatValueInterface {
+use AC\Settings;
+use AC\View;
+
+class ExifData extends Settings\Column
+	implements Settings\FormatValue {
 
 	/**
 	 * @var string
@@ -26,7 +27,7 @@ class AC_Settings_Column_ExifData extends AC_Settings_Column
 		                ->set_attribute( 'data-refresh', 'column' )
 		                ->set_options( $this->get_exif_types() );
 
-		return new AC_View( array(
+		return new View( array(
 			'label'   => $this->column->get_label(),
 			'setting' => $setting,
 		) );
@@ -36,23 +37,23 @@ class AC_Settings_Column_ExifData extends AC_Settings_Column
 
 		switch ( $this->get_exif_datatype() ) {
 			case 'aperture' :
-				$settings = array( new AC_Settings_Column_BeforeAfter_Aperture( $this->column ) );
+				$settings = array( new Settings\Column\BeforeAfter\Aperture( $this->column ) );
 
 				break;
 			case 'focal_length' :
-				$settings = array( new AC_Settings_Column_BeforeAfter_FocalLength( $this->column ) );
+				$settings = array( new Settings\Column\BeforeAfter\FocalLength( $this->column ) );
 
 				break;
 			case 'iso' :
-				$settings = array( new AC_Settings_Column_BeforeAfter_ISO( $this->column ) );
+				$settings = array( new Settings\Column\BeforeAfter\ISO( $this->column ) );
 
 				break;
 			case 'shutter_speed' :
-				$settings = array( new AC_Settings_Column_BeforeAfter_ShutterSpeed( $this->column ) );
+				$settings = array( new Settings\Column\BeforeAfter\ShutterSpeed( $this->column ) );
 
 				break;
 			default :
-				$settings = array( new AC_Settings_Column_BeforeAfter( $this->column ) );
+				$settings = array( new Settings\Column\BeforeAfter( $this->column ) );
 		}
 
 		return $settings;

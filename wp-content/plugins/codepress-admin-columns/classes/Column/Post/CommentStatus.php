@@ -1,8 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Post;
+
+use AC\Column;
 
 /**
  * Column displaying whether an item is open for comments, i.e. whether users can
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.0
  */
-class AC_Column_Post_CommentStatus extends AC_Column  {
+class CommentStatus extends Column  {
 
 	public function __construct() {
 		$this->set_type( 'column-comment_status' );

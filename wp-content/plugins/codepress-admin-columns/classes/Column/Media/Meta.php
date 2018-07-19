@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Media;
 
-abstract class AC_Column_Media_Meta extends AC_Column_Meta {
+use AC\Column;
+
+abstract class Meta extends Column\Meta {
 
 	public function __construct() {
 		$this->set_serialized( true );

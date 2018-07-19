@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Post;
 
-class AC_Column_Post_Menu extends AC_Column_Menu {
+use AC\Column;
+
+class Menu extends Column\Menu {
 
 	/**
 	 * @return string

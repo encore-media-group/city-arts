@@ -1,13 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC;
 
 /**
  * Holds the groups to which columns can belong.
  */
-final class AC_Groups {
+final class Groups {
 
 	const SORT_PRIORITY = 1;
 

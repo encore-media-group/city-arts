@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Settings\Column\Pro;
 
-class AC_Settings_Column_Pro_Editing extends AC_Settings_Column_Pro {
+use AC\Settings;
+
+class Editing extends Settings\Column\Pro {
 
 	protected function get_label() {
 		return __( 'Editing', 'codepress-admin-columns' );

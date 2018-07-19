@@ -1,13 +1,13 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Media;
+
+use AC\Column;
 
 /**
  * @since 2.0
  */
-class AC_Column_Media_AlternateText extends AC_Column_Meta {
+class AlternateText extends Column\Meta {
 
 	public function __construct() {
 		$this->set_type( 'column-alternate_text' );

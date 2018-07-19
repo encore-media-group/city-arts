@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC;
 
-abstract class AC_Preferences {
+abstract class Preferences {
 
 	/**
 	 * @var int

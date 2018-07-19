@@ -1,13 +1,13 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Relation;
 
-class AC_Relation_Taxonomy extends AC_Relation {
+use AC\Relation;
+
+class Taxonomy extends Relation {
 
 	/**
-	 * @var stdClass
+	 * @var object
 	 */
 	private $taxonomy;
 

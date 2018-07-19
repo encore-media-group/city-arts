@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Plugin\Update;
 
-class AC_Plugin_Update_V3005 extends AC_Plugin_Update {
+use AC\Plugin\Update;
+
+class V3005 extends Update {
 
 	public function apply_update() {
 		$this->migrate_user_specific_settings();

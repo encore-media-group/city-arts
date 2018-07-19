@@ -1,13 +1,13 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Relation;
 
-class AC_Relation_Post extends AC_Relation {
+use AC\Relation;
+
+class Post extends Relation {
 
 	/**
-	 * @var stdClass
+	 * @var object
 	 */
 	private $post_type_object;
 
@@ -21,6 +21,9 @@ class AC_Relation_Post extends AC_Relation {
 		return 'post';
 	}
 
+	/**
+	 * @return \WP_Post_Type
+	 */
 	public function get_post_type_object() {
 		return $this->post_type_object;
 	}

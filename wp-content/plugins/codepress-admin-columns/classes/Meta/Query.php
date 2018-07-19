@@ -1,13 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Meta;
 
-class AC_Meta_Query {
+class Query {
 
 	/**
-	 * @var WP_Meta_Query
+	 * @var \WP_Meta_Query
 	 */
 	private $query;
 
@@ -441,7 +439,7 @@ class AC_Meta_Query {
 	}
 
 	/**
-	 * @return WP_Meta_Query
+	 * @return \WP_Meta_Query
 	 */
 	public function get_query() {
 		return $this->query;
@@ -476,7 +474,7 @@ class AC_Meta_Query {
 				return false;
 		}
 
-		$this->query = new WP_Meta_Query();
+		$this->query = new \WP_Meta_Query();
 		$this->query->get_sql( $type, $table, $id );
 
 		return true;

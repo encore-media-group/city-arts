@@ -1,13 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\ThirdParty;
 
 /**
  * WPML: display correct flags on the overview screens
  */
-class AC_ThirdParty_WPMLColumn {
+class WPMLColumn {
 
 	const COLUMN_NAME = 'icl_translations';
 

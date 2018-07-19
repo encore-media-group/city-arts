@@ -1,8 +1,9 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column;
+
+use AC\Column;
+use AC\Settings;
 
 /**
  * Column displaying the menus the item is used in. Supported by all object types that
@@ -10,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2.5
  */
-abstract class AC_Column_Menu extends AC_Column {
+abstract class Menu extends Column {
 
 	public function __construct() {
 		$this->set_type( 'column-used_by_menu' );
@@ -18,7 +19,6 @@ abstract class AC_Column_Menu extends AC_Column {
 	}
 
 	/**
-	 * @see   AC_Column::get_raw_value()
 	 * @since 2.2.5
 	 */
 	public function get_raw_value( $object_id ) {
@@ -85,7 +85,7 @@ abstract class AC_Column_Menu extends AC_Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new AC_Settings_Column_LinkToMenu( $this ) );
+		$this->add_setting( new Settings\Column\LinkToMenu( $this ) );
 	}
 
 }

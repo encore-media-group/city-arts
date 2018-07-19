@@ -1,8 +1,9 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Post;
+
+use AC\Column;
+use AC\Settings;
 
 /**
  * Column displaying the number of comments for an item, displaying either the total
@@ -10,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.0
  */
-class AC_Column_Post_CommentCount extends AC_Column {
+class CommentCount extends Column {
 
 	public function __construct() {
 		$this->set_type( 'column-comment_count' );
@@ -26,7 +27,7 @@ class AC_Column_Post_CommentCount extends AC_Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new AC_Settings_Column_CommentCount( $this ) );
+		$this->add_setting( new Settings\Column\CommentCount( $this ) );
 	}
 
 }

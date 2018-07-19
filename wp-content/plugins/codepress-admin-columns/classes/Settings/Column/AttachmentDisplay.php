@@ -1,11 +1,12 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Settings\Column;
 
-class AC_Settings_Column_AttachmentDisplay extends AC_Settings_Column
-	implements AC_Settings_FormatValueInterface {
+use AC\Settings;
+use AC\View;
+
+class AttachmentDisplay extends Settings\Column
+	implements Settings\FormatValue {
 
 	private $attachment_display;
 
@@ -20,7 +21,7 @@ class AC_Settings_Column_AttachmentDisplay extends AC_Settings_Column
 
 		switch ( $this->get_attachment_display() ) {
 			case 'thumbnail' :
-				$settings[] = new AC_Settings_Column_Images( $this->column );
+				$settings[] = new Settings\Column\Images( $this->column );
 
 				break;
 		}
@@ -37,7 +38,7 @@ class AC_Settings_Column_AttachmentDisplay extends AC_Settings_Column
 			                'count'     => __( 'Count', 'codepress-admin-columns' ),
 		                ) );
 
-		$view = new AC_View( array(
+		$view = new View( array(
 			'label'   => __( 'Display', 'codepress-admin-columns' ),
 			'setting' => $setting,
 		) );

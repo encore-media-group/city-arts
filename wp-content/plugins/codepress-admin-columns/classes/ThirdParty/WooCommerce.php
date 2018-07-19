@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\ThirdParty;
 
-class AC_ThirdParty_WooCommerce {
+class WooCommerce {
 
 	public function __construct() {
 		add_filter( 'ac/post_types', array( $this, 'remove_webhook' ) );

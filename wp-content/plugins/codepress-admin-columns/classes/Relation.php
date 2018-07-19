@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC;
 
-abstract class AC_Relation {
+abstract class Relation {
 
 	/**
 	 * @var string
@@ -31,7 +29,7 @@ abstract class AC_Relation {
 	abstract public function get_type();
 
 	/**
-	 * @return false|stdClass
+	 * @return false|object
 	 */
 	abstract public function get_labels();
 

@@ -1,13 +1,13 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\User;
+
+use AC\Column;
 
 /**
  * @since 2.0
  */
-class AC_Column_User_Nickname extends AC_Column_Meta {
+class Nickname extends Column\Meta {
 
 	public function __construct() {
 		$this->set_type( 'column-nickname' );

@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Plugin\Update;
 
-class AC_Plugin_Update_V3007 extends AC_Plugin_Update {
+use AC\Plugin\Update;
+
+class V3007 extends Update {
 
 	public function apply_update() {
 		$this->update_roles_column();

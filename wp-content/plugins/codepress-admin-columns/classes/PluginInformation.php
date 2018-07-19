@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC;
 
-class AC_PluginInformation {
+class PluginInformation {
 
 	/**
 	 * @var string

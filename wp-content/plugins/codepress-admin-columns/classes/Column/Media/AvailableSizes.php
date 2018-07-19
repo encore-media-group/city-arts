@@ -1,13 +1,14 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Media;
+
+use AC\Column;
+use AC\Settings;
 
 /**
  * @since 2.0
  */
-class AC_Column_Media_AvailableSizes extends AC_Column_Media_MetaValue {
+class AvailableSizes extends Column\Media\MetaValue {
 
 	public function __construct() {
 		parent::__construct();
@@ -88,7 +89,7 @@ class AC_Column_Media_AvailableSizes extends AC_Column_Media_MetaValue {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new AC_Settings_Column_MissingImageSize( $this ) );
+		$this->add_setting( new Settings\Column\MissingImageSize( $this ) );
 	}
 
 }

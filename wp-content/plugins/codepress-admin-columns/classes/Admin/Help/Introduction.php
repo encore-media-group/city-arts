@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Admin\Help;
 
-class AC_Admin_Help_Introduction extends AC_Admin_Help {
+use AC\Admin\Help;
+
+class Introduction extends Help {
 
 	public function get_title() {
 		return __( "Overview", 'codepress-admin-columns' );

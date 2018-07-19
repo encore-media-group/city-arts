@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Admin;
 
-abstract class AC_Admin_Promo {
+abstract class Promo {
 
 	/**
 	 * @var array

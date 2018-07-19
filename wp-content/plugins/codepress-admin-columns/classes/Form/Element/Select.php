@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Form\Element;
 
-class AC_Form_Element_Select extends AC_Form_Element {
+use AC\Form\Element;
+
+class Select extends Element {
 
 	/**
 	 * @var string

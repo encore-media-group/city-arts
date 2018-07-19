@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Preferences;
 
-class AC_Preferences_Site extends AC_Preferences {
+use AC\Preferences;
+
+class Site extends Preferences {
 
 	/**
 	 * return array|false

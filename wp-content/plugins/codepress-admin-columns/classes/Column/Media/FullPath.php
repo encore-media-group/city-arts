@@ -1,13 +1,14 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Media;
+
+use AC\Column;
+use AC\Settings;
 
 /**
  * @since 2.0
  */
-class AC_Column_Media_FullPath extends AC_Column {
+class FullPath extends Column {
 
 	public function __construct() {
 		$this->set_type( 'column-full_path' );
@@ -19,7 +20,7 @@ class AC_Column_Media_FullPath extends AC_Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new AC_Settings_Column_PathScope( $this ) );
+		$this->add_setting( new Settings\Column\PathScope( $this ) );
 	}
 
 }

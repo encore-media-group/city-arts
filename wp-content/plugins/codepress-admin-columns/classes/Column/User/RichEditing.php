@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\User;
 
-class AC_Column_User_RichEditing extends AC_Column {
+use AC\Column;
+
+class RichEditing extends Column {
 
 	public function __construct() {
 		$this->set_type( 'column-rich_editing' );

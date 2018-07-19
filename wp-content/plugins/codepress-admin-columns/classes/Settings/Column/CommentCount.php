@@ -1,11 +1,12 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Settings\Column;
 
-class AC_Settings_Column_CommentCount extends AC_Settings_Column
-	implements AC_Settings_FormatValueInterface {
+use AC\Settings;
+use AC\View;
+
+class CommentCount extends Settings\Column
+	implements Settings\FormatValue {
 
 	/**
 	 * @var string
@@ -23,13 +24,13 @@ class AC_Settings_Column_CommentCount extends AC_Settings_Column
 	}
 
 	/**
-	 * @return AC_View
+	 * @return View
 	 */
 	public function create_view() {
 		$setting = $this->create_element( 'select' )
 		                ->set_options( $this->get_comment_statuses() );
 
-		$view = new AC_View( array(
+		$view = new View( array(
 			'label'   => __( 'Comment status', 'codepress-admin-columns' ),
 			'tooltip' => __( 'Select which comment status you like to display.', 'codepress-admin-columns' ),
 			'setting' => $setting,

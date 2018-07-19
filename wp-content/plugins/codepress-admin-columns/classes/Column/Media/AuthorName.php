@@ -1,8 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Media;
+
+use AC\Column;
 
 /**
  * Column displaying information about the author of a post, such as the
@@ -10,5 +10,5 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.0
  */
-class AC_Column_Media_AuthorName extends AC_Column_Post_AuthorName {
+class AuthorName extends Column\Post\AuthorName {
 }

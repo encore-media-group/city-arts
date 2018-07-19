@@ -1,13 +1,13 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Media;
+
+use AC\Column;
 
 /**
  * @since 2.0
  */
-class AC_Column_Media_Width extends AC_Column_Media_Height {
+class Width extends Column\Media\Height {
 
 	public function __construct() {
 		parent::__construct();

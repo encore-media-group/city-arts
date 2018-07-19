@@ -1,10 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column\Post;
 
-class AC_Column_Post_Status extends AC_Column {
+use AC\Column;
+use AC\Settings;
+
+class Status extends Column {
 
 	public function __construct() {
 		$this->set_type( 'column-status' );
@@ -16,7 +17,7 @@ class AC_Column_Post_Status extends AC_Column {
 	}
 
 	public function register_settings() {
-		$this->add_setting( new AC_Settings_Column_StatusIcon( $this ) );
+		$this->add_setting( new Settings\Column\StatusIcon( $this ) );
 	}
 
 }

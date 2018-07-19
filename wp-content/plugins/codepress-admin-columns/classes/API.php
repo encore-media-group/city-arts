@@ -1,10 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC;
 
-class AC_API {
+class API {
 
 	/**
 	 * @var array [
@@ -17,9 +15,9 @@ class AC_API {
 	private $columndata;
 
 	/**
-	 * @param AC_ListScreen $list_screen
+	 * @param ListScreen $list_screen
 	 */
-	public function set_column_settings( AC_ListScreen $list_screen ) {
+	public function set_column_settings( ListScreen $list_screen ) {
 		$settings = $this->get_column_settings( $list_screen );
 
 		if ( ! $settings ) {
@@ -30,11 +28,11 @@ class AC_API {
 	}
 
 	/**
-	 * @param AC_ListScreen $list_screen
+	 * @param ListScreen $list_screen
 	 *
 	 * @return array|false
 	 */
-	public function get_column_settings( AC_ListScreen $list_screen ) {
+	public function get_column_settings( ListScreen $list_screen ) {
 		$columndata = $this->get_columndata( $list_screen->get_key() );
 
 		if ( ! $columndata ) {
@@ -51,7 +49,7 @@ class AC_API {
 	}
 
 	/**
-	 * @param AC_ListScreen $list_screen
+	 * @param ListScreen $list_screen
 	 *
 	 * @return array
 	 */

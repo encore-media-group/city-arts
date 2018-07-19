@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Settings\Column\BeforeAfter;
 
-class AC_Settings_Column_BeforeAfter_FocalLength extends AC_Settings_Column_BeforeAfter {
+use AC\Settings\Column\BeforeAfter;
+
+class FocalLength extends BeforeAfter {
 
 	protected function define_options() {
 		return array( 'before' => '', 'after' => 'mm' );

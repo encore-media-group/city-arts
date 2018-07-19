@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+namespace AC\Column;
 
-abstract class AC_Column_Meta extends AC_Column {
+use AC\Column;
+
+abstract class Meta extends Column {
 
 	/**
 	 * Return the meta_key of this column
@@ -35,7 +35,7 @@ abstract class AC_Column_Meta extends AC_Column {
 	}
 
 	/**
-	 * @see   AC_Column::get_raw_value()
+	 * @see   Column::get_raw_value()
 	 * @since 2.0.3
 	 */
 	public function get_raw_value( $id ) {
