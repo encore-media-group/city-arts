@@ -71,16 +71,21 @@ class Calendar {
 			'orderby'        => 'date'
 		];
 
-		if ( !empty($atts['issue']) ) :
-			//show the page that has the same issue slug
-			$page = get_page_by_path( 'calendar/' . $atts['issue'] );
-			$this_page = $page->ID;
-			$args['p'] = $this_page;
-		else:
+		if ( empty($atts['issue']) ) :
 			//show the most recent month
 			$page = get_page_by_path( 'calendar' );
 			$post_parent = $page->ID;
 			$args['post_parent'] = $post_parent;
+		else:
+			//show the page that has the same issue slug
+			$page = get_page_by_path( 'calendar/' . $atts['issue'] );
+			if( $page == null ) :
+				//page doesn't exist...
+				return null;
+			else:
+				$this_page = $page->ID;
+				$args['p'] = $this_page;
+			endif;
 		endif;
 
 		$results = new WP_Query( $args );
