@@ -325,6 +325,17 @@ class acf_updates {
 		// append
 		if( is_array($updates) ) {
 			foreach( $updates['plugins'] as $basename => $update ) {
+				
+				// Once a plugin has been updated, WP triggers another ping due to the change in version.
+				// This causes the updated plugin to show an update notification for the same version due to transient caching.
+				// Simply check that the 'new_version' is diferent to the current version
+				if( isset($this->plugins[ $basename ]) ) {
+					if( strval($this->plugins[ $basename ]['version']) === strval($update['new_version']) ) {
+						continue;
+					}
+				}
+				
+				// append
 				$transient->response[ $basename ] = (object) $update;
 			}
 		}

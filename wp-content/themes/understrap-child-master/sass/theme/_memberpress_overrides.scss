@@ -1,0 +1,136 @@
+.header-membership-wrapper {
+  padding-top: 1rem;
+  i {
+    display: inline-block;
+    padding-right: 1rem;
+    border-right: 1px solid grey;
+  }
+}
+
+.mp_wrapper {
+  max-width: 500px;
+  padding-bottom: 100px;
+
+  .mepr-submit,
+  #wp-submit {
+    font-family: sans-serif;
+    background-color: $red;
+    border-radius: 33px;
+    -webkit-border-radius: 33px;
+    -moz-border-radius: 33px;
+    color: $white;
+
+    max-width: 200px;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+
+}
+
+.membership-page {
+  padding-bottom: 80px;
+
+  .member-benefit-list {
+    padding-bottom: 40px;
+
+    li {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.membership-image-wrapper {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 1140px;
+
+  .entry-title  {
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 18px #4a4747;
+  }
+
+  h1 {
+    font-size: 5rem;
+    line-height: 300px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 1140px;
+    height: auto;
+    overflow: hidden;
+  }
+}
+
+.price-box-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+
+}
+
+.mepr-price-menu {
+  padding-bottom: 20px;
+}
+
+.mepr-price-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 40px;
+  margin-top: 20px;
+
+  .mepr-price-box {
+    min-width: 200px;
+    padding: 20px;
+    border: 1px solid black;
+    margin-top: 20px;
+    min-width: 100%;
+
+    @include media-breakpoint-up(sm) {
+      min-width: 200px;
+    }
+
+    .mepr-price-box-head {
+      text-align: center;
+
+      .mepr-price-box-title {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+
+  .mepr-most-popular {
+    display: none;
+  }
+
+  .mepr-price-box-foot {
+    margin-top: 20px;
+  }
+
+  .mepr-price-box-button {
+    font-family: sans-serif;
+    background-color: #ed302f;
+    border-radius: 33px;
+    text-align: center;
+    max-width: 200px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    a {
+      color: #fff;
+      background: none !important;
+      text-shadow: none !important;
+    }
+  }
+}

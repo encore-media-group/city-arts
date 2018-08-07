@@ -540,15 +540,16 @@
 			acf.doAction('submit_field_object', this);
 		},
 		
-		onChange: function(){
-			//console.log('onChange');
+		onChange: function( e, $el ){
+			
+			// save settings
 			this.save();
 			
 			// action for 3rd party customization
 			acf.doAction('change_field_object', this);
 		},
 		
-		onChanged: function( e, name, value ){
+		onChanged: function( e, $el, name, value ){
 			
 			// ignore 'save'
 			if( name == 'save' ) {
@@ -1966,7 +1967,7 @@
 			$el.sortable({
 				handle: '.acf-sortable-handle',
 				connectWith: '.acf-field-list',
-				start: function(e, ui){
+				start: function( e, ui ){
 					var field = acf.getFieldObject( ui.item );
 			        ui.placeholder.height( ui.item.height() );
 			        acf.doAction('sortstart_field_object', field, $el);
