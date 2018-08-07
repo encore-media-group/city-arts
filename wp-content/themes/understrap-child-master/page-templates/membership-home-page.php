@@ -43,7 +43,7 @@ get_header();
       </div>-->
 
       <div class="row">
-        <div class="col-12 col-md-10 col-lg-8 pt-4 mx-auto">
+        <div class="col-12 col-md-10 pt-4 mx-auto">
 
     			<div class="article-content">
     				<h1>City Arts Memberships</h1>
