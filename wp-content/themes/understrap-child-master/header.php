@@ -24,8 +24,9 @@ $current_cover = get_current_issue_image();
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
   <script src="https://use.typekit.net/faz4bwi.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <script>try{Typekit.load({ async: false });}catch(e){}</script>
 	<?php wp_head(); ?>
+
 	<!-- google ad script -->
 	<script src="<?= get_stylesheet_directory_uri() ?>/assets/slideout.min.js"></script>
 
@@ -55,6 +56,15 @@ $current_cover = get_current_issue_image();
 		});
 	</script>
 	<!-- end google ad script -->
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TH9ZBCM');</script>
+	<!-- End Google Tag Manager -->
+
 	<script type="text/javascript">
 		jQuery(function() {
 			var $hamburger = jQuery(".hamburger");
@@ -133,6 +143,11 @@ $current_cover = get_current_issue_image();
 </head>
 <body <?php body_class(); ?>>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9ZBCM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 	<!-- the menu -->
 	<div id="menu" class="container" style="display:none;">
 		<div class="row">
@@ -160,7 +175,7 @@ $current_cover = get_current_issue_image();
 					'fallback_cb'     => '',
 					'menu_id'         => 'main-menu',
 					'walker'          => new understrap_WP_Bootstrap_Navwalker(),
-					'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu  ,
+					'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $menu_cover_section . $sub_menu ,
 
 				)
 			);
@@ -189,8 +204,17 @@ $current_cover = get_current_issue_image();
 				<div class="col text-center">
 					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="<?= get_stylesheet_directory_uri() ?>/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 				</div>
-
 				<div class="col-3">
+					<?php
+					//$membership_menu = '<div class="header-membership-wrapper title">';
+					//$membership_menu .= do_shortcode('[mepr-account-info field="full_name"]');
+					//$membership_menu .= '<i class="ml-2">' . do_shortcode('[mepr-account-link]') . '</i>';
+					//$membership_menu .=  '</div>';
+					//echo $membership_menu;
+					//</div>
+					//<div class="col-auto">
+					?>
+
 					<div class="search-nav-button float-right" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
 				</div>
 			</div><!-- end row -->
