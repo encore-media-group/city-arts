@@ -16,6 +16,7 @@ include( plugin_dir_path( __FILE__ ) . 'widgets/ca_300_x_600_ad_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_mailchimp_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_current_widget.php');
 include( plugin_dir_path( __FILE__ ) . 'widgets/ca_calendar_widget.php');
+include( plugin_dir_path( __FILE__ ) . 'widgets/ca_membership_user_bar.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_types.php');
 include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
 include( plugin_dir_path( __FILE__ ) . 'inc_overrides/pagination.php');
@@ -400,6 +401,8 @@ function ca_load_widgets() {
   register_widget( 'ca_mailchimp_widget' );
   register_widget( 'ca_current_widget' );
   register_widget( 'ca_calendar_widget' );
+  register_widget( 'ca_membership_user_bar' );
+
 }
 
 function ca_add_image_sizes() {

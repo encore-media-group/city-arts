@@ -1,10 +1,6 @@
 .header-membership-wrapper {
-  padding-top: 1rem;
-  i {
-    display: inline-block;
-    padding-right: 1rem;
-    border-right: 1px solid grey;
-  }
+  font-family: $card-meta-font-family;
+  width: 100%;
 }
 
 .mp_wrapper {
@@ -96,7 +92,7 @@
     min-width: 100%;
 
     @include media-breakpoint-up(sm) {
-      min-width: 200px;
+      min-width: 300px;
     }
 
     .mepr-price-box-head {
@@ -133,4 +129,10 @@
       text-shadow: none !important;
     }
   }
+}
+
+
+.mp-form-label {
+  font-family: $card-meta-font-family;
+  font-weight: $font-weight-light;
 }

@@ -494,7 +494,8 @@ article.page .entry-content {
 }
 
 #single-wrapper,
-#page-wrapper {
+#page-wrapper,
+.page-template-membership-home-page {
   #content {
     article {
       h1.entry-title {
@@ -563,9 +564,11 @@ article.page .entry-content {
 }
 
 .mail-wrapper,
-.calendar-sidebar {
+.calendar-sidebar,
+.header-membership-wrapper {
   border: 3px solid $black;
-  .sidebar {
+  .sidebar,
+  &.sidebar {
     display: table;
     margin: 0 auto;
     margin-top: -0.5em;
