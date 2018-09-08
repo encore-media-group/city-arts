@@ -156,7 +156,7 @@ function get_disciplines() {
     'film',
     'dance',
     'comedy',
-    'theatre',
+    'theater',
     'books-talks',
     'food-design',
     'food-style'
@@ -170,7 +170,7 @@ function get_calendar_disciplines() {
     ['slug'=> 'film', 'name' => 'Film'],
     ['slug'=> 'dance', 'name' => 'Dance'],
     ['slug'=> 'comedy', 'name' => 'Comedy'],
-    ['slug'=> 'theatre', 'name' => 'Theatre'],
+    ['slug'=> 'theater', 'name' => 'Theater'],
     ['slug'=> 'book-talks', 'name' => 'Books & Talks'],
   ];
 }
