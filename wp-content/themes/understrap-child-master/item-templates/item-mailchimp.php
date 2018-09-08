@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col pb-4 mt-4">
         <div class="mail-wrapper px-4 pb-4">
-            <h2 class="sidebar">Subscribe to our Email List</h2>
+            <h2 class="sidebar">Subscribe to our Newsletter</h2>
             <h6 class="text-center current-text">Sign up and receive the best of City Arts in your inbox.</h6>
                     <!-- Begin MailChimp Signup Form -->
                 <div id="mc_embed_signup">
