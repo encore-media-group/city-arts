@@ -11,6 +11,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 $current_cover = get_current_issue_image();
 
+$mem_signedin = '<div class="btn-group"><div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, [mepr-account-info field="first_name"]!</div><div class="dropdown-menu dropdown-menu-right"><div class="dropdown-item" type="">[mepr-account-link]</div></div></div>';
+$membership_menu = '<span class="header-membership-wrapper">';
+$membership_menu .= do_shortcode('[mepr-show if="loggedin"]' . $mem_signedin . '[/mepr-show]');
+$membership_menu .= do_shortcode('[mepr-show if="loggedout"]<a href="/membership">Join City Arts!</a> | <span class="already-a-member">[mepr-login-link]</span>[/mepr-show]');
+$membership_menu .=  '</span>';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -179,7 +184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				)
 			);
-
+			echo '<div class="px-4">' . $membership_menu . "</div>";
 			?>
 			</div>
 		</div>
@@ -191,31 +196,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
 		'understrap' ); ?></a>
 
-		<nav  class="container navbar-nav">
+		<nav class="container navbar-nav">
 			<div class="row">
-				<div class="col-3 px-sm-0">
+				<div class="col px-sm-0">
 					<button class="hamburger hamburger--spin toggle-button " type="button" data-toggle="slide-collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
 						</span>
 					</button>
-
 				</div>
 				<div class="col text-center">
 					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="<?= get_stylesheet_directory_uri() ?>/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 				</div>
-				<div class="col-3">
-					<?php
-					//$membership_menu = '<div class="header-membership-wrapper title">';
-					//$membership_menu .= do_shortcode('[mepr-account-info field="full_name"]');
-					//$membership_menu .= '<i class="ml-2">' . do_shortcode('[mepr-account-link]') . '</i>';
-					//$membership_menu .=  '</div>';
-					//echo $membership_menu;
-					//</div>
-					//<div class="col-auto">
-					?>
-
-					<div class="search-nav-button float-right" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></div>
+				<div class="col my-auto text-right px-sm-0">
+					<?= $membership_menu; ?>
+					<span class="search-nav-button pl-2" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></span>
 				</div>
 			</div><!-- end row -->
 			<div class="row search-input-wrapper">

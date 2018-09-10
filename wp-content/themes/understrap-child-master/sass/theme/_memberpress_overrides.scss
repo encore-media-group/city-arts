@@ -1,6 +1,22 @@
 .header-membership-wrapper {
   font-family: $card-meta-font-family;
   width: 100%;
+
+  .mepr-link-span a {
+    color: $black;
+  }
+
+  #wrapper-navbar & {
+    display: none;
+    @include media-breakpoint-up(sm) {
+      display: inline;
+    }
+  }
+}
+
+.mepr-link-span {
+  display: block;
+  float: right;
 }
 
 .mp_wrapper {
