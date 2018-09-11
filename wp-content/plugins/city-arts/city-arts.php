@@ -171,7 +171,7 @@ function get_calendar_disciplines() {
     ['slug'=> 'dance', 'name' => 'Dance'],
     ['slug'=> 'comedy', 'name' => 'Comedy'],
     ['slug'=> 'theater', 'name' => 'Theater'],
-    ['slug'=> 'book-talks', 'name' => 'Books & Talks'],
+    ['slug'=> 'books-talks', 'name' => 'Books & Talks'],
   ];
 }
 
