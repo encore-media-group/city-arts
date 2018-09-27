@@ -38,7 +38,7 @@
 				e.preventDefault();
 				
 				// unlock form
-				acf.validation.unlockForm( $el );
+				acf.unlockForm( $el );
 				
 				// alert
 				alert( acf.__('Field group title is required') );
@@ -102,7 +102,6 @@
 			
 			// initialize
 			this.$el = $('#acf-field-key-hide');
-			this.addEvents();
 			
 			// render
 			this.render();
@@ -247,8 +246,16 @@
 			return $('#' + this.getInputId() + '-' + name);
 		},
 		
+		$meta: function(){
+			return this.$('.meta:first');
+		},
+		
+		$handle: function(){
+			return this.$('.handle:first');
+		},
+		
 		$settings: function(){
-			return this.$('.acf-field-settings:first > .acf-field');
+			return this.$('.settings:first');
 		},
 		
 		$setting: function( name ){
@@ -308,7 +315,6 @@
 			
 			// get input value
 			var $input = this.$input( name );
-			//console.log($input );
 			var value = $input.length ? $input.val() : null;
 			
 			// set data silently (cache)
@@ -973,7 +979,7 @@
 			// check parent
 			var parent = this.getParent();
 			if( parent ) {
-				ID = parent.prop('ID') || parent.prop('key');
+				ID = parseInt(parent.prop('ID')) || parent.prop('key');
 			}
 			
 			// update
