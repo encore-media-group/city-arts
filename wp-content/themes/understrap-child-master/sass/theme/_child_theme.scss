@@ -394,7 +394,9 @@ span.category-label {
     color: $orange;
     font-weight: $font-weight-light;
 }
-
+.category-cover-story .wp-caption-text {
+  padding: .5rem !important;
+}
 span.byline {
   display: inline-block;
 }
