@@ -12,7 +12,8 @@ if( !empty( $fields['show_in_calendar'] ) ) :
 	if( $fields['show_in_calendar'] == 'yes' ) :
 		$cat_name = "Calendar";
 		$calendar_label_class = " calendar-item calendar-item-label ";
-		$add_url = "/calendar";
+		$add_url = true;
+		$cat_url = "/calendar";
 	endif;
 endif;
 
