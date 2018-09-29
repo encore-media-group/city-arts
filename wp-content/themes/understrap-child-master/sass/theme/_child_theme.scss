@@ -388,7 +388,8 @@ span.category-label {
   white-space: nowrap;
 }
 
-.caption {
+.caption,
+.category-cover-story .wp-caption-text {
     font-family: $card-meta-font-family;
     color: $orange;
     font-weight: $font-weight-light;
