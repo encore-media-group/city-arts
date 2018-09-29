@@ -34,8 +34,7 @@ if( $img_width < $img_height ) {
 ?>
   <!-- item 255x170 -->
   <div class="row item-255x170 text-center">
-    <div class="col-12" style="overflow: hidden;
-    max-height: 170px;">
+    <div class="col-12" style="overflow: hidden;max-height: 170px;">
       <a href="<?php the_permalink() ?>">
         <img
        src="<?php echo esc_url( $img_src ); ?>"
