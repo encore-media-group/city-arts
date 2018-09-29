@@ -40,12 +40,12 @@ class ca_top_articles_widget extends WP_Widget {
     $post_id = $current_post ? $current_post->ID : null;
     $used_ids[] = $post_id;
 
-
     $query = [
         'posts_per_page' => $post_show_count,
         'no_found_rows' => true,
         'orderby' => ['date' => 'desc'],
         'post_status'    => 'publish',
+        'post__not_in' => $used_ids,
         'meta_query' => Calendar::meta_query_hide_calendar_posts(),
       ];
 
