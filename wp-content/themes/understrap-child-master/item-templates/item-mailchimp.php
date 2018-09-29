@@ -15,6 +15,7 @@
                         </div>
                     </form>
                 </div><!--End mc_embed_signup-->
+            <h6 class="text-center current-text pt-2 mb-0">City Arts memberships are available <a href="/membership" style="text-decoration: underline;">here</a>.</h6>
         </div>
     </div>
 </div>
