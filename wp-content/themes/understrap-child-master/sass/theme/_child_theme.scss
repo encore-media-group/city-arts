@@ -416,7 +416,10 @@ span.byline {
     span.the-first-letter {
       font-family: $headings-font-family;
       font-weight: $font-weight-normal;
-      font-size: $display1-size;
+      font-size: 5rem;
+      @include media-breakpoint-up(md) {
+        font-size: $display1-size;
+      }
     }
 
     h3.entry-excerpt {
