@@ -9,6 +9,10 @@
   $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
   $thumbnail_description = get_post($thumbnail_id)->post_content;
 
+  $Parsedown_local = new Parsedown();
+  $thumbnail_caption = $Parsedown_local->line($thumbnail_caption);
+  $thumbnail_description = $Parsedown_local->line($thumbnail_description);
+
   $hero_image['src'] = wp_get_attachment_image_url( $thumbnail_id, 'ca-2000x1333' );
   $hero_image['srcset'] = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-2000x1333' );
   $hero_image['style'] = ' max-width:2000px;height:auto; ';

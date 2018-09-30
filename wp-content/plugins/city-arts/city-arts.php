@@ -22,6 +22,8 @@ include( plugin_dir_path( __FILE__ ) . 'custom_types/custom_menus.php');
 include( plugin_dir_path( __FILE__ ) . 'inc_overrides/pagination.php');
 include( plugin_dir_path( __FILE__ ) . 'includes/google-ads.php');
 include( plugin_dir_path( __FILE__ ) . 'includes/calendar_class.php');
+include( plugin_dir_path( __FILE__ ) . 'includes/parsedown-master/Parsedown.php');
+
 
 /* register this in the admin menu */
 add_action( 'admin_menu', 'city_arts_website_menu' );
@@ -54,6 +56,8 @@ add_action( 'pre_get_posts', 'wpsites_query' );
 //load child template for issue instead of the default archive page
 add_filter( 'template_include', 'load_issue_template', 99 );
 
+//parse title for markdown - site wide
+add_filter( 'the_title', 'process_markdown', 10, 2 );
 /* register custom routes for calendar dates and event tag filters */
 
 //.com/calendar/music
@@ -749,16 +753,20 @@ function set_first_letter_of_post( $post ) {
 
   $new_first_word = substr_replace($first_word, '<span class="the-first-letter">' . $first_letter . '</span>', 0, 1);
 
-  $pos = strpos($article_body, $first_word);
+  if( !empty($first_word)) :
+    $pos = strpos($article_body, $first_word);
 
-  if ($pos !== false) {
-       $article_body = substr_replace(
-        $article_body,
-        $new_first_word,
-        $pos,
-        strlen($first_word)
-      );
-  }
+    if ($pos !== false) :
+         $article_body = substr_replace(
+          $article_body,
+          $new_first_word,
+          $pos,
+          strlen($first_word)
+        );
+    endif;
+
+  endif;
+
 return  $article_body;
 }
 
@@ -851,4 +859,13 @@ function build_154x200_vertical( $issue_slug, $issue_post_id, $direction = '' ) 
     'image' => $img_section
   ];
 
+}
+
+function process_markdown( $title) {
+  if ( !is_admin() ) :
+    $Parsedown = new Parsedown();
+    return $Parsedown->line($title);
+  else:
+    return $title;
+  endif;
 }
