@@ -121,3 +121,5 @@ wp-config.php
 !wp-content/plugins/relevanssi/
 !wp-content/plugins/advanced-custom-fields-pro/
 !wp-content/plugins/woocommerce/
+!wp-content/plugins/woocommerce*
+

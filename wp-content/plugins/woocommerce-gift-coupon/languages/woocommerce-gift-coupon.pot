@@ -1,0 +1,473 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Gift Coupon\n"
+"POT-Creation-Date: 2018-03-13 17:00+0100\n"
+"PO-Revision-Date: 2018-03-13 17:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.13\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: woocommerce-gift-coupon.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/includes/gs-middle-options-page.php:45
+msgid "Your settings have been saved."
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:102
+msgid "Help us"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:105
+msgid ""
+"This plugin is proudly open source (GPL license) and we're always delighted "
+"to help you. But it´s necesary to contribute with a low donation to continue "
+"developing this plugin for create a new improvements and continue to give "
+"you a maintence. Thanks a lot!"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:106 includes/functions.php:20
+msgid "Donate"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:112
+msgid "Basic configuration:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:118
+msgid "How to send coupons"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:124
+msgid "Generate coupons mannually"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:125
+msgid "Generate coupons automatically on complete order status"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:126
+msgid "Generate coupons automatically on processing order status"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:145
+msgid "Email configuration:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:151
+msgid "Subject:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:159
+msgid "Message:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:170
+msgid "Coupon PDF configuration:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:176
+msgid "Show logo:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:182
+msgid "Show logo in the header on coupon template"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:190
+msgid "Logo"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:190
+#, php-format
+msgid "Max. size: %s"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:203
+msgid "Hide discount amount:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:209
+msgid "Hide the quantity of the discount on coupon template"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:216
+msgid "Title:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:222
+msgid "Show custom title"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:223
+msgid "Show product coupon title"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:245
+msgid "Description:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:251
+msgid "Show custom description"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:252
+msgid "Show product coupon description"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:274
+msgid "Footer:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:282
+msgid "Logo area color:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:290
+msgid "Title area color:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:298
+msgid "Footer area color:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:306
+msgid "Coupon preview example:"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:308 includes/functions.php:161
+msgid "Preview"
+msgstr ""
+
+#: admin/includes/gs-middle-options-page.php:315
+msgid "Save options"
+msgstr ""
+
+#: admin/preview_coupon_page.php:25
+msgid "Download PDF"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:71
+msgid "General"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:76
+msgid "Usage restriction"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:81
+msgid "Usage limits"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:97
+msgid "Allow product as gift coupon"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:98
+msgid "Check this box if you want to allow this product as gift coupon"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:103
+msgid "Discount type"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:109
+msgid "Coupon amount"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:111
+msgid "Value of the coupon."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:119
+msgid "Allow free shipping"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:120
+#, php-format
+msgid ""
+"Check this box if the coupon grants free shipping. A <a href=\"%s\" target="
+"\"_blank\">free shipping method</a> must be enabled in your shipping zone "
+"and be set to require \"a valid free shipping coupon\" (see the \"Free "
+"Shipping Requires\" setting)."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:128
+msgid "Coupon expiry date"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:142
+msgid "Minimum spend"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:143
+msgid "No minimum"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:144
+msgid ""
+"This field allows you to set the minimum spend (subtotal, including taxes) "
+"allowed to use the coupon."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:151
+msgid "Maximum spend"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:152
+msgid "No maximum"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:153
+msgid ""
+"This field allows you to set the maximum spend (subtotal, including taxes) "
+"allowed when using the coupon."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:160
+msgid "Individual use only"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:161
+msgid ""
+"Check this box if the coupon cannot be used in conjunction with other "
+"coupons."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:166
+msgid "Exclude sale items"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:167
+msgid ""
+"Check this box if the coupon should not apply to items on sale. Per-item "
+"coupons will only work if the item is not on sale. Per-cart coupons will "
+"only work if there are items in the cart that are not on sale."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:172
+msgid "Products"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:173
+#: includes/class-wc-gift-coupon-metaboxes.php:187
+msgid "Search for a product&hellip;"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:182
+msgid ""
+"Products that the coupon will be applied to, or that need to be in the cart "
+"in order for the \"Fixed cart discount\" to be applied."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:186
+msgid "Exclude products"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:197
+msgid ""
+"Products that the coupon will not be applied to, or that cannot be in the "
+"cart in order for the \"Fixed cart discount\" to be applied."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:202
+msgid "Product categories"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:203
+msgid "Any category"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:214
+msgid ""
+"Product categories that the coupon will be applied to, or that need to be in "
+"the cart in order for the \"Fixed cart discount\" to be applied."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:218
+msgid "Exclude categories"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:219
+msgid "No categories"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:229
+msgid ""
+"Product categories that the coupon will not be applied to, or that cannot be "
+"in the cart in order for the \"Fixed cart discount\" to be applied."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:235
+msgid "Email restrictions"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:236
+msgid "No restrictions"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:237
+msgid ""
+"List of allowed emails to check against the customer billing email when an "
+"order is placed. Separate email addresses with commas."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:253
+msgid "Usage limit per coupon"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:254
+#: includes/class-wc-gift-coupon-metaboxes.php:284
+msgid "Unlimited usage"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:255
+msgid "How many times this coupon can be used before it is void."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:268
+msgid "Limit usage to X items"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:269
+msgid "Apply to all qualifying items in cart"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:270
+msgid ""
+"The maximum number of individual items this coupon can apply to when using "
+"product discounts. Leave blank to apply to all qualifying items in cart."
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:283
+msgid "Usage limit per user"
+msgstr ""
+
+#: includes/class-wc-gift-coupon-metaboxes.php:285
+msgid ""
+"How many times this coupon can be used by an individual user. Uses billing "
+"email for guests, and user ID for logged in users."
+msgstr ""
+
+#: includes/functions.php:37
+msgid "Settings"
+msgstr ""
+
+#: includes/functions.php:49 includes/functions.php:50
+msgid "Woo Gift Coupon"
+msgstr ""
+
+#: includes/functions.php:60 includes/functions.php:61
+msgid "Download coupon PDF"
+msgstr ""
+
+#: includes/functions.php:153
+msgid "My coupons"
+msgstr ""
+
+#: includes/functions.php:158
+msgid "Order ID"
+msgstr ""
+
+#: includes/functions.php:159
+msgid "Coupon ID"
+msgstr ""
+
+#: includes/functions.php:160
+msgid "Coupon date"
+msgstr ""
+
+#: includes/functions.php:169
+msgid "No preview"
+msgstr ""
+
+#: includes/functions.php:179
+msgid "No coupons"
+msgstr ""
+
+#: includes/functions.php:207
+msgid "Bought coupons"
+msgstr ""
+
+#: includes/functions.php:208
+msgid "Coupon Status"
+msgstr ""
+
+#: includes/functions.php:209
+msgid "Coupons"
+msgstr ""
+
+#: includes/functions.php:226
+msgid "coupons bought"
+msgstr ""
+
+#: includes/functions.php:229
+msgid "coupon bought"
+msgstr ""
+
+#: includes/functions.php:239
+msgid "Sended"
+msgstr ""
+
+#: includes/functions.php:274 includes/mail.php:27 includes/mail.php:28
+msgid "Generate coupons"
+msgstr ""
+
+#: includes/functions.php:276
+msgid "Generate coupon"
+msgstr ""
+
+#: includes/functions.php:296
+msgid "Gift coupon"
+msgstr ""
+
+#: includes/mail-template.php:96
+msgid "Code"
+msgstr ""
+
+#: includes/mail.php:105
+msgid "Coupons generated"
+msgstr ""
+
+#: includes/mail.php:107
+msgid "Coupon generated"
+msgstr ""
+
+#: includes/mail.php:110
+#, php-format
+msgid "<b>%s</b> "
+msgid_plural "<b>%s</b> "
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/mail.php:314
+msgid "Please download the PDF"
+msgstr ""
+
+#: woocommerce-gift-coupon.php:31 woocommerce-gift-coupon.php:32
+msgid "Please active first WooCommerce plugin."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Gift Coupon"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Buy coupons as a product to give a friend. Generate coupon code PDF and send "
+"it by email or download manually on the user profile."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Alberto Pérez"
+msgstr ""
