@@ -119,4 +119,5 @@ wp-config.php
 !wp-content/plugins/regenerate-thumbnails/
 !wp-content/plugins/city-arts/
 !wp-content/plugins/relevanssi/
-!wp-content/plugins/advanced-custom-fields-pro
+!wp-content/plugins/advanced-custom-fields-pro/
+!wp-content/plugins/woocommerce/
