@@ -1,9 +1,27 @@
+.pum-theme-footer-theme .pum-container {
+    @include media-breakpoint-down(sm) {
+        padding: 5px !important;
+    }
+}
+
 .popup {
     .popup-header {
         font-family: $headings-font-family;
         font-size: 1.75rem;
         line-height: 1.5;
         font-weight: $font-weight-medium;
+        @include media-breakpoint-down(sm) {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+    }
+    .pop-body {
+        @include media-breakpoint-down(sm) {
+            padding: 1px;
+        }
+    }
+    .cc-logos {
+        display: block;
     }
     .button-column {
         display: -webkit-box;
