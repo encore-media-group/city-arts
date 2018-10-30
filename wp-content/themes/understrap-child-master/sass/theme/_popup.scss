@@ -1,4 +1,10 @@
 .popup {
+    .popup-header {
+        font-family: $headings-font-family;
+        font-size: 1.75rem;
+        line-height: 1.5;
+        font-weight: $font-weight-medium;
+    }
     .button-column {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -12,8 +18,11 @@
         justify-content: flex-end;
     }
     .red-button {
-        font-family: sans-serif;
+        font-family: $subhead-font-family;
         background-color: $red;
+        font-weight: $font-weight-medium;
+        line-height: $headings-line-height;
+        font-size: 1.5rem;
         border-radius: 33px;
         -webkit-border-radius: 33px;
         -moz-border-radius: 33px;
