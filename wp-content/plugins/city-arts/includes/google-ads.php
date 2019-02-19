@@ -46,7 +46,9 @@ function ad_300x250_shortcode() {
 }
 
 function ad_300x250_core() {
-  return sprintf('<div class="ad-300x250 mx-auto my-auto">%1$s</div>', google_tag_html( 'medium' ) );
+  $google_medium_responsive = '<!-- ca - medium rect responsive --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3749514479005131" data-ad-slot="3174011765" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
+  //return sprintf('<div class="ad-300x250 mx-auto my-auto">%1$s</div>', google_tag_html( 'medium' ) );
+  return sprintf('<div class="ad-300x250 mx-auto my-auto">%1$s</div>', $google_medium_responsive );
 }
 
 function ad_300x600_shortcode() {
