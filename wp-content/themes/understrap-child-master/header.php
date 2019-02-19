@@ -31,19 +31,17 @@ $membership_menu .=  '</span>';
   <script src="https://use.typekit.net/faz4bwi.js"></script>
   <script>try{Typekit.load({ async: false });}catch(e){}</script>
 	<?php wp_head(); ?>
-
-	<!-- google ad script -->
-	<script src="<?= get_stylesheet_directory_uri() ?>/assets/slideout.min.js"></script>
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>
-	  (adsbygoogle = window.adsbygoogle || []).push({
-	    google_ad_client: "ca-pub-3749514479005131",
-	    enable_page_level_ads: true
-	  });
+	     (adsbygoogle = window.adsbygoogle || []).push({
+	          google_ad_client: "ca-pub-3749514479005131",
+	          enable_page_level_ads: true
+	     });
 	</script>
-
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/slideout.min.js"></script>
 	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 	<script>
+		/*
 		var googletag = googletag || {};
 		googletag.cmd = googletag.cmd || [];
 
@@ -66,6 +64,7 @@ $membership_menu .=  '</span>';
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 		});
+		*/
 	</script>
 	<!-- end google ad script -->
 

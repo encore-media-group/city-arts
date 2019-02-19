@@ -2,6 +2,11 @@
 /*
   all things required to build google ads
 
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ca 728x90 standard -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3749514479005131" data-ad-slot="3345402152"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
 */
 
 function google_ads() {
@@ -53,9 +58,11 @@ function ad_300x600_core() {
 }
 
 function ad_728xlandscape_shortcode() {
+  $google_728 = '<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3749514479005131" data-ad-slot="3345402152"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
   $html = '<div class="row no-gutters clearfix"><div class="col pb-3 text-center"><span style="font-size:.5em;">ADVERTISEMENT</span>';
   $html .= '<div class=" mx-auto " style="max-width:728px;max-height:90px;">%1$s</div></div></div>';
-  return sprintf($html, google_tag_html( 'landscape' ) );
+//  return sprintf($html, google_tag_html( 'landscape' ) );
+  return sprintf($html, $google_728 );
 }
 
 function ad_728xlandscape_bottom_shortcode() {
