@@ -50,7 +50,7 @@ function ad_300x250_shortcode() {
 function ad_300x250_core() {
   $google_medium_responsive = '<!-- ca 300x250 medium rect --><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3749514479005131" data-ad-slot="6826890705"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
   //return sprintf('<div class="ad-300x250 mx-auto my-auto">%1$s</div>', google_tag_html( 'medium' ) );
-  return sprintf('<div style="width:300px;height: 250px;" class="ad-300x250 mx-auto my-auto">%1$s</div>', $google_medium_responsive );
+  return sprintf('<div style="width:300px;height: 250px;padding:0;" class="ad-300x250 mx-auto my-auto">%1$s</div>', $google_medium_responsive );
 }
 
 function ad_300x600_shortcode() {
