@@ -45,8 +45,10 @@ function ad_300x250_shortcode() {
   return sprintf('<div class="ad_300x250_sc_container float-md-right ml-md-4">%1$s</div>', ad_300x250_core() );
 }
 
+
+
 function ad_300x250_core() {
-  $google_medium_responsive = '<!-- ca - medium rect responsive --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3749514479005131" data-ad-slot="3174011765" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
+  $google_medium_responsive = '<!-- ca 300x250 medium rect --><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3749514479005131" data-ad-slot="6826890705"></ins>';
   //return sprintf('<div class="ad-300x250 mx-auto my-auto">%1$s</div>', google_tag_html( 'medium' ) );
   return sprintf('<div style="width:300px;height: 250px;" class="ad-300x250 mx-auto my-auto">%1$s</div>', $google_medium_responsive );
 }
