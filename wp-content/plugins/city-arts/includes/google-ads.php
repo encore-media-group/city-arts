@@ -46,7 +46,6 @@ function ad_300x250_shortcode() {
 }
 
 
-
 function ad_300x250_core() {
   $google_medium_responsive = '<!-- ca 300x250 medium rect --><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-3749514479005131" data-ad-slot="6826890705"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
   //return sprintf('<div class="ad-300x250 mx-auto my-auto">%1$s</div>', google_tag_html( 'medium' ) );
@@ -73,7 +72,9 @@ function ad_728xlandscape_shortcode() {
 }
 
 function ad_728xlandscape_bottom_shortcode() {
+  $google_728_bottom = '<!-- ca - 728x90 - bottom --> <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3749514479005131" data-ad-slot="9242011495"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
   $html = '<div class="row no-gutters clearfix"><div class="col pb-3 text-center"><span style="font-size:.5em;">ADVERTISEMENT</span>';
   $html .= '<div class=" mx-auto " style="max-width:728px;max-height:90px;">%1$s</div></div></div>';
-  return sprintf($html, google_tag_html( 'landscape_bottom' ) );
+//  return sprintf($html, google_tag_html( 'landscape_bottom' ) );
+  return sprintf($html, $google_728_bottom );
 }
