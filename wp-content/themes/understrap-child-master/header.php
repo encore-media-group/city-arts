@@ -11,11 +11,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 $current_cover = get_current_issue_image();
 
-$mem_signedin = '<div class="btn-group"><div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, [mepr-account-info field="first_name"]!</div><div class="dropdown-menu dropdown-menu-right"><div class="dropdown-item" type="">[mepr-account-link]</div></div></div>';
-$membership_menu = '<span class="header-membership-wrapper">';
-$membership_menu .= do_shortcode('[mepr-show if="loggedin"]' . $mem_signedin . '[/mepr-show]');
-$membership_menu .= do_shortcode('[mepr-show if="loggedout"]<a href="/membership">Join City Arts!</a> | <span class="already-a-member">[mepr-login-link]</span>[/mepr-show]');
-$membership_menu .=  '</span>';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -190,7 +185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				)
 			);
-			echo '<div class="px-4">' . $membership_menu . "</div>";
+
 			?>
 			</div>
 		</div>
@@ -215,7 +210,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<a class="navbar-brand my-0 w-100" rel="home" href="/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ) ?>"><img src="<?= get_stylesheet_directory_uri() ?>/assets/cityarts-logo.svg" id="cityarts-header-logo"></a>
 				</div>
 				<div class="col my-auto text-right px-sm-0">
-					<?= $membership_menu; ?>
 					<span class="search-nav-button pl-2" role="button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></span>
 				</div>
 			</div><!-- end row -->
