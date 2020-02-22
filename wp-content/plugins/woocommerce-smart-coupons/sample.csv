@@ -1,9 +1,0 @@
-post_title,post_excerpt,post_status,post_parent,menu_order,post_date,discount_type,coupon_amount,free_shipping,expiry_date,minimum_amount,maximum_amount,individual_use,exclude_sale_items,product_ids,exclude_product_ids,product_categories,exclude_product_categories,customer_email,usage_limit,usage_limit_per_user
-sczdmjd,,publish,0,0,,Percentage discount,30,yes,,10,1000,yes,yes,100|103,100,15,,sczdmjd@mailinator.com,2,1
-sc44noo,,publish,0,0,,Fixed cart discount,25,no,,10,,no,yes,105,,15,12,sc44noo@mailinator.com,,1
-scuy08i,,publish,0,0,,Fixed product discount,5,yes,2019/01/20,,1000,yes,no,100|107,100,,12,scuy08i@mailinator.com,2,1
-scyjrlj,,publish,0,0,,Sign Up Fee Discount,1,no,2018/12/20,1,,no,yes,,,,,scyjrlj@mailinator.com,,
-scrzyzh,,publish,0,0,,Sign Up Fee % Discount,10,yes,,,1000,yes,no,100|111,,,12,scrzyzh@mailinator.com,2,1
-schapfo,,publish,0,0,,Recurring Product Discount,0.5,yes,2019/02/20,10,1000,yes,yes,100|104,100,15,12,schapfo@mailinator.com,,
-scl5052,,publish,0,0,,Recurring Product % Discount,5,no,2019/01/01,10,,no,yes,106,,15,,scl5052@mailinator.com,,1
-sce9z9k,,publish,0,0,,Store Credit / Gift Certificate,20,no,,,1000,yes,no,100|108,100,,,sce9z9k@mailinator.com,2,

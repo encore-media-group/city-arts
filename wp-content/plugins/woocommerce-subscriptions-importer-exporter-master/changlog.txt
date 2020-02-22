@@ -1,3 +1,0 @@
-*** WooCommerce Subscriptions CSV Importer and Exporter Changelog ***
-
-2016.05.01 - version 2.0.0-beta
