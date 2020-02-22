@@ -51,9 +51,11 @@ class ca_top_articles_widget extends WP_Widget {
 
       if( $use_custom_articles_checkbox ):
         $editor_articles = $this->get_editor_selected_posts();
-        if( count($editor_articles >= 1) ) :
-         $query['post__in'] =  $editor_articles;
-         $query['orderby'] = 'post__in';
+        if( is_numeric($editor_articles)) :
+          if( count($editor_articles >= 1) ) :
+          $query['post__in'] =  $editor_articles;
+          $query['orderby'] = 'post__in';
+          endif;
         endif;
       endif;
 

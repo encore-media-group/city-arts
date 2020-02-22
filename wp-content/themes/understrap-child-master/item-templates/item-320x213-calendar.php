@@ -19,14 +19,14 @@
 
   $img_orientation = 'landscape';
 
-if( $img_width < $img_height ) {
-  $img_orientation = 'portrait';
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-320x426' );
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-320x426' );
-} else {
-  $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-320x213' );
-  $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-320x213' );
-}
+  if( $img_width < $img_height ) {
+    $img_orientation = 'portrait';
+    $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-320x426' );
+    $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-320x426' );
+  } else {
+    $img_src = wp_get_attachment_image_url( $thumbnail_id, 'ca-320x213' );
+    $img_srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'ca-320x213' );
+  }
 
 
   $item_css = isset($item_css) ? $item_css : '  ';
@@ -50,13 +50,13 @@ if( $img_width < $img_height ) {
         <h4 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
         <?php if( $show_byline ):?>
           <div class="contributors ml-1"><?php echo understrap_posted_on( $show_byline_date ); ?></div>
-        <? endif; ?>
+        <?php endif; ?>
         <?php if( $show_byline_only ):?>
           <div class="contributors ml-1"><?php echo understrap_posted_on( false, true ); ?></div>
-        <? endif; ?>
+        <?php endif; ?>
         <?php if( $show_byline_date):?>
           <div class="contributors ml-1"><?php echo understrap_posted_on( $show_byline_date ); ?></div>
-        <? endif; ?>
+        <?php endif; ?>
 
         <div class="excerpt py-3"><?php echo $post->post_excerpt; ?></div>
       </div>

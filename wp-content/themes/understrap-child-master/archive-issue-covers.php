@@ -41,7 +41,7 @@ $the_query = new WP_Query(array(
       					<header class="row page-header  w-md-75 mx-auto">
       						<h2 class="col page-title pb-4 sidelines"> <?= $page_title; ?> </h2>
       					</header><!-- .page-header -->
-      				<? endif; ?>
+      				<?php endif; ?>
   					 <div class="row">
   					   <?php
     						$count = 1;

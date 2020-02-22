@@ -243,7 +243,7 @@ $this_issue_query = new WP_Query(array(
 						?>
 						</div>
 					</div>
-					<? endif;?>
+					<?php endif;?>
 					<?php if( count( $issue_page_content['poetry']['posts'] ) > 0 ): ?>
 					<div class="row mt-4">
 						<div class="col">
@@ -251,7 +251,7 @@ $this_issue_query = new WP_Query(array(
 								<?php issue_display_posts( $issue_page_content['poetry']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
-					<? endif;?>
+					<?php endif;?>
 					<?php if( count( $issue_page_content['epilogue']['posts'] ) > 0 ): ?>
 					<div class="row mt-4">
 						<div class="col">
@@ -259,7 +259,7 @@ $this_issue_query = new WP_Query(array(
 								<?php issue_display_posts( $issue_page_content['epilogue']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
-					<? endif; ?>
+					<?php endif; ?>
 					<?php if( count( $issue_page_content['artwork']['posts'] ) > 0 ): ?>
 					<div class="row mt-4">
 						<div class="col">
@@ -276,7 +276,7 @@ $this_issue_query = new WP_Query(array(
 								issue_display_posts( $issue_page_content['artwork']['posts'], $args_for_sidebar ); ?>
 						</div>
 					</div>
-					<? endif; ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div><!--container-->

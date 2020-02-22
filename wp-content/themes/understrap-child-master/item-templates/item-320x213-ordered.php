@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="row">
-    <? endif; ?>
+    <?php endif; ?>
       <div class="col <?php echo $col_2_class ?>">
         <h3 class="mb-0"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
         <div class="contributors"><?php echo get_contributors(); ?></div>

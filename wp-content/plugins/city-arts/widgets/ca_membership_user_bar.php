@@ -15,8 +15,8 @@ class ca_membership_user_bar extends WP_Widget {
 
   public function widget( $args, $instance ) {
     $membership_menu = '<div class="header-membership-wrapper sidebar p-4 mb-4">';
-    $membership_menu .= do_shortcode('[mepr-show if="loggedin"]<div>Welcome, [mepr-account-info field="full_name"]!</div> [mepr-account-link] [/mepr-show]');
-    $membership_menu .= do_shortcode('[mepr-show if="loggedout"]<a href="/new-membership">Join City Arts! Become a member today!</a> <div class="already-a-member"><i>(already a member? [mepr-login-link] here.)</i></div>[/mepr-show]');
+    //$membership_menu .= do_shortcode('[mepr-show if="loggedin"]<div>Welcome, [mepr-account-info field="full_name"]!</div> [mepr-account-link] [/mepr-show]');
+    //$membership_menu .= do_shortcode('[mepr-show if="loggedout"]<a href="/new-membership">Join City Arts! Become a member today!</a> <div class="already-a-member"><i>(already a member? [mepr-login-link] here.)</i></div>[/mepr-show]');
     $membership_menu .=  '</div>';
     echo $membership_menu;
   }

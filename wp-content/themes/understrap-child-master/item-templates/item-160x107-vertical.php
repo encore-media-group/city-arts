@@ -18,7 +18,7 @@ $show_thumbnails = isset($show_thumbnails) ? $show_thumbnails : true;
 $item_css = isset($item_css) ? $item_css : '';
 
 ?>
-  <div class="row mb-4 px-lg-0 <? echo $item_css ?> item-160x107">
+  <div class="row mb-4 px-lg-0 <?php echo $item_css ?> item-160x107">
 
     <div class="col-12">
       <?php

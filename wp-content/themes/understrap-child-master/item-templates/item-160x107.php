@@ -19,7 +19,7 @@ $item_css = isset($item_css) ? $item_css : '';
 //col-auto pl-4 pl-sm-0
 //col pr-2 pl-lg-3
 ?>
-  <div class="row pb-2 pb-xl-0 px-lg-0 <? echo $item_css ?> item-160x107">
+  <div class="row pb-2 pb-xl-0 px-lg-0 <?php echo $item_css ?> item-160x107">
     <?php if ( $show_thumbnails ) : ?>
     <div class="col-12 col-sm-auto pl-0 ">
       <a href="<?php the_permalink() ?>">

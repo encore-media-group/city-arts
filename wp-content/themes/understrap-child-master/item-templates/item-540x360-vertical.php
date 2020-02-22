@@ -15,7 +15,7 @@
   $item_css = isset($item_css) ? $item_css : ' col ';
 
 ?>
-<div class="<? echo $item_css ?> item-540x360-vertical">
+<div class="<?php echo $item_css ?> item-540x360-vertical">
   <div class="row pb-md pb-4">
     <div class="col">
       <div class="row">
