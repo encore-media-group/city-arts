@@ -33,7 +33,7 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 								<h1 class="page-title text-left py-4"> <?= single_cat_title('', false) ?> </h1>
 							</div>
 							<div class="col my-auto">
-								<?
+								<?php
 								$twitter_slug = get_field('writer_twitter_slug', $queried_object );
 								if( !empty( $twitter_slug ) ) {
 									echo ( isset( $twitter_slug ) ) ? sprintf( '<a href="https://twitter.com/%1$s" class="social-handle"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i> @%1$s</a>', $twitter_slug ) : '';
@@ -50,12 +50,12 @@ $taxonomy_term = $taxonomy . '_' . $term_id;
 								if ( $image ) :
 								?>
 								<div class="col-12 col-md-auto text-center text-md-left">
-									<?
+									<?php
 										set_query_var ('image', $image );
 										get_template_part( 'item-templates/item', 'display-writer-profile-image' );
 									?>
 								</div>
-						<?
+						<?php
 							endif;
 							the_archive_description( '<div class="col-12 col-md-8 pb-4 writer-description">', '</div>' );
 						?>

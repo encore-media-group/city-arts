@@ -42,8 +42,8 @@
   <div class="col <?= $col_0_class ?> item-320x213  item-320x213-ordered">
     <div class="row py-2">
 
-      <div class="col-2 px-2 text-center <?= $col_1_class ?>"><h3><?echo $row_num ?>.</h3></div>
-      <?if ( $show_thumbnails ) : ?>
+      <div class="col-2 px-2 text-center <?= $col_1_class ?>"><h3><?php echo $row_num ?>.</h3></div>
+      <?php if ( $show_thumbnails ) : ?>
       <div class="col <?= $col_0_class ?> ">
         <a href="<?php the_permalink() ?>">
           <img src="<?php echo esc_url( $img_src ); ?>"
