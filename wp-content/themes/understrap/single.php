@@ -5,8 +5,11 @@
  * @package understrap
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 get_header();
-$container   = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 <div class="wrapper" id="single-wrapper">
@@ -24,7 +27,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 					<?php get_template_part( 'loop-templates/content', 'single' ); ?>
 
-						<?php understrap_post_nav(); ?>
+					<?php understrap_post_nav(); ?>
 
 					<?php
 					// If comments are open or we have at least one comment, load up the comment template.
@@ -37,15 +40,13 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 			</main><!-- #main -->
 
-		</div><!-- #primary -->
+			<!-- Do the right sidebar check -->
+			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+		</div><!-- .row -->
 
-	</div><!-- .row -->
+	</div><!-- #content -->
 
-</div><!-- Container end -->
-
-</div><!-- Wrapper end -->
+</div><!-- #single-wrapper -->
 
 <?php get_footer(); ?>

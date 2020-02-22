@@ -5,13 +5,17 @@
  * @package understrap
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 // Set the content width based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-if ( ! function_exists( 'understrap_setup' ) ) :
+add_action( 'after_setup_theme', 'understrap_setup' );
+
+if ( ! function_exists ( 'understrap_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -86,13 +90,18 @@ if ( ! function_exists( 'understrap_setup' ) ) :
 
 		// Set up the WordPress Theme logo feature.
 		add_theme_support( 'custom-logo' );
+		
+		// Add support for responsive embedded content.
+		add_theme_support( 'responsive-embeds' );
 
 		// Check and setup theme default settings.
 		understrap_setup_theme_default_settings();
 
 	}
-endif; // understrap_setup.
-add_action( 'after_setup_theme', 'understrap_setup' );
+}
+
+
+add_filter( 'excerpt_more', 'understrap_custom_excerpt_more' );
 
 if ( ! function_exists( 'understrap_custom_excerpt_more' ) ) {
 	/**
@@ -103,10 +112,14 @@ if ( ! function_exists( 'understrap_custom_excerpt_more' ) ) {
 	 * @return string
 	 */
 	function understrap_custom_excerpt_more( $more ) {
-		return '';
+		if ( ! is_admin() ) {
+			$more = '';
+		}
+		return $more;
 	}
 }
-add_filter( 'excerpt_more', 'understrap_custom_excerpt_more' );
+
+add_filter( 'wp_trim_excerpt', 'understrap_all_excerpts_get_more_link' );
 
 if ( ! function_exists( 'understrap_all_excerpts_get_more_link' ) ) {
 	/**
@@ -117,9 +130,10 @@ if ( ! function_exists( 'understrap_all_excerpts_get_more_link' ) ) {
 	 * @return string
 	 */
 	function understrap_all_excerpts_get_more_link( $post_excerpt ) {
-
-		return $post_excerpt . ' [...]<p><a class="btn btn-secondary understrap-read-more-link" href="' . esc_url( get_permalink( get_the_ID() )) . '">' . __( 'Read More...',
-		'understrap' ) . '</a></p>';
+		if ( ! is_admin() ) {
+			$post_excerpt = $post_excerpt . ' [...]<p><a class="btn btn-secondary understrap-read-more-link" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Read More...',
+			'understrap' ) . '</a></p>';
+		}
+		return $post_excerpt;
 	}
 }
-add_filter( 'wp_trim_excerpt', 'understrap_all_excerpts_get_more_link' );

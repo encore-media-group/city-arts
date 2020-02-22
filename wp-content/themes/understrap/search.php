@@ -5,9 +5,12 @@
  * @package understrap
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 get_header();
 
-$container   = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
@@ -25,11 +28,16 @@ $container   = get_theme_mod( 'understrap_container_type' );
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">
-						
-							<h1 class="page-title"><?php printf(
-							/* translators:*/
-							 esc_html__( 'Search Results for: %s', 'understrap' ),
-								'<span>' . get_search_query() . '</span>' ); ?></h1>
+
+							<h1 class="page-title">
+								<?php
+								printf(
+									/* translators: %s: query term */
+									esc_html__( 'Search Results for: %s', 'understrap' ),
+									'<span>' . get_search_query() . '</span>'
+								);
+								?>
+							</h1>
 
 					</header><!-- .page-header -->
 
@@ -58,15 +66,13 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			<!-- The pagination component -->
 			<?php understrap_pagination(); ?>
 
-		</div><!-- #primary -->
+			<!-- Do the right sidebar check -->
+			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+		</div><!-- .row -->
 
-	</div><!-- .row -->
+	</div><!-- #content -->
 
-</div><!-- Container end -->
-
-</div><!-- Wrapper end -->
+</div><!-- #search-wrapper -->
 
 <?php get_footer(); ?>

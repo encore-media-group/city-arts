@@ -3,10 +3,12 @@
  * Check and setup theme's default settings
  *
  * @package understrap
- *
  */
 
-if ( ! function_exists( 'understrap_setup_theme_default_settings' ) ) :
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
+if ( ! function_exists( 'understrap_setup_theme_default_settings' ) ) {
 	function understrap_setup_theme_default_settings() {
 
 		// check if settings are set, if not set defaults.
@@ -29,4 +31,4 @@ if ( ! function_exists( 'understrap_setup_theme_default_settings' ) ) :
 			set_theme_mod( 'understrap_container_type', 'container' );
 		}
 	}
-endif;
+}

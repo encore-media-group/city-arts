@@ -7,9 +7,17 @@
  * @package understrap
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
+
+<?php if ( is_front_page() ) : ?>
+  <?php get_template_part( 'global-templates/hero' ); ?>
+<?php endif; ?>
+
 
 <div class="wrapper" id="full-width-page-wrapper">
 
@@ -28,9 +36,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<?php
 						// If comments are open or we have at least one comment, load up the comment template.
 						if ( comments_open() || get_comments_number() ) :
-
 							comments_template();
-
 						endif;
 						?>
 
@@ -42,8 +48,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		</div><!-- .row end -->
 
-	</div><!-- Container end -->
+	</div><!-- #content -->
 
-</div><!-- Wrapper end -->
+</div><!-- #full-width-page-wrapper -->
 
 <?php get_footer(); ?>
