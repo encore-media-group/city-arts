@@ -178,7 +178,13 @@ class Strings {
 	 * @return bool
 	 */
 	public function is_image( $url ) {
-		return $url && is_string( $url ) && in_array( strrchr( $url, '.' ), array( '.jpg', '.jpeg', '.gif', '.png', '.bmp' ) );
+		if ( ! $url || ! is_string( $url ) ) {
+			return false;
+		}
+
+		$ext = strtolower( pathinfo( strtok( $url, '?' ), PATHINFO_EXTENSION ) );
+
+		return in_array( $ext, array( 'jpg', 'jpeg', 'gif', 'png', 'bmp' ) );
 	}
 
 	/**
@@ -302,6 +308,8 @@ class Strings {
 		if ( 'or' === $compound ) {
 			$compound = __( ' or ', 'codepress-admin-columns' );
 		}
+
+		$compound = sprintf( ' %s ', trim( $compound ) );
 
 		$last = end( $words );
 		$delimiter = ', ';

@@ -1187,7 +1187,10 @@
 				start: function (event, ui) {
 					ui.placeholder.html( ui.item.html() );
 					ui.placeholder.removeAttr('style');
-	   			}
+	   			},
+	   			update: function(event, ui) {
+					self.$input().trigger('change');
+		   		}
 			});
 			
 			// resizable
@@ -1386,7 +1389,7 @@
 				attachment = attachment.attributes;
 				
 				// preview size
-				var url = acf.isget(attachment, 'sizes', 'medium', 'url');
+				var url = acf.isget(attachment, 'sizes', this.get('preview_size'), 'url');
 				if( url !== null ) {
 					attachment.url = url;
 				}
@@ -1404,23 +1407,26 @@
 			// vars
 			var $el = this.$attachment( attachment.id );
 			
-			// image
+			// Image type.
 			if( attachment.type == 'image' ) {
 				
-				// remove filename	
+				// Remove filename.
 				$el.find('.filename').remove();
 			
-			// other (video)	
+			// Other file type.	
 			} else {	
 				
-				// attempt to find attachment thumbnail
-				attachment.url = acf.isget(attachment, 'thumb', 'src');
+				// Check for attachment featured image.
+				var image = acf.isget(attachment, 'image', 'src');
+				if( image !== null ) {
+					attachment.url = image;
+				}
 				
-				// update filename
+				// Update filename text.
 				$el.find('.filename').text( attachment.filename );
 			}
 			
-			// default icon
+			// Default to mimetype icon.
 			if( !attachment.url ) {
 				attachment.url = acf.get('mimeTypeIcon');
 				$el.addClass('-icon');
@@ -1701,6 +1707,6 @@
 	
 })(jQuery);
 
-// @codekit-prepend "../js/acf-field-repeater.js";
-// @codekit-prepend "../js/acf-field-flexible-content.js";
-// @codekit-prepend "../js/acf-field-gallery.js";
+// @codekit-prepend "_acf-field-repeater.js";
+// @codekit-prepend "_acf-field-flexible-content.js";
+// @codekit-prepend "_acf-field-gallery.js";

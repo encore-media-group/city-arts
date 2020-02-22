@@ -3,9 +3,9 @@ Contributors: codepress, tschutter, davidmosterd, engelen, dungengronovius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: plugins, wordpress, admin, column, columns, custom columns, custom fields, image, dashboard, sortable, filters, posts, media, users, pages, posttypes, manage columns, wp-admin
 Requires at least: 4.5
-Tested up to: 4.9.8
+Tested up to: 5.2.2
 Requires PHP: 5.3.6
-Stable tag: 3.2.7
+Stable tag: 3.4.6
 
 Customise columns on the administration screens for post(types), pages, media, comments, links and users with an easy to use drag-and-drop interface.
 
@@ -212,6 +212,61 @@ You can find a list of the available actions and filters (and examples on how to
 8. Posts Screen with custom fields.
 
 == Changelog ==
+
+= 3.4.6 =
+Release Date: August 21st, 2019
+
+* [Improved] Search the list of available custom fields in the drop down with Select2
+* [Improved] Change the label for Custom Field column Excerpt to Text
+* [Improved] Don't open column settings when column refreshes
+* [Improved] Setting for adding a link to related comments display
+
+= 3.4.5 =
+Release Date: July 16th, 2019
+
+* [Fixed] Javascript errors on admin pages for specific columns
+* [Fixed] Removed flickering for Pro modal
+* [Fixed] Styling issue on the WordPress Customize page
+* [Fixed] Re-init tooltips when a column is reloaded or added
+
+= 3.4.4 =
+Release Date: May 20th, 2019
+
+* [Fixed] Transient class fixed. Unchanged data did not update the timestamp resulting in invalidating the transient constantly
+
+= 3.4.3 =
+Release Date: May 10th, 2019
+
+* [Fixed] IE11 bug when adding new columns
+
+= 3.4.2 =
+Release Date: March 26th, 2019
+
+* [Improved] Prevent possible warning in User Registered column
+* [Improved] Give feedback on settings page when something went wrong
+* [Improved] Setting for link Media item to download or view
+
+= 3.4.1 =
+Release Date: February 18th, 2019
+
+* [Improved] Minor improvements in banners, missing links, etc
+
+= 3.4 =
+Release Date: January 23rd, 2019
+
+* [Fixed] Width setting Javascript errors
+* [Fixed] Show icons for Action column works again
+* [Improved] Show icon labels in the Screen Options menu when necessary
+
+= 3.3.1 =
+Release Date: November 7th, 2018
+
+* [Improved] Better external image support for Custom Field column
+
+= 3.3 =
+Release Date: October 31st, 2018
+
+* [Improved] Extra display for Path column to show the local path of a file
 
 = 3.2.7 =
 Release Date: September 25th, 2018

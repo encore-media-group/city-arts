@@ -1,0 +1,11 @@
+[07-Mar-2018 02:28:47 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/archive.php on line 10
+[15-Mar-2018 06:02:29 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[25-Mar-2018 02:31:10 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[27-Mar-2018 20:39:28 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[28-Mar-2018 20:54:43 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[13-Sep-2018 20:23:33 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/archive.php on line 10
+[13-Sep-2018 20:23:33 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[30-Dec-2018 14:42:15 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[30-Dec-2018 14:42:15 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/archive.php on line 10
+[23-Feb-2019 21:03:30 CST6CDT] PHP Fatal error:  Call to undefined function get_theme_mod() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/header.php on line 10
+[23-Feb-2019 21:03:30 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/cityart2/public_html/wp-content/themes/understrap-child-master/archive.php on line 10

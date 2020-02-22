@@ -31,6 +31,7 @@ class CustomFieldType extends Settings\Column
 			case 'image' :
 			case 'library_id' :
 				$settings[] = new Image( $this->column );
+				$settings[] = new MediaLink( $this->column );
 
 				break;
 			case 'excerpt' :
@@ -101,7 +102,7 @@ class CustomFieldType extends Settings\Column
 			'basic'      => array(
 				'color'   => __( 'Color', 'codepress-admin-columns' ),
 				'date'    => __( 'Date', 'codepress-admin-columns' ),
-				'excerpt' => __( 'Excerpt', 'codepress-admin-columns' ),
+				'excerpt' => __( 'Text', 'codepress-admin-columns' ),
 				'image'   => __( 'Image', 'codepress-admin-columns' ),
 				'link'    => __( 'URL', 'codepress-admin-columns' ),
 				'numeric' => __( 'Number', 'codepress-admin-columns' ),
@@ -123,9 +124,10 @@ class CustomFieldType extends Settings\Column
 
 		/**
 		 * Filter the available custom field types for the meta (custom field) field
-		 * @since 3.0
 		 *
 		 * @param array $field_types Available custom field types ([type] => [label])
+		 *
+		 * @since 3.0
 		 */
 		$grouped_types['custom'] = apply_filters( 'ac/column/custom_field/field_types', array() );
 
@@ -197,13 +199,21 @@ class CustomFieldType extends Settings\Column
 
 		switch ( $this->get_field_type() ) {
 
+			case 'array' :
+				if ( ac_helper()->array->is_associative( $value ) ) {
+					$value = ac_helper()->array->implode_associative( $value, __( ', ' ) );
+				} else {
+					$value = ac_helper()->array->implode_recursive( __( ', ' ), $value );
+				}
+
+				break;
 			case 'date' :
-				if ( $timestamp = ac_helper()->date->strtotime( $value ) ) {
+				$timestamp = ac_helper()->date->strtotime( $value );
+				if ( $timestamp ) {
 					$value = date( 'c', $timestamp );
 				}
 
 				break;
-
 			case "title_by_id" :
 				$values = array();
 				foreach ( $this->get_ids_from_array_or_string( $value ) as $id ) {
@@ -212,8 +222,8 @@ class CustomFieldType extends Settings\Column
 				}
 
 				$value = implode( ac_helper()->html->divider(), $values );
-				break;
 
+				break;
 			case "user_by_id" :
 				$values = array();
 				foreach ( $this->get_ids_from_array_or_string( $value ) as $id ) {

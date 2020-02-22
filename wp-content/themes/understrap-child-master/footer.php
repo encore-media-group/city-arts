@@ -60,6 +60,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<h2>ABOUT</h2>
 					<ul>
 						<li><a href="/about">About</a></li>
+						<li><a href="/membership">Become a member</a></li>
 						<li><a href="/contact">Contact</a></li>
 						<li><a href="/jobs">Careers</a></li>
 						<li><a href="/terms-of-use">Terms &amp; Conditions</a></li>

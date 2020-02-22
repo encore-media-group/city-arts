@@ -3,8 +3,12 @@
 namespace AC;
 
 use ReflectionObject;
+use WP_Roles;
 
 abstract class Plugin extends Addon {
+
+	/** @var array */
+	private $data;
 
 	/**
 	 * Check if plugin is network activated
@@ -22,7 +26,11 @@ abstract class Plugin extends Addon {
 	protected function get_data() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-		return get_plugin_data( $this->get_file(), false, false );
+		if ( null === $this->data ) {
+			$this->data = get_plugin_data( $this->get_file(), false, false );
+		}
+
+		return $this->data;
 	}
 
 	/**
@@ -57,6 +65,14 @@ abstract class Plugin extends Addon {
 		if ( 0 === version_compare( $this->get_version(), $this->get_stored_version() ) ) {
 			return;
 		}
+
+		global $wp_roles;
+
+		if ( ! $wp_roles ) {
+			$wp_roles = new WP_Roles();
+		}
+
+		do_action( 'ac/capabilities/init', $wp_roles );
 
 		$updater = new Plugin\Updater( $this );
 
