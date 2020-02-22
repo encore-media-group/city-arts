@@ -3,9 +3,9 @@ Contributors: codepress, tschutter, davidmosterd, engelen, dungengronovius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: plugins, wordpress, admin, column, columns, custom columns, custom fields, image, dashboard, sortable, filters, posts, media, users, pages, posttypes, manage columns, wp-admin
 Requires at least: 4.5
-Tested up to: 5.2.2
-Requires PHP: 5.3.6
-Stable tag: 3.4.6
+Tested up to: 5.3.2
+Requires PHP: 5.6.20
+Stable tag: 4.0.1
 
 Customise columns on the administration screens for post(types), pages, media, comments, links and users with an easy to use drag-and-drop interface.
 
@@ -212,6 +212,34 @@ You can find a list of the available actions and filters (and examples on how to
 8. Posts Screen with custom fields.
 
 == Changelog ==
+
+= 4.0.1 =
+Release Date: February 18th, 2020
+
+* [Fixed] Fatal error in Date helper that occurs in PHP 5.6
+* [Improved] Re-added the hook `ac/column/custom_field/use_text_input` to use a text field for the custom field column setting
+
+= 4.0.0 =
+Release Date: February 3rd, 2020
+
+* [Improved] Use wp_date for column value formatters instead of date_i18n
+* [Improved] Set link type for Taxonomy Columns
+* [Improved] It is not necessary anymore to load the overview page once in order to recognize the default columns
+
+= 3.4.8 =
+Release Date: November 19th, 2019
+
+* [Updated] The minimum version required to run Admin Columns is now PHP 5.6.20
+* [Improved] Adapted new WordPress interface styling
+* [Improved] Updated Select2 to 4.0.12 to prevent non closing drop-downs
+
+= 3.4.7 =
+Release Date: August 26th, 2019
+
+* [Added] Option to limit the amount of taxonomies that is shown in the column with show more button.
+* [Improved] Changed WordPress Date Format link
+* [Improved] Show more feature that is used in several columns
+* [Improved] Update Select2 version that fixes multiple selections bug
 
 = 3.4.6 =
 Release Date: August 21st, 2019

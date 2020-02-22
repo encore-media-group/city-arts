@@ -14,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 $integrations = $this->integrations;
 $promo = $this->promo;
 $discount = $this->discount;
-$price = $this->price;
+
+$is_promo_active = $promo && $promo->is_active();
 
 ?>
 
@@ -63,22 +64,32 @@ $price = $this->price;
 				</ul>
 			<?php endif; ?>
 			<p class="center nopadding">
-				<?php if ( ! $promo ) : ?>
+				<?php if ( ! $is_promo_active ) : ?>
 					<a target="_blank" href="<?php echo esc_url( ac_get_site_utm_url( 'upgrade-to-admin-columns-pro', 'banner' ) ); ?>" class="acp-button">
 						<?php _e( 'Get Admin Columns Pro', 'codepress-admin-columns' ); ?>
 					</a>
 				<?php endif; ?>
 			</p>
 			<p class="center ac-pro-prices">
-				<?php echo sprintf( __( 'Prices starting from %s', 'codepress-admin-columns' ), '$' . $price ); ?>
+				<?php if ( $this->price ) : ?>
+					<?php printf( __( 'Prices starting from %s', 'codepress-admin-columns' ), '$' . $this->price ); ?>
+				<?php endif; ?>
 			</p>
 		</div>
 	</div>
 
-	<?php if ( $promo ) : ?>
+	<?php if ( $is_promo_active ) : ?>
 
 		<div class="padding-box ac-pro-deal">
-			<?php $promo->display(); ?>
+			<h3>
+				<?php echo esc_html( $promo->get_title() ); ?>
+			</h3>
+			<a target="_blank" href="<?php echo esc_url( $promo->get_url() ); ?>" class="acp-button">
+				<?php echo esc_html( sprintf( __( 'Get %s Off!', 'codepress-admin-columns' ), $promo->get_discount() . '%' ) ); ?>
+			</a>
+			<p class="nomargin">
+				<?php echo esc_html( sprintf( __( "Discount is valid until %s", 'codepress-admin-columns' ), $promo->get_date_range()->get_end()->format( 'j F Y' ) ) ); ?>
+			</p>
 		</div>
 
 	<?php else : ?>

@@ -3,6 +3,7 @@
 namespace AC\Helper;
 
 use DOMDocument;
+use DOMElement;
 
 class Html {
 
@@ -10,8 +11,8 @@ class Html {
 	 * @param string $key
 	 * @param string $value
 	 *
-	 * @since 3.0
 	 * @return string
+	 * @since 3.0
 	 */
 	public function get_attribute_as_string( $key, $value ) {
 		return sprintf( '%s="%s"', $key, esc_attr( trim( $value ) ) );
@@ -20,8 +21,8 @@ class Html {
 	/**
 	 * @param array $attributes
 	 *
-	 * @since 3.0
 	 * @return string
+	 * @since 3.0
 	 */
 	public function get_attributes_as_string( array $attributes ) {
 		$output = array();
@@ -208,7 +209,7 @@ class Html {
 		$links = $dom->getElementsByTagName( 'a' );
 
 		foreach ( $links as $link ) {
-			/** @var \DOMElement $link */
+			/** @var DOMElement $link */
 			$href = $link->getAttribute( 'href' );
 
 			if ( 0 === strpos( $href, '#' ) ) {
@@ -390,24 +391,22 @@ class Html {
 	}
 
 	public function more( $array, $number = 10, $glue = ', ' ) {
+		if ( ! $number ) {
+			return implode( $glue, $array );
+		}
+
 		$first_set = array_slice( $array, 0, $number );
 		$last_set = array_slice( $array, $number );
 
 		ob_start();
 
 		if ( $first_set ) {
+			$first = sprintf( '<span class="ac-show-more__part -first">%s</span>', implode( $glue, $first_set ) );
+			$more = $last_set ? sprintf( '<span class="ac-show-more__part -more">%s%s</span>', $glue, implode( $glue, $last_set ) ) : '';
+			$content = sprintf('<span class="ac-show-more__content">%s%s</span>', $first, $more );
+			$toggler = $last_set ? sprintf( '<span class="ac-show-more__divider">|</span><a class="ac-show-more__toggle" data-show-more-toggle data-more="%1$s" data-less="%2$s">%1$s</a>', sprintf( __( '%s more', 'codepress-admin-columns' ), count( $last_set ) ), strtolower( __( 'Hide', 'codepress-admin-columns' ) ) ) : '';
 
-			echo implode( $glue, $first_set );
-
-			if ( $last_set ) { ?>
-				<span class="ac-more-link-show">( <a><?php printf( __( 'Show %s more', 'codepress-admin-columns' ), count( $last_set ) ); ?></a> )</span>
-				<span class="ac-show-more-block">
-					<?php echo $glue . implode( $glue, $first_set ); ?>
-					<br/>
-                    <span class="ac-more-link-hide">( <a><?php _e( 'Hide', 'codepress-admin-columns' ); ?></a> )</span>
-                </span>
-				<?php
-			}
+			echo sprintf( '<span class="ac-show-more">%s</span>', $content . $toggler );
 		}
 
 		return ob_get_clean();
@@ -454,8 +453,8 @@ class Html {
 
 		$icons = array();
 
-		foreach ( $stars as $type => $count ) {
-			for ( $i = 1; $i <= $count; $i++ ) {
+		foreach ( $stars as $type => $_count ) {
+			for ( $i = 1; $i <= $_count; $i++ ) {
 				$icons[] = ac_helper()->icon->dashicon( array( 'icon' => 'star-' . $type, 'class' => 'ac-value-star' ) );
 			}
 		}
